@@ -1,0 +1,167 @@
+USE programEEIT
+
+DROP TABLE [advertise];
+DROP TABLE [maps];
+DROP TABLE [comments];
+DROP TABLE [accounts];
+DROP TABLE [aRecords];
+DROP TABLE [checkoutStatus];
+DROP TABLE [orders];
+DROP TABLE [favorities];
+DROP TABLE [orderDetails];
+DROP TABLE [menus];
+DROP TABLE [kinds];
+DROP TABLE [status];
+DROP TABLE [stores];
+DROP TABLE [members];
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+CREATE TABLE [members] (
+mID			int IDENTITY(1,1) NOT NULL,
+mUsername	varchar(100) NOT NULL,
+mPassword	varchar(50)	NOT NULL,
+mName		nvarchar(20) NOT NULL,
+mAddress	nvarchar(50) NOT NULL,
+mPhone		char(15) ,
+mBirthday	date NOT NULL,
+mIMG		varbinary(MAX) ,
+constraint members_primary_key primary key (mID),
+);
+
+CREATE TABLE [stores] (
+sID			int IDENTITY(1,1) NOT NULL,
+sUsername	varchar(20) NOT NULL,
+sPassword	varchar(50) NOT NULL,
+sName		nvarchar(50) NOT NULL,
+sBossName	nvarchar(50) ,
+sHours		varchar(50) NOT NULL,
+sLogo		varbinary(MAX),
+constraint stores_primary_key primary key (sID),
+);
+
+CREATE TABLE [kinds] (
+kindID			int IDENTITY(10,10) NOT NULL,
+kindName		nvarchar(20) NOT NULL,
+kindMemo		nvarchar(50) ,
+constraint kinds_primary_key primary key (kindID),
+);
+
+CREATE TABLE [status] (
+statusID		int IDENTITY(1,1) NOT NULL,
+statusName		nvarchar(20) NOT NULL,
+statusMemo		nvarchar(50) ,
+constraint status_primary_key primary key (statusID),
+);
+
+CREATE TABLE [menus] (
+foodID		int IDENTITY(1,1) NOT NULL,
+foodName	nvarchar(50) NOT NULL,
+sID			int NOT NULL,
+kindID		int NOT NULL,
+statusID	int NOT NULL,
+unitPrice	decimal(18,0) NOT NULL,
+foodIMG		varbinary(MAX) ,
+constraint menus_statusID_fk foreign key (statusID) references status (statusID),
+constraint menus_kindID_fk foreign key (kindID) references kinds (kindID),
+constraint menus_sID_fk foreign key (sID) references stores (sID),
+constraint menus_primary_key primary key (foodID,sID),
+);
+
+CREATE TABLE [checkoutStatus] (
+cksID		int IDENTITY(10,10) NOT NULL,
+cksName		nvarchar(20) NOT NULL,
+cksMemo		nvarchar(50) ,
+constraint checkoutStatus_primary_key primary key (cksID),
+);
+
+CREATE TABLE [orders] (
+oID			int IDENTITY(1,1) NOT NULL,
+sID			int NOT NULL,
+mID			int NOT NULL,
+saleDate	date NOT NULL,
+totalPrice	decimal(18,0) NOT NULL,
+cksID		int NOT NULL,
+oMemo		nvarchar(50) ,
+constraint orders_mID_fk foreign key (mID) references members (mID),
+constraint orders_sID_fk foreign key (sID) references stores (sID),
+constraint orders_cksID_fk foreign key (cksID) references checkoutStatus (cksID),
+constraint orders_primary_key primary key(oID),
+);
+
+CREATE TABLE [orderDetails] (
+oID				int NOT NULL,
+sID				int NOT NULL,
+sName			nvarchar NOT NULL,
+foodName		nvarchar NOT NULL,
+foodPrice		decimal(18,0) NOT NULL,
+foodQuantity	int NOT NULL,
+amount			decimal(18,0) NOT NULL,
+mID				int NOT NULL,
+saleDate		date NOT NULL,
+odMemo			nvarchar(50) ,
+constraint orderDetails_mID_fk foreign key (mID) references members (mID),
+constraint orderDetails_sID_fk foreign key (sID) references stores (sID),
+constraint orderDetails_oID_fk foreign key (oID) references orders (oID),
+constraint orderDetails_primary_key primary key (oID,sID),
+);
+
+CREATE TABLE [advertise] (
+adID			int IDENTITY(1,1) NOT NULL,
+sID				int NOT NULL,
+sName			nvarchar(50) NOT NULL,
+adIMG			varbinary(MAX) ,
+constraint advertise_sID_fk foreign key (sID) references stores (sID),
+constraint advertise_primary_key primary key (adID),
+);
+
+CREATE TABLE [maps] (
+mapID			int IDENTITY(1,1) NOT NULL,
+sID				int NOT NULL,
+location		varchar(MAX) NOT NULL,
+constraint maps_sID_fk foreign key (sID) references stores (sID),
+constraint maps_primary_key primary key (mapID),
+);
+
+CREATE TABLE [favorities] (
+fID				int IDENTITY(1,1) NOT NULL,
+mID				int NOT NULL,
+sID				int NOT NULL,
+sName			nvarchar(50) NOT NULL,
+constraint favorities_sID_fk foreign key (sID) references stores (sID),
+constraint favorities_mID_fk foreign key (mID) references members (mID),
+constraint favorities_primary_key primary key (fID),
+);
+
+CREATE TABLE [comments] (
+cID				int IDENTITY(1,1) NOT NULL,
+mID				int NOT NULL,
+cDate			datetime NOT NULL,
+cContent		nvarchar(100) ,
+cRespone		nvarchar(100) ,
+point			varchar(20) NOT NULL,
+cIP				varchar(15) NOT NULL,
+constraint comments_mID_fk foreign key (mID) references members (mID),
+constraint comments_primary_key primary key (cID),
+);
+
+CREATE TABLE [accounts] (
+aID			int IDENTITY(1,1) NOT NULL,
+mID			int NOT NULL,
+balance		decimal(18,0) NOT NULL,
+constraint accounts_mID foreign key (mID) references members (mID),
+constraint accounts_primary_key primary key (aID),
+);
+
+CREATE TABLE [aRecords] (
+arID		int IDENTITY(1,1) NOT NULL,
+mID			int NOT NULL,
+arDate		datetime NOT NULL,
+arAmount	decimal(18,0) NOT NULL,
+oID			int ,
+constraint arecords_oID foreign key (oID) references orders (oID),
+constraint arecords_mID foreign key (mID) references members (mID),
+constraint arecords_primary_key primary key (arID,mID),	
+);
+
+-------------------------------------------------------------------------------------------------------------------------------------
