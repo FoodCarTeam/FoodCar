@@ -5,7 +5,7 @@ import java.util.List;
 import model.MapsVO;
 
 public interface MapDaoInterface {
-	  MapsVO select(int id);
+	  MapsVO select(int sID);
 
 	  List<MapsVO> select();
 	  
@@ -13,6 +13,6 @@ public interface MapDaoInterface {
 	  
 	  MapsVO update(MapsVO map);
 	  
-	  boolean delete(int id);
+	  boolean delete(int sID);
 	  
 }
