@@ -4,45 +4,78 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<script type="text/javascript" src="jquery/jquery-3.0.0.min.js"></script>
+<!-- 最新編譯和最佳化的 CSS -->
+<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+
+<!-- 選擇性佈景主題 -->
+<link rel="stylesheet" href="bootstrap/css/bootstrap-theme.min.css">
+
+<!-- 最新編譯和最佳化的 JavaScript -->
+<script src="bootstrap/js/bootstrap.min.js"></script>
 <title>餐車專區</title>
 </head>
-<table id="storesTable">
-	<thead>
-		<tr>
-			<th>sID</th>
-			<th>sUsername</th>
-			<th>sHour</th>
-			<th>sName</th>
-		</tr>
-	</thead>
-	<tbody></tbody>
-</table>
+
 <body>
+    <div class="row" style="border:black 5px solid;" id="stroes"></div>
+<!-- 	<table id="storesTable" class="table"> -->
+<!-- 		<thead> -->
+<!-- 			<tr> -->
+<!-- 				<th>sUsername</th> -->
+<!-- 				<th>sHour</th> -->
+<!-- 				<th>sName</th> -->
+<!-- 			</tr> -->
+<!-- 		</thead> -->
+<!-- 		<tbody></tbody> -->
+<!-- 	</table> -->
+	
+	<script type="text/javascript" src="jquery/jquery-3.0.0.min.js"></script>
 	<script type="text/javascript">
-		$.ajax({
+	$.ajax({
 			'type' : 'post',
 			'url' : 'StoresServlet',
 			'dataType' : 'json',
+			'data' : {},
 			'success' : function(data) {
-				var tb = $('#storesTable>tbody')
+				var tb = $('#stroes')
 				var flag = $(document.createDocumentFragment());
 				tb.empty();
-                alert(tb);
-				$.each(data, function(idx, product) {
-					var cell1 = $('<td></td>').text(product.sID);
-					var cell2 = $('<td></td>').text(product.sUsername);
-					var cell3 = $('<td></td>').text(product.sHours);
-					var cell4 = $('<td></td>').text(product.sName);
 
-					var row = $("<tr></tr>").append(
-							[ cell1, cell2, cell3, cell4 ])
-					flag.append(row)
+				$.each(data, function(idx, store) {
+                   
+					var cell = $('<div class="col-sm-4" style="border:black 5px solid;"></div>')
+					.html('<h4>'+store.sName+" "+store.sUsername+'<h4><h4>'+store.sHours+'<h4>');
+
+					flag.append([cell])
 				})
 				tb.append(flag)
-			}
 
+			}
 		})
+// 		$.ajax({
+// 			'type' : 'post',
+// 			'url' : 'StoresServlet',
+// 			'dataType' : 'json',
+// 			'data' : {},
+// 			'success' : function(data) {
+// 				var tb = $('#storesTable>tbody')
+// 				var flag = $(document.createDocumentFragment());
+// 				tb.empty();
+
+// 				$.each(data, function(idx, store) {
+
+					
+// 					var cell1 = $('<td></td>').text(store.sUsername);
+// 					var cell2 = $('<td></td>').text(store.sHours);
+// 					var cell3 = $('<td></td>').text(store.sName);
+
+// 					var row = $("<tr></tr>").append(
+// 							[ cell1, cell2, cell3])
+// 					flag.append(row)
+// 				})
+// 				tb.append(flag)
+
+// 			}
+// 		})
 	</script>
 
 </body>

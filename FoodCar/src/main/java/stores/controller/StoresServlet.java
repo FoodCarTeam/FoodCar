@@ -35,15 +35,13 @@ public class StoresServlet extends HttpServlet {
 		for(int i=0; i < result.size();i++){
 			 Map m1 = new HashMap();
 			 m1.put("sName", result.get(i).getsName());
-			 m1.put("username", result.get(i).getsUsername());
-			 m1.put("Hours", result.get(i).getsHours());
-			 m1.put("sID", result.get(i).getsID());
+			 m1.put("sUsername", result.get(i).getsUsername());
+			 m1.put("sHours", result.get(i).getsHours());
+		
 			 l1.add(m1);
 		}
-		Map m2 = new HashMap();
 		
-		m2.put("data", l1);
-		 String jsonString = JSONValue.toJSONString(m2);  
+		 String jsonString = JSONValue.toJSONString(l1);  
 
 		 out.println(jsonString);
 	}
