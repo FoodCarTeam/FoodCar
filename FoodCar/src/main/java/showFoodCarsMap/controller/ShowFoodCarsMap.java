@@ -45,7 +45,8 @@ public class ShowFoodCarsMap extends HttpServlet {
 			object = new JSONObject();
 			object.put("sName", list.get(i).getsName());
 			object.put("sID", list.get(i).getsID());
-
+			object.put("sUsername",list.get(i).getsUsername());
+			object.put("sHours",list.get(i).getsHours());
 			Set<MapsVO> map = list.get(i).getMapVO();
 			for (MapsVO a : map) {
 				object.put("location", a.getLocation());

@@ -12,10 +12,35 @@ html, body {
 	padding: 0;
 }
 
+#right-panel {
+	font-family: 'Roboto', 'sans-serif';
+	line-height: 30px;
+	padding-left: 10px;
+}
+
+#right-panel i {
+	font-size: 12px;
+}
+
+#right-panel {
+	margin: 20px;
+	border-width: 2px;
+	width: 20%;
+	float: left;
+	text-align: left;
+	padding-top: 20px;
+}
+
+ #GoogleMap { 
+ 	height: 80%; 
+ 	width: 80%; 
+ 	margin: auto; 
+ } 
 #map {
-	height: 80%;
-	width: 80%;
-	margin: auto;
+	height: 100%;
+	float: left;
+	width: 70%;
+	height: 100%;
 }
 </style>
 </head>
@@ -26,6 +51,10 @@ html, body {
 <body>
 	<script>
 		function initMap() {
+			// 			使用者緯經度
+			var lat;
+			var lng;
+
 			var map = new google.maps.Map(document.getElementById('map'), {
 				zoom : 15,
 				center : {
@@ -52,6 +81,9 @@ html, body {
 						},
 
 					});
+
+					lat = position.coords.latitude;
+					lng = position.coords.longitude;
 				}, function() {
 					handleLocationError(true, infoWindow, map.getCenter());
 				});
@@ -68,18 +100,18 @@ html, body {
 				"success" : function(datas) {
 					$.each(datas, function(index, value) {
 						var location = value.location.split(",");
-						var lat=parseFloat(location[0]);
-						var lng=parseFloat(location[1]);
+						lat = parseFloat(location[0]);
+						lng = parseFloat(location[1]);
 						var marker = new google.maps.Marker({
 							map : map,
-							title:"321",
+							title : "321",
 							// Define the place with a location, and a query string.
 							place : {
 								location : {
 									lat : lat,
 									lng : lng
 								},
-								query :"12312"
+								query : "12312"
 							},
 							//Attributions help users find your site again.
 							attribution : {
@@ -87,33 +119,45 @@ html, body {
 								webUrl : 'https://developers.google.com/maps/'
 							}
 						});
-		
+
 						marker.addListener('click', function() {
 							infoWindow.open(map, marker);
 						});
-						
+						var content = "<h2>" + value.sName + "</h2>" + "<p>電話號碼：" + value.sUsername + "</p>" + "<p>營業時間：" + value.sHours + "</p>";
+
 						var infoWindow = new google.maps.InfoWindow({
-							content : value.sName
+							content : content,
+							maxWidth : 200
 						});
-						
-						
 					})
-
 				}
-
 			});
 
-			// Construct a new InfoWindow.
-			
-
-			// Opens the InfoWindow when marker is clicked.
+			// 			導航
+			var directionsDisplay = new google.maps.DirectionsRenderer();
+			var directionsService = new google.maps.DirectionsService();
+			var request = {
+				origin : new google.maps.LatLng(25.047908, 121.517315),
+				destination : new google.maps.LatLng(25.033681, 121.564726),
+				travelMode : google.maps.TravelMode.WALKING
+			};
+			directionsService.route(request, function(response, status) {
+				console.debug(response);
+				if (status == google.maps.DirectionsStatus.OK) {
+					directionsDisplay.setDirections(response);
+				}
+			})
+			directionsDisplay.setMap(map);
 
 		}
 	</script>
 
-	<div id="map"></div>
-
-
+	<div id="GoogleMap">
+		<div id="map"></div>
+		<div id="right-panel">
+			<i>123</i>
+		</div>
+	</div>
 
 </body>
 </html>

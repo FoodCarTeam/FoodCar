@@ -43,9 +43,7 @@ public class showFoodCarsService {
 //		測試範例：週一到週五0900-2100
 		List<StoresVO> list = service2.select();
 		String openTime = list.get(0).getsHours();
-
-		Boolean result=service.openOrClose("週日到週日1200-2250");
-		
+		Boolean result=service.openOrClose("週一到週五0800-2100");
 		System.out.println(result);
 
 
