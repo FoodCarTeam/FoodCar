@@ -15,12 +15,6 @@ public class StoresVO implements java.io.Serializable {
 	private String sHours ;
 	private Byte[] sLogo ;
 	private Set<MapsVO> mapVO=new HashSet<MapsVO>(); 
-	
-	
-	
-	
-//	private MapsVO mapsVO;
-	
 
 public Set<MapsVO> getMapVO() {
 		return mapVO;
@@ -28,12 +22,6 @@ public Set<MapsVO> getMapVO() {
 	public void setMapVO(Set<MapsVO> mapVO) {
 		this.mapVO = mapVO;
 	}
-	//	public MapsVO getMapsVO() {
-//		return mapsVO;
-//	}
-//	public void setMapsVO(MapsVO mapsVO) {
-//		this.mapsVO = mapsVO;
-//	}
 	public Integer getsID() {
 		return sID;
 	}
