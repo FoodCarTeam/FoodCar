@@ -3,14 +3,16 @@
 	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 2012/3/7 ?W?? 09:15:15 by Hibernate Tools 3.3.0.GA -->
 <hibernate-mapping>
-    <class name="model.MapsVO" table="maps" >
-        
-        <id name="mapID" column="mapID">
-            <generator class="identity"/>
-        </id>
-		
-         <property name="sID" column="sID" />
-        <property name="location" column="location" />
-       
-    </class>
+	<class name="model.MapsVO" table="maps">
+		<id name="mapID" column="mapID">
+			<generator class="identity" />
+		</id>
+		<property name="sID" column="sID" />
+		<property name="location" column="location" />
+
+		<many-to-one name="stroeVO" class="model.StoresVO" lazy="false"
+			column="sID" insert="false" update="false" not-found="ignore" />
+
+
+	</class>
 </hibernate-mapping>

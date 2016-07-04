@@ -3,19 +3,25 @@
 	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 2012/3/7 ?W?? 09:15:15 by Hibernate Tools 3.3.0.GA -->
 <hibernate-mapping>
-    <class name="model.StoresVO" table="stores" >
-        
-        <id name="sID" column="sID">
-            <generator class="identity"/>
-        </id>
-        
-        <property name="sName" column="sName" />
-        <property name="sUsername" column="sUsername" />
-        <property name="sPassword" column="sPassword" />
-        <property name="sBossName" column="sBossName" />
-        <property name="sHours" column="sHours" />
-        <property name="sLogo" column="sLogo" />
-        
-        
-    </class>
+	<class name="model.StoresVO" table="stores">
+
+		<id name="sID" column="sID">
+			<generator class="identity" />
+
+		</id>
+
+		<property name="sName" column="sName" />
+		<property name="sUsername" column="sUsername" />
+		<property name="sPassword" column="sPassword" />
+		<property name="sBossName" column="sBossName" />
+		<property name="sHours" column="sHours" />
+		<property name="sLogo" column="sLogo" />
+
+		<set name="mapVO" table="maps" lazy="false" cascade="all" inverse="true">
+			<key column="sID"/>
+			<one-to-many class="model.MapsVO" />
+		</set>
+
+
+	</class>
 </hibernate-mapping>

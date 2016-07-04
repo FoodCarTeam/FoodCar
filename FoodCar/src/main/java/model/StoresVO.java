@@ -1,5 +1,9 @@
 package model;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.Column;
 
 public class StoresVO implements java.io.Serializable {
 
@@ -10,7 +14,26 @@ public class StoresVO implements java.io.Serializable {
 	private String sBossName ;
 	private String sHours ;
 	private Byte[] sLogo ;
+	private Set<MapsVO> mapVO=new HashSet<MapsVO>(); 
 	
+	
+	
+	
+//	private MapsVO mapsVO;
+	
+
+public Set<MapsVO> getMapVO() {
+		return mapVO;
+	}
+	public void setMapVO(Set<MapsVO> mapVO) {
+		this.mapVO = mapVO;
+	}
+	//	public MapsVO getMapsVO() {
+//		return mapsVO;
+//	}
+//	public void setMapsVO(MapsVO mapsVO) {
+//		this.mapsVO = mapsVO;
+//	}
 	public Integer getsID() {
 		return sID;
 	}
