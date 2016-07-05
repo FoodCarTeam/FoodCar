@@ -11,8 +11,19 @@ import model.StoresVO;
 public class StoresDAOHibernate implements StoresDAO{
 
 	@Override
-	public StoresVO select(Integer id) {
-		return null;
+	public StoresVO select(Integer sID) {
+		StoresVO storesVO = null;
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		try {
+			session.beginTransaction();
+			storesVO = (StoresVO) session.get(StoresVO.class, sID);
+			
+			session.getTransaction().commit();
+		} catch (RuntimeException ex) {
+			session.getTransaction().rollback();
+			throw ex;
+		}
+		return storesVO;
 	}
 
 	@Override
