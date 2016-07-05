@@ -16,24 +16,30 @@ html, body {
 	font-family: 'Roboto', 'sans-serif';
 	line-height: 30px;
 	padding-left: 10px;
+	font-size: 12px;
 }
 
 #right-panel i {
 	font-size: 12px;
 }
-
+#right-panel {    
+        height: 100%;    
+        float: right;    
+        width: 390px;    
+        overflow: auto;    
+      }   
 #right-panel {
+   height: 100%;  
 	margin: 20px;
 	border-width: 2px;
-	width: 20%;
+	width: 190px;
 	float: left;
 	text-align: left;
 	padding-top: 20px;
 }
-
  #GoogleMap { 
  	height: 80%; 
- 	width: 80%; 
+ 	width: 90%; 
  	margin: auto; 
  } 
 #map {
@@ -74,6 +80,7 @@ html, body {
 					var marker = new google.maps.Marker({
 						map : map,
 						draggable : true,
+						
 						animation : google.maps.Animation.BOUNCE,
 						position : {
 							lat : position.coords.latitude,
@@ -134,29 +141,28 @@ html, body {
 			});
 
 			// 			導航
-			var directionsDisplay = new google.maps.DirectionsRenderer();
-			var directionsService = new google.maps.DirectionsService();
-			var request = {
-				origin : new google.maps.LatLng(25.047908, 121.517315),
-				destination : new google.maps.LatLng(25.033681, 121.564726),
-				travelMode : google.maps.TravelMode.WALKING
-			};
-			directionsService.route(request, function(response, status) {
-				console.debug(response);
-				if (status == google.maps.DirectionsStatus.OK) {
-					directionsDisplay.setDirections(response);
-				}
-			})
-			directionsDisplay.setMap(map);
-
+// 			var directionsDisplay = new google.maps.DirectionsRenderer();
+// 			var directionsService = new google.maps.DirectionsService();
+// 			var request = {
+// 				origin : new google.maps.LatLng(25.047908, 121.517315),
+// 				destination : new google.maps.LatLng(25.033681, 121.564726),
+// 				travelMode : google.maps.TravelMode.WALKING
+// 			};
+// 			directionsService.route(request, function(response, status) {
+// 				console.debug(response);
+// 				if (status == google.maps.DirectionsStatus.OK) {
+// 					directionsDisplay.setDirections(response);
+// 				}
+// 			})
+// 			directionsDisplay.setMap(map);
+// 			directionsDisplay.setPanel(document.getElementById('right-panel'));
 		}
 	</script>
 
 	<div id="GoogleMap">
 		<div id="map"></div>
-		<div id="right-panel">
-			<i>123</i>
-		</div>
+<!-- 		<div id="right-panel"> -->
+<!-- 		</div> -->
 	</div>
 
 </body>

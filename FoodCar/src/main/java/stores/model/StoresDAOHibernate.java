@@ -10,8 +10,18 @@ import model.StoresVO;
 
 public class StoresDAOHibernate implements StoresDAO{
 
+	public static void main(String[]args){
+//		測試單查
+//		StoresDAOHibernate dao=new StoresDAOHibernate();
+//		StoresVO vo=new StoresVO();
+//		 vo=dao.select(1);
+//		 System.out.println(vo.getsName());
+	}
+	
+	
 	@Override
 	public StoresVO select(Integer sID) {
+
 		StoresVO storesVO = null;
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
@@ -24,6 +34,7 @@ public class StoresDAOHibernate implements StoresDAO{
 			throw ex;
 		}
 		return storesVO;
+
 	}
 
 	@Override

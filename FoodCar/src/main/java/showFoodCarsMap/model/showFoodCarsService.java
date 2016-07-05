@@ -43,7 +43,7 @@ public class showFoodCarsService {
 //		測試範例：週一到週五0900-2100
 		List<StoresVO> list = service2.select();
 		String openTime = list.get(0).getsHours();
-		Boolean result=service.openOrClose("週一到週五0800-2100");
+		Boolean result=service.openOrClose("週一到週五1000-2200");
 		System.out.println(result);
 
 
@@ -145,13 +145,55 @@ public class showFoodCarsService {
 			break;
 		}
 //		u是星期幾
-		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd-u/HHmm");
+		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd-u");
 		SimpleDateFormat sdf2=new SimpleDateFormat("yyyy-MM-dd-");
 		
 		Calendar tempCal=Calendar.getInstance();
+		Calendar tempCal2=Calendar.getInstance();
 		String nowTime=sdf.format(tempCal.getTime());
-		String temp=sdf2.format(tempCal.getTime());
 		
+		
+		
+//		System.out.println("現在"+tempCal.get(Calendar.DAY_OF_WEEK));
+//		tempCal.add(Calendar.DATE,1);
+		
+		int beginDayTemp=tempCal.get(Calendar.DAY_OF_WEEK);
+		int beginDayTempCount=0;
+		
+		int finishDayTemp=tempCal.get(Calendar.DAY_OF_WEEK);
+		int finishDayTempCount=0;
+		
+//		System.out.println("openWeekInt:"+openWeekInt);
+//		System.out.println("closeWeekInt"+closeWeekInt);
+		
+		while(beginDayTemp!=openWeekInt){
+			beginDayTempCount+=1;
+			if(beginDayTemp-1==0){
+				beginDayTemp=7;
+			}else{
+				beginDayTemp=beginDayTemp-1;
+			}
+		}
+		
+		while(finishDayTemp!=closeWeekInt){
+			finishDayTempCount+=1;
+			if(finishDayTemp+1==8){
+				beginDayTemp=1;
+			}else{
+				finishDayTemp=finishDayTemp+1;
+			}
+		}
+	
+//		System.out.println("finishDayTemp"+finishDayTemp);
+//		System.out.println("beginDayTemp"+beginDayTemp);
+//		
+//		System.out.println("beginDayTempCount:"+beginDayTempCount);
+//		System.out.println("finishDayTempCount"+finishDayTempCount);
+		tempCal.add(Calendar.DAY_OF_WEEK,beginDayTempCount );
+		tempCal2.add(Calendar.DAY_OF_WEEK,finishDayTempCount );
+		String tempStart=sdf2.format(tempCal.getTime());
+		String tempEnd=sdf2.format(tempCal2.getTime());
+			
 //		Calendar 週日是1
 //		SimpleDateFormat 週日是7
 		if(openWeekInt+1>=8){
@@ -170,28 +212,36 @@ public class showFoodCarsService {
 		openHours.substring(0,4);
 		openHours.substring(5);
 		
+		SimpleDateFormat openHHmm=new SimpleDateFormat("HHmm");
+		SimpleDateFormat closeHHmm=new SimpleDateFormat("HHmm");
+		Date openHHmm1=null;
+		Date closeHHmm1=null;
+		try {
+			openHHmm1 = openHHmm.parse(openHours.substring(0,4));
+			closeHHmm1 = closeHHmm.parse(openHours.substring(5));
+		} catch (ParseException e1) {
+		
+			e1.printStackTrace();
+		}
 		
 //		進行比較
 		try {
-			Date open=sdf.parse(temp+openWeekInt+"/"+openHours.substring(0,4));
-			Date close=sdf.parse(temp+closeWeekInt+"/"+openHours.substring(5));
+			Date openDate1=sdf.parse(tempStart+openWeekInt+"/"+openHours.substring(0,4));
+			Date closeDate1=sdf.parse(tempEnd+closeWeekInt+"/"+openHours.substring(5));
 			Date now=sdf.parse(nowTime);
 			
 			
-			if((now.equals(open)||now.after(open))&&(now.equals(close)||now.before(close))){
+			System.out.println("open:"+openDate1);
+			System.out.println("close:"+closeDate1);
+			
+			if((now.equals(openDate1)||now.after(openDate1))&&(now.equals(closeDate1)||now.before(closeDate1))){
+				if((now.equals(openHHmm1)||now.after(openHHmm1))&&(now.equals(closeHHmm1)||now.before(closeHHmm1))){
 				return true;
-			}
-			
-			
-			
+				}
+			}			
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
-		
-		
-		
-		
-		
 		return false;
 	}
 	
