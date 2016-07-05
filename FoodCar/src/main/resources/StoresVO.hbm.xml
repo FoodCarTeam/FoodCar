@@ -16,6 +16,7 @@
 		<property name="sBossName" column="sBossName" />
 		<property name="sHours" column="sHours" />
 		<property name="sLogo" column="sLogo" />
+		<property name="sIntro" column="sIntro" />
 
 		<set name="mapVO" table="maps" lazy="false" cascade="all" inverse="true">
 			<key column="sID"/>

@@ -14,6 +14,13 @@ public class StoresVO implements java.io.Serializable {
 	private String sBossName ;
 	private String sHours ;
 	private Byte[] sLogo ;
+	private String sIntro;
+	public String getsIntro() {
+		return sIntro;
+	}
+	public void setsIntro(String sIntro) {
+		this.sIntro = sIntro;
+	}
 	private Set<MapsVO> mapVO=new HashSet<MapsVO>(); 
 
 public Set<MapsVO> getMapVO() {
