@@ -10,7 +10,14 @@ public class MenusVO implements java.io.Serializable {
 	private Integer statusID ;
 	private Double unitPrice ;
 	private Byte[] foodIMG ;
+	private StoresVO stroeVO;
 	
+	public StoresVO getStroeVO() {
+		return stroeVO;
+	}
+	public void setStroeVO(StoresVO stroeVO) {
+		this.stroeVO = stroeVO;
+	}
 	public Integer getFoodID() {
 		return foodID;
 	}

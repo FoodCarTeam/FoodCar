@@ -18,11 +18,17 @@ public class StoresService {
 //			System.out.println("sName:"+a.getsName());
 //			Set<MapsVO> mapsVO=a.getMapVO();
 //			for(MapsVO b:mapsVO){
+//				
 //				System.out.println(b.getLocation());
 //			}
 //		}
-		
-		
+		StoresService service=new StoresService();
+		StoresVO vo = service.select(1);
+		Set<MapsVO> mapsVO = vo.getMapVO();
+		System.out.println(vo.getsName());
+		for(MapsVO a:mapsVO){
+			System.out.println(a.getLocation());
+		}
 	}
 	public List<StoresVO> select() {
 		List<StoresVO> result = null;

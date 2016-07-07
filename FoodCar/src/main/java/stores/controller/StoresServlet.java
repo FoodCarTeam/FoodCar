@@ -16,8 +16,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.json.simple.JSONValue;
 
-import stores.model.StoresService;
 import model.StoresVO;
+import stores.model.StoresService;
 
 
 @WebServlet("/StoresServlet")

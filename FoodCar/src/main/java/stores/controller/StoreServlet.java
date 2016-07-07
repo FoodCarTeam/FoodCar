@@ -3,9 +3,11 @@ package stores.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.json.simple.JSONValue;
 
+import model.MapsVO;
 import model.StoresVO;
 import stores.model.StoresService;
 
@@ -24,26 +27,24 @@ public class StoreServlet extends HttpServlet {
 		StoresService storesService = new StoresService();
 		response.setHeader("content-type", "text/html;charset=UTF-8");
 		response.setCharacterEncoding("UTF-8");
-		PrintWriter out = response.getWriter();
 		
 		String id = request.getParameter("sID");
-		
-//		System.out.println(sID);
-//		StoresVO result = storesService.select(sID);
-//		
-//		Map m1 = new HashMap();
-//		m1.put("sName", result.getsName());
-//		m1.put("sUsername", result.getsUsername());
-//		m1.put("sHour", result.getsHours());
-//		
-//		 String jsonString = JSONValue.toJSONString(m1);  
-//
-//		 out.println(jsonString);
 		int sID = 0;
 		 if(id!=null&&id.length()!=0){
 	      sID = Integer.parseInt(id);
 		 StoresVO result = storesService.select(sID);
+		 Set<MapsVO> map = result.getMapVO();
+         
+//		 Map m1 = new HashMap();
+		 String loc="";
+		 for(MapsVO a:map){
+//			m1.put("location", a.getLocation());
+			loc=a.getLocation();
+			 System.out.println(a.getLocation());
+		 }
+		 
 		 request.setAttribute("select", result);
+		 request.setAttribute("map", loc);
 		 request.getRequestDispatcher(
 					"/Store.jsp").forward(request, response);
 		 }

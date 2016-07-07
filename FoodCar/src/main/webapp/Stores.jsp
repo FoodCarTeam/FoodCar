@@ -17,16 +17,7 @@
 
 <body>
     <div class="row" style="border:black 5px solid;" id="stroes"></div>
-<!-- 	<table id="storesTable" class="table"> -->
-<!-- 		<thead> -->
-<!-- 			<tr> -->
-<!-- 				<th>sUsername</th> -->
-<!-- 				<th>sHour</th> -->
-<!-- 				<th>sName</th> -->
-<!-- 			</tr> -->
-<!-- 		</thead> -->
-<!-- 		<tbody></tbody> -->
-<!-- 	</table> -->
+
 	
 	<script type="text/javascript" src="jquery/jquery-3.0.0.min.js"></script>
 	<script type="text/javascript">
@@ -51,31 +42,7 @@
 
 			}
 		})
-// 		$.ajax({
-// 			'type' : 'post',
-// 			'url' : 'StoresServlet',
-// 			'dataType' : 'json',
-// 			'data' : {},
-// 			'success' : function(data) {
-// 				var tb = $('#storesTable>tbody')
-// 				var flag = $(document.createDocumentFragment());
-// 				tb.empty();
 
-// 				$.each(data, function(idx, store) {
-
-					
-// 					var cell1 = $('<td></td>').text(store.sUsername);
-// 					var cell2 = $('<td></td>').text(store.sHours);
-// 					var cell3 = $('<td></td>').text(store.sName);
-
-// 					var row = $("<tr></tr>").append(
-// 							[ cell1, cell2, cell3])
-// 					flag.append(row)
-// 				})
-// 				tb.append(flag)
-
-// 			}
-// 		})
 	</script>
 
 </body>
