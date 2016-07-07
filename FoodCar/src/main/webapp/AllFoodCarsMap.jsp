@@ -144,7 +144,7 @@ html, body {
 						if (value.open) {
 
 							var marker = new google.maps.Marker({
-								icon : "image/MapIcon/open.png",
+								icon : "images/MapIcon/open.png",
 								map : map,
 								title : "321",
 								// Define the place with a location, and a query string.
