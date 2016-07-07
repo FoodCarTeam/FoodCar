@@ -11,7 +11,7 @@ public class MembersVO implements java.io.Serializable{
 	private String mAddress ;
 	private String mPhone ;
 	private java.sql.Date mBirthday ;
-	private Byte[] mIMG ;
+	private String mIMG ;
 	
 	public Integer getmID() {
 		return mID;
@@ -55,10 +55,10 @@ public class MembersVO implements java.io.Serializable{
 	public void setmBirthday(java.sql.Date mBirthday) {
 		this.mBirthday = mBirthday;
 	}
-	public Byte[] getmIMG() {
+	public String getmIMG() {
 		return mIMG;
 	}
-	public void setmIMG(Byte[] mIMG) {
+	public void setmIMG(String mIMG) {
 		this.mIMG = mIMG;
 	}
 }

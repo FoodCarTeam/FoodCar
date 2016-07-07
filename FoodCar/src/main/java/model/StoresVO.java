@@ -12,8 +12,8 @@ public class StoresVO implements java.io.Serializable {
 	private String sPassword ;
 	private String sName ;
 	private String sBossName ;
-	private String sHours ;
-	private Byte[] sLogo ;
+	
+	private String sLogo ;
 	private String sIntro;
     private Set<MapsVO> mapVO=new HashSet<MapsVO>(); 
     private Set<MenusVO> menusVO = new HashSet<MenusVO>(); 
@@ -66,16 +66,11 @@ public class StoresVO implements java.io.Serializable {
 	public void setsBossName(String sBossName) {
 		this.sBossName = sBossName;
 	}
-	public String getsHours() {
-		return sHours;
-	}
-	public void setsHours(String sHours) {
-		this.sHours = sHours;
-	}
-	public Byte[] getsLogo() {
+	
+	public String getsLogo() {
 		return sLogo;
 	}
-	public void setsLogo(Byte[] sLogo) {
+	public void setsLogo(String sLogo) {
 		this.sLogo = sLogo;
 	}
 	

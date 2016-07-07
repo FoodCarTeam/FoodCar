@@ -60,8 +60,8 @@ public class StoresDAOHibernate implements StoresDAO{
 	}
 
 	@Override
-	public StoresVO update(String sUsername, String sPassword, String sName, String sBossName, String sHours,
-			Byte[] sLogo, Integer sID) {
+	public StoresVO update(String sUsername, String sPassword, String sName, String sBossName, 
+			String sLogo, Integer sID) {
 		// TODO Auto-generated method stub
 		return null;
 	}

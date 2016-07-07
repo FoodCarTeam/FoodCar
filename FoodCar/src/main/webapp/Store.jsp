@@ -11,7 +11,6 @@
 </head>
 <body>
    <a href="MenusServlet?sID=${select.sID}">${select.sName}</a>
-  <h3>${select.sHours}</h3>
   <h3>${select.sUsername}</h3>
   <h3>${select["sIntro"]}</h3>
   <h3>${map}</h3>

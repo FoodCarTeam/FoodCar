@@ -36,7 +36,6 @@ public class StoresServlet extends HttpServlet {
 			 Map m1 = new HashMap();
 			 m1.put("sName", result.get(i).getsName());
 			 m1.put("sUsername", result.get(i).getsUsername());
-			 m1.put("sHours", result.get(i).getsHours());
 			 m1.put("sID", result.get(i).getsID());
 		
 			 l1.add(m1);

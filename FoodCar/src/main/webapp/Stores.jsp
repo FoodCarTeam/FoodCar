@@ -34,7 +34,7 @@
 				$.each(data, function(idx, store) {
                    
 					var cell = $('<div class="col-sm-4" style="border:black 5px solid;"></div>')
-					.html('<a href="StoreServlet?sID='+store.sID+'">'+store.sName+'</a><h4>'+store.sUsername+'</h4><h4>'+store.sHours+'</h4>');
+					.html('<a href="StoreServlet?sID='+store.sID+'">'+store.sName+'</a><h4>'+store.sUsername+'</h4>');
 
 					flag.append([cell])
 				})
