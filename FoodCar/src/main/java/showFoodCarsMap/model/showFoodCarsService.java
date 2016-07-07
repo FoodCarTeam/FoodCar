@@ -17,12 +17,12 @@ public class showFoodCarsService {
 	public static void main(String[] args) {
 		showFoodCarsService service = new showFoodCarsService();
 		// 測試單查與全查
-		// MapsVO vo=new MapsVO();
-		// vo.setsID(1);
-		// List<MapsVO> list=service.select(vo);
-		// for(MapsVO a:list){
-		// System.out.println(a.getsID());
-		// }
+//		 MapsVO vo=new MapsVO();
+//		 vo.setsID(1);
+//		 List<MapsVO> list=service.select(vo);
+//		 for(MapsVO a:list){
+//		 System.out.println(a.getsID());
+//		 }
 		// 測試新增
 		// MapsVO vo=new MapsVO();
 		// vo.setsID(3);
@@ -40,7 +40,7 @@ public class showFoodCarsService {
 		// System.out.println(result);
 
 		StoresService service2 = new StoresService();
-//		測試範例：週一到週五0900-2100
+////		測試範例：週一到週五0900-2100
 		List<StoresVO> list = service2.select();
 		String openTime = list.get(0).getsHours();
 		Boolean result=service.openOrClose("週一到週五1000-2200");
@@ -145,7 +145,7 @@ public class showFoodCarsService {
 			break;
 		}
 //		u是星期幾
-		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd-u");
+		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd-u/HHmm");
 		SimpleDateFormat sdf2=new SimpleDateFormat("yyyy-MM-dd-");
 		
 		Calendar tempCal=Calendar.getInstance();
@@ -162,6 +162,10 @@ public class showFoodCarsService {
 		
 		int finishDayTemp=tempCal.get(Calendar.DAY_OF_WEEK);
 		int finishDayTempCount=0;
+		System.out.println("開始前openWeekInt:"+openWeekInt);
+		System.out.println("開始前finishDayTemp"+finishDayTemp);
+		System.out.println("開始前beginDayTemp"+beginDayTemp);
+		System.out.println("開始前closeWeekInt:"+closeWeekInt);
 		
 //		System.out.println("openWeekInt:"+openWeekInt);
 //		System.out.println("closeWeekInt"+closeWeekInt);
@@ -184,12 +188,13 @@ public class showFoodCarsService {
 			}
 		}
 	
-//		System.out.println("finishDayTemp"+finishDayTemp);
-//		System.out.println("beginDayTemp"+beginDayTemp);
-//		
-//		System.out.println("beginDayTempCount:"+beginDayTempCount);
-//		System.out.println("finishDayTempCount"+finishDayTempCount);
-		tempCal.add(Calendar.DAY_OF_WEEK,beginDayTempCount );
+		System.out.println("openWeekInt:"+openWeekInt);
+		System.out.println("finishDayTemp"+finishDayTemp);
+		System.out.println("beginDayTemp"+beginDayTemp);
+		
+		System.out.println("beginDayTempCount:"+beginDayTempCount);
+		System.out.println("finishDayTempCount"+finishDayTempCount);
+		tempCal.add(Calendar.DAY_OF_WEEK,-beginDayTempCount );
 		tempCal2.add(Calendar.DAY_OF_WEEK,finishDayTempCount );
 		String tempStart=sdf2.format(tempCal.getTime());
 		String tempEnd=sdf2.format(tempCal2.getTime());
@@ -212,32 +217,37 @@ public class showFoodCarsService {
 		openHours.substring(0,4);
 		openHours.substring(5);
 		
+		
 		SimpleDateFormat openHHmm=new SimpleDateFormat("HHmm");
 		SimpleDateFormat closeHHmm=new SimpleDateFormat("HHmm");
 		Date openHHmm1=null;
 		Date closeHHmm1=null;
-		try {
-			openHHmm1 = openHHmm.parse(openHours.substring(0,4));
-			closeHHmm1 = closeHHmm.parse(openHours.substring(5));
-		} catch (ParseException e1) {
+
 		
-			e1.printStackTrace();
-		}
 		
 //		進行比較
 		try {
+			
+			openHHmm1 = openHHmm.parse(openHours.substring(0,4));
+			closeHHmm1 = closeHHmm.parse(openHours.substring(5));
+			
 			Date openDate1=sdf.parse(tempStart+openWeekInt+"/"+openHours.substring(0,4));
 			Date closeDate1=sdf.parse(tempEnd+closeWeekInt+"/"+openHours.substring(5));
 			Date now=sdf.parse(nowTime);
 			
 			
-			System.out.println("open:"+openDate1);
-			System.out.println("close:"+closeDate1);
+			System.out.println("openDate1"+openDate1);
+			System.out.println("closeDate1"+closeDate1);
+			System.out.println("nowTime"+now);
+			System.out.println("tempStart:"+tempStart);
+			System.out.println("openWeekInt:"+openWeekInt);
+			System.out.println("openHHmm1:"+openHHmm1);
+			System.out.println("closeHHmm1:"+closeHHmm1);
 			
 			if((now.equals(openDate1)||now.after(openDate1))&&(now.equals(closeDate1)||now.before(closeDate1))){
-				if((now.equals(openHHmm1)||now.after(openHHmm1))&&(now.equals(closeHHmm1)||now.before(closeHHmm1))){
+//				if((now.equals(openHHmm1)||now.after(openHHmm1))&&(now.equals(closeHHmm1)||now.before(closeHHmm1))){
 				return true;
-				}
+//				}
 			}			
 		} catch (ParseException e) {
 			e.printStackTrace();

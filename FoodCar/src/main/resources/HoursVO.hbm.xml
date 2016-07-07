@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2012/3/7 ?W?? 09:15:15 by Hibernate Tools 3.3.0.GA -->
+<hibernate-mapping>
+	<class name="model.HoursVO" table="hours">
+
+		<id name="hrID" column="hrID">
+			<generator class="identity" />
+
+		</id>
+
+		<property name="sID" column="sID" />
+		<property name="sun" column="sun" />
+		<property name="mon" column="mon" />
+		<property name="tue" column="tue" />
+		<property name="wed" column="wed" />
+		<property name="thu" column="thu" />
+		<property name="fri" column="fri" />
+		<property name="sat" column="sat" />
+
+<!-- 		<set name="mapVO" table="maps" lazy="false" cascade="all" inverse="true"> -->
+<!-- 			<key column="sID"/> -->
+<!-- 			<one-to-many class="model.MapsVO" /> -->
+<!-- 		</set> -->
+
+
+	</class>
+</hibernate-mapping>

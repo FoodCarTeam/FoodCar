@@ -22,14 +22,16 @@ html, body {
 #right-panel i {
 	font-size: 12px;
 }
-#right-panel {    
-        height: 100%;    
-        float: right;    
-        width: 390px;    
-        overflow: auto;    
-      }   
+
 #right-panel {
-   height: 100%;  
+	height: 100%;
+	float: right;
+	width: 390px;
+	overflow: auto;
+}
+
+#right-panel {
+	height: 100%;
 	margin: 20px;
 	border-width: 2px;
 	width: 190px;
@@ -37,11 +39,13 @@ html, body {
 	text-align: left;
 	padding-top: 20px;
 }
- #GoogleMap { 
- 	height: 80%; 
- 	width: 90%; 
- 	margin: auto; 
- } 
+
+#GoogleMap {
+	height: 80%;
+	width: 90%;
+	margin: auto;
+}
+
 #map {
 	height: 100%;
 	float: left;
@@ -68,6 +72,27 @@ html, body {
 					lng : 121.564726
 				}
 			});
+			// 			設定地圖樣式
+			var MapTypeId = 'mapStyle';
+			var mapStyle = new google.maps.StyledMapType([ {
+				featureType : "poi.business",
+				elementType : 'labels',
+				stylers : [ {
+					visibility : 'off'
+				} ]
+			}, {
+				featureType : "road.local",
+				elementType : 'labels',
+				stylers : [ {
+					visibility : 'off'
+				} ]
+
+			}
+
+			]);
+
+			map.mapTypes.set(MapTypeId, mapStyle);
+			map.setMapTypeId(MapTypeId);
 
 			var center;
 			if (navigator.geolocation) {
@@ -80,7 +105,7 @@ html, body {
 					var marker = new google.maps.Marker({
 						map : map,
 						draggable : true,
-						
+
 						animation : google.maps.Animation.BOUNCE,
 						position : {
 							lat : position.coords.latitude,
@@ -109,7 +134,9 @@ html, body {
 						var location = value.location.split(",");
 						lat = parseFloat(location[0]);
 						lng = parseFloat(location[1]);
+
 						var marker = new google.maps.Marker({
+							icon : "image/MapIcon/FoodCarMap1.png",
 							map : map,
 							title : "321",
 							// Define the place with a location, and a query string.
@@ -141,28 +168,28 @@ html, body {
 			});
 
 			// 			導航
-// 			var directionsDisplay = new google.maps.DirectionsRenderer();
-// 			var directionsService = new google.maps.DirectionsService();
-// 			var request = {
-// 				origin : new google.maps.LatLng(25.047908, 121.517315),
-// 				destination : new google.maps.LatLng(25.033681, 121.564726),
-// 				travelMode : google.maps.TravelMode.WALKING
-// 			};
-// 			directionsService.route(request, function(response, status) {
-// 				console.debug(response);
-// 				if (status == google.maps.DirectionsStatus.OK) {
-// 					directionsDisplay.setDirections(response);
-// 				}
-// 			})
-// 			directionsDisplay.setMap(map);
-// 			directionsDisplay.setPanel(document.getElementById('right-panel'));
+			// 			var directionsDisplay = new google.maps.DirectionsRenderer();
+			// 			var directionsService = new google.maps.DirectionsService();
+			// 			var request = {
+			// 				origin : new google.maps.LatLng(25.047908, 121.517315),
+			// 				destination : new google.maps.LatLng(25.033681, 121.564726),
+			// 				travelMode : google.maps.TravelMode.WALKING
+			// 			};
+			// 			directionsService.route(request, function(response, status) {
+			// 				console.debug(response);
+			// 				if (status == google.maps.DirectionsStatus.OK) {
+			// 					directionsDisplay.setDirections(response);
+			// 				}
+			// 			})
+			// 			directionsDisplay.setMap(map);
+			// 			directionsDisplay.setPanel(document.getElementById('right-panel'));
 		}
 	</script>
 
 	<div id="GoogleMap">
 		<div id="map"></div>
-<!-- 		<div id="right-panel"> -->
-<!-- 		</div> -->
+		<!-- 		<div id="right-panel"> -->
+		<!-- 		</div> -->
 	</div>
 
 </body>

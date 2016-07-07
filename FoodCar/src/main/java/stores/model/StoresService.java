@@ -12,6 +12,7 @@ public class StoresService {
 	
 	public static void main(String[]args){
 //		測試showFoodCarsMap
+
 //		StoresService service=new StoresService();
 //		List<StoresVO> list=service.select();
 //		for(StoresVO a:list){
@@ -22,13 +23,20 @@ public class StoresService {
 //				System.out.println(b.getLocation());
 //			}
 //		}
+
+
 		StoresService service=new StoresService();
-		StoresVO vo = service.select(1);
-		Set<MapsVO> mapsVO = vo.getMapVO();
-		System.out.println(vo.getsName());
-		for(MapsVO a:mapsVO){
-			System.out.println(a.getLocation());
+		List<StoresVO> list=service.select();
+		for(StoresVO a:list){
+			System.out.println("sName:"+a.getsName());
+			Set<MapsVO> mapsVO=a.getMapVO();
+			for(MapsVO b:mapsVO){
+				System.out.println(b.getLocation());
+			}
 		}
+		
+		
+
 	}
 	public List<StoresVO> select() {
 		List<StoresVO> result = null;
