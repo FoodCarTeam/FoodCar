@@ -24,10 +24,15 @@ html, body {
 
 <script type="text/javascript">
 	function initMap() {
-		$.ajax(function(){
+// 		select.sID
+		$.ajax({
 			"type" : "post",
 			"url" : "showFoodCarsMap/controller/MapMaker",
 			"dataType" : "JSON",
+			"success":function(){
+				
+			},
+			
 			
 		});
 		

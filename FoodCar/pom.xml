@@ -16,6 +16,11 @@
 
 	<dependencies>
 	
+		<dependency>
+			<groupId>com.microsoft</groupId>
+			<artifactId>sqlserverjdbc</artifactId>
+			<version>4.0</version>
+		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/com.googlecode.json-simple/json-simple -->
 		<dependency>

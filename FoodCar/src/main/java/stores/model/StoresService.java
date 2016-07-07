@@ -12,15 +12,15 @@ public class StoresService {
 	
 	public static void main(String[]args){
 //		測試showFoodCarsMap
-//		StoresService service=new StoresService();
-//		List<StoresVO> list=service.select();
-//		for(StoresVO a:list){
-//			System.out.println("sName:"+a.getsName());
-//			Set<MapsVO> mapsVO=a.getMapVO();
-//			for(MapsVO b:mapsVO){
-//				System.out.println(b.getLocation());
-//			}
-//		}
+		StoresService service=new StoresService();
+		List<StoresVO> list=service.select();
+		for(StoresVO a:list){
+			System.out.println("sName:"+a.getsName());
+			Set<MapsVO> mapsVO=a.getMapVO();
+			for(MapsVO b:mapsVO){
+				System.out.println(b.getLocation());
+			}
+		}
 		
 		
 	}
