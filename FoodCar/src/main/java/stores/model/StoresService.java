@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
+import model.HoursVO;
 import model.MapsVO;
 import model.StoresVO;
 
@@ -11,16 +12,19 @@ public class StoresService {
 	private StoresDAO storesDao = new StoresDAOHibernate();
 	
 	public static void main(String[]args){
-//		測試showFoodCarsMap
-		StoresService service=new StoresService();
-		List<StoresVO> list=service.select();
-		for(StoresVO a:list){
-			System.out.println("sName:"+a.getsName());
-			Set<MapsVO> mapsVO=a.getMapVO();
-			for(MapsVO b:mapsVO){
-				System.out.println(b.getLocation());
-			}
-		}
+
+//		測試Hours
+//		StoresService service2=new StoresService();
+//		List<StoresVO> list2=service2.select();
+//		for(StoresVO b:list2){
+//			System.out.println("sName:"+b.getsName());
+//			Set<HoursVO> hoursVO=b.getHoursVO();
+//			for(HoursVO c:hoursVO){
+//				System.out.println(c.getMon());
+//			}
+//		}
+		
+		
 		
 		
 	}

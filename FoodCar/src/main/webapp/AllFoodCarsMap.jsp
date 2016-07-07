@@ -135,29 +135,58 @@ html, body {
 						lat = parseFloat(location[0]);
 						lng = parseFloat(location[1]);
 
-						var marker = new google.maps.Marker({
-							icon : "image/MapIcon/FoodCarMap1.png",
-							map : map,
-							title : "321",
-							// Define the place with a location, and a query string.
-							place : {
-								location : {
-									lat : lat,
-									lng : lng
+						var openTime;
+						if (typeof value.openTime == 'undefined') {
+							openTime = "今日休息";
+						} else {
+							openTime = value.openTime;
+						}
+						if (value.open) {
+
+							var marker = new google.maps.Marker({
+								icon : "image/MapIcon/open.png",
+								map : map,
+								title : "321",
+								// Define the place with a location, and a query string.
+								place : {
+									location : {
+										lat : lat,
+										lng : lng
+									},
+									query : "12312"
 								},
-								query : "12312"
-							},
-							//Attributions help users find your site again.
-							attribution : {
-								source : 'Google Maps JavaScript API231132',
-								webUrl : 'https://developers.google.com/maps/'
-							}
-						});
+								//Attributions help users find your site again.
+								attribution : {
+									source : 'Google Maps JavaScript API231132',
+									webUrl : 'https://developers.google.com/maps/'
+								}
+							});
+						} else {
+							var marker = new google.maps.Marker({
+								icon : "image/MapIcon/closed.png",
+								map : map,
+								title : "321",
+								// Define the place with a location, and a query string.
+								place : {
+									location : {
+										lat : lat,
+										lng : lng
+									},
+									query : "12312"
+								},
+								//Attributions help users find your site again.
+								attribution : {
+									source : 'Google Maps JavaScript API231132',
+									webUrl : 'https://developers.google.com/maps/'
+								}
+							});
+
+						}
 
 						marker.addListener('click', function() {
 							infoWindow.open(map, marker);
 						});
-						var content = "<h2>" + value.sName + "</h2>" + "<p>電話號碼：" + value.sUsername + "</p>" + "<p>營業時間：" + value.sHours + "</p>";
+						var content = "<h2>" + value.sName + "</h2>" + "<p>電話號碼：" + value.sUsername + "</p>" + "<p>今日營業時間：" + openTime + "</p>";
 
 						var infoWindow = new google.maps.InfoWindow({
 							content : content,
