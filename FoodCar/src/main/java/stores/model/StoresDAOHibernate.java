@@ -21,17 +21,20 @@ public class StoresDAOHibernate implements StoresDAO{
 	
 	@Override
 	public StoresVO select(Integer sID) {
-		StoresVO vo=null;
-		Session session=HibernateUtil.getSessionFactory().getCurrentSession();
+
+		StoresVO storesVO = null;
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
 			session.beginTransaction();
-			vo=(StoresVO)session.get(StoresVO.class, sID);
+			storesVO = (StoresVO) session.get(StoresVO.class, sID);
+			
 			session.getTransaction().commit();
-		} catch (Exception e) {
+		} catch (RuntimeException ex) {
 			session.getTransaction().rollback();
-			e.printStackTrace();
+			throw ex;
 		}
-		return vo;
+		return storesVO;
+
 	}
 
 	@Override

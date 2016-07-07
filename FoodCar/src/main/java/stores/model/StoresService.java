@@ -24,20 +24,15 @@ public class StoresService {
 		
 		
 	}
-	
-	
-	
 	public List<StoresVO> select() {
 		List<StoresVO> result = null;
-		
 			result = storesDao.select();
-		
 		return result;
 	}
-	public StoresVO select(Integer id){
+	public StoresVO select(Integer sID){
 		StoresVO result = null;
-		if(id!=null){
-			result = storesDao.select(id);
+		if(sID!=null){
+			result = storesDao.select(sID);
 		}
 		return result;
 	}

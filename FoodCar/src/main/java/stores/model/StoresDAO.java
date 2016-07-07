@@ -5,7 +5,7 @@ import java.util.List;
 import model.StoresVO;
 
 public interface StoresDAO {
-	StoresVO select(Integer id);
+	StoresVO select(Integer sID);
 
 	List<StoresVO> select();
 
