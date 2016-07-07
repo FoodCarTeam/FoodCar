@@ -12,7 +12,5 @@
 
 		<many-to-one name="stroeVO" class="model.StoresVO" lazy="false"
 			column="sID" insert="false" update="false" not-found="ignore" />
-
-
 	</class>
 </hibernate-mapping>

@@ -9,8 +9,15 @@ public class MenusVO implements java.io.Serializable {
 	private Integer kindID ;
 	private Integer statusID ;
 	private Double unitPrice ;
-	private Byte[] foodIMG ;
+	private String foodIMG ;
+	private StoresVO stroeVO;
 	
+	public StoresVO getStroeVO() {
+		return stroeVO;
+	}
+	public void setStroeVO(StoresVO stroeVO) {
+		this.stroeVO = stroeVO;
+	}
 	public Integer getFoodID() {
 		return foodID;
 	}
@@ -47,10 +54,10 @@ public class MenusVO implements java.io.Serializable {
 	public void setUnitPrice(Double unitPrice) {
 		this.unitPrice = unitPrice;
 	}
-	public Byte[] getFoodIMG() {
+	public String getFoodIMG() {
 		return foodIMG;
 	}
-	public void setFoodIMG(Byte[] foodIMG) {
+	public void setFoodIMG(String foodIMG) {
 		this.foodIMG = foodIMG;
 	}
 }

@@ -11,7 +11,7 @@ public interface StoresDAO {
 
 	StoresVO insert(StoresVO bean);
 
-	StoresVO update(String sUsername,String sPassword,String sName, String sBossName , String sHours,Byte[] sLogo,Integer sID);
+	StoresVO update(String sUsername,String sPassword,String sName, String sBossName ,String sLogo,Integer sID);
 
 	boolean delete(Integer id);
 

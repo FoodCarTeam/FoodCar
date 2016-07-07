@@ -24,9 +24,10 @@ public class StoresService {
 //			}
 //		}
 		
+	
 		
 		
-		
+
 	}
 	public List<StoresVO> select() {
 		List<StoresVO> result = null;
@@ -51,7 +52,7 @@ public class StoresService {
 		StoresVO result = null;
 		if(vo!=null) {
 			result = storesDao.update(vo.getsUsername(), vo.getsPassword(), 
-					vo.getsName(), vo.getsBossName(), vo.getsHours(), 
+					vo.getsName(), vo.getsBossName(), 
 					vo.getsLogo(), vo.getsID());	
 		}
 		return result;
