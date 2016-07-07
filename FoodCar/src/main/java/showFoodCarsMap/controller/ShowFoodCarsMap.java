@@ -98,7 +98,7 @@ public class ShowFoodCarsMap extends HttpServlet {
 			object.put("sName", list.get(i).getsName());
 			object.put("sID", list.get(i).getsID());
 			object.put("sUsername", list.get(i).getsUsername());
-			object.put("sHours", list.get(i).getsHours());
+			object.put("sHours", list.get(i).getHoursVO());
 			object.put("open", false);
 
 			Set<MapsVO> map = list.get(i).getMapVO();
