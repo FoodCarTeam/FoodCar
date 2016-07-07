@@ -10,6 +10,7 @@ public class HoursVO {
 	private String thu;
 	private String fri;
 	private String sat;
+
 	public Integer getHrID() {
 		return hrID;
 	}

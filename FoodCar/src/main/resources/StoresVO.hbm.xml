@@ -21,9 +21,15 @@
 			<key column="sID"/>
 			<one-to-many class="model.MapsVO" />
 		</set>
+		<set name="HoursVO" table="hours" lazy="false" cascade="all" inverse="true">
+			<key column="sID"/>
+			<one-to-many class="model.HoursVO" />
+		</set>
+
         <set name="MenusVO" table="menus" lazy="false" cascade="all" inverse="true">
             <key column="sID"/>
             <one-to-many class="model.MenusVO"/>
         </set>
+
 	</class>
 </hibernate-mapping>
