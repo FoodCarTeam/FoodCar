@@ -1,0 +1,409 @@
+﻿<!doctype html>
+<html lang="en-US" prefix="og: http://ogp.me/ns#" class="no-js">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="apple-itunes-app" content="app-id=634884546"/>
+    <meta name="google-play-app" content="app-id=com.blogto.foodtrucks.toronto">    
+    <title>餐餔餔</title>   
+   
+      <!--CSS-->
+<link rel='stylesheet' id='main-stylesheet-css'  href='bootstrap/css/style.css' type='text/css' media='all' />
+<link rel='stylesheet' id='slicknav-css'  href="bootstrap/css/mobile%20menu%20style.css" type='text/css' media='all' /><!--mobile menu style.css-->
+<link rel='stylesheet' id='foundation-datepicker-css' href="bootstrap/css/datepicker.css" type='text/css' media='all' />
+
+      <!--JS-->
+ <script type='text/javascript' src="bootstrap/js/modernizr.js" ></script>
+<script type='text/javascript' src="bootstrap/js/modernizr.custom.js"></script>
+<script type='text/javascript' src="bootstrap/js/jquerymin2.1.1.js"></script>
+  <!--list浮動-->
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+      <link href="bootstrap/css/scrolling-nav.css" rel="stylesheet" />
+      <script src="bootstrap/js/jquery.js"></script>
+      <script src="bootstrap/js/scrolling-nav.js"></script>
+  <!--login-->
+
+   <link rel="stylesheet" href="bootstrap/css/login.css">
+  <script src="bootstrap/js/jqlogin.js"></script>
+  <script src="bootstrap/js/login.js"></script>
+  
+
+  </head>
+  <body class="page page-id-8736 page-template page-template-template-truck-page page-template-template-truck-page-php born2eat-food-truck-toronto">  
+  
+<!--Header-->
+      <div id="Header" style="background-color:white;" >
+      <div class="row">
+        <div class="small-18 large-12 columns"><p></p><p></p>
+        </div>
+      </div>
+    </div>
+<!--/Header-->
+<!--列表bootstrap-->
+   <div id="MenuBarPhone" class="menu-phone">
+        <div class="row">
+          <div class="small-3 columns">
+            <div class="top-logo">
+              <a class="logo" href="index.html"></a>
+            </div>
+          </div>
+          <div class="small-7 columns">
+              <div class="top-search">
+                <div class="search-bar">
+                  <div id="sb-search-phone" class="sb-search">
+                    <form action="/">
+                        <img src="images/hand/hand5.jpg" />                   
+                    </form>
+                  </div>
+                </div>
+              </div>
+          </div>
+          <div class="small-2 columns">
+          </div>
+        </div>
+    </div>
+    <div id="MenuPhone">
+      <ul id="menu-mobile">
+         <li><a href="stores.html">餐車專區</a></li>
+         <li><a href="map.html">地圖</a></li>
+         <li><a href="about.html">關於我們</a></li>
+         <li><a href="login.html">登入</a></li>
+      </ul>
+    </div>
+<!--/列表bootstrap-->
+        <nav class="navbar navbar-fixed-top" >
+   <!--列表-->
+    <div class="contain-to-grid">
+      <nav class="top-bar" id="TopMenu" data-topbar data-options="is_hover: false">
+        <section class="top-bar-section">
+          <div class="menu-bar">
+<!--列表左邊-->
+            <ul class="left">
+              <li>
+                <div class="top-logo">
+                  <a class="logo" href="index.html"></a>
+                  <a class="logo-text" href="index.html"></a>
+                </div>
+              </li>
+            </ul>
+<!--/列表左邊-->
+<!--列表右邊頭像-->
+            <ul class="right">
+              <li class="top-search">
+                <div class="search-bar">
+                  <div id="sb-search" class="sb-search">                
+                      <img src="images/hand/hand5.jpg" />
+                  </div>
+                </div>
+              </li>
+<!--/列表右邊頭像-->          
+<!--列表右邊list工具列--> 
+              <li class="side-menu has-dropdown">
+                <a href="#" class="menu"></a>
+                <ul class="dropdown">
+                  <li><a href="stores.html">餐車專區</a></li>
+                  <li><a href="map.html">地圖</a></li>
+                  <li><a href="about.html">關於我們</a></li>
+                  <li><a href="login.html">登入</a></li>
+                </ul>
+              </li>
+<!--/列表右邊list工具列-->
+            </ul>
+          </div>
+        </section>
+      </nav>
+    </div>
+<!--/列表-->
+            </nav>
+	<script type="text/javascript">
+		$(function() {
+			var pixelsBeforeDisplayMaps = 100; // Unveil images this amount of pixels before they appear on screen
+			var pixelsBeforeDisplayImages = 200; // Unveil images this amount of pixels before they appear on screen
+
+			$("#MainContent .article.text").find("img").each(function() {
+				var $img = $(this);
+				var src = $img.attr("src");
+
+				$img.attr("src", "").attr("data-src", src); // Prepare images within the article's content for lazy-loading
+			});
+
+			$("#MainContent").find(".schedule").find("img").unveil(
+					pixelsBeforeDisplayMaps, function() {
+						var $img = $(this);
+
+						if ($img.hasClass("map-unveil")) {
+							$img.hide();
+
+							var $map = $(this).parents(".map");
+
+							if ($map.length != 0) {
+								var $iframe = $map.find("iframe");
+								var src = $iframe.data("src");
+
+								$iframe.show().attr("src", src);
+							}
+						}
+					});
+
+			$("#MainContent").find(".article.text, .menu, .photos").find("img")
+					.unveil(pixelsBeforeDisplayImages);
+		});
+	</script>
+	<script type="text/javascript" src="bootstrap/js/jquery.unveil.js"></script>
+	<script type="text/javascript" src="bootstrap/js/page.js"></script>
+
+    
+<div id="MainContent" style="width:800px;margin:auto">
+  <div class="row">
+    <div class="small-12 large-50 columns">
+      <div class="truck-details">
+        <div class="content">
+        
+          <h1>
+            註冊
+          </h1>
+            
+<div class="container">
+  <form  style="width:800px">
+  <ul class="nav nav-pills" >
+    <li class="active"><a data-toggle="pill" href="#users"><h4>會員註冊</h4></a></li>
+    <li><a data-toggle="pill" href="#stores"><h4>店家註冊</h4></a></li>
+
+   
+  </ul>
+  </form>
+  <div class="tab-content">
+   
+      <!--會員註冊-->
+       <div id="users" class="tab-pane fade in active"> 
+  <form class="form-inline" role="form">
+    <div class="form-group">
+        <p></p>
+      <label for="focusedInput">帳號:</label>
+      <input class="form-control" id="Text2" type="text"  placeholder="請輸入E-mail" required style="font-size:15px">
+    </div>
+  
+<div class="form-group">
+      <label for="focusedInput">密碼:</label>
+      <input class="form-control" id="Text3" type="text"  placeholder="請輸入密碼" required style="font-size:15px">
+    </div>
+      <p></p>
+ <div class="form-group">
+      <label for="focusedInput">姓氏:</label>
+      <input class="form-control" id="Text4" type="text" placeholder="請輸入姓氏" required style="font-size:15px">
+    </div>
+  
+       <div class="form-group">
+      <label for="focusedInput">名字:</label>
+      <input class="form-control" id="Text5" type="text" placeholder="請輸入名字" required style="font-size:15px">
+    </div>
+   <p></p>
+      
+       <div class="form-group">
+      <label for="focusedInput">電話:</label>
+      <input class="form-control" id="Text7" type="text"  placeholder="09xx-xxx-xxx" required style="font-size:15px">
+    </div>
+ 
+       <div class="form-group">
+      <label for="focusedInput">生日:</label>
+      <input class="form-control" id="Text8" type="text"  placeholder="1987/01/23" required style="font-size:15px">
+    </div>
+   <p></p>
+       <div class="form-group">
+      <label for="focusedInput">地址:</label>
+             
+      <input class="form-control" id="Text6" type="text"  placeholder="請輸入地址" style="width:450px">
+                
+    </div>
+   <p></p>
+ 
+       <div class="form-group">
+    <label for="exampleInputFile">大頭貼檔案上傳</label>
+    <input type="file" id="exampleInputFile">
+           </div>
+      <p></p>
+       <button type="button" class="btn btn-success">申請</button>
+
+
+      </form>
+</div>
+ <!--/會員註冊-->
+
+ <!--/店家註冊-->
+    <div id="stores" class="tab-pane fade">
+  <form class="form-inline" role="form">
+    <div class="form-group">
+        <p></p>
+      <label for="focusedInput">帳號:</label>
+      <input class="form-control" id="Text1" type="text"  placeholder="請輸入手機為帳號" required style="font-size:15px">
+    </div>
+  
+<div class="form-group">
+      <label for="focusedInput">密碼:</label>
+      <input class="form-control" id="Text9" type="text"  placeholder="請輸入密碼" required style="font-size:15px">
+    </div>
+      <p></p>
+ <div class="form-group">
+      <label for="focusedInput">姓氏:</label>
+      <input class="form-control" id="Text10" type="text" placeholder="請輸入姓氏" required style="font-size:15px">
+    </div>
+  
+       <div class="form-group">
+      <label for="focusedInput">名字:</label>
+      <input class="form-control" id="Text11" type="text" placeholder="請輸入名字" required style="font-size:15px">
+    </div>
+   <p></p>
+      
+       <div class="form-group">
+      <label for="focusedInput">店名:</label>
+      <input class="form-control" id="Text12" type="text"  placeholder="麥X勞" required style="font-size:15px">
+    </div>
+ <p></p>
+       <div class="form-group">
+      <label for="focusedInput">營業時間:</label>
+      <input class="form-control" id="Text13" type="text"  placeholder="00:00~24:00" style="font-size:15px;width:120px">
+    </div>
+   <p></p>
+       <div class="form-group">
+    <label for="exampleInputFile">Logo檔案上傳</label>
+    <input type="file" id="File1">
+           </div>
+      <p></p>
+       <button type="button" class="btn btn-success">申請</button>
+
+
+      </form>
+
+    </div>
+
+
+  </div>
+</div>
+<!--..............................................-->
+
+</div>
+    </div>
+      </div>
+      <!--/truck-details-->
+    </div>
+    <!--/small-12 large-8 columns-->
+
+    <!--/sidebar-->
+  </div>
+  <!--/row-->
+</div>
+</div>
+  
+<!--/MainContent-->
+
+			<script src="js/jquery-1.9.1.js"></script>
+			<script src="js/bootstrap.min.js"></script>
+		
+		
+
+		
+	<!-- Footer -->
+	<div id="SecondFooter">
+		<div class="row">
+			<div class="small-12 medium-6 large-8 columns">
+				<div class="footer-links">
+					<p>© 2016 Freshdaily Inc. All rights reserved.</p>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<!-- /Footer -->
+
+	<script type="text/javascript">
+		var _sf_async_config = {};
+		_sf_async_config.uid = 44252;
+		_sf_async_config.useCanonical = true;
+
+		(function() {
+			function loadChartbeat() {
+				window._sf_endpt = (new Date()).getTime();
+				var e = document.createElement('script');
+				e.setAttribute('language', 'javascript');
+				e.setAttribute('type', 'text/javascript');
+				e.setAttribute('src',
+						(("https:" == document.location.protocol) ? "https://"
+								: "http://")
+								+ "static.chartbeat.com/js/chartbeat.js");
+				document.body.appendChild(e);
+			}
+			var oldonload = window.onload;
+			window.onload = (typeof window.onload != 'function') ? loadChartbeat
+					: function() {
+						try {
+							oldonload();
+						} catch (e) {
+							loadChartbeat();
+							throw e
+						}
+						loadChartbeat();
+					};
+		})();
+	</script>
+
+	<script type='text/javascript' src="bootstrap/js/foundation.min.js"></script>
+	<script type='text/javascript' src="bootstrap/js/app.js"></script>
+	<script type='text/javascript' src="bootstrap/js/classie.js"></script>
+	<script type='text/javascript' src="bootstrap/js/uisearch.js"></script>
+	<script type='text/javascript' src="bootstrap/js/jquery.flexisel.js"></script>
+	<script type='text/javascript' src="bootstrap/js/jquery.slicknav.js"></script>
+	<script type='text/javascript' src="bootstrap/js/slicknav.js"></script>
+	<script type='text/javascript'
+		src="bootstrap/js/foundation-datepicker.js"></script>
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#menu-mobile').slicknav({
+				label : '',
+				prependTo : '#MenuPhone'
+			});
+		});
+	</script>
+
+	<script>
+		$(function() {
+			if (window.prettyPrint)
+				prettyPrint();
+
+			$('#DatePicker').fdatepicker({
+				format : 'mm-dd-yyyy'
+			});
+
+			$("#SignUpButton").click(function() {
+				$("#frmFooterEmailSignup").submit();
+			});
+
+			new UISearch(document.getElementById('sb-search'));
+			new UISearch(document.getElementById('sb-search-phone'));
+		});
+	</script>
+
+
+
+	<!-- Google Analytics -->
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push([ '_setAccount', 'UA-26303156-1' ]);
+		_gaq.push([ '_trackPageview' ]);
+
+		(function() {
+			var ga = document.createElement('script');
+			ga.type = 'text/javascript';
+			ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl'
+					: 'http://www')
+					+ '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0];
+			s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+	<div id="mobile-floating-ad"></div>
+</body>
+</html>

@@ -36,10 +36,10 @@ public class StoreServlet extends HttpServlet {
 		 Set<MapsVO> map = result.getMapVO();
          
 //		 Map m1 = new HashMap();
-		 String loc="";
+		 String[] loc=null;
 		 for(MapsVO a:map){
 //			m1.put("location", a.getLocation());
-			loc=a.getLocation();
+			loc=a.getLocation().split(",");
 			 System.out.println(a.getLocation());
 		 }
 		 
