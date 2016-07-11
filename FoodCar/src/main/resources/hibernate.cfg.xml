@@ -35,7 +35,7 @@
 		<!--Java物件與資料庫表格的映射檔 -->
 		<mapping resource="StoresVO.hbm.xml" />
         <mapping resource="MapsVO.hbm.xml" />
-<!--         <mapping resource="MenusVO.hbm.xml" /> -->
+        <mapping resource="MenusVO.hbm.xml" />
         <mapping resource="HoursVO.hbm.xml" />
 
     </session-factory>

@@ -29,11 +29,12 @@ public class ShowFoodCarsMap extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+
+		
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
 		response.setHeader("content-type", "text/html;charset=UTF-8");
 		response.setCharacterEncoding("UTF-8");
 
@@ -59,6 +60,9 @@ public class ShowFoodCarsMap extends HttpServlet {
 				object.put("sName", list.get(i).getsName());
 				object.put("sID", list.get(i).getsID());
 				object.put("sUsername", list.get(i).getsUsername());	
+				object.put("sIntro", list.get(i).getsIntro());
+				
+				
 				Set<HoursVO> hours=list.get(i).getHoursVO();
 				for(HoursVO a:hours){
 					switch (week) {
@@ -98,7 +102,7 @@ public class ShowFoodCarsMap extends HttpServlet {
 			object.put("sName", list.get(i).getsName());
 			object.put("sID", list.get(i).getsID());
 			object.put("sUsername", list.get(i).getsUsername());
-			object.put("sHours", list.get(i).getHoursVO());
+			object.put("sIntro", list.get(i).getsIntro());
 			object.put("open", false);
 
 			Set<MapsVO> map = list.get(i).getMapVO();
@@ -112,6 +116,7 @@ public class ShowFoodCarsMap extends HttpServlet {
 		}
 
 		pw.println(array);
+		
 
 	}
 
