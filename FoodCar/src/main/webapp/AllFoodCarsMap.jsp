@@ -5,113 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<style type="text/css">
-#map img {
-	max-width: none !important;
-}
-
-.gm-style-iw {
-	width: 350px !important;
-	top: 15px !important;
-	left: 0px !important;
-	background-color: #fff;
-	box-shadow: 0 1px 6px rgba(178, 178, 178, 0.6);
-	border: 1px solid rgba(72, 181, 233, 0.6);
-	border-radius: 2px 2px 10px 10px;
-}
-#iw-container {
-	margin-bottom: 10px;
-}
-#iw-container .iw-title {
-	font-family: 'Open Sans Condensed', sans-serif;
-	font-size: 22px;
-	font-weight: 400;
-	padding: 10px;
-	background-color: #48b5e9;
-	color: white;
-	margin: 0;
-	border-radius: 2px 2px 0 0;
-}
-#iw-container .iw-content {
-	font-size: 13px;
-	line-height: 18px;
-	font-weight: 400;
-	margin-right: 1px;
-	padding: 15px 5px 20px 15px;
-	max-height: 140px;
-	overflow-y: auto;
-	overflow-x: hidden;
-}
-.iw-content img {
-	float: right;
-	margin: 0 5px 5px 10px;	
-}
-.iw-subTitle {
-	font-size: 16px;
-	font-weight: 700;
-	padding: 5px 0;
-}
-.iw-bottom-gradient {
-	position: absolute;
-	width: 326px;
-	height: 25px;
-	bottom: 10px;
-	right: 18px;
-	background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
-	background: -webkit-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
-	background: -moz-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
-	background: -ms-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
-}
-
-
-
-html, body {
-	height: 100%;
-	margin: 0;
-	padding: 0;
-}
-
-/* #right-panel { */
-/* 	font-family: 'Roboto', 'sans-serif'; */
-/* 	line-height: 30px; */
-/* 	padding-left: 10px; */
-/* 	font-size: 12px; */
-/* } */
-
-/* #right-panel i { */
-/* 	font-size: 12px; */
-/* } */
-
-/* #right-panel { */
-/* 	height: 100%; */
-/* 	float: right; */
-/* 	width: 390px; */
-/* 	overflow: auto; */
-/* } */
-
-/* #right-panel { */
-/* 	height: 100%; */
-/* 	margin: 20px; */
-/* 	border-width: 2px; */
-/* 	width: 190px; */
-/* 	float: left; */
-/* 	text-align: left; */
-/* 	padding-top: 20px; */
-/* } */
-
-#GoogleMap {
-	height: 80%;
-	width: 90%;
-	margin: auto;
-}
-
-#map {
-	height: 100%;
-	float: left;
-	width: 70%;
-	height: 100%;
-}
-</style>
+<link rel='stylesheet' href='bootstrap/css/showFoodCarsMap.css' type='text/css' media='all' />
 </head>
 <script type="text/javascript" src="jquery/jquery-3.0.0.min.js"></script>
 <script async defer
@@ -208,7 +102,7 @@ html, body {
 							var marker = new google.maps.Marker({
 								icon : "images/MapIcon/open.png",
 								map : map,
-								title : "",
+								
 								place : {
 									location : {
 										lat : lat,
@@ -225,7 +119,7 @@ html, body {
 							var marker = new google.maps.Marker({
 								icon : "images/MapIcon/closed.png",
 								map : map,
-								title : "321",
+								
 								place : {
 									location : {
 										lat : lat,
@@ -292,9 +186,9 @@ html, body {
 								opacity : '1',
 								right : '38px',
 								top : '3px',
-								border : '7px solid #48b5e9',
+								border : '7px solid #ec6b4c',
 								'border-radius' : '13px',
-								'box-shadow' : '0 0 5px #3990B9'
+								'box-shadow' : '0 0 5px #ec6b4c'
 							});
 							if ($('.iw-content').height() < 140) {
 								$('.iw-bottom-gradient').css({
@@ -338,7 +232,8 @@ html, body {
 	</script>
 
 	<div id="GoogleMap">
-		<div id="map"></div>
+		<div id="map">
+		</div>
 		<!-- 		<div id="right-panel"> -->
 		<!-- 		</div> -->
 	</div>
