@@ -35,6 +35,7 @@ public class ShowFoodCarsMap extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 		response.setHeader("content-type", "text/html;charset=UTF-8");
 		response.setCharacterEncoding("UTF-8");
 
@@ -116,6 +117,7 @@ public class ShowFoodCarsMap extends HttpServlet {
 		}
 
 		pw.println(array);
+
 		
 
 	}
