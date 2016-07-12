@@ -15,7 +15,7 @@ import model.MenusVO;
 import model.StoresVO;
 import stores.model.StoresService;
 
-@WebServlet("/MenusServlet")
+@WebServlet("/Menu")
 public class MenusServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
  

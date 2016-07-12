@@ -12,6 +12,8 @@
 <link
 	href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700"
 	rel="stylesheet">
+	<!-- 最新編譯和最佳化的 CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="add-to-cart/css/reset.css">
 <!-- CSS reset -->
 
@@ -21,12 +23,10 @@
 
 
 <!-- 選擇性佈景主題 -->
-<link rel="stylesheet"
-	href="bootstrap/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
 
 <!-- 最新編譯和最佳化的 JavaScript -->
-<script
-	src="bootstrap/js/bootstrap.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 <title>${select.sName}</title>
 </head>
 <body>

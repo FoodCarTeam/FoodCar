@@ -37,6 +37,7 @@ public class StoresServlet extends HttpServlet {
 			 m1.put("sName", result.get(i).getsName());
 			 m1.put("sUsername", result.get(i).getsUsername());
 			 m1.put("sID", result.get(i).getsID());
+			 m1.put("sLogo", result.get(i).getsLogo());
 		
 			 l1.add(m1);
 		}

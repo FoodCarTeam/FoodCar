@@ -1,4 +1,7 @@
-﻿<!doctype html>
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en-US" prefix="og: http://ogp.me/ns#" class="no-js">
   <head>
     <meta charset="UTF-8">
@@ -22,7 +25,29 @@
       <link href="bootstrap/css/scrolling-nav.css" rel="stylesheet" />
       <script src="bootstrap/js/jquery.js"></script>
       <script src="bootstrap/js/scrolling-nav.js"></script>
-  
+  <script type="text/javascript">
+	function initMap() {
+		var lat=${map[0]};
+		var lng=${map[1]};
+		var myLatLng = {
+			lat : lat,
+			lng :lng
+		};
+
+		var map = new google.maps.Map(document.getElementById('GoogleMap'), {
+			zoom : 15,
+			center : myLatLng
+		});
+		
+
+		var marker = new google.maps.Marker({
+			position : myLatLng,
+			map : map,
+			title : 'Hello World!'
+		});
+	}
+	
+</script>
   </head>
   <body class="page page-id-8736 page-template page-template-template-truck-page page-template-template-truck-page-php born2eat-food-truck-toronto">  
   
@@ -110,39 +135,7 @@
     </div>
 <!--/列表-->
             </nav>
-<script type="text/javascript">
-    $(function () {
-        var pixelsBeforeDisplayMaps = 100; // Unveil images this amount of pixels before they appear on screen
-        var pixelsBeforeDisplayImages = 200; // Unveil images this amount of pixels before they appear on screen
 
-        $("#MainContent .article.text").find("img").each(function () {
-            var $img = $(this);
-            var src = $img.attr("src");
-
-            $img.attr("src", "").attr("data-src", src); // Prepare images within the article's content for lazy-loading
-        });
-
-        $("#MainContent").find(".schedule").find("img").unveil(pixelsBeforeDisplayMaps, function () {
-            var $img = $(this);
-
-            if ($img.hasClass("map-unveil")) {
-                $img.hide();
-
-                var $map = $(this).parents(".map");
-
-                if ($map.length != 0) {
-                    var $iframe = $map.find("iframe");
-                    var src = $iframe.data("src");
-
-                    $iframe.show().attr("src", src);
-                }
-            }
-        });
-
-        $("#MainContent").find(".article.text, .menu, .photos").find("img").unveil(pixelsBeforeDisplayImages);
-    });
-
-</script>
 <script type="text/javascript" src="bootstrap/js/jquery.unveil.js"></script>
 <script type="text/javascript" src="bootstrap/js/page.js"></script>
 <div id="MainContent">
@@ -151,7 +144,7 @@
       <div class="truck-details">
         <div class="content">
           <h1>
-            餐餔餔店名    <a href="/book-a-truck/200" class="book-button">不知道幹嘛的按鈕</a>
+            ${select.sName}   <a href="/book-a-truck/200" class="book-button">不知道幹嘛的按鈕</a>
           </h1>
           
           <div class="article text">
@@ -182,6 +175,7 @@
               <div class="small-12 medium-5 large-5 columns">
                 <h3>Today, July 4th</h3>
               </div>
+              <div id="GoogleMap"></div>
               <div class="small-12 medium-7 large-7 columns">
                 <div class="right">
                   <div class="clock"></div><span>11:00 AM to 3:00 PM</span>
