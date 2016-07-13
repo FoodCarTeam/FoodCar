@@ -115,23 +115,23 @@
       <div class="truck-details">
         <div class="content">
           <h1>
-           ${select.sName }      <a class="book-button">不知道幹嘛的按鈕</a>
+           ${select.sName }      
           </h1>
             <!--內容以下開始-->
             
-         <main class="row"> 
+    <main class="row"> 
 	<c:forEach var="bean" items="${Menus}">
 		<div class="  large-3 columns end">
 			<img src="${bean.foodIMG }" class="img-rounded"/>
 			<span style="font-size:18px">${bean.foodName}</span>
 			<span style="font-size:18px">$${bean.unitPrice }</span>
 			<p>
-			<a href="#0" class="cd-add-to-cart" data-price="${bean.unitPrice }"
-			data-name="${bean.foodName}" data-image="${bean.foodIMG}">加入購物車</a>
+			<a href="#0" id ="${bean.statusID}" class="cd-add-to-cart" data-price="${bean.unitPrice }"
+			data-name="${bean.foodName}" data-image="${bean.foodIMG}" >加入購物車</a>    
 		</div>
 	</c:forEach> 
 	</main>
-
+ 
 	<div class="cd-cart-container empty">
 		<a href="#0" class="cd-cart-trigger"> Cart
 			<ul class="count">
@@ -153,8 +153,8 @@
 					</ul>
 				</div>
 
-				<footer> <a href="#0" class="checkout btn" style="font-size:22px"><em>結帳
-						- $<span>0</span>
+				<footer> <a href="#0" class="checkout btn" style="font-size:22px"><em >結帳金額：
+						  $<span>0</span>
 				</em></a> </footer>
 			</div>
 		</div>
@@ -204,5 +204,6 @@
             }); 
         });
     </script>
+   
   </body>
 </html>

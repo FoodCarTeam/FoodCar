@@ -7964,11 +7964,7 @@ hr {
 
 /* Helpful Typography Defaults */
 /* line 287, ../bower_components/foundation/scss/foundation/components/_type.scss */
-em,
-i {
-  font-style: italic;
-  line-height: inherit;
-}
+
 
 /* line 293, ../bower_components/foundation/scss/foundation/components/_type.scss */
 strong,
