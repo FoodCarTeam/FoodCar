@@ -8,10 +8,14 @@ import model.MenusVO;
 public interface MenusDAO {
 	MenusVO select(Integer sID);
 
-	MenusVO insert(MenusVO bean);
+	MenusVO insert(MenusVO mnvo);
 
-	MenusVO update();
+	MenusVO update(MenusVO mnvo);
 
-	boolean delete(Integer id);
+	boolean delete(Integer foodID);
 
+	public List<MenusVO> findByKey(Integer sID);
+	
+	public List<MenusVO> getAll();
+	
 }
