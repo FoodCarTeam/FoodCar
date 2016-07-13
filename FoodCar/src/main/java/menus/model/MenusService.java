@@ -30,6 +30,7 @@ public class MenusService {
 		MenusVO result = null;
 		if(sID!=null){
 			result = menusDao.select(sID);
+//			int statusID=result.getStatusID();
 		}
 		return result;
 	}

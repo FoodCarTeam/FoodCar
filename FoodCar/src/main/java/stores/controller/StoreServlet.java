@@ -18,10 +18,11 @@ import javax.servlet.http.HttpServletResponse;
 import org.json.simple.JSONValue;
 
 import model.MapsVO;
+import model.MenusVO;
 import model.StoresVO;
 import stores.model.StoresService;
 
-@WebServlet("/StoreServlet")
+@WebServlet("/Store")
 public class StoreServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		StoresService storesService = new StoresService();
@@ -29,20 +30,21 @@ public class StoreServlet extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		
 		String id = request.getParameter("sID");
+		System.out.println(id);
 		int sID = 0;
 		 if(id!=null&&id.length()!=0){
 	      sID = Integer.parseInt(id);
 		 StoresVO result = storesService.select(sID);
 		 Set<MapsVO> map = result.getMapVO();
-         
-//		 Map m1 = new HashMap();
+		 Set<MenusVO> menus = result.getMenusVO();
+
 		 String[] loc=null;
 		 for(MapsVO a:map){
-//			m1.put("location", a.getLocation());
+
 			loc=a.getLocation().split(",");
 			 System.out.println(a.getLocation());
 		 }
-		 
+		 request.setAttribute("menus", menus);
 		 request.setAttribute("select", result);
 		 request.setAttribute("map", loc);
 		 request.getRequestDispatcher(
@@ -50,7 +52,7 @@ public class StoreServlet extends HttpServlet {
 		 }
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
+		this.doGet(request, response);
 	}
 
 }

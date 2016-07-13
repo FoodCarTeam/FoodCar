@@ -18,6 +18,7 @@
 <script type='text/javascript' src="bootstrap/js/modernizr.custom.js"></script>
 <script type='text/javascript' src="bootstrap/js/jquerymin2.1.1.js"></script>
 
+
   <!--list浮動-->
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
       <link href="bootstrap/css/scrolling-nav.css" rel="stylesheet" />
@@ -60,7 +61,7 @@
     </div>
     <div id="MenuPhone">
       <ul id="menu-mobile">
-         <li><a href="stores.html">餐車專區</a></li>
+         <li><a href="Stores.html">餐車專區</a></li>
          <li><a href="map.html">地圖</a></li>
          <li><a href="about.html">關於我們</a></li>
          <li><a href="login.html">登入</a></li>
@@ -97,7 +98,7 @@
               <li class="side-menu has-dropdown">
                 <a href="#" class="menu"></a>
                 <ul class="dropdown">
-                  <li><a href="stores.html">餐車專區</a></li>
+                  <li><a href="Stores.html">餐車專區</a></li>
                   <li><a href="map.html">地圖</a></li>
                   <li><a href="about.html">關於我們</a></li>
                   <li><a href="login.html">登入</a></li>
@@ -116,39 +117,7 @@
               
    
 
-<script type="text/javascript">
-    $(function () {
-        var pixelsBeforeDisplayMaps = 100; // Unveil images this amount of pixels before they appear on screen
-        var pixelsBeforeDisplayImages = 200; // Unveil images this amount of pixels before they appear on screen
 
-        $("#MainContent .article.text").find("img").each(function () {
-            var $img = $(this);
-            var src = $img.attr("src");
-
-            $img.attr("src", "").attr("data-src", src); // Prepare images within the article's content for lazy-loading
-        });
-
-        $("#MainContent").find(".schedule").find("img").unveil(pixelsBeforeDisplayMaps, function () {
-            var $img = $(this);
-
-            if ($img.hasClass("map-unveil")) {
-                $img.hide();
-
-                var $map = $(this).parents(".map");
-
-                if ($map.length != 0) {
-                    var $iframe = $map.find("iframe");
-                    var src = $iframe.data("src");
-
-                    $iframe.show().attr("src", src);
-                }
-            }
-        });
-
-        $("#MainContent").find(".article.text, .menu, .photos").find("img").unveil(pixelsBeforeDisplayImages);
-    });
-
-</script>
           <!--JS-->
 <script type="text/javascript" src="bootstrap/js/jquery.unveil.js"></script>
 <script type="text/javascript" src="bootstrap/js/page.js"></script>
@@ -158,148 +127,16 @@
     <div class="small-12 large-50 columns">
       <div class="truck-details">
         <div class="content">
-          <h1>
-            餐車專區    <a class="book-button">不知道幹嘛的按鈕</a>
+          <h1>餐車專區
+<!--                 <a class="book-button">不知道幹嘛的按鈕</a> -->
           </h1>
          
         
 
-<div class="row">
+      <div id="all" class="row">   <!-- 餐車列表 -->
  
-
-        <div id="Div1" class="post-container small-6 medium-6 large-4 columns end">
-  <div class="post">
-	<div class="image">       
-	  <a href="store.html"><img  src="images/stores/car1.jpg" /></a>
-	</div>
-    <div class="title">
-      <a href="store.html"><h3>阿囉哈</h3></a>
-        <p>OPEN:00:00~24:00</p>
-        <p>地區:桃園縣</p>
-  	</div>
-  </div>
-</div>
-
-        <div id="Div2" class="post-container small-6 medium-6 large-4 columns end">
-  <div class="post">
-	<div class="image">       
-	  <a href="store.html"><img  src="images/stores/car2.jpg" /></a>
-	</div>
-    <div class="title">
-      <a href="store.html"><h3>吃餔餔</h3></a>
-        <p>OPEN:10:00~16:00</p>
-        <p>地區:台南市</p>
-  	</div>
-  </div>
-</div>
-
-        <div id="Div3" class="post-container small-6 medium-6 large-4 columns end">
-  <div class="post">
-	<div class="image">       
-	  <a href="store.html"><img  src="images/stores/car3.jpg" /></a>
-	</div>
-    <div class="title">
-      <a href="store.html"><h3>餐餔餔</h3></a>
-        <p>OPEN:11:00~21:00</p>
-        <p>地區:高雄市</p>
-  	</div>
-  </div>
-</div>
-
-        <div id="Div4" class="post-container small-6 medium-6 large-4 columns end">
-  <div class="post">
-	<div class="image">       
-	  <a href="store.html"><img  src="images/stores/car4.jpg" /></a>
-	</div>
-    <div class="title">
-      <a href="store.html"><h3>好輕盈</h3></a>
-        <p>OPEN:08:00~12:00</p>
-        <p>地區:屏東縣</p>
-  	</div>
-  </div>
-</div>
-
-        <div id="Div5" class="post-container small-6 medium-6 large-4 columns end">
-  <div class="post">
-	<div class="image">       
-	  <a href="store.html"><img  src="images/stores/car5.jpg" /></a>
-	</div>
-    <div class="title">
-      <a href="store.html"><h3>日式燒烤</h3></a>
-        <p>OPEN:15:00~24:00</p>
-        <p>地區:基隆市</p>
-  	</div>
-  </div>
-</div>
-
-        <div id="Div6" class="post-container small-6 medium-6 large-4 columns end">
-  <div class="post">
-	<div class="image">       
-	  <a href="store.html"><img  src="images/stores/car6.jpg" /></a>
-	</div>
-    <div class="title">
-      <a href="store.html"><h3>椰子水</h3></a>
-        <p>OPEN:13:00~19:00</p>
-        <p>地區:新北市</p>
-  	</div>
-  </div>
-</div>
-
-        <div id="Div7" class="post-container small-6 medium-6 large-4 columns end">
-  <div class="post">
-	<div class="image">       
-	  <a href="store.html"><img  src="images/stores/car7.jpg" /></a>
-	</div>
-    <div class="title">
-      <a href="store.html"><h3>煎魚</h3></a>
-        <p>OPEN:12:00~20:00</p>
-        <p>地區:花蓮市</p>
-  	</div>
-  </div>
-</div>
-
-        <div id="Div8" class="post-container small-6 medium-6 large-4 columns end">
-  <div class="post">
-	<div class="image">       
-	  <a href="store.html"><img  src="images/stores/car8.jpg" /></a>
-	</div>
-    <div class="title">
-      <a href="store.html"><h3>章魚燒</h3></a>
-        <p>OPEN:13:00~19:00</p>
-        <p>地區:台北市</p>
-  	</div>
-  </div>
-</div>
-
-        <div id="Div9" class="post-container small-6 medium-6 large-4 columns end">
-  <div class="post">
-	<div class="image">       
-	  <a href="store.html"><img  src="images/stores/car9.jpg" /></a>
-	</div>
-    <div class="title">
-      <a href="store.html"><h3>西雅圖三明治</h3></a>
-        <p>OPEN:23:00~09:00</p>
-        <p>地區:南投市</p>
-  	</div>
-  </div>
-</div>
-
-
-     <div id="Div10" class="post-container small-6 medium-6 large-4 columns end">
-  <div class="post">
-	<div class="image">       
-	  <a href="store.html"><img  src="images/stores/car10.jpg" /></a>
-	</div>
-    <div class="title">
-      <a href="store.html"><h3>吃吃車車</h3></a>
-        <p>OPEN:20:00~09:00</p>
-        <p>地區:台北市</p>
-  	</div>
-  </div>
-</div>
-
       </div>
-
+    
 
 
       </div>
@@ -360,9 +197,41 @@
       <script type='text/javascript' src="bootstrap/js/uisearch.js"></script>
       <script type='text/javascript' src="bootstrap/js/jquery.flexisel.js"></script>
       <script type='text/javascript' src="bootstrap/js/jquery.slicknav.js"></script>
-      <script type='text/javascript' src="bootstrap/js/slicknav.js"></script>
       <script type='text/javascript' src="bootstrap/js/foundation-datepicker.js"></script>
+      
+      
+    <script type="text/javascript" src="jquery/jquery-3.0.0.min.js"></script>
+      <!-- jQuery Redirect -->
+	<script type='text/javascript' src="bootstrap/js/jquery.redirect.js"></script>
+	<script type="text/javascript">
+	$.ajax({
+			'type' : 'post',
+			'url' : 'StoresServlet',
+			'dataType' : 'json',
+			'data' : {},
+			'success' : function(data) {
+				var tb = $('#all')
+				var flag = $(document.createDocumentFragment());
+				tb.empty();
 
+				$.each(data, function(idx, store) {
+                   
+					var cell = $('<div  class="post-container small-6 medium-6 large-4 columns end"></div>')
+					.html('<div class="post"><div class="image"><a class="link" id="'+store.sID+'"><img  src="'+store.sLogo+'" /></a></div><div class="title"><a class ="linkt" id="'+store.sID+'"><h3>'+store.sName+'</h3></a><p>OPEN:00:00~24:00</p><p>電話:'+store.sUsername+'</p></div></div>');
+				   flag.append([cell])
+				})
+				tb.append(flag)
+				$('.link').on('click',function(){
+				    	 $.redirect("Store", { "sID": $(this).attr("id") });
+				})
+				$('.linkt').on('click',function(){
+				    	 $.redirect("Store", { "sID": $(this).attr("id") });
+				})
+			}
+		})
+		
+	</script>
+   
 
 
     <script type="text/javascript">

@@ -29,8 +29,8 @@
 
 		<dependency>
 			<groupId>com.microsoft</groupId>
-			<artifactId>sqlserverjdbc</artifactId>
-			<version>4.0</version>
+			<artifactId>SqlserverJdbc</artifactId>
+			<version>42</version>
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/com.googlecode.json-simple/json-simple -->
