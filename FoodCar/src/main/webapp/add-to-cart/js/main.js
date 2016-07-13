@@ -8,10 +8,8 @@ jQuery(document).ready(function($){
    
     
     
-   
-    
-    	$('#2').removeClass('cd-add-to-cart').addClass('100')
-   
+   $('#2').removeClass('cd-add-to-cart').addClass('cd-add-to-cartx')
+   $('#2').text("售完")
 
 	if( cartWrapper.length > 0 ) {
 		//store jQuery objects

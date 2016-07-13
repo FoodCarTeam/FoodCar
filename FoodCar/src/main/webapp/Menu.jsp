@@ -14,12 +14,16 @@
       <!--版型控制-->
 <link rel="stylesheet" href="add-to-cart/css/reset.css">
 <link rel="stylesheet" href="add-to-cart/css/style.css">        
-<link rel='stylesheet' id='main-stylesheet-css'  href='bootstrap/about/css/style.css' type='text/css' media='all' />
-
-      <!--橘色header色塊控制與Menu控制-->
-<link rel='stylesheet' id='slicknav-css'  href="bootstrap/about/css/mobile%20menu%20style.css" type='text/css' media='all' />
-<script type='text/javascript' src="bootstrap/about/js/modernizr.custom.js"></script> 
-<script src="bootstrap/about/js/jquery.js"></script>
+   <!--CSS-->
+<link rel='stylesheet' id='main-stylesheet-css'  href='bootstrap/login/css/style.css' type='text/css' media='all' />
+<link rel='stylesheet' id='slicknav-css'  href="bootstrap/login/css/mobile%20menu%20style.css" type='text/css' media='all' /><!--mobile menu style.css-->
+<!--JS-->
+<script type='text/javascript' src="bootstrap/login/js/modernizr.custom.js"></script>
+<!--list浮動-->
+<link href="bootstrap/login/css/bootstrap.min.css" rel="stylesheet" />
+<link href="bootstrap/login/css/scrolling-nav.css" rel="stylesheet" />
+<script src="bootstrap/login/js/jquery.js"></script>
+<script src="bootstrap/login/js/scrolling-nav.js"></script>
 
 
   </head>
@@ -195,7 +199,11 @@
     </div>
 <!-- /Footer -->
       <!--menu縮小控制-->
-      <script type='text/javascript' src="bootstrap/js/jquery.slicknav.js"></script>    
+      <script type='text/javascript' src="bootstrap/js/jquery.slicknav.js"></script>   
+         <script type='text/javascript' src="bootstrap/about/js/foundation.min.js"></script>
+      <script type='text/javascript' src="bootstrap/about/js/app.js"></script>
+      
+      <!--MENU縮小--> 
       <script type="text/javascript">
         $(document).ready(function () {
             $('#menu-mobile').slicknav({
