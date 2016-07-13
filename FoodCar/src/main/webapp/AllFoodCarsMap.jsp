@@ -10,7 +10,7 @@
 <script type="text/javascript" src="jquery/jquery-3.0.0.min.js"></script>
 <script async defer
 	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAgdzYOT0U2y-fUVpAfkf-XjCvXzY5-e-A&signed_in=true&libraries=places&callback=initMap"></script>
-
+/FoodCar/src/main/webapp/images/MapIcon/open.png
 <body>
 	<script>
 		function initMap() {
@@ -90,7 +90,7 @@
 						var location = value.location.split(",");
 						lat = parseFloat(location[0]);
 						lng = parseFloat(location[1]);
-
+						
 						var openTime;
 						if (typeof value.openTime == 'undefined') {
 							openTime = "今日休息";
