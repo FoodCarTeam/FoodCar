@@ -86,7 +86,7 @@
     </div>
     <div id="MenuPhone">
       <ul id="menu-mobile">
-         <li><a href="stores.html">餐車專區</a></li>
+         <li><a href="Stores.html">餐車專區</a></li>
          <li><a href="map.html">地圖</a></li>
          <li><a href="about.html">關於我們</a></li>
          <li><a href="login.html">登入</a></li>
@@ -123,7 +123,7 @@
               <li class="side-menu has-dropdown">
                 <a href="#" class="menu"></a>
                 <ul class="dropdown">
-                  <li><a href="stores.html">餐車專區</a></li>
+                  <li><a href="Stores.html">餐車專區</a></li>
                   <li><a href="map.html">地圖</a></li>
                   <li><a href="about.html">關於我們</a></li>
                   <li><a href="login.html">登入</a></li>

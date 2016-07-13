@@ -61,7 +61,7 @@
     </div>
     <div id="MenuPhone">
       <ul id="menu-mobile">
-         <li><a href="stores.html">餐車專區</a></li>
+         <li><a href="Stores.html">餐車專區</a></li>
          <li><a href="map.html">地圖</a></li>
          <li><a href="about.html">關於我們</a></li>
          <li><a href="login.html">登入</a></li>
@@ -98,7 +98,7 @@
               <li class="side-menu has-dropdown">
                 <a href="#" class="menu"></a>
                 <ul class="dropdown">
-                  <li><a href="stores.html">餐車專區</a></li>
+                  <li><a href="Stores.html">餐車專區</a></li>
                   <li><a href="map.html">地圖</a></li>
                   <li><a href="about.html">關於我們</a></li>
                   <li><a href="login.html">登入</a></li>
@@ -127,8 +127,8 @@
     <div class="small-12 large-50 columns">
       <div class="truck-details">
         <div class="content">
-          <h1>
-            餐車專區    <a class="book-button">不知道幹嘛的按鈕</a>
+          <h1>餐車專區
+<!--                 <a class="book-button">不知道幹嘛的按鈕</a> -->
           </h1>
          
         
@@ -217,11 +217,14 @@
 				$.each(data, function(idx, store) {
                    
 					var cell = $('<div  class="post-container small-6 medium-6 large-4 columns end"></div>')
-					.html('<div class="post"><div class="image"><a class="link" id="'+store.sID+'"><img  src="'+store.sLogo+'" /></a></div><div class="title"><a href="StoreServlet?sID='+store.sID+'"><h3>'+store.sName+'</h3></a><p>OPEN:00:00~24:00</p><p>電話:'+store.sUsername+'</p></div></div>');
+					.html('<div class="post"><div class="image"><a class="link" id="'+store.sID+'"><img  src="'+store.sLogo+'" /></a></div><div class="title"><a class ="linkt" id="'+store.sID+'"><h3>'+store.sName+'</h3></a><p>OPEN:00:00~24:00</p><p>電話:'+store.sUsername+'</p></div></div>');
 				   flag.append([cell])
 				})
 				tb.append(flag)
 				$('.link').on('click',function(){
+				    	 $.redirect("Store", { "sID": $(this).attr("id") });
+				})
+				$('.linkt').on('click',function(){
 				    	 $.redirect("Store", { "sID": $(this).attr("id") });
 				})
 			}
