@@ -15,9 +15,16 @@ import javax.servlet.http.HttpServletResponse;
 public class ShowImageService {
 
 	
-	public  void showImage(HttpServletResponse response,String fileName){
-		String path="//Users//lanyao//Documents//FoodCar//FoodCar//src//main//webapp//images//MapIcon//";
+	public  void showImage(HttpServletRequest request,HttpServletResponse response,String fileName){
 		
+//		String path="//Users//lanyao//Documents//FoodCar//FoodCar//src//main//webapp//images//MapIcon//";
+		String a=request.getServletContext().getRealPath("/");
+		String path=a+"//src//main//webapp//images//MapIcon//";
+	
+		System.out.println(request.getServletContext().getRealPath("/"));
+		
+		
+		System.out.println(request.getServletContext().getRealPath("/"));
 		
 		OutputStream os = null;
 		FileInputStream fis = null;

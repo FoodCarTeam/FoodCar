@@ -20,7 +20,7 @@ public class showimage extends HttpServlet{
 		ShowImageService showService=new ShowImageService();
 		String fileName=request.getParameter("fileName");
 		
-		showService.showImage(response, fileName);
+		showService.showImage(request,response, fileName);
 		
 		
 		
