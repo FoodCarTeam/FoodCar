@@ -13,7 +13,8 @@
       
       <!--版型控制-->
 <link rel="stylesheet" href="add-to-cart/css/reset.css">
-<link rel="stylesheet" href="add-to-cart/css/style.css">        
+<link rel="stylesheet" href="add-to-cart/css/style.css"> 
+       
    <!--CSS-->
 <link rel='stylesheet' id='main-stylesheet-css'  href='bootstrap/login/css/style.css' type='text/css' media='all' />
 <link rel='stylesheet' id='slicknav-css'  href="bootstrap/login/css/mobile%20menu%20style.css" type='text/css' media='all' /><!--mobile menu style.css-->

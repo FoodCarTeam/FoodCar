@@ -8,26 +8,20 @@
     <meta name="google-play-app" content="app-id=com.blogto.foodtrucks.toronto">    
     <title>餐餔餔</title>   
    
-      <!--CSS-->
-<link rel='stylesheet' id='main-stylesheet-css'  href='bootstrap/css/style.css' type='text/css' media='all' />
-<link rel='stylesheet' id='slicknav-css'  href="bootstrap/css/mobile%20menu%20style.css" type='text/css' media='all' /><!--mobile menu style.css-->
-<link rel='stylesheet' id='foundation-datepicker-css' href="bootstrap/css/datepicker.css" type='text/css' media='all' />
-
-      <!--JS-->
- <script type='text/javascript' src="bootstrap/js/modernizr.js" ></script>
-<script type='text/javascript' src="bootstrap/js/modernizr.custom.js"></script>
-<script type='text/javascript' src="bootstrap/js/jquerymin2.1.1.js"></script>
-  <!--list浮動-->
-    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-      <link href="bootstrap/css/scrolling-nav.css" rel="stylesheet" />
-      <script src="bootstrap/js/jquery.js"></script>
-      <script src="bootstrap/js/scrolling-nav.js"></script>
+       <!--CSS-->
+<link rel='stylesheet' id='main-stylesheet-css'  href='bootstrap/login/css/style.css' type='text/css' media='all' />
+<link rel='stylesheet' id='slicknav-css'  href="bootstrap/login/css/mobile%20menu%20style.css" type='text/css' media='all' /><!--mobile menu style.css-->
+<!--JS-->
+<script type='text/javascript' src="bootstrap/login/js/modernizr.custom.js"></script>
+<!--list浮動-->
+<link href="bootstrap/login/css/bootstrap.min.css" rel="stylesheet" />
+<link href="bootstrap/login/css/scrolling-nav.css" rel="stylesheet" />
+<script src="bootstrap/login/js/jquery.js"></script>
+<script src="bootstrap/login/js/scrolling-nav.js"></script>
   <!--login-->
-
-
-   <link rel="stylesheet" href="bootstrap/css/login.css">
-  <script src="bootstrap/js/jqlogin.js"></script>
-  <script src="bootstrap/js/login.js"></script>
+   <link rel="stylesheet" href="bootstrap/login/css/login.css">
+  <script src="bootstrap/login/js/jqlogin.js"></script>
+  <script src="bootstrap/login/js/login.js"></script>
   
 
   </head>
@@ -117,44 +111,6 @@
     </div>
 <!--/列表-->
             </nav>
-    
-	<script type="text/javascript">
-		$(function() {
-			var pixelsBeforeDisplayMaps = 100; // Unveil images this amount of pixels before they appear on screen
-			var pixelsBeforeDisplayImages = 200; // Unveil images this amount of pixels before they appear on screen
-
-			$("#MainContent .article.text").find("img").each(function() {
-				var $img = $(this);
-				var src = $img.attr("src");
-
-				$img.attr("src", "").attr("data-src", src); // Prepare images within the article's content for lazy-loading
-			});
-
-			$("#MainContent").find(".schedule").find("img").unveil(
-					pixelsBeforeDisplayMaps, function() {
-						var $img = $(this);
-
-						if ($img.hasClass("map-unveil")) {
-							$img.hide();
-
-							var $map = $(this).parents(".map");
-
-							if ($map.length != 0) {
-								var $iframe = $map.find("iframe");
-								var src = $iframe.data("src");
-
-								$iframe.show().attr("src", src);
-							}
-						}
-					});
-
-			$("#MainContent").find(".article.text, .menu, .photos").find("img")
-					.unveil(pixelsBeforeDisplayImages);
-		});
-	</script>
-	<script type="text/javascript" src="bootstrap/js/jquery.unveil.js"></script>
-	<script type="text/javascript" src="bootstrap/js/page.js"></script>
-
     
 <div id="MainContent" style="width:800px;margin:auto">
   <div class="row">
@@ -261,114 +217,30 @@
 </div>
   
 <!--/MainContent-->
-
-			<script src="js/jquery-1.9.1.js"></script>
-			<script src="js/bootstrap.min.js"></script>
-		
-		
-
-		
-	<!-- Footer -->
-	<div id="SecondFooter">
-		<div class="row">
-			<div class="small-12 medium-6 large-8 columns">
-				<div class="footer-links">
-					<p>© 2016 Freshdaily Inc. All rights reserved.</p>
-				</div>
-			</div>
-
-		</div>
-	</div>
-
-	<!-- /Footer -->
-
-	<script type="text/javascript">
-		var _sf_async_config = {};
-		_sf_async_config.uid = 44252;
-		_sf_async_config.useCanonical = true;
-
-		(function() {
-			function loadChartbeat() {
-				window._sf_endpt = (new Date()).getTime();
-				var e = document.createElement('script');
-				e.setAttribute('language', 'javascript');
-				e.setAttribute('type', 'text/javascript');
-				e.setAttribute('src',
-						(("https:" == document.location.protocol) ? "https://"
-								: "http://")
-								+ "static.chartbeat.com/js/chartbeat.js");
-				document.body.appendChild(e);
-			}
-			var oldonload = window.onload;
-			window.onload = (typeof window.onload != 'function') ? loadChartbeat
-					: function() {
-						try {
-							oldonload();
-						} catch (e) {
-							loadChartbeat();
-							throw e
-						}
-						loadChartbeat();
-					};
-		})();
-	</script>
-
-	<script type='text/javascript' src="bootstrap/js/foundation.min.js"></script>
-	<script type='text/javascript' src="bootstrap/js/app.js"></script>
-	<script type='text/javascript' src="bootstrap/js/classie.js"></script>
-	<script type='text/javascript' src="bootstrap/js/uisearch.js"></script>
-	<script type='text/javascript' src="bootstrap/js/jquery.flexisel.js"></script>
-	<script type='text/javascript' src="bootstrap/js/jquery.slicknav.js"></script>
-	<script type='text/javascript' src="bootstrap/js/slicknav.js"></script>
-	<script type='text/javascript'
-		src="bootstrap/js/foundation-datepicker.js"></script>
-
-	<script type="text/javascript">
-		$(document).ready(function() {
-			$('#menu-mobile').slicknav({
-				label : '',
-				prependTo : '#MenuPhone'
-			});
-		});
-	</script>
-
-	<script>
-		$(function() {
-			if (window.prettyPrint)
-				prettyPrint();
-
-			$('#DatePicker').fdatepicker({
-				format : 'mm-dd-yyyy'
-			});
-
-			$("#SignUpButton").click(function() {
-				$("#frmFooterEmailSignup").submit();
-			});
-
-			new UISearch(document.getElementById('sb-search'));
-			new UISearch(document.getElementById('sb-search-phone'));
-		});
-	</script>
-
-
-
-	<!-- Google Analytics -->
-	<script type="text/javascript">
-		var _gaq = _gaq || [];
-		_gaq.push([ '_setAccount', 'UA-26303156-1' ]);
-		_gaq.push([ '_trackPageview' ]);
-
-		(function() {
-			var ga = document.createElement('script');
-			ga.type = 'text/javascript';
-			ga.async = true;
-			ga.src = ('https:' == document.location.protocol ? 'https://ssl'
-					: 'http://www')
-					+ '.google-analytics.com/ga.js';
-			var s = document.getElementsByTagName('script')[0];
-			s.parentNode.insertBefore(ga, s);
-		})();
-	</script>
-	<div id="mobile-floating-ad"></div>
-</body>
+   
+<!-- Footer -->
+    <div id="SecondFooter">
+      <div class="row">
+        <div class="small-12 medium-6 large-8 columns">
+          <div class="footer-links">
+            <p>© 2016 Freshdaily Inc. All rights reserved.</p>
+          </div>
+        </div>
+      
+      </div>
+    </div>
+<!-- /Footer -->
+       <script type='text/javascript' src="bootstrap/login/js/foundation.min.js"></script>
+      <script type='text/javascript' src="bootstrap/login/js/app.js"></script>
+      <!--MENU縮小-->
+    <script type='text/javascript' src="bootstrap/login/js/jquery.slicknav.js"></script>    
+      <script type="text/javascript">
+          $(document).ready(function () {
+              $('#menu-mobile').slicknav({
+                  label: '',
+                  prependTo: '#MenuPhone'
+              });
+          });
+    </script>
+  </body>
 </html>

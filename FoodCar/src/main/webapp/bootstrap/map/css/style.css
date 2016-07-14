@@ -9580,7 +9580,7 @@ img.u-photo.avatar {
   position: absolute;
   margin-top: -27px;
   background-color: transparent;
-  background-image: url("../../images/tools/logo.png");
+  background-image: url("../../../images/tools/logo.png");
   background-size: 100%;
   background-repeat: no-repeat;
   background-position: center;
@@ -9739,7 +9739,7 @@ img.u-photo.avatar {
   width: 48px;
   height: 100%;
   border-radius: 0;
-  background-image: url("../../images/tools/menu.png");
+  background-image: url("../../../images/tools/menu.png");
   background-size: 90%;
   background-position: center;
   background-repeat: no-repeat;
@@ -11867,7 +11867,7 @@ img.u-photo.avatar {
   position: absolute;
   margin-top: -12px;
   background-color: transparent;
-  background-image: url("../../images/tools/logo.png");
+  background-image: url("../../../images/tools/logo.png");
   background-size: 100%;
   background-repeat: no-repeat;
   background-position: center;
