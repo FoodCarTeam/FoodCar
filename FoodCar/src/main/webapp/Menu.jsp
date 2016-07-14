@@ -136,7 +136,9 @@
 		</div>
 	</c:forEach> 
 	</main>
- 
+    <script type="text/javascript">
+       
+    </script>
 	<div class="cd-cart-container empty">
 		<a href="#0" class="cd-cart-trigger"> Cart
 			<ul class="count">
@@ -158,7 +160,7 @@
 					</ul>
 				</div>
 
-				<footer> <a href="#0" class="checkout btn" style="font-size:22px"><em >結帳金額：
+				<footer> <a  class="checkout btn" style="font-size:22px"><em >結帳金額：
 						  $<span>0</span>
 				</em></a> </footer>
 			</div>
@@ -166,7 +168,13 @@
 		<!-- .cd-cart -->
 	</div>
 	<!-- cd-cart-container -->
-
+	<script type='text/javascript' src="bootstrap/js/jquery.redirect.js"></script>  
+    <script type="text/javascript">
+      $('.btn').on('click',function(){
+    	  console.log($('.price').text())
+     	  $.redirect("order", { "unitPrice": $('.price').text()});
+      })
+    </script>
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 	<script>
