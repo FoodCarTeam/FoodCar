@@ -150,12 +150,13 @@
 			'dataType' : 'json',
 			'data' : {},
 			'success' : function(data) {
+				
 				var tb = $('#all')
 				var flag = $(document.createDocumentFragment());
 				tb.empty();
 
 				$.each(data, function(idx, store) {
-                   
+					
 					var cell = $('<div  class="post-container small-6 medium-6 large-4 columns end"></div>')
 					.html('<div class="post"><div class="image"><a class="link" id="'+store.sID+'"><img  src="'+store.sLogo+'" /></a></div><div class="title"><a class ="linkt" id="'+store.sID+'"><h3>'+store.sName+'</h3></a><p>OPEN:00:00~24:00</p><p>電話:'+store.sUsername+'</p></div></div>');
 				   flag.append([cell])

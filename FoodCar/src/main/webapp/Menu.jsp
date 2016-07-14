@@ -131,7 +131,7 @@
 			<span style="font-size:18px">${bean.foodName}</span>
 			<span style="font-size:18px">$${bean.unitPrice }</span>
 			<p>
-			<a href="#0" id ="${bean.statusID}" class="cd-add-to-cart" data-price="${bean.unitPrice }"
+			<a href="#0" id ="${bean.statusID}" class="cd-add-to-cart" data-id="${bean.foodID }" data-price="${bean.unitPrice }"
 			data-name="${bean.foodName}" data-image="${bean.foodIMG}" >加入購物車</a>    
 		</div>
 	</c:forEach> 
@@ -168,11 +168,29 @@
 		<!-- .cd-cart -->
 	</div>
 	<!-- cd-cart-container -->
-	<script type='text/javascript' src="bootstrap/js/jquery.redirect.js"></script>  
+<!-- 	<script type='text/javascript' src="bootstrap/js/jquery.redirect.js"></script>   -->
     <script type="text/javascript">
-      $('.btn').on('click',function(){
-    	  console.log($('.price').text())
-     	  $.redirect("order", { "unitPrice": $('.price').text()});
+//     var count= 0;
+//       $('.checkout').on('click',function(){
+//     	  var ss = [];
+   	  
+//    	  $('#car').each(function(){
+//    		  count++
+//    		    ss.push($('#car').attr('fID'))
+//            console.log(count)
+//    		     console.log(ss)
+//    	   });
+    	  
+    	 
+//     	  $.ajax({
+//   			'type' : 'post',
+//   			'url' : 'order',
+//   			'dataType' : 'json',
+//   			'data' : {"unitPrice":ss},
+//   			'success' : function() {
+  				
+//   			}
+//   		})
       })
     </script>
 	<script
