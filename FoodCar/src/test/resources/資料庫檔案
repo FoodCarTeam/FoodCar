@@ -5,13 +5,14 @@ DROP TABLE [maps];
 DROP TABLE [comments];
 DROP TABLE [accounts];
 DROP TABLE [aRecords];
-DROP TABLE [checkoutStatus];
 DROP TABLE [orders];
+DROP TABLE [checkoutStatus];
 DROP TABLE [favorities];
 DROP TABLE [orderDetails];
 DROP TABLE [menus];
 DROP TABLE [kinds];
 DROP TABLE [status];
+DROP TABLE [hours];
 DROP TABLE [stores];
 DROP TABLE [members];
 
@@ -25,9 +26,14 @@ mName		nvarchar(20) NOT NULL,
 mAddress	nvarchar(50) NOT NULL,
 mPhone		char(15) ,
 mBirthday	date NOT NULL,
-mIMG		varbinary(MAX) ,
+mIMG		varchar(1000) ,
 constraint members_primary_key primary key (mID),
 );
+insert into [members] (mName,mUsername,mPassword,mAddress,mBirthday) values ('翁強森','Johnsonweng@qq.com','Ww852258','台北市復興北路一段390號','1983/08/08');
+insert into [members] (mName,mUsername,mPassword,mAddress,mBirthday) values ('藍教主','Bluesky@qq.com','Bb951159','台北市天母區德行東路一段250號','1990/05/05');
+insert into [members] (mName,mUsername,mPassword,mAddress,mBirthday) values ('董Jay','Jjaydonn@qq.com','Jj753357','台北市忠孝西路一段100號','1987/10/10');
+insert into [members] (mName,mUsername,mPassword,mAddress,mBirthday) values ('江江江','HankChiang@qq.com','Hh123321','台北市忠孝西路一段100號','1990/12/01');
+insert into [members] (mName,mUsername,mPassword,mAddress,mBirthday) values ('莊家家','Roger@qq.com','Pp741147','台北市中和路507號5樓','1997/05/01');
 
 CREATE TABLE [stores] (
 sID			int IDENTITY(1,1) NOT NULL,
@@ -35,10 +41,13 @@ sUsername	varchar(20) NOT NULL,
 sPassword	varchar(50) NOT NULL,
 sName		nvarchar(50) NOT NULL,
 sBossName	nvarchar(50) ,
-sHours		varchar(50) NOT NULL,
-sLogo		varbinary(MAX),
+sIntro		nvarchar(1000),
+sLogo		varchar(1000),
 constraint stores_primary_key primary key (sID),
 );
+insert into [stores] (sName,sUsername,sPassword,sIntro) values ('三色地瓜','0917-526-157','Threecolor3','我們是三色地瓜球三種地瓜所組合而成分別是台農57號-竹山地瓜芋頭地瓜（紫心地瓜）台農64號-黃金地瓜');
+insert into [stores] (sName,sUsername,sPassword,sIntro) values ('派客機排','0933-049-585','Chickennn','台北市四平街起家的「2派克雞排」，以皮脆、肉多汁聞名，老闆李存祥創業不到三年，北台灣總店數56家，最優秀的加盟店，月營業額破百萬，這是68年次，玩物喪志、負債百萬的放蕩子，遭逢父親驟逝，力求出人頭地的命運交響曲，終以踏實的新態度，步步咀嚼成功的滋脆鮮甜。捷運板橋府中站出口，10數名上班族、學生成群圍著「2派克雞排」等候叫號，「人這麼多，我到另一家買好了！」剛到的客人阿雯見狀，旋即騎上機車到鄰近的板橋南雅店，沒想到，人潮依舊。阿雯與友人認命排隊，抱怨聲夾帶著期待的語氣：「這家的雞排，皮脆、肉汁甜，口味很讚，生意超好，想吃都得等很久。」這片「雞排」到底有什麼魔力？68年次的品牌創始人李存祥，神秘笑著回答：「是肉質誘人。」他創業近3年，目前已展店56家，生意最好的加盟店，月營業額上看百萬，利潤大約4成。');
+insert into [stores] (sName,sUsername,sPassword,sIntro) values ('紅橘子小館','13906075848','Plmnko123','紅橘子精緻早餐,為新招牌的早餐連鎖店,有多道早餐套餐提供顧客選擇,以全新的形象區別於同業,給客人全新的體驗紅橘子精緻早餐,為新招牌的早餐連鎖店,有多道早餐套餐提供顧客選擇,以全新的形象區別於同業,給客人全新的體驗紅橘子精緻早餐,為新招牌的早餐連鎖店,有多道早餐套餐提供顧客選擇,以全新的形象區別於同業,給客人全新的體驗');
 
 CREATE TABLE [kinds] (
 kindID			int IDENTITY(10,10) NOT NULL,
@@ -46,6 +55,8 @@ kindName		nvarchar(20) NOT NULL,
 kindMemo		nvarchar(50) ,
 constraint kinds_primary_key primary key (kindID),
 );
+insert into [kinds] (kindName,kindMemo) values ('單點','');
+insert into [kinds] (kindName,kindMemo) values ('套餐','');
 
 CREATE TABLE [status] (
 statusID		int IDENTITY(1,1) NOT NULL,
@@ -53,6 +64,9 @@ statusName		nvarchar(20) NOT NULL,
 statusMemo		nvarchar(50) ,
 constraint status_primary_key primary key (statusID),
 );
+insert into [status] (statusName,statusMemo) values ('正常','');
+insert into [status] (statusName,statusMemo) values	('缺貨','');
+insert into [status] (statusName,statusMemo) values ('補貨中','');
 
 CREATE TABLE [menus] (
 foodID		int IDENTITY(1,1) NOT NULL,
@@ -61,12 +75,20 @@ sID			int NOT NULL,
 kindID		int NOT NULL,
 statusID	int NOT NULL,
 unitPrice	decimal(18,0) NOT NULL,
-foodIMG		varbinary(MAX) ,
+foodIMG		varchar(1000) ,
 constraint menus_statusID_fk foreign key (statusID) references status (statusID),
 constraint menus_kindID_fk foreign key (kindID) references kinds (kindID),
 constraint menus_sID_fk foreign key (sID) references stores (sID),
 constraint menus_primary_key primary key (foodID,sID),
 );
+insert into [menus] (foodName,sID,kindID,statusID,unitPrice) values ('地瓜球','1','10','1','40');
+insert into [menus] (foodName,sID,kindID,statusID,unitPrice) values ('紅茶','1','10','1','20');
+insert into [menus] (foodName,sID,kindID,statusID,unitPrice) values ('雞排','2','10','1','50');
+insert into [menus] (foodName,sID,kindID,statusID,unitPrice) values ('珍珠奶茶','2','10','1','35');
+insert into [menus] (foodName,sID,kindID,statusID,unitPrice) values ('雞排、珍珠奶茶','2','20','1','70');
+insert into [menus] (foodName,sID,kindID,statusID,unitPrice) values ('鮮蝦蒸餃','3','10','2','8');
+insert into [menus] (foodName,sID,kindID,statusID,unitPrice) values ('玉米濃湯','3','10','1','20');
+insert into [menus] (foodName,sID,kindID,statusID,unitPrice) values ('韭菜水餃','3','10','1','5');
 
 CREATE TABLE [checkoutStatus] (
 cksID		int IDENTITY(10,10) NOT NULL,
@@ -74,6 +96,8 @@ cksName		nvarchar(20) NOT NULL,
 cksMemo		nvarchar(50) ,
 constraint checkoutStatus_primary_key primary key (cksID),
 );
+insert into [checkoutStatus] (cksName,cksMemo) values ('已結帳','');
+insert into [checkoutStatus] (cksName,cksMemo) values ('未結帳','');
 
 CREATE TABLE [orders] (
 oID			int IDENTITY(1,1) NOT NULL,
@@ -106,11 +130,12 @@ constraint orderDetails_oID_fk foreign key (oID) references orders (oID),
 constraint orderDetails_primary_key primary key (oID,sID),
 );
 
+
 CREATE TABLE [advertise] (
 adID			int IDENTITY(1,1) NOT NULL,
 sID				int NOT NULL,
 sName			nvarchar(50) NOT NULL,
-adIMG			varbinary(MAX) ,
+adIMG			varchar(1000) ,
 constraint advertise_sID_fk foreign key (sID) references stores (sID),
 constraint advertise_primary_key primary key (adID),
 );
@@ -122,6 +147,9 @@ location		varchar(MAX) NOT NULL,
 constraint maps_sID_fk foreign key (sID) references stores (sID),
 constraint maps_primary_key primary key (mapID),
 );
+insert into [maps] (sID,location) values ('1','25.033681,121.564726');
+insert into [maps] (sID,location) values ('2','25.047908,121.517315');
+insert into [maps] (sID,location) values ('3','25.031953,121.543007');
 
 CREATE TABLE [favorities] (
 fID				int IDENTITY(1,1) NOT NULL,
@@ -136,9 +164,9 @@ constraint favorities_primary_key primary key (fID),
 CREATE TABLE [comments] (
 cID				int IDENTITY(1,1) NOT NULL,
 mID				int NOT NULL,
+sID				int NOT NULL,
 cDate			datetime NOT NULL,
 cContent		nvarchar(100) ,
-cRespone		nvarchar(100) ,
 point			varchar(20) NOT NULL,
 cIP				varchar(15) NOT NULL,
 constraint comments_mID_fk foreign key (mID) references members (mID),
@@ -152,6 +180,11 @@ balance		decimal(18,0) NOT NULL,
 constraint accounts_mID foreign key (mID) references members (mID),
 constraint accounts_primary_key primary key (aID),
 );
+insert into [accounts] (mID,balance) values ('1','0');
+insert into [accounts] (mID,balance) values ('2','0');
+insert into [accounts] (mID,balance) values ('3','0');
+insert into [accounts] (mID,balance) values ('4','0');
+insert into [accounts] (mID,balance) values ('5','0');
 
 CREATE TABLE [aRecords] (
 arID		int IDENTITY(1,1) NOT NULL,
@@ -162,6 +195,50 @@ oID			int ,
 constraint arecords_oID foreign key (oID) references orders (oID),
 constraint arecords_mID foreign key (mID) references members (mID),
 constraint arecords_primary_key primary key (arID,mID),	
+);
+
+CREATE TABLE [response] (
+rID		int IDENTITY(1,1) NOT NULL,
+cID		 int  NOT NULL,
+sName		nvarchar(50),
+mName		nvarchar(20),
+cDate			datetime NOT NULL,
+cContent		nvarchar(100) ,
+cIP				varchar(15) NOT NULL,
+constraint response_cID foreign key (cID) references comments (cID),
+constraint response_primary_key primary key (rID),
+);
+insert into [status] (statusName,statusMemo) values ('正常','');
+insert into [status] (statusName,statusMemo) values	('缺貨','');
+insert into [status] (statusName,statusMemo) values ('補貨中','');
+
+
+
+
+CREATE TABLE [hours] (
+hrID		int IDENTITY(1,1) NOT NULL,
+sID			int NOT NULL,
+sun			varchar(15),
+mon			varchar(15),
+tue			varchar(15),
+wed			varchar(15),
+thu			varchar(15),
+fri			varchar(15),
+sat			varchar(15),
+constraint hours_sID foreign key (sID) references stores (sID),
+constraint hrID_primary_key primary key (hrID),
+);
+insert into [hours] (sID,sun,mon,tue,wed,thu,fri,sat) values ('1','0900~1200',null,'1200~1800','0900~1200','1000~1800','1200~1800','0900~1800');
+insert into [hours] (sID,sun,mon,tue,wed,thu,fri,sat) values ('2','1800~2200','1200~1800','1400~2000','0900~1600','1800~2200',null,'0900~2200');
+insert into [hours] (sID,sun,mon,tue,wed,thu,fri,sat) values ('3','0900~2300','0900~2300','0900~2300','0900~2300','0900~2300','0900~2300','0900~2300');
+
+CREATE TABLE [manager] (
+manageID	int IDENTITY(1,1) NOT NULL,
+managerUser	varchar(100) NOT NULL,
+managerPass	varchar(50) NOT NULL,
+managerName nvarchar(10) ,
+managerPhone varchar(15) ,
+constraint manageID_primary_key primary key (manageID),
 );
 
 -------------------------------------------------------------------------------------------------------------------------------------
