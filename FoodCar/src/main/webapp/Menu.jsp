@@ -169,23 +169,25 @@
 	<!-- cd-cart-container -->
 	<script type='text/javascript' src="bootstrap/js/jquery.redirect.js"></script>  
     <script>
-  
-  
+   
     var $j = jQuery.noConflict();
-	
+    
     $j('.checkout').on('click',function(){
-    	var arrCar = [];
-    	$('#car').each(function () {
-    		  var count=0
-    	    	count++
-    	    	arrCar.push($(this).attr('fID'))
-    	    	console.log(arrCar)
-       	        console.log(count)
-    	    	});
-    	   
-    	   
-//     	  $j.post("order", { "unitPrice": $(this).attr("id") });
     	
+    	
+    	var id_list = $('.car');
+    	
+    	var quan_list = $('select[name="quantity"]');
+
+    	var arrCarId = [];
+    	var arrCarQuan = [];
+
+    	for(var i=0; i<id_list.length; i++) {
+    		arrCarId[i] = $(id_list[i]).attr('fID');
+    		arrCarQuan[i] = $(quan_list[i]).val();
+    	}
+    	
+     	$j.post("order", { "foodId": arrCarId, "foodQuan": arrCarQuan });
    	  
 //    	  $('#car').each(function(){
 //    		  count++

@@ -108,9 +108,7 @@ oID			int IDENTITY(1,1) NOT NULL,
 sID			int NOT NULL,
 mID			int NOT NULL,
 saleDate	date NOT NULL,
-totalPrice	decimal(18,0) NOT NULL,
 cksID		int NOT NULL,
-oMemo		nvarchar(50) ,
 constraint orders_mID_fk foreign key (mID) references members (mID),
 constraint orders_sID_fk foreign key (sID) references stores (sID),
 constraint orders_cksID_fk foreign key (cksID) references checkoutStatus (cksID),
@@ -118,20 +116,18 @@ constraint orders_primary_key primary key(oID),
 );
 
 CREATE TABLE [orderDetails] (
+odID			int IDENTITY(1,1) NOT NULL,
 oID				int NOT NULL,
 sID				int NOT NULL,
-sName			nvarchar NOT NULL,
-foodName		nvarchar NOT NULL,
-foodPrice		decimal(18,0) NOT NULL,
+foodID			int NOT NULL,
 foodQuantity	int NOT NULL,
 amount			decimal(18,0) NOT NULL,
 mID				int NOT NULL,
-saleDate		date NOT NULL,
 odMemo			nvarchar(50) ,
 constraint orderDetails_mID_fk foreign key (mID) references members (mID),
 constraint orderDetails_sID_fk foreign key (sID) references stores (sID),
 constraint orderDetails_oID_fk foreign key (oID) references orders (oID),
-constraint orderDetails_primary_key primary key (oID,sID),
+constraint orderDetails_primary_key primary key (odID,oID),
 );
 
 

@@ -2,15 +2,12 @@ package model;
 
 
 public class OrderDetailsVO implements java.io.Serializable {
-
+    private Integer odID;
 	private Integer oID ;
 	private Integer sID ;
-	private String sName ;
-	private String foodName ;
-	private Double foodPrice ;
+	private Integer foodID;
 	private Integer foodQuantity ;
 	private Integer mID ;
-	private java.sql.Date saleDate ;
 	private String odMemo ;
 	
 	public Integer getoID() {
@@ -25,23 +22,17 @@ public class OrderDetailsVO implements java.io.Serializable {
 	public void setsID(Integer sID) {
 		this.sID = sID;
 	}
-	public String getsName() {
-		return sName;
+	public Integer getOdID() {
+		return odID;
 	}
-	public void setsName(String sName) {
-		this.sName = sName;
+	public void setOdID(Integer odID) {
+		this.odID = odID;
 	}
-	public String getFoodName() {
-		return foodName;
+	public Integer getFoodID() {
+		return foodID;
 	}
-	public void setFoodName(String foodName) {
-		this.foodName = foodName;
-	}
-	public Double getFoodPrice() {
-		return foodPrice;
-	}
-	public void setFoodPrice(Double foodPrice) {
-		this.foodPrice = foodPrice;
+	public void setFoodID(Integer foodID) {
+		this.foodID = foodID;
 	}
 	public Integer getFoodQuantity() {
 		return foodQuantity;
@@ -55,12 +46,7 @@ public class OrderDetailsVO implements java.io.Serializable {
 	public void setmID(Integer mID) {
 		this.mID = mID;
 	}
-	public java.sql.Date getSaleDate() {
-		return saleDate;
-	}
-	public void setSaleDate(java.sql.Date saleDate) {
-		this.saleDate = saleDate;
-	}
+
 	public String getOdMemo() {
 		return odMemo;
 	}

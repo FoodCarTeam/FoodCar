@@ -126,6 +126,7 @@
           <h1>
             ${select.sName}   <a class="book-button">點餐</a>
           </h1>
+          
 <script type='text/javascript' src="bootstrap/js/jquery.redirect.js"></script>          
 <script>
     $('.book-button').on('click',function(){
