@@ -136,9 +136,7 @@
 		</div>
 	</c:forEach> 
 	</main>
-    <script type="text/javascript">
-       
-    </script>
+
 	<div class="cd-cart-container empty">
 		<a href="#0" class="cd-cart-trigger"> Cart
 			<ul class="count">
@@ -167,12 +165,22 @@
 		</div>
 		<!-- .cd-cart -->
 	</div>
+	
 	<!-- cd-cart-container -->
-<!-- 	<script type='text/javascript' src="bootstrap/js/jquery.redirect.js"></script>   -->
-    <script type="text/javascript">
-//     var count= 0;
-//       $('.checkout').on('click',function(){
-//     	  var ss = [];
+	<script type='text/javascript' src="bootstrap/js/jquery.redirect.js"></script>  
+    <script>
+  
+  
+    var $j = jQuery.noConflict();
+    $j('.checkout').on('click',function(){
+    	  var arrCar = [];
+    	    $('#car').each(function () {
+    	    	arrCar.push($(this).attr('fID'))
+    	    	 console.log(arrCar)
+    	    	});
+    	   
+    	  $j.post("order", { "unitPrice": $(this).attr("id") });
+    	
    	  
 //    	  $('#car').each(function(){
 //    		  count++
