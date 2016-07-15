@@ -15,6 +15,7 @@ DROP TABLE [status];
 DROP TABLE [hours];
 DROP TABLE [stores];
 DROP TABLE [members];
+DROP TABLE [orders];
 
 ------------------------------------------------------------------------------------------------------------------------------------
 
@@ -45,9 +46,9 @@ sIntro		nvarchar(1000),
 sLogo		varchar(1000),
 constraint stores_primary_key primary key (sID),
 );
-insert into [stores] (sName,sUsername,sPassword,sIntro) values ('三色地瓜','0917-526-157','Threecolor3','我們是三色地瓜球三種地瓜所組合而成分別是台農57號-竹山地瓜芋頭地瓜（紫心地瓜）台農64號-黃金地瓜');
-insert into [stores] (sName,sUsername,sPassword,sIntro) values ('派客機排','0933-049-585','Chickennn','台北市四平街起家的「2派克雞排」，以皮脆、肉多汁聞名，老闆李存祥創業不到三年，北台灣總店數56家，最優秀的加盟店，月營業額破百萬，這是68年次，玩物喪志、負債百萬的放蕩子，遭逢父親驟逝，力求出人頭地的命運交響曲，終以踏實的新態度，步步咀嚼成功的滋脆鮮甜。捷運板橋府中站出口，10數名上班族、學生成群圍著「2派克雞排」等候叫號，「人這麼多，我到另一家買好了！」剛到的客人阿雯見狀，旋即騎上機車到鄰近的板橋南雅店，沒想到，人潮依舊。阿雯與友人認命排隊，抱怨聲夾帶著期待的語氣：「這家的雞排，皮脆、肉汁甜，口味很讚，生意超好，想吃都得等很久。」這片「雞排」到底有什麼魔力？68年次的品牌創始人李存祥，神秘笑著回答：「是肉質誘人。」他創業近3年，目前已展店56家，生意最好的加盟店，月營業額上看百萬，利潤大約4成。');
-insert into [stores] (sName,sUsername,sPassword,sIntro) values ('紅橘子小館','13906075848','Plmnko123','紅橘子精緻早餐,為新招牌的早餐連鎖店,有多道早餐套餐提供顧客選擇,以全新的形象區別於同業,給客人全新的體驗紅橘子精緻早餐,為新招牌的早餐連鎖店,有多道早餐套餐提供顧客選擇,以全新的形象區別於同業,給客人全新的體驗紅橘子精緻早餐,為新招牌的早餐連鎖店,有多道早餐套餐提供顧客選擇,以全新的形象區別於同業,給客人全新的體驗');
+insert into [stores] (sName,sUsername,sPassword,sIntro,sLogo) values ('三色地瓜','0917-526-157','Threecolor3','我們是三色地瓜球三種地瓜所組合而成分別是台農57號-竹山地瓜芋頭地瓜（紫心地瓜）台農64號-黃金地瓜','images/stores/car1.jpg');
+insert into [stores] (sName,sUsername,sPassword,sIntro,sLogo) values ('派客機排','0933-049-585','Chickennn','台北市四平街起家的「2派克雞排」，以皮脆、肉多汁聞名，老闆李存祥創業不到三年，北台灣總店數56家，最優秀的加盟店，月營業額破百萬，這是68年次，玩物喪志、負債百萬的放蕩子，遭逢父親驟逝，力求出人頭地的命運交響曲，終以踏實的新態度，步步咀嚼成功的滋脆鮮甜。捷運板橋府中站出口，10數名上班族、學生成群圍著「2派克雞排」等候叫號，「人這麼多，我到另一家買好了！」剛到的客人阿雯見狀，旋即騎上機車到鄰近的板橋南雅店，沒想到，人潮依舊。阿雯與友人認命排隊，抱怨聲夾帶著期待的語氣：「這家的雞排，皮脆、肉汁甜，口味很讚，生意超好，想吃都得等很久。」這片「雞排」到底有什麼魔力？68年次的品牌創始人李存祥，神秘笑著回答：「是肉質誘人。」他創業近3年，目前已展店56家，生意最好的加盟店，月營業額上看百萬，利潤大約4成。','images/stores/car2.jpg');
+insert into [stores] (sName,sUsername,sPassword,sIntro,sLogo) values ('紅橘子小館','13906075848','Plmnko123','紅橘子精緻早餐,為新招牌的早餐連鎖店,有多道早餐套餐提供顧客選擇,以全新的形象區別於同業,給客人全新的體驗紅橘子精緻早餐,為新招牌的早餐連鎖店,有多道早餐套餐提供顧客選擇,以全新的形象區別於同業,給客人全新的體驗紅橘子精緻早餐,為新招牌的早餐連鎖店,有多道早餐套餐提供顧客選擇,以全新的形象區別於同業,給客人全新的體驗','images/stores/car3.jpg');
 
 CREATE TABLE [kinds] (
 kindID			int IDENTITY(10,10) NOT NULL,
@@ -81,14 +82,17 @@ constraint menus_kindID_fk foreign key (kindID) references kinds (kindID),
 constraint menus_sID_fk foreign key (sID) references stores (sID),
 constraint menus_primary_key primary key (foodID,sID),
 );
-insert into [menus] (foodName,sID,kindID,statusID,unitPrice) values ('地瓜球','1','10','1','40');
-insert into [menus] (foodName,sID,kindID,statusID,unitPrice) values ('紅茶','1','10','1','20');
-insert into [menus] (foodName,sID,kindID,statusID,unitPrice) values ('雞排','2','10','1','50');
-insert into [menus] (foodName,sID,kindID,statusID,unitPrice) values ('珍珠奶茶','2','10','1','35');
-insert into [menus] (foodName,sID,kindID,statusID,unitPrice) values ('雞排、珍珠奶茶','2','20','1','70');
-insert into [menus] (foodName,sID,kindID,statusID,unitPrice) values ('鮮蝦蒸餃','3','10','2','8');
-insert into [menus] (foodName,sID,kindID,statusID,unitPrice) values ('玉米濃湯','3','10','1','20');
-insert into [menus] (foodName,sID,kindID,statusID,unitPrice) values ('韭菜水餃','3','10','1','5');
+insert into [menus] (foodName,sID,kindID,statusID,unitPrice,foodIMG) values ('地瓜球','1','10','1','40','images/Menu/CGtJAd0UgAAdxXr.jpg');
+insert into [menus] (foodName,sID,kindID,statusID,unitPrice,foodIMG) values ('紅茶','1','10','1','20','images/Menu/16292228811_d9b61e1031_c.jpg');
+insert into [menus] (foodName,sID,kindID,statusID,unitPrice,foodIMG) values ('雞排','2','10','1','50','images/Menu/gp.jpg');
+insert into [menus] (foodName,sID,kindID,statusID,unitPrice,foodIMG) values ('珍珠奶茶','2','10','1','35','images/Menu/b285663a-af3b-427c-b493-2b01cda57257.png');
+insert into [menus] (foodName,sID,kindID,statusID,unitPrice,foodIMG) values ('雞排、珍珠奶茶','2','20','1','70','images/Menu/gp.jpg');
+insert into [menus] (foodName,sID,kindID,statusID,unitPrice,foodIMG) values ('鮮蝦蒸餃','3','10','2','8','images/Menu/R0051224.JPG');
+insert into [menus] (foodName,sID,kindID,statusID,unitPrice,foodIMG) values ('玉米濃湯','3','10','1','20','images/Menu/mobile01-87feff287face72dfdaff87419b09352.jpg');
+insert into [menus] (foodName,sID,kindID,statusID,unitPrice,foodIMG) values ('韭菜水餃','3','10','1','5','images/Menu/b8fb46_d90fc8ec1f6048eab22ff1ae56412854.jpg');
+insert into [menus] (foodName,sID,kindID,statusID,unitPrice,foodIMG) values ('韭菜水餃','3','10','1','5','images/Menu/b8fb46_d90fc8ec1f6048eab22ff1ae56412854.jpg');
+insert into [menus] (foodName,sID,kindID,statusID,unitPrice,foodIMG) values ('韭菜水餃','3','10','1','5','images/Menu/b8fb46_d90fc8ec1f6048eab22ff1ae56412854.jpg');
+insert into [menus] (foodName,sID,kindID,statusID,unitPrice,foodIMG) values ('韭菜水餃','3','10','1','5','images/Menu/b8fb46_d90fc8ec1f6048eab22ff1ae56412854.jpg');
 
 CREATE TABLE [checkoutStatus] (
 cksID		int IDENTITY(10,10) NOT NULL,

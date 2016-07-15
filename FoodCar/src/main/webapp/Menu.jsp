@@ -172,14 +172,19 @@
   
   
     var $j = jQuery.noConflict();
+	
     $j('.checkout').on('click',function(){
-    	  var arrCar = [];
-    	    $('#car').each(function () {
+    	var arrCar = [];
+    	$('#car').each(function () {
+    		  var count=0
+    	    	count++
     	    	arrCar.push($(this).attr('fID'))
-    	    	 console.log(arrCar)
+    	    	console.log(arrCar)
+       	        console.log(count)
     	    	});
     	   
-    	  $j.post("order", { "unitPrice": $(this).attr("id") });
+    	   
+//     	  $j.post("order", { "unitPrice": $(this).attr("id") });
     	
    	  
 //    	  $('#car').each(function(){
