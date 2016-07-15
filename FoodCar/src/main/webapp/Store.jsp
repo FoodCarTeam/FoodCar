@@ -160,7 +160,21 @@
                 </div>
               </div>
             </div>
-            <div id="GoogleMap"></div>
+            <div id="GoogleMap">
+            
+             <div class="map" style="height: auto;">
+<!--              width="100%" height="200" frameborder="0" style="display: none; border: 0; -->
+<!-- 				<div style="width:600px;margin:auto;"> -->
+              <img style="max-width:990px;max-height:300px;margin:auto;" src='http://maps.googleapis.com/maps/api/staticmap?center=25.033681,121.564726&zoom=16&size=1000x300&scale=2&markers=25.033681,121.564726&key=AIzaSyAgdzYOT0U2y-fUVpAfkf-XjCvXzY5-e-A'/>
+<!--              	</div> -->
+              <p><img  class="map-unveil" data-src="http://torontofoodtrucks.ca/wp-content/themes/foodtrucks/images/menu-icon.png" style="position: absolute;" />
+            </p>
+                  </div>
+            
+            </div>
+            
+            
+            
            
 
           <!--/地圖-->  

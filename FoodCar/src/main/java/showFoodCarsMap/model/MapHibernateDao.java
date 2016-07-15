@@ -101,7 +101,6 @@ public class MapHibernateDao implements MapDaoInterface {
 			Query query=session.createQuery(UPDATE);
 			query.setParameter("location",map.getLocation());
 			query.setParameter("sID",map.getsID());
-			
 			query.executeUpdate();
 			session.getTransaction().commit();
 		} catch (Exception e) {
