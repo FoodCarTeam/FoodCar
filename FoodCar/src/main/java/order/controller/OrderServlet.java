@@ -20,9 +20,6 @@ public class OrderServlet extends HttpServlet {
 		
 		String prices = request.getParameter("unitPrice");
 	
-		
-		
-			
 			System.out.println(prices);
 		
 	}

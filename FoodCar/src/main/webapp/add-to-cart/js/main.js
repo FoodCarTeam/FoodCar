@@ -5,7 +5,7 @@ jQuery(document).ready(function($){
 	var price =null;
 	var productName = null;
 	var image = null;
-   
+    var id=null;
     
     
    $('#2').removeClass('cd-add-to-cart').addClass('cd-add-to-cartx')
@@ -27,6 +27,7 @@ jQuery(document).ready(function($){
 			 price =$(this).attr("data-price")
 			 productName = $(this).attr("data-name")
 			 image = $(this).attr("data-image")
+			 id=$(this).attr("data-id")
 			event.preventDefault();
 			addToCart($(this));
 		});
@@ -103,7 +104,7 @@ jQuery(document).ready(function($){
 		//replace productId, productName, price and url with your real product info
 		
 		productId = productId + 1;
-		var productAdded = $('<li class="product"><div class="product-image"><a href="#0"><img src="'+image+'" alt="placeholder"></a></div><div class="product-details"><h3><a href="#0" style="font-size:15px" >'+productName+'</a></h3><span class="price" style="font-size:15px">'+'$'+price+'</span><div class="actions"><a href="#0" class="delete-item" style="color:red;font-size:15px;margin-right: 100px;">刪除</a><div class="quantity" style="margin-left:60px" ><label for="cd-product-'+ productId +'">數量</label><span class="select"><select id="cd-product-'+ productId +'" name="quantity" style="font-size:15px"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option></select></span></div></div></div></li>');
+		var productAdded = $('<li class="product"><div class="product-image"><a href="#0"><img src="'+image+'" alt="placeholder"></a></div><div class="product-details"><h3><a href="#0" style="font-size:15px" >'+productName+'</a></h3><span class="price" style="font-size:15px">'+'$'+price+'</span><div class="actions"><a href="#0" class="delete-item" style="color:red;font-size:15px;margin-right: 100px;">刪除</a><div class="quantity" style="margin-left:60px" ><label for="cd-product-'+ productId +'" id="car" fID="'+id+'" >數量</label><span class="select"><select id="cd-product-'+ productId +'" name="quantity" style="font-size:15px"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option></select></span></div></div></div></li>');
 		cartList.prepend(productAdded);
 	}
 
