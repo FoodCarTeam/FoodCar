@@ -56,6 +56,7 @@
 
 
 
+
 </head>
 <body
 	class="page page-id-8736 page-template page-template-template-truck-page page-template-template-truck-page-php born2eat-food-truck-toronto">
@@ -155,6 +156,7 @@
 						<script type='text/javascript'
 							src="bootstrap/js/jquery.redirect.js"></script>
 						<script>
+
     $('.book-button').on('click',function(){
     	$.redirect("Menu", { "sID": ${select.sID} });
     });

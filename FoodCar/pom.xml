@@ -27,11 +27,12 @@
 			<version>1.2</version>
 		</dependency>
 
-		<dependency>
+	<dependency>
 			<groupId>com.microsoft</groupId>
 			<artifactId>sqlserverjdbc</artifactId>
 			<version>4.0</version>
 		</dependency>
+
 		<!-- https://mvnrepository.com/artifact/com.googlecode.json-simple/json-simple -->
 		<dependency>
 			<groupId>com.googlecode.json-simple</groupId>

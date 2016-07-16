@@ -18,9 +18,14 @@ public class OrderServlet extends HttpServlet {
 		response.setHeader("content-type", "text/html;charset=UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		
-		String prices = request.getParameter("unitPrice");
-	
-			System.out.println(prices);
+		String[] foodId = request.getParameterValues("foodId[]");
+		String[] foodQuan = request.getParameterValues("foodQuan[]");
+
+	      for(int i=0; i<foodId.length; i++){
+	    	  System.out.println("id = " + foodId[i]);
+	    	  System.out.println("quan = " + foodQuan[i]);
+	      }
+			
 		
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
