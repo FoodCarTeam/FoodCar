@@ -1,15 +1,33 @@
 package model;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class CommentsVO implements java.io.Serializable {
 
 	private Integer cID ;
 	private Integer mID ;
+	private Integer sID ;
 	private java.sql.Date cDate ;
 	private String cContent ;
-	private String cRespone ;
-	private String point ;
+	private String cPoint ;
 	private Byte[] cIP ;
 	
+	private Set<ResponseVO> responseVO=new HashSet<ResponseVO>();
+	
+	
+	public Set<ResponseVO> getResponseVO() {
+		return responseVO;
+	}
+	public void setResponseVO(Set<ResponseVO> responseVO) {
+		this.responseVO = responseVO;
+	}
+	public Integer getsID() {
+		return sID;
+	}
+	public void setsID(Integer sID) {
+		this.sID = sID;
+	}
 	public Integer getcID() {
 		return cID;
 	}
@@ -34,17 +52,11 @@ public class CommentsVO implements java.io.Serializable {
 	public void setcContent(String cContent) {
 		this.cContent = cContent;
 	}
-	public String getcRespone() {
-		return cRespone;
+	public String getcPoint() {
+		return cPoint;
 	}
-	public void setcRespone(String cRespone) {
-		this.cRespone = cRespone;
-	}
-	public String getPoint() {
-		return point;
-	}
-	public void setPoint(String point) {
-		this.point = point;
+	public void setcPoint(String point) {
+		this.cPoint = point;
 	}
 	public Byte[] getcIP() {
 		return cIP;

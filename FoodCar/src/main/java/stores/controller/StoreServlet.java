@@ -38,11 +38,10 @@ public class StoreServlet extends HttpServlet {
 		 Set<MapsVO> map = result.getMapVO();
 		 Set<MenusVO> menus = result.getMenusVO();
 
-		 String[] loc=null;
+		 String loc=null;
 		 for(MapsVO a:map){
-
-			loc=a.getLocation().split(",");
-			 System.out.println(a.getLocation());
+			loc=a.getLocation();
+			 System.out.println(loc);
 		 }
 		 request.setAttribute("menus", menus);
 		 request.setAttribute("select", result);

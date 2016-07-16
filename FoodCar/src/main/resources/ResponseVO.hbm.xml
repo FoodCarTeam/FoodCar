@@ -3,24 +3,22 @@
 	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 2012/3/7 ?W?? 09:15:15 by Hibernate Tools 3.3.0.GA -->
 <hibernate-mapping>
-	<class name="model.CommentsVO" table="comments">
+	<class name="model.ResponseVO" table="response">
 
-		<id name="cID" column="cID">
+		<id name="rID" column="rID">
 			<generator class="identity" />
 
 		</id>
 
-		<property name="mID" column="mID" />
-		<property name="sID" column="sID" />
+		<property name="cID" column="cID" />
+		<property name="sName" column="sName" />
+		<property name="mName" column="mName" />
 		<property name="cDate" column="cDate" />
 		<property name="cContent" column="cContent" />
-		<property name="cPoint" column="cPoint" />
 		<property name="cIP" column="cIP" />
 		
-		<set name="responseVO" table="response" lazy="false" cascade="all" inverse="true">
-			<key column="cID"/>
-			<one-to-many class="model.ResponseVO" />
-		</set>
+<!-- 		<many-to-one name="CommentsVO" class="model.CommentsVO" lazy="false" -->
+<!-- 			column="cID" insert="false" update="false" not-found="ignore" /> -->
 		
 
 	</class>
