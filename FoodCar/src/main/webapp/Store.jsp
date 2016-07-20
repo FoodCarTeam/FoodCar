@@ -151,16 +151,8 @@
 				<div class="truck-details">
 					<div class="content">
 						<h1>
-							${select.sName} <a class="book-button">點餐</a>
+							${select.sName} <a class="book-button" href="menu?s=${select.sID}">點餐</a>
 						</h1>
-						<script type='text/javascript'
-							src="bootstrap/js/jquery.redirect.js"></script>
-						<script>
-
-    $('.book-button').on('click',function(){
-    	$.redirect("Menu", { "sID": ${select.sID} });
-    });
-</script>
 						<div class="article text">
 							<p>
 								<img class="alignnone size-full wp-image-8737"

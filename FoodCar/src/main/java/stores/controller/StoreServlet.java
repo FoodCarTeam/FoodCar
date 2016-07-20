@@ -22,14 +22,14 @@ import model.MenusVO;
 import model.StoresVO;
 import stores.model.StoresService;
 
-@WebServlet("/Store")
+@WebServlet("/store")
 public class StoreServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		StoresService storesService = new StoresService();
 		response.setHeader("content-type", "text/html;charset=UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		
-		String id = request.getParameter("sID");
+		String id = request.getParameter("s");
 		System.out.println(id);
 		int sID = 0;
 		 if(id!=null&&id.length()!=0){

@@ -39,6 +39,7 @@ public class CheckOutServlet extends HttpServlet {
 		String[] img = request.getParameterValues("img[]");
 		String sID = request.getParameter("sID");
 		String total = request.getParameter("total");
+		String sName = request.getParameter("sName");
 		//轉換資料
 		
 		int storeID = Integer.parseInt(sID);
@@ -88,7 +89,18 @@ public class CheckOutServlet extends HttpServlet {
 			
 			serviceD.insert(resultD);
 		}
+		String saleDate = result.getSaleDate().toString();
+		request.setAttribute("sID", sID);
+		request.setAttribute("saleDate", saleDate);
+		request.setAttribute("sName", sName);
+		request.setAttribute("name", name);
+		request.setAttribute("price", price);
+		request.setAttribute("fQ", fQ);
+		request.setAttribute("memo", memo);
+		request.setAttribute("ptotal", ptotal);
+		request.setAttribute("total", total);
 		
+		request.getRequestDispatcher("/orderdetail.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

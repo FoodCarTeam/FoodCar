@@ -208,18 +208,23 @@
       
       </div>
     </div>
+    <script type='text/javascript' src="bootstrap/js/jquery.redirect.js"></script>  
     <script src="bootstrap/sweetAlert/sweetalert.min.js"></script> 
     <link rel="stylesheet" type="text/css" href="bootstrap/sweetAlert/sweetalert.css">
     <script>
       var product_list = $('.ptotal')
       var products = 0
-      for(var i=0;i<product_list.length;i++){
+      for(var i=0;i<product_list.length;i++){   //計算總金額
     	  products=products+parseInt($(product_list[i]).text().substr(1));
       }
       $('.total').text(products)
       
-      
-      $('.btn-danger').on('click',function(){
+      var foods = null;
+      $('.btn-danger').on('click',function(){     //刪除品項
+    	  foods = $('.foods')
+    	  if(foods.length==1){
+    		  swal("注意!", "再刪掉就沒商品囉!", "warning")
+    	  }else{
     	  $(this).parents('tr').remove();
     	  var d_product_list =$('.ptotal');
     	  var d_tatol=0
@@ -228,11 +233,12 @@
     	      }
     	  $('.total').text(d_tatol)
     	  console.log(d_tatol)
+    	  }
       })
       
-      $('.quen').on('change',function(){
+      $('.quen').on('change',function(){          //更改數量後計算金額
     	  var qu = $(this).val()
-    	  var reg = /^[0-9]\S*$/; 
+    	  var reg = /^[1-9]\S*$/; 
     	  if(reg.test(qu)){
     	  var ptotal = $(this).parents('tr').children().children('.ptotal')
     	  var p = $(this).parents('tr').children().children('.price')
@@ -246,9 +252,10 @@
   	      }
   	       $('.total').text(c_tatol)
     	  }else{
-    		  sweetAlert("錯誤", "請輸入數字", "error");
+    		  sweetAlert("錯誤", "請輸入數字", "warning");
     		  qu = $(this).val(1)
     		  $(this).parents('tr').children().children('.ptotal').text($(this).parents('tr').children().children('.price').text())
+    		  
     	  }
       })
        $('.checkout').on('click',function(){
@@ -281,16 +288,35 @@
     		  }
     		  
     		  
-    		  console.log(fID_arr)
-    		  console.log(q_arr)
-    		  console.log(ptotal_arr)
-    		  console.log(price_arr)
-    		  console.log(memo_arr)
-    		  console.log(name_arr)
-    		  console.log(img_arr)
-    		  console.log("${sID}")
+//     		  console.log(fID_arr)
+//     		  console.log(q_arr)
+//     		  console.log(ptotal_arr)
+//     		  console.log(price_arr)
+//     		  console.log(memo_arr)
+//     		  console.log(name_arr)
+//     		  console.log(img_arr)
+//     		  console.log("${sID}")
+             
+              swal({   
+            	  title: "結帳確認",   
+            	  text: "結帳後無法修改訂單內容!",   
+            	  type: "info",   
+            	  showCancelButton: true,   
+            	  confirmButtonColor: "#DD6B55",   
+            	  confirmButtonText: "確定",
+            	  cancelButtonText: "取消",
+            	  closeOnConfirm: false 
+            	  }, 
+            function(){
+            	  swal({title:"結帳成功", text:"訂單已送出!",type: "success"},function(){
+            		  $.redirect('checkout',{"fID":fID_arr,"fQ":q_arr,"ptotal":ptotal_arr,"price":price_arr,"memo":memo_arr,"name":name_arr,"img":img_arr,"sID":"${sID}","total":total,"sName":"${sName}"})
+                	  console.log("結帳成功");
+            		  
+            	  }); 
+            	  
+            	   });
     		  
-    		  $.post('checkout',{"fID":fID_arr,"fQ":q_arr,"ptotal":ptotal_arr,"price":price_arr,"memo":memo_arr,"name":name_arr,"img":img_arr,"sID":"${sID}","total":total})
+    		  
     	  })
     </script>
 <!-- /Footer -->

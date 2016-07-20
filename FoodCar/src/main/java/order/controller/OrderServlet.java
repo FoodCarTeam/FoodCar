@@ -31,6 +31,7 @@ public class OrderServlet extends HttpServlet {
 		String[] foodImg = request.getParameterValues("foodImg[]");
 		String[] foodPrice = request.getParameterValues("foodPrice[]");
 		String sID =request.getParameter("sID");
+		String sName =request.getParameter("sName");
 		System.out.println("ID ="+sID);
 		
 	      for(int i=0; i<foodId.length; i++){
@@ -48,6 +49,7 @@ public class OrderServlet extends HttpServlet {
 		request.setAttribute("fImg", foodImg);
 		request.setAttribute("fPrice", foodPrice);
 		request.setAttribute("sID", sID);
+		request.setAttribute("sName", sName);
 		request.getRequestDispatcher("/order.jsp").forward(request, response);
 		
 	}

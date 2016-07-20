@@ -195,7 +195,7 @@
     		arrCarPrice[i] = $(price_list[i]).text().substr(1);
     	}
     	
-     	$j.redirect("order", { "foodId": arrCarId, "foodQuan": arrCarQuan ,"foodName":arrCarname,"foodImg":arrCarImg,"foodPrice":arrCarPrice,"sID":sID});
+     	$j.redirect("order", { "foodId": arrCarId, "foodQuan": arrCarQuan ,"foodName":arrCarname,"foodImg":arrCarImg,"foodPrice":arrCarPrice,"sID":sID,"sName":"${select.sName }"});
    	  
 //    	  $('#car').each(function(){
 //    		  count++

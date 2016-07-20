@@ -23,7 +23,7 @@ public class OrderDAOHibernate implements OrderDAO {
 			session.saveOrUpdate(vo);
 			session.getTransaction().commit();
 		} catch (RuntimeException ex) {
-			session.getTransaction().commit();
+			session.getTransaction().rollback();
 			throw ex;
 		}
 		return null;
