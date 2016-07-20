@@ -40,6 +40,9 @@
         <mapping resource="CommentsVO.hbm.xml" />
         <mapping resource="OrderVO.hbm.xml" />
         <mapping resource="OrderDetailsVO.hbm.xml" />
+        <mapping resource="ResponseVO.hbm.xml" />
+        <mapping resource="manager.hbm.xml" />
+
 
     </session-factory>
 </hibernate-configuration>

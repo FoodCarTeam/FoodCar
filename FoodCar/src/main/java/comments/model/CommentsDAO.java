@@ -12,37 +12,100 @@ import hibernate.util.HibernateUtil;
 import model.CommentsVO;
 
 public class CommentsDAO implements commentsDaoInterface{
-	final static String SELECT="from CommentsVO where mID=:mID";
-	final static String SELECTALL="from CommentsVO order by cDate";
-	final static String INSERT="insert into CommentsVO(mID,cDate,cContent,cRespone,point,cIP)";
-	final static String UPDATE="update CommentsVO set cDate=:cDate,cContent=:cContent,cRespone=:cRespone,point=:point,cIP=:cIP"
-										+"where cID=:cID";
+	final static String SELECT_mID="from CommentsVO where mID=:mID";
+	final static String SELECT_sID="from CommentsVO where sID=:sID";
+	final static String Sselect_ALL_mID="from CommentsVO  where mID=:mID order by cDate";
+	final static String Sselect_ALL_sID="from CommentsVO  where sID=:sID order by cDate";
+//	final static String INSERT="insert into CommentsVO(mID,sID,cDate,cContent,cPoint,cIP)";
+//	final static String UPDATE="update CommentsVO set mID=:mID,sID=:sID,cDate=:cDate,cContent=:cContent,cPoint=:cPoint,cIP=:cIP"
+//										+"where cID=:cID";
 	final static String DELETE="delete CommentsVO where cID=:cID";
-	
-	
 	public static void main(String[] args) {
-		CommentsDAO dao=new CommentsDAO();
-		CommentsVO vo=new CommentsVO();
-		vo.setmID(1);
-		Date date=new Date();
-		vo.setcDate(new java.sql.Date(date.getTime()));
-		vo.setcContent("testeestsetst測試");
-		vo.setcRespone("123");
-		vo.setPoint("123");
-		String a=1;
-		vo.setcIP(a.getBytes());
-		CommentsVO result=dao.insert(vo);
-		System.out.println(result.getcContent());
+//		CommentsDAO dao=new CommentsDAO();
+//		CommentsVO vo=new CommentsVO();
+//		測試新增
+//		vo.setmID(1);
+//		vo.setsID(3);
+//		Date date=new Date();
+//		vo.setcDate(new java.sql.Date(date.getTime()));
+//		vo.setcContent("tdast測試dasdas");
+//		vo.setcPoint("123");
+//		String a="123";
+//		byte ab[]=a.getBytes();
+//		Byte ba[]=new Byte[ab.length];
+//		 for (int i = 0; i < ab.length; i++)
+//		    {
+//		        ba[i] = Byte.valueOf(ab[i]);
+//		    }
+//		vo.setcIP(ba);
+//		CommentsVO result=dao.insert(vo);
+//		System.out.println(result.getcContent());
+		
+//		測試修改
+//		vo.setcID(1);
+//		vo.setmID(1);
+//		vo.setsID(1);
+//		Date date=new Date();
+//		vo.setcDate(new java.sql.Date(date.getTime()));
+//		vo.setcContent("testeqwqeqeqweqweqweqweqwtst測試");
+//		vo.setcPoint("123");
+//		String a="123";
+//		byte ab[]=a.getBytes();
+//		Byte ba[]=new Byte[ab.length];
+//		 for (int i = 0; i < ab.length; i++)
+//		    {
+//		        ba[i] = Byte.valueOf(ab[i]);
+//		    }
+//		vo.setcIP(ba);
+//		dao.update(vo);
+		
+//		測試單查sID
+//		CommentsVO a=dao.select_sID(1);
+//		System.out.println(a.getcContent());
+//		測試單查mID
+//		CommentsVO b=dao.select_mID(1);
+//		System.out.println(b.getcContent());
+//		測試多查mID
+//		List<CommentsVO> list=dao.select_ALL_mID(1);
+//		for(CommentsVO a:list){
+//			System.out.println(a.getcContent());
+//		}
+//		測試多查sID
+//		List<CommentsVO> list=dao.select_ALL_sID(2);
+//		for(CommentsVO a:list){
+//			System.out.println(a.getcContent());
+//		}
+//		測試刪除
+//		Boolean result=dao.delete(6);
+//		System.out.print(result);
 
 	}
 
 	@Override
-	public CommentsVO select(int mID) {
+	public CommentsVO select_sID(int sID) {
 		Session session=HibernateUtil.getSessionFactory().getCurrentSession();
 		CommentsVO vo=null;
 		try {
 			session.beginTransaction();
-			Query query=session.createQuery(SELECT);
+			Query query=session.createQuery(SELECT_sID);
+			query.setParameter("sID",sID);
+			vo=(CommentsVO)query.uniqueResult();
+			session.getTransaction().commit();
+		} catch (Exception e) {
+			session.getTransaction().rollback();
+			e.printStackTrace();
+		}
+		return vo;
+	}
+
+
+	@Override
+	public CommentsVO select_mID(int mID) {
+		Session session=HibernateUtil.getSessionFactory().getCurrentSession();
+		CommentsVO vo=null;
+		try {
+			session.beginTransaction();
+			Query query=session.createQuery(SELECT_mID);
 			query.setParameter("mID",mID);
 			vo=(CommentsVO)query.uniqueResult();
 			session.getTransaction().commit();
@@ -54,12 +117,30 @@ public class CommentsDAO implements commentsDaoInterface{
 	}
 
 	@Override
-	public List<CommentsVO> select_ALL() {
+	public List<CommentsVO> select_ALL_sID(int sID) {
 		Session session=HibernateUtil.getSessionFactory().getCurrentSession();
 		List<CommentsVO> list=null;
 		try {
 			session.beginTransaction();
-			Query query=session.createQuery(SELECTALL);
+			Query query=session.createQuery(Sselect_ALL_sID);
+			query.setParameter("sID", sID);
+			list=query.list();
+			session.getTransaction().commit();
+		} catch (Exception e) {
+			session.getTransaction().rollback();
+			e.printStackTrace();
+		}
+		return list;
+	}
+
+	@Override
+	public List<CommentsVO> select_ALL_mID(int mID) {
+		Session session=HibernateUtil.getSessionFactory().getCurrentSession();
+		List<CommentsVO> list=null;
+		try {
+			session.beginTransaction();
+			Query query=session.createQuery(Sselect_ALL_mID);
+			query.setParameter("mID", mID);
 			list=query.list();
 			session.getTransaction().commit();
 		} catch (Exception e) {
@@ -74,8 +155,7 @@ public class CommentsDAO implements commentsDaoInterface{
 		Session session=HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
 			session.beginTransaction();
-			Query query=session.createQuery(INSERT);
-			int Result=query.executeUpdate();
+			session.save(vo);
 			session.getTransaction().commit();
 		} catch (Exception e) {
 			session.getTransaction().rollback();
@@ -90,13 +170,16 @@ public class CommentsDAO implements commentsDaoInterface{
 		Session session =HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
 			session.beginTransaction();
-			Query query=session.createQuery(UPDATE);
-			query.setParameter("cDate",vo.getcDate());
-			query.setParameter("cContent", vo.getcContent());
-			query.setParameter("cRespone", vo.getcRespone());
-			query.setParameter("point",vo.getPoint());
-			query.setParameter("cIP", vo.getcIP());
-			int Result=query.executeUpdate();
+			
+			CommentsVO a=new CommentsVO();
+			a.setcID(vo.getcID());
+			a.setmID(vo.getmID());
+			a.setsID(vo.getsID());
+			a.setcContent(vo.getcContent());
+			a.setcDate(vo.getcDate());
+			a.setcPoint(vo.getcPoint());
+			a.setcIP(vo.getcIP());
+			session.update(a);
 			session.getTransaction().commit();
 		} catch (Exception e) {
 			session.getTransaction().rollback();
@@ -110,6 +193,7 @@ public class CommentsDAO implements commentsDaoInterface{
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		boolean result=false;
 		try {
+			session.beginTransaction();
 			Query query=session.createQuery(DELETE);
 			query.setParameter("cID", cID);
 			query.executeUpdate();

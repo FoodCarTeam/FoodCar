@@ -6,8 +6,12 @@ import model.CommentsVO;
 
 public interface commentsDaoInterface {
 	
-	CommentsVO select(int mID);
-	List<CommentsVO> select_ALL();
+	CommentsVO select_sID(int sID);
+	CommentsVO select_mID(int mID);
+
+	List<CommentsVO> select_ALL_mID(int mID);
+	List<CommentsVO> select_ALL_sID(int sID);
+	
 	CommentsVO insert(CommentsVO vo);
 	CommentsVO update(CommentsVO vo);
 	boolean delete(int cID);
