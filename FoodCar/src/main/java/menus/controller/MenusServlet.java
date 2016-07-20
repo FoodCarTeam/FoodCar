@@ -20,7 +20,7 @@ public class MenusServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
  
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		MenusService menusService = new MenusService();
+		
 		StoresService storesService = new StoresService();
 		response.setHeader("content-type", "text/html;charset=UTF-8");
 		response.setCharacterEncoding("UTF-8");

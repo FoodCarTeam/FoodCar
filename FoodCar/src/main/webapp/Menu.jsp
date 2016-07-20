@@ -174,20 +174,28 @@
     
     $j('.checkout').on('click',function(){
     	
-    	
     	var id_list = $('.car');
-    	
     	var quan_list = $('select[name="quantity"]');
-
+    	var name_list = $('.pName')
+        var img_list=$('.pImg')
+        var price_list=$('.price')
+        
     	var arrCarId = [];
     	var arrCarQuan = [];
-
+        var arrCarname = [];
+        var arrCarImg = [];
+        var arrCarPrice = [];
+        
+        var sID = ${select.sID}
     	for(var i=0; i<id_list.length; i++) {
     		arrCarId[i] = $(id_list[i]).attr('fID');
     		arrCarQuan[i] = $(quan_list[i]).val();
+    		arrCarname[i] = $(name_list[i]).text();
+    		arrCarImg[i] = $(img_list[i]).attr('src');
+    		arrCarPrice[i] = $(price_list[i]).text().substr(1);
     	}
     	
-     	$j.post("order", { "foodId": arrCarId, "foodQuan": arrCarQuan });
+     	$j.redirect("order", { "foodId": arrCarId, "foodQuan": arrCarQuan ,"foodName":arrCarname,"foodImg":arrCarImg,"foodPrice":arrCarPrice,"sID":sID});
    	  
 //    	  $('#car').each(function(){
 //    		  count++

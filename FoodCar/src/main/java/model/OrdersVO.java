@@ -1,14 +1,15 @@
 package model;
 
-
+import java.util.Date;
 
 public class OrdersVO implements java.io.Serializable {
 
 	private Integer oID ;
 	private Integer sID ;
 	private Integer mID ;
-	private java.sql.Date saleDate ;
-	private Integer cksID ;
+	private Integer amount ;
+	private Date saleDate ;
+	private Integer checkOut ;
 	
 	
 	public Integer getoID() {
@@ -29,19 +30,25 @@ public class OrdersVO implements java.io.Serializable {
 	public void setmID(Integer mID) {
 		this.mID = mID;
 	}
-	public java.sql.Date getSaleDate() {
+	public Date getSaleDate() {
 		return saleDate;
 	}
-	public void setSaleDate(java.sql.Date saleDate) {
+	public void setSaleDate(Date saleDate) {
 		this.saleDate = saleDate;
 	}
 
-	public Integer getCksID() {
-		return cksID;
+	public Integer getAmount() {
+		return amount;
 	}
-	public void setCksID(Integer cksID) {
-		this.cksID = cksID;
+	public void setAmount(Integer amount) {
+		this.amount = amount;
 	}
-
+	public Integer getCheckOut() {
+		return checkOut;
+	}
+	public void setCheckOut(Integer checkOut) {
+		this.checkOut = checkOut;
+	}
+    
 	
 }
