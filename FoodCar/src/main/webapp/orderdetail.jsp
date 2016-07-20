@@ -148,8 +148,8 @@
     
         <div class="col-xs-10">
     		<div class="invoice-title">
-    			<h3>${sName }</h3>
-    			<h3 class="pull-right">結帳日期:${saleDate}</h3>
+    			<h3>${data.sName }</h3>
+    			<h3 class="pull-right">結帳日期:${data.saleDate}</h3>
     		</div>
     		
     	</div>
@@ -159,7 +159,7 @@
     	<div class="col-md-12">
     		<div class="panel panel-default">
     			<div class="panel-heading">
-    				<h3 class="panel-title"><strong>訂單明細  <div class="pull-right">訂單編號:1001</div></strong></h3>
+    				<h3 class="panel-title"><strong>訂單明細  <div class="pull-right">訂單編號:${data.oID}</div></strong></h3>
     			</div>
     			<div class="panel-body">
     				<div class="table-responsive">
@@ -189,12 +189,12 @@
     								<td class="thick-line"></td>
     								<td class="thick-line"></td>
     								<td class="thick-line text-center"><strong>結算</strong></td>
-    								<td class="thick-line text-right">$${total }</td>
+    								<td class="thick-line text-right">$${data.total}</td>
     							</tr>
     							
     						</tbody>
     					</table>
-    					<button type="button" class="btn btn-primary pull-right" ><a href="store?s=${sID}">返回</a></button>
+    					<button type="button" class="btn btn-primary pull-right"  onclick="location.href='store?s=${data.sID}'" >返回</button>
     				</div>
     			</div>
     		</div>
@@ -232,6 +232,7 @@
                   prependTo: '#MenuPhone'
               });
           });
+          
     </script>
   </body>
 </html>

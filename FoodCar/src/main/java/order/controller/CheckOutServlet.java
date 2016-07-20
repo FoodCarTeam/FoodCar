@@ -4,12 +4,15 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.OrderDetailsVO;
 import model.OrdersVO;
@@ -89,18 +92,24 @@ public class CheckOutServlet extends HttpServlet {
 			
 			serviceD.insert(resultD);
 		}
-		String saleDate = result.getSaleDate().toString();
-		request.setAttribute("sID", sID);
-		request.setAttribute("saleDate", saleDate);
-		request.setAttribute("sName", sName);
-		request.setAttribute("name", name);
-		request.setAttribute("price", price);
-		request.setAttribute("fQ", fQ);
-		request.setAttribute("memo", memo);
-		request.setAttribute("ptotal", ptotal);
-		request.setAttribute("total", total);
+		Date sDate = result.getSaleDate();
+		String saleDate = sdf.format(sDate);
+		Map<String, String> map = new HashMap<>();
+		map.put("oID", oID+"");
+		map.put("sID", sID+"");
+		map.put("saleDate", saleDate);
+		map.put("sName", sName);
+		map.put("total", total);
 		
-		request.getRequestDispatcher("/orderdetail.jsp").forward(request, response);
+		HttpSession session = request.getSession();
+		session.setAttribute("data", map);
+		session.setAttribute("name", name);
+		session.setAttribute("price", price);
+		session.setAttribute("fQ", fQ);
+		session.setAttribute("memo", memo);
+		session.setAttribute("ptotal", ptotal);
+		//request.getRequestDispatcher("/orderdetail.jsp").forward(request, response);
+		response.sendRedirect(request.getContextPath()+"/orderdetail.jsp");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
