@@ -63,10 +63,10 @@
     </div>
     <div id="MenuPhone">
       <ul id="menu-mobile">
-         <li><a href="stores.html">餐車專區</a></li>
-         <li><a href="map.html">地圖</a></li>
-         <li><a href="about.html">關於我們</a></li>
-         <li><a href="login.html">登入</a></li>
+         <li ><a href="stores.jsp">餐車專區</a></li>
+         <li ><a href="map.jsp">地圖</a></li>
+         <li ><a href="about.jsp">關於我們</a></li>
+         <li ><a href="login.jsp">登入</a></li>
       </ul>
     </div>
 <!--/列表bootstrap-->
@@ -100,10 +100,10 @@
               <li class="side-menu has-dropdown">
                 <a href="#" class="menu"></a>
                 <ul class="dropdown">
-                  <li><a href="stores.html">餐車專區</a></li>
-                  <li><a href="map.html">地圖</a></li>
-                  <li><a href="about.html">關於我們</a></li>
-                  <li><a href="login.html">登入</a></li>
+                   <li><a href="stores.jsp">餐車專區</a></li>
+                  <li><a href="map.jsp">地圖</a></li>
+                  <li><a href="about.jsp">關於我們</a></li>
+                  <li><a href="login.jsp">登入</a></li>
                 </ul>
               </li>
 <!--/列表右邊list工具列-->
@@ -174,20 +174,28 @@
     
     $j('.checkout').on('click',function(){
     	
-    	
     	var id_list = $('.car');
-    	
     	var quan_list = $('select[name="quantity"]');
-
+    	var name_list = $('.pName')
+        var img_list=$('.pImg')
+        var price_list=$('.price')
+        
     	var arrCarId = [];
     	var arrCarQuan = [];
-
+        var arrCarname = [];
+        var arrCarImg = [];
+        var arrCarPrice = [];
+        
+        var sID = ${select.sID}
     	for(var i=0; i<id_list.length; i++) {
     		arrCarId[i] = $(id_list[i]).attr('fID');
     		arrCarQuan[i] = $(quan_list[i]).val();
+    		arrCarname[i] = $(name_list[i]).text();
+    		arrCarImg[i] = $(img_list[i]).attr('src');
+    		arrCarPrice[i] = $(price_list[i]).text().substr(1);
     	}
     	
-     	$j.post("order", { "foodId": arrCarId, "foodQuan": arrCarQuan });
+     	$j.redirect("order", { "foodId": arrCarId, "foodQuan": arrCarQuan ,"foodName":arrCarname,"foodImg":arrCarImg,"foodPrice":arrCarPrice,"sID":sID,"sName":"${select.sName }"});
    	  
 //    	  $('#car').each(function(){
 //    		  count++

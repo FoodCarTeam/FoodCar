@@ -15,17 +15,21 @@ import model.MenusVO;
 import model.StoresVO;
 import stores.model.StoresService;
 
-@WebServlet("/Menu")
+@WebServlet("/menu")
 public class MenusServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
  
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		MenusService menusService = new MenusService();
+		
 		StoresService storesService = new StoresService();
 		response.setHeader("content-type", "text/html;charset=UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		
 		String id = request.getParameter("s");
+
+		String sName = request.getParameter("sName");
+		
+
 		if(id !=null && id.length()!=0){
 			int sID = Integer.parseInt(id);
 			 StoresVO result = storesService.select(sID);
@@ -35,6 +39,7 @@ public class MenusServlet extends HttpServlet {
 			 }
 			request.setAttribute("select", result); 
 			request.setAttribute("Menus", menus);
+			request.setAttribute("sName", sName);
 			request.getRequestDispatcher(
 					"/Menu.jsp").forward(request, response);
 		}

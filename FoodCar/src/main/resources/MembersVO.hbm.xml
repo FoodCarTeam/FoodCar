@@ -5,21 +5,34 @@
 <hibernate-mapping>
 	<class name="model.MembersVO" table="members">
 
-		<id name="mID" column="mID">
+		<id name="mID">
+			<column name="mID" />
 			<generator class="identity" />
-
 		</id>
 
-		<property name="mUsername" column="mUsername" />
-		<property name="mPassword" column="mPassword" />
-		<property name="mName" column="mName" />
-		<property name="mAddress" column="mAddress" />
-		<property name="mPhone" column="mPhone" />
-		<property name="mBirthday" column="mBirthday" />
-		<property name="mIMG" column="mIMG" />
+		<property name="mUsername">
+			<column name="mUsername" />
+		</property>
 
-	
+		<property name="mPassword">
+			<column name="mPassword" />
+		</property>
 
+		<property name="mName" >
+			<column name="mName" />
+		</property>
+		<property name="mAddress">
+			<column name="mAddress" />
+		</property>
+		<property name="mPhone" >
+			<column name="mPhone" />
+		</property>
+		<property name="mBirthday" >
+			<column name="mBirthday" />
+		</property>
+		<property name="mIMG" >
+			<column name="mIMG" />
+		</property>
 
 	</class>
 </hibernate-mapping>

@@ -6,7 +6,6 @@ DROP TABLE [comments];
 DROP TABLE [accounts];
 DROP TABLE [aRecords];
 DROP TABLE [orders];
-DROP TABLE [checkoutStatus];
 DROP TABLE [favorities];
 DROP TABLE [orderDetails];
 DROP TABLE [menus];
@@ -16,6 +15,8 @@ DROP TABLE [hours];
 DROP TABLE [stores];
 DROP TABLE [members];
 DROP TABLE [orders];
+DROP TABLE [response];
+DROP TABLE [manager]
 
 ------------------------------------------------------------------------------------------------------------------------------------
 
@@ -94,24 +95,15 @@ insert into [menus] (foodName,sID,kindID,statusID,unitPrice,foodIMG) values ('�
 insert into [menus] (foodName,sID,kindID,statusID,unitPrice,foodIMG) values ('韭菜水餃','3','10','1','5','images/Menu/b8fb46_d90fc8ec1f6048eab22ff1ae56412854.jpg');
 insert into [menus] (foodName,sID,kindID,statusID,unitPrice,foodIMG) values ('韭菜水餃','3','10','1','5','images/Menu/b8fb46_d90fc8ec1f6048eab22ff1ae56412854.jpg');
 
-CREATE TABLE [checkoutStatus] (
-cksID		int IDENTITY(10,10) NOT NULL,
-cksName		nvarchar(20) NOT NULL,
-cksMemo		nvarchar(50) ,
-constraint checkoutStatus_primary_key primary key (cksID),
-);
-insert into [checkoutStatus] (cksName,cksMemo) values ('已結帳','');
-insert into [checkoutStatus] (cksName,cksMemo) values ('未結帳','');
-
 CREATE TABLE [orders] (
 oID			int IDENTITY(1,1) NOT NULL,
 sID			int NOT NULL,
 mID			int NOT NULL,
+amount      int NOT NULL,
 saleDate	date NOT NULL,
-cksID		int NOT NULL,
+checkOut	int NOT NULL,
 constraint orders_mID_fk foreign key (mID) references members (mID),
 constraint orders_sID_fk foreign key (sID) references stores (sID),
-constraint orders_cksID_fk foreign key (cksID) references checkoutStatus (cksID),
 constraint orders_primary_key primary key(oID),
 );
 
@@ -121,13 +113,16 @@ oID				int NOT NULL,
 sID				int NOT NULL,
 foodID			int NOT NULL,
 foodQuantity	int NOT NULL,
-amount			decimal(18,0) NOT NULL,
+foodName        nvarchar(50) NOT NULL,
+unitPrice	    decimal(18,0) NOT NULL,
+sName		    nvarchar(50) NOT NULL,
+totalPrice		decimal(18,0) NOT NULL,
 mID				int NOT NULL,
 odMemo			nvarchar(50) ,
 constraint orderDetails_mID_fk foreign key (mID) references members (mID),
 constraint orderDetails_sID_fk foreign key (sID) references stores (sID),
 constraint orderDetails_oID_fk foreign key (oID) references orders (oID),
-constraint orderDetails_primary_key primary key (odID,oID),
+constraint orderDetails_primary_key primary key (odID),
 );
 
 
