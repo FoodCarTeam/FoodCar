@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2012/3/7 ?W?? 09:15:15 by Hibernate Tools 3.3.0.GA -->
+<hibernate-mapping>
+	<class name="model.MembersVO" table="members">
+
+		<id name="mID" column="mID">
+			<generator class="identity" />
+
+		</id>
+
+		<property name="mUsername" column="mUsername" />
+		<property name="mPassword" column="mPassword" />
+		<property name="mName" column="mName" />
+		<property name="mAddress" column="mAddress" />
+		<property name="mPhone" column="mPhone" />
+		<property name="mBirthday" column="mBirthday" />
+		<property name="mIMG" column="mIMG" />
+
+	
+
+
+	</class>
+</hibernate-mapping>

@@ -167,7 +167,7 @@
 	</div>
 	
 	<!-- cd-cart-container -->
-	<script type='text/javascript' src="bootstrap/js/jquery.redirect.js"></script>  
+	 
     <script>
    
     var $j = jQuery.noConflict();

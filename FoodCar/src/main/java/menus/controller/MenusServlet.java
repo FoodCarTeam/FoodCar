@@ -25,7 +25,7 @@ public class MenusServlet extends HttpServlet {
 		response.setHeader("content-type", "text/html;charset=UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		
-		String id = request.getParameter("sID");
+		String id = request.getParameter("s");
 		if(id !=null && id.length()!=0){
 			int sID = Integer.parseInt(id);
 			 StoresVO result = storesService.select(sID);

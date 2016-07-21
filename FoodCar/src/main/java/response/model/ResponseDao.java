@@ -15,14 +15,14 @@ public class ResponseDao implements ResponseDaoInterface{
 	final static String Sselect_ALL="from ResponseVO where cID=:cID  order by cDate";
 	final static String DELETE="delete ResponseVO where rID=:rID";
 	public static void main(String[] args) {
-//	ResponseDao dao=new ResponseDao();
-//		ResponseVO vo=new ResponseVO();
+	ResponseDao dao=new ResponseDao();
+		ResponseVO vo=new ResponseVO();
 //		測試新增
-//		vo.setcContent("回覆test");
+		
 //		vo.setcID(1);
 //		Date date=new Date();
 //		vo.setcDate(new java.sql.Date(date.getTime()));
-//		vo.setcContent("tdast測試das22das");
+//		vo.setcContent("tdast測試日期");
 //		String a="123";
 //		byte ab[]=a.getBytes();
 //		Byte ba[]=new Byte[ab.length];

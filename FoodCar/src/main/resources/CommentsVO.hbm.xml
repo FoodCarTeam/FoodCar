@@ -21,7 +21,10 @@
 			<key column="cID"/>
 			<one-to-many class="model.ResponseVO" />
 		</set>
-		
+		<set name="memberVO" table="members" lazy="false" cascade="all" inverse="true">
+			<key column="mID"/>
+			<one-to-many class="model.MembersVO" />
+		</set>
 
 	</class>
 </hibernate-mapping>

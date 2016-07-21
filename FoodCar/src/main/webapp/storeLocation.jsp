@@ -37,6 +37,7 @@ html, body {
 				});
 
 				marker = new google.maps.Marker({
+					icon : "images/MapIcon/open.png",
 					map : map,
 					draggable : true,
 					title : "你在這",
@@ -57,12 +58,16 @@ html, body {
 // 					console.log(marker.getPosition().lat());
 					//console.log("lnt:"+event.latLng.lng());
 					
+			
+ 					 marker.setAnimation(null);
+			          marker.setAnimation(google.maps.Animation.BOUNCE);
 // 					緯經度轉地址
 					geocoder.geocode({
 						'latLng' : marker.getPosition()
 					}, function(results, status) {
 						if (status === google.maps.GeocoderStatus.OK) {
 							if (results) {
+
 								// 將取得的資訊傳入 marker 訊息泡泡
 // 								showAddress(results[0], marker);
 // 								address=results[0].address_components[4].long_name+results[0].address_components[3].long_name+

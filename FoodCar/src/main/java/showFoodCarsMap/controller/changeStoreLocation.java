@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.ServletInputStream;
@@ -31,14 +32,20 @@ public class changeStoreLocation extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String data = getBody(request);
-		JSONParser jsonParser = new JSONParser();
+		
 		
 		Gson gson=new Gson();
 		MapsVO vo=gson.fromJson(data,MapsVO.class);
 		showFoodCarsService service=new showFoodCarsService();
-		MapsVO result = service.update(vo);
+		MapsVO result =null;
 		
-		
+			List<MapsVO> list=service.select(vo);
+		if(list==null)
+		{
+			result=service.insert(vo);
+		}else{
+			result = service.update(vo);			
+		}
 		
 		
 	}

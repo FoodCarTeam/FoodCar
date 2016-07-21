@@ -1,7 +1,8 @@
 package comments.model;
 
 
-import java.util.Date;
+import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.HibernateException;
@@ -13,15 +14,15 @@ import model.CommentsVO;
 
 public class CommentsDAO implements commentsDaoInterface{
 	final static String SELECT_mID="from CommentsVO where mID=:mID";
-	final static String SELECT_sID="from CommentsVO where sID=:sID";
+	final static String SELECT_sID="from CommentsVO where sID=:sID order by cDate desc";
 	final static String Sselect_ALL_mID="from CommentsVO  where mID=:mID order by cDate";
-	final static String Sselect_ALL_sID="from CommentsVO  where sID=:sID order by cDate";
+	final static String Sselect_ALL_sID="from CommentsVO  where sID=:sID order by cDate desc";
 //	final static String INSERT="insert into CommentsVO(mID,sID,cDate,cContent,cPoint,cIP)";
 //	final static String UPDATE="update CommentsVO set mID=:mID,sID=:sID,cDate=:cDate,cContent=:cContent,cPoint=:cPoint,cIP=:cIP"
 //										+"where cID=:cID";
 	final static String DELETE="delete CommentsVO where cID=:cID";
 	public static void main(String[] args) {
-//		CommentsDAO dao=new CommentsDAO();
+		CommentsDAO dao=new CommentsDAO();
 //		CommentsVO vo=new CommentsVO();
 //		測試新增
 //		vo.setmID(1);
@@ -71,9 +72,11 @@ public class CommentsDAO implements commentsDaoInterface{
 //			System.out.println(a.getcContent());
 //		}
 //		測試多查sID
-//		List<CommentsVO> list=dao.select_ALL_sID(2);
+//		List<CommentsVO> list;
+//		 list=dao.select_ALL_sID(1);
 //		for(CommentsVO a:list){
-//			System.out.println(a.getcContent());
+//			System.out.println(a.getcDate());
+//			System.out.println(a.getsID());
 //		}
 //		測試刪除
 //		Boolean result=dao.delete(6);
@@ -176,7 +179,8 @@ public class CommentsDAO implements commentsDaoInterface{
 			a.setmID(vo.getmID());
 			a.setsID(vo.getsID());
 			a.setcContent(vo.getcContent());
-			a.setcDate(vo.getcDate());
+			Date b=new java.sql.Date (vo.getcDate().getTime());
+			a.setcDate(b);
 			a.setcPoint(vo.getcPoint());
 			a.setcIP(vo.getcIP());
 			session.update(a);

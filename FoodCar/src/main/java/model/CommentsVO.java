@@ -8,14 +8,22 @@ public class CommentsVO implements java.io.Serializable {
 	private Integer cID ;
 	private Integer mID ;
 	private Integer sID ;
-	private java.sql.Date cDate ;
+	private java.util.Date cDate ;
 	private String cContent ;
 	private String cPoint ;
 	private Byte[] cIP ;
 	
 	private Set<ResponseVO> responseVO=new HashSet<ResponseVO>();
+	private Set<MembersVO> memberVO=new HashSet<MembersVO>();
 	
 	
+	
+	public Set<MembersVO> getMemberVO() {
+		return memberVO;
+	}
+	public void setMemberVO(Set<MembersVO> memberVO) {
+		this.memberVO = memberVO;
+	}
 	public Set<ResponseVO> getResponseVO() {
 		return responseVO;
 	}
@@ -40,10 +48,10 @@ public class CommentsVO implements java.io.Serializable {
 	public void setmID(Integer mID) {
 		this.mID = mID;
 	}
-	public java.sql.Date getcDate() {
+	public java.util.Date getcDate() {
 		return cDate;
 	}
-	public void setcDate(java.sql.Date cDate) {
+	public void setcDate(java.util.Date cDate) {
 		this.cDate = cDate;
 	}
 	public String getcContent() {

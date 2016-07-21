@@ -1,25 +1,28 @@
 package comments.model;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
 import model.CommentsVO;
 import model.ResponseVO;
-
 public class CommentsService {
 	CommentsDAO dao=new CommentsDAO();
 	
 	public static void main(String[]args){
-		CommentsService service=new CommentsService();
+//		CommentsService service=new CommentsService();
 //		測試多對一    Comments與Response
-		List<CommentsVO> list=service.select_ALL_sID(1);
-		for(CommentsVO a:list){
-			System.out.println(a.getsID());
-			Set<ResponseVO> ResponseVO=a.getResponseVO();
-			for(ResponseVO s:ResponseVO){
-				System.out.println(s.getcContent());
-			}
-		}
+//		List<CommentsVO> list=new ArrayList<CommentsVO>();
+//		list=service.select_ALL_sID(1);
+//		for(CommentsVO a:list){
+//			System.out.println(a.getsID());
+//			System.out.println(a.getcDate());
+//			
+//			Set<ResponseVO> ResponseVO=a.getResponseVO();
+//			for(ResponseVO s:ResponseVO){
+//				System.out.println(s.getcContent());
+//			}
+//		}
 		
 	}
 	

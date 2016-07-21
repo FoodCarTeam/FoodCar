@@ -39,6 +39,7 @@
         <mapping resource="HoursVO.hbm.xml" />
         <mapping resource="CommentsVO.hbm.xml" />
         <mapping resource="ResponseVO.hbm.xml" />
+        <mapping resource="MembersVO.hbm.xml" />
 
     </session-factory>
 </hibernate-configuration>
