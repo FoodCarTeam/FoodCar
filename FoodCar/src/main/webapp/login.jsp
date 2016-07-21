@@ -162,8 +162,8 @@
 								</div>
 								<div id="stores" class="tab-pane fade">
 
-									<form class="form-signin" style="width: 700px;"
-										action="<c:url value='/login' />" method="post">
+									<form class="form-signin" style="width:700px;"
+									 action="<c:url value="/Login.controller" />" method="get">
 										<p></p>
 
 										<label for="" class="sr-only">請輸入手機號碼</label> <input
@@ -186,7 +186,7 @@
 								</div>
 								<div id="boss" class="tab-pane fade">
 
-									<form class="form-inline" role="form">
+									<form class="form-signin" style="width: 700px;" action="<c:url value='/login'/>" method="post">
 										<p></p>
 										<label for="" class="sr-only">請輸入帳號</label> <input type="text"
 											class="form-control" placeholder="請輸入帳號" required autofocus
