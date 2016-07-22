@@ -15,7 +15,6 @@
 		<property name="foodQuantity" column="foodQuantity" />
 		<property name="foodName" column="foodName" />
 		<property name="unitPrice" column="unitPrice" />
-		<property name="sName" column="sName" />
 		<property name="totalPrice" column="totalPrice" />
 		<property name="mID" column="mID" />
 		<property name="odMemo" column="odMemo" />

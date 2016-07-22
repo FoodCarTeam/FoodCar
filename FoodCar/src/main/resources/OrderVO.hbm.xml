@@ -15,15 +15,11 @@
 		<property name="amount" column="amount" />
 		<property name="saleDate" column="saleDate" />
 		<property name="checkOut" column="checkOut" />
-		
-<!-- 		<many-to-one name="storesVO" class="model.StoresVO" lazy="false" -->
-<!-- 			column="sID" insert="false" update="false" not-found="ignore" /> -->
-		
-
-<!-- 		<set name="mapVO" table="maps" lazy="false" cascade="all" inverse="true"> -->
-<!-- 			<key column="sID"/> -->
-<!-- 			<one-to-many class="model.MapsVO" /> -->
-<!-- 		</set> -->
+		<property name="sName" column="sName" />
+        <set name="OrderDetailsVO" table="orderDetails" lazy="false" cascade="all" inverse="true">
+            <key column="oID"/>
+            <one-to-many class="model.OrderDetailsVO"/>
+        </set>
 
 
 	</class>

@@ -29,6 +29,13 @@ public class MembersService {
 //		}
 //		return result;
 //	}
+	public MembersVO select(Integer mID){
+		MembersVO result = null;
+		if(mID!=null){
+			result = membersDao.select(mID);
+		}
+		return result;
+	}
 	public MembersVO select1(String mUsername){
 		MembersVO result = null;
 		if(mUsername!=null){

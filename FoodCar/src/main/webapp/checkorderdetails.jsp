@@ -85,10 +85,10 @@
     </div>
     <div id="MenuPhone">
       <ul id="menu-mobile">
-         <li ><a href="stores.jsp">餐車專區</a></li>
-         <li ><a href="map.jsp">地圖</a></li>
-         <li ><a href="about.jsp">關於我們</a></li>
-         <li ><a href="login.jsp">登入</a></li>
+         <li><a href="stores.html">餐車專區</a></li>
+         <li><a href="map.html">地圖</a></li>
+         <li><a href="about.html">關於我們</a></li>
+         <li><a href="login.html">登入</a></li>
       </ul>
     </div>
 <!--/列表bootstrap-->
@@ -122,10 +122,10 @@
               <li class="side-menu has-dropdown">
                 <a href="#" class="menu"></a>
                 <ul class="dropdown">
-                  <li ><a href="stores.jsp">餐車專區</a></li>
-         <li ><a href="map.jsp">地圖</a></li>
-         <li ><a href="about.jsp">關於我們</a></li>
-         <li ><a href="login.jsp">登入</a></li>
+                  <li><a href="stores.html">餐車專區</a></li>
+                  <li><a href="map.html">地圖</a></li>
+                  <li><a href="about.html">關於我們</a></li>
+                  <li><a href="login.html">登入</a></li>
                 </ul>
               </li>
 <!--/列表右邊list工具列-->
@@ -142,14 +142,14 @@
     >
       <div class="truck-details">
         <div class="content">
-          <h1> 結帳完成!  </h1>
+          <h1> 訂單明細  </h1>
             <!--內容以下開始-->
   <div class="container">
     
         <div class="col-xs-10">
     		<div class="invoice-title">
-    			<h3>${data.sName }</h3>
-    			<h3 class="pull-right">結帳日期:${data.saleDate}</h3>
+    			<h3>${order.sName }</h3>
+    			<h3 class="pull-right">結帳日期:${order.saleDate}</h3>
     		</div>
     		
     	</div>
@@ -159,7 +159,7 @@
     	<div class="col-md-12">
     		<div class="panel panel-default">
     			<div class="panel-heading">
-    				<h3 class="panel-title"><strong>訂單明細  <div class="pull-right">訂單編號:${data.oID}</div></strong></h3>
+    				<h3 class="panel-title"><strong>訂單明細  <div class="pull-right">訂單編號:${order.oID }</div></strong></h3>
     			</div>
     			<div class="panel-body">
     				<div class="table-responsive">
@@ -175,13 +175,13 @@
     						</thead>
     						<tbody>
     							<!-- foreach ($order->lineItems as $line) or some such thing here -->
-    							<c:forEach var="i" begin="0" end="${fn:length(name)-1}">
+    							<c:forEach var="bean" items="${detail}">
     							<tr>
-    								<td>${name[i] }</td>
-    								<td class="text-center">$${price[i] }</td>
-    								<td class="text-center">${fQ[i]}</td>
-    								<td class="text-center">${memo[i]}</td>
-    								<td class="text-right">$${ptotal[i]}</td>
+    								<td>${bean.foodName }</td>
+    								<td class="text-center">$${bean.unitPrice }</td>
+    								<td class="text-center">${bean.foodQuantity}</td>
+    								<td class="text-center">${bean.odMemo}</td>
+    								<td class="text-right">$${bean.totalPrice}</td>
     							</tr>
                                </c:forEach>
     							<tr>
@@ -189,12 +189,12 @@
     								<td class="thick-line"></td>
     								<td class="thick-line"></td>
     								<td class="thick-line text-center"><strong>結算</strong></td>
-    								<td class="thick-line text-right">$${data.total}</td>
+    								<td class="thick-line text-right">$${order.amount }</td>
     							</tr>
     							
     						</tbody>
     					</table>
-    					<button type="button" class="btn btn-primary pull-right"  onclick="location.href='store?s=${data.sID}'" >返回</button>
+    					
     				</div>
     			</div>
     		</div>

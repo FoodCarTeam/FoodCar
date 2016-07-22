@@ -1,6 +1,7 @@
 package model;
 
-
+import java.util.HashSet;
+import java.util.Set;
 
 public class MembersVO implements java.io.Serializable{
 
@@ -12,7 +13,21 @@ public class MembersVO implements java.io.Serializable{
 	private String mPhone ;
 	private java.sql.Date mBirthday ;
 	private String mIMG ;
+	private Set<OrdersVO> ordersVO = new HashSet<OrdersVO>();
+	private Set<OrderDetailsVO> orderDetailsVO = new HashSet<OrderDetailsVO>();
 	
+	public Set<OrderDetailsVO> getOrderDetailsVO() {
+		return orderDetailsVO;
+	}
+	public void setOrderDetailsVO(Set<OrderDetailsVO> orderDetailsVO) {
+		this.orderDetailsVO = orderDetailsVO;
+	}
+	public Set<OrdersVO> getOrdersVO() {
+		return ordersVO;
+	}
+	public void setOrdersVO(Set<OrdersVO> ordersVO) {
+		this.ordersVO = ordersVO;
+	}
 	public Integer getmID() {
 		return mID;
 	}

@@ -96,7 +96,7 @@ insert into [menus] (foodName,sID,kindID,statusID,unitPrice,foodIMG) values ('�
 insert into [menus] (foodName,sID,kindID,statusID,unitPrice,foodIMG) values ('韭菜水餃','3','10','1','5','images/Menu/b8fb46_d90fc8ec1f6048eab22ff1ae56412854.jpg');
 
 CREATE TABLE [orders] (
-oID			int IDENTITY(1,1) NOT NULL,
+oID			int IDENTITY(1000,1) NOT NULL,
 sID			int NOT NULL,
 mID			int NOT NULL,
 amount      int NOT NULL,

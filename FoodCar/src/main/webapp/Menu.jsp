@@ -167,7 +167,10 @@
 	</div>
 	
 	<!-- cd-cart-container -->
-	 
+	<script src="bootstrap/sweetAlert/sweetalert.min.js"></script> 
+    <link rel="stylesheet" type="text/css" href="bootstrap/sweetAlert/sweetalert.css">
+	<script type='text/javascript' src="bootstrap/js/jquery.redirect.js"></script>  
+
     <script>
    
     var $j = jQuery.noConflict();
@@ -194,9 +197,11 @@
     		arrCarImg[i] = $(img_list[i]).attr('src');
     		arrCarPrice[i] = $(price_list[i]).text().substr(1);
     	}
-    	
-     	$j.redirect("order", { "foodId": arrCarId, "foodQuan": arrCarQuan ,"foodName":arrCarname,"foodImg":arrCarImg,"foodPrice":arrCarPrice,"sID":sID,"sName":"${select.sName }"});
-   	  
+    	if(id_list.length > 0){
+    		$j.redirect("order", { "foodId": arrCarId, "foodQuan": arrCarQuan ,"foodName":arrCarname,"foodImg":arrCarImg,"foodPrice":arrCarPrice,"sID":sID,"sName":"${select.sName }"});
+    	}else{
+    		swal("購物車無商品", "請確認購物車商品數量", "warning")
+    	}
 //    	  $('#car').each(function(){
 //    		  count++
 //    		    ss.push($('#car').attr('fID'))

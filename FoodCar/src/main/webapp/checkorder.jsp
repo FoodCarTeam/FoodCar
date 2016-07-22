@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
  <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
@@ -11,23 +12,7 @@
     <meta name="apple-itunes-app" content="app-id=634884546"/>
     <meta name="google-play-app" content="app-id=com.blogto.foodtrucks.toronto">    
     <title>餐餔餔</title>   
-    <style type="text/css">
-     .invoice-title h2, .invoice-title h3 {
-        display: inline-block;
-    }
 
-     .table > tbody > tr > .no-line {
-        border-top: none;
-    }
-
-     .table > thead > tr > .no-line {
-        border-bottom: none;
-    }
-
-     .table > tbody > tr > .thick-line {
-        border-top: 2px solid;
-    }
-    </style>
        <!--CSS-->
 <link rel='stylesheet' id='main-stylesheet-css'  href='bootstrap/about/css/style.css' type='text/css' media='all' />
 <link rel='stylesheet' id='slicknav-css'  href="bootstrap/login/css/mobile%20menu%20style.css" type='text/css' media='all' /><!--mobile menu style.css-->
@@ -85,10 +70,10 @@
     </div>
     <div id="MenuPhone">
       <ul id="menu-mobile">
-         <li ><a href="stores.jsp">餐車專區</a></li>
-         <li ><a href="map.jsp">地圖</a></li>
-         <li ><a href="about.jsp">關於我們</a></li>
-         <li ><a href="login.jsp">登入</a></li>
+         <li><a href="stores.html">餐車專區</a></li>
+         <li><a href="map.html">地圖</a></li>
+         <li><a href="about.html">關於我們</a></li>
+         <li><a href="login.html">登入</a></li>
       </ul>
     </div>
 <!--/列表bootstrap-->
@@ -122,10 +107,10 @@
               <li class="side-menu has-dropdown">
                 <a href="#" class="menu"></a>
                 <ul class="dropdown">
-                  <li ><a href="stores.jsp">餐車專區</a></li>
-         <li ><a href="map.jsp">地圖</a></li>
-         <li ><a href="about.jsp">關於我們</a></li>
-         <li ><a href="login.jsp">登入</a></li>
+                  <li><a href="stores.html">餐車專區</a></li>
+                  <li><a href="map.html">地圖</a></li>
+                  <li><a href="about.html">關於我們</a></li>
+                  <li><a href="login.html">登入</a></li>
                 </ul>
               </li>
 <!--/列表右邊list工具列-->
@@ -142,64 +127,15 @@
     >
       <div class="truck-details">
         <div class="content">
-          <h1> 結帳完成!  </h1>
+          <h1> 我的訂單紀錄  </h1>
             <!--內容以下開始-->
-  <div class="container">
-    
-        <div class="col-xs-10">
-    		<div class="invoice-title">
-    			<h3>${data.sName }</h3>
-    			<h3 class="pull-right">結帳日期:${data.saleDate}</h3>
-    		</div>
-    		
-    	</div>
-    </div>
-    
-    <div class="row">
-    	<div class="col-md-12">
-    		<div class="panel panel-default">
-    			<div class="panel-heading">
-    				<h3 class="panel-title"><strong>訂單明細  <div class="pull-right">訂單編號:${data.oID}</div></strong></h3>
-    			</div>
-    			<div class="panel-body">
-    				<div class="table-responsive">
-    					<table class="table table-condensed">
-    						<thead>
-                                <tr>
-        							<td><strong>餐點</strong></td>
-        							<td class="text-center"><strong>單價</strong></td>
-        							<td class="text-center"><strong>數量</strong></td>
-        							<td class="text-center"><strong>備註</strong></td>
-        							<td class="text-right"><strong>總價錢</strong></td>
-                                </tr>
-    						</thead>
-    						<tbody>
-    							<!-- foreach ($order->lineItems as $line) or some such thing here -->
-    							<c:forEach var="i" begin="0" end="${fn:length(name)-1}">
-    							<tr>
-    								<td>${name[i] }</td>
-    								<td class="text-center">$${price[i] }</td>
-    								<td class="text-center">${fQ[i]}</td>
-    								<td class="text-center">${memo[i]}</td>
-    								<td class="text-right">$${ptotal[i]}</td>
-    							</tr>
-                               </c:forEach>
-    							<tr>
-    								<td class="thick-line"></td>
-    								<td class="thick-line"></td>
-    								<td class="thick-line"></td>
-    								<td class="thick-line text-center"><strong>結算</strong></td>
-    								<td class="thick-line text-right">$${data.total}</td>
-    							</tr>
-    							
-    						</tbody>
-    					</table>
-    					<button type="button" class="btn btn-primary pull-right"  onclick="location.href='store?s=${data.sID}'" >返回</button>
-    				</div>
-    			</div>
-    		</div>
-    	</div>
-    
+<div class="list-group">
+  <a href="#" class="list-group-item list-group-item-info">
+    訂單紀錄
+  </a>
+  <c:forEach var="bean" items="${orders}">
+  <a href="checkdetail?o=${bean.oID }" class="list-group-item">${bean.sName}<div class="pull-right">結帳日期:${bean.saleDate}</div></a>
+  </c:forEach>
 </div>
      
             <!--內容以上結束-->
