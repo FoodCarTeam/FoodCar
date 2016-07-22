@@ -10,23 +10,23 @@
 <meta name="apple-itunes-app" content="app-id=634884546" />
 <meta name="google-play-app"
 	content="app-id=com.blogto.foodtrucks.toronto">
-<title>餐餔餔</title>
-
-<!--版型控制-->
-<link rel='stylesheet' id='main-stylesheet-css'
-	href='bootstrap/login/css/style.css' type='text/css' media='all' />
-<!--橘色header色塊控制與Menu控制-->
-<link rel='stylesheet' id='slicknav-css'
-	href="bootstrap/login/css/mobile%20menu%20style.css" type='text/css'
-	media='all' />
-<script type='text/javascript'
-	src="bootstrap/login/js/modernizr.custom.js"></script>
-<script src="bootstrap/signin/js/jquery.js"></script>
-<!--login-->
-<link rel="stylesheet" href="bootstrap/login/css/login.css">
-<script src="bootstrap/login/js/jqlogin.js"></script>
-<script src="bootstrap/login/js/login.js"></script>
-
+    <title>餐餔餔</title>   
+   
+    <!--CSS-->
+<link rel='stylesheet' id='main-stylesheet-css'  href='bootstrap/login/css/style.css' type='text/css' media='all' />
+<link rel='stylesheet' id='slicknav-css'  href="bootstrap/login/css/mobile%20menu%20style.css" type='text/css' media='all' /><!--mobile menu style.css-->
+<!--JS-->
+<script type='text/javascript' src="bootstrap/login/js/modernizr.custom.js"></script>
+<!--list浮動-->
+<link href="bootstrap/login/css/bootstrap.min.css" rel="stylesheet" />
+<link href="bootstrap/login/css/scrolling-nav.css" rel="stylesheet" />
+<script src="bootstrap/login/js/jquery.js"></script>
+<script src="bootstrap/login/js/scrolling-nav.js"></script>
+  <!--login-->
+   <link rel="stylesheet" href="bootstrap/login/css/login.css">
+  <script src="bootstrap/login/js/jqlogin.js"></script>
+  <script src="bootstrap/login/js/login.js"></script>
+  
 </head>
 <body
 	class="page page-id-8736 page-template page-template-template-truck-page page-template-template-truck-page-php born2eat-food-truck-toronto">
@@ -65,10 +65,10 @@
 	</div>
 	<div id="MenuPhone">
 		<ul id="menu-mobile">
-			<li><a href="stores.html">餐車專區</a></li>
-			<li><a href="map.html">地圖</a></li>
-			<li><a href="about.html">關於我們</a></li>
-			<li><a href="login.html">登入</a></li>
+			<li ><a href="stores.jsp">餐車專區</a></li>
+         <li ><a href="map.jsp">地圖</a></li>
+         <li ><a href="about.jsp">關於我們</a></li>
+         <li ><a href="login.jsp">登入</a></li>
 		</ul>
 	</div>
 	<!--/列表bootstrap-->
@@ -101,10 +101,10 @@
 				<!--列表右邊list工具列-->
 				<li class="side-menu has-dropdown"><a href="#" class="menu"></a>
 					<ul class="dropdown">
-						<li><a href="stores.html">餐車專區</a></li>
-						<li><a href="map.html">地圖</a></li>
-						<li><a href="about.html">關於我們</a></li>
-						<li><a href="login.html">登入</a></li>
+						<li><a href="stores.jsp">餐車專區</a></li>
+						<li><a href="map.jsp">地圖</a></li>
+						<li><a href="about.jsp">關於我們</a></li>
+						<li><a href="login.jsp">登入</a></li>
 					</ul></li>
 				<!--/列表右邊list工具列-->
 			</ul>
@@ -119,7 +119,7 @@
 					<div class="content">
 
 						<h1>
-							登入<a class="book-button" href="signin.html">註冊</a>
+							登入<a class="book-button" href="signin.jsp">註冊</a>
 						</h1>
 
 
@@ -162,8 +162,8 @@
 								</div>
 								<div id="stores" class="tab-pane fade">
 
-									<form class="form-signin" style="width: 700px;"
-										action="<c:url value='/login' />" method="post">
+									<form class="form-signin" style="width:700px;"
+									 action="<c:url value="/Login.controller" />" method="get">
 										<p></p>
 
 										<label for="" class="sr-only">請輸入手機號碼</label> <input
@@ -186,7 +186,7 @@
 								</div>
 								<div id="boss" class="tab-pane fade">
 
-									<form class="form-inline" role="form">
+									<form class="form-signin" style="width: 700px;" action="<c:url value='/login'/>" method="post">
 										<p></p>
 										<label for="" class="sr-only">請輸入帳號</label> <input type="text"
 											class="form-control" placeholder="請輸入帳號" required autofocus

@@ -63,10 +63,10 @@
     </div>
     <div id="MenuPhone">
       <ul id="menu-mobile">
-         <li><a href="stores.html">餐車專區</a></li>
-         <li><a href="map.html">地圖</a></li>
-         <li><a href="about.html">關於我們</a></li>
-         <li><a href="login.html">登入</a></li>
+         <li ><a href="stores.jsp">餐車專區</a></li>
+         <li ><a href="map.jsp">地圖</a></li>
+         <li ><a href="about.jsp">關於我們</a></li>
+         <li ><a href="login.jsp">登入</a></li>
       </ul>
     </div>
 <!--/列表bootstrap-->
@@ -100,10 +100,10 @@
               <li class="side-menu has-dropdown">
                 <a href="#" class="menu"></a>
                 <ul class="dropdown">
-                  <li><a href="stores.html">餐車專區</a></li>
-                  <li><a href="map.html">地圖</a></li>
-                  <li><a href="about.html">關於我們</a></li>
-                  <li><a href="login.html">登入</a></li>
+                   <li><a href="stores.jsp">餐車專區</a></li>
+                  <li><a href="map.jsp">地圖</a></li>
+                  <li><a href="about.jsp">關於我們</a></li>
+                  <li><a href="login.jsp">登入</a></li>
                 </ul>
               </li>
 <!--/列表右邊list工具列-->
@@ -170,6 +170,7 @@
 	<script src="bootstrap/sweetAlert/sweetalert.min.js"></script> 
     <link rel="stylesheet" type="text/css" href="bootstrap/sweetAlert/sweetalert.css">
 	<script type='text/javascript' src="bootstrap/js/jquery.redirect.js"></script>  
+
     <script>
    
     var $j = jQuery.noConflict();

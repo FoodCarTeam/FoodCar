@@ -20,6 +20,7 @@
 <link rel='stylesheet' id='slicknav-css'  href="bootstrap/map/css/mobile%20menu%20style.css" type='text/css' media='all' /><!--mobile menu style.css-->
 <!--JS-->
 <script type='text/javascript' src="bootstrap/map/js/modernizr.custom.js"></script>
+
 <!--list浮動-->
 <link href="bootstrap/map/css/bootstrap.min.css" rel="stylesheet" />
 <link href="bootstrap/map/css/scrolling-nav.css" rel="stylesheet" />
@@ -64,10 +65,10 @@
 	</div>
 	<div id="MenuPhone">
 		<ul id="menu-mobile">
-			<li><a href="stores.html">餐車專區</a></li>
-			<li><a href="map.html">地圖</a></li>
-			<li><a href="about.html">關於我們</a></li>
-			<li><a href="login.html">登入</a></li>
+			<li ><a href="stores.jsp">餐車專區</a></li>
+         <li ><a href="map.jsp">地圖</a></li>
+         <li ><a href="about.jsp">關於我們</a></li>
+         <li ><a href="login.jsp">登入</a></li>
 		</ul>
 	</div>
 	<!--/列表bootstrap-->
@@ -101,10 +102,10 @@
 							<!--列表右邊list工具列-->
 							<li class="side-menu has-dropdown"><a href="#" class="menu"></a>
 								<ul class="dropdown">
-									<li><a href="stores.html">餐車專區</a></li>
-									<li><a href="map.html">地圖</a></li>
-									<li><a href="about.html">關於我們</a></li>
-									<li><a href="login.html">登入</a></li>
+									<li ><a href="stores.jsp">餐車專區</a></li>
+         <li ><a href="map.jsp">地圖</a></li>
+         <li ><a href="about.jsp">關於我們</a></li>
+         <li ><a href="login.jsp">登入</a></li>
 								</ul></li>
 							<!--/列表右邊list工具列-->
 						</ul>
@@ -114,6 +115,7 @@
 		</div>
 		<!--/列表-->
 	</nav>
+	<script type='text/javascript' src="bootstrap/js/jquery.redirect.js"></script>  
 	<script>
 	function initMap() {
 		// 			使用者緯經度
@@ -214,6 +216,15 @@
 				
 					marker.addListener('click', function() {
 						infoWindow.open(map, marker);
+						$("#storeName").on('mouseover',function(){
+							$("#storeName").css({"cursor":"pointer"});
+						});
+						$("#storeName").on("click",function(){
+				
+						    	 $.redirect("Store", { "sID": value.sID});
+						});
+						
+						
 					});
 					
 //	 				使用者縮放地圖時關掉資訊視窗
@@ -225,7 +236,7 @@
 						  infoWindow.close();
 						  });
 					  var content = "<div id='iw-container'>" 
-					  + "<div class='iw-title' style='font-size:16px;line-height:20px'>" 
+					  + "<div id='storeName' class='iw-title' style='font-size:16px;line-height:20px'>" 
 					  + value.sName + "</div>" + "<div class='iw-content'>" 
 					  + "<p style='font-size:14px;line-height:20px'>電話號碼：" 
 					  + value.sUsername + "</p>" + "<p style='font-size:14px;line-height:20px'>今日營業時間：" 
@@ -235,7 +246,10 @@
 //									'<img src="http://maps.marnoto.com/en/5wayscustomizeinfowindow/images/vistalegre.jpg" alt="Porcelain Factory of Vista Alegre" height="115" width="83">'
 					var infoWindow = new google.maps.InfoWindow({
 						content : content
+						
 					});
+					
+
 					
 					google.maps.event.addListener(infoWindow, 'domready', function() {
 						var iwOuter = $('.gm-style-iw');
@@ -289,6 +303,7 @@
 				
 			}
 		});
+		
 		// 			導航
 		// 			var directionsDisplay = new google.maps.DirectionsRenderer();
 		// 			var directionsService = new google.maps.DirectionsService();
@@ -306,6 +321,11 @@
 		// 			directionsDisplay.setMap(map);
 		// 			directionsDisplay.setPanel(document.getElementById('right-panel'));
 	}
+	$(function(){
+		
+		
+			
+		})
 		
 	</script>
 	<script type="text/javascript" src="bootstrap/js/jquery.unveil.js"></script>

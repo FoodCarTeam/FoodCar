@@ -41,5 +41,6 @@
 			<key column="mID"/>
 			<one-to-many class="model.OrderDetailsVO" />
 		</set>
+
 	</class>
 </hibernate-mapping>
