@@ -33,5 +33,13 @@
 		<property name="mIMG" >
 			<column name="mIMG" />
 		</property>
+		<set name="ordersVO" table="orders" lazy="false" cascade="all" inverse="true">
+			<key column="mID"/>
+			<one-to-many class="model.OrdersVO" />
+		</set>
+		<set name="orderDetailsVO" table="orderDetails" lazy="false" cascade="all" inverse="true">
+			<key column="mID"/>
+			<one-to-many class="model.OrderDetailsVO" />
+		</set>
 	</class>
 </hibernate-mapping>

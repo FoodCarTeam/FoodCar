@@ -42,6 +42,7 @@
         <mapping resource="OrderVO.hbm.xml" />
         <mapping resource="OrderDetailsVO.hbm.xml" />
         <mapping resource="ResponseVO.hbm.xml" />
+        <mapping resource="MembersVO.hbm.xml" />
         <mapping resource="manager.hbm.xml" />
         
 

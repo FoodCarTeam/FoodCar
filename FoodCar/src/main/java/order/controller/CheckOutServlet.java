@@ -62,7 +62,7 @@ public class CheckOutServlet extends HttpServlet {
 		result.setSaleDate(tempDate);
 		result.setAmount(cktotal);
 		result.setCheckOut(1);
-		
+		result.setsName(sName);
 		service.insert(result);
 		int oID = result.getoID();
 		System.out.println(oID);
@@ -85,7 +85,6 @@ public class CheckOutServlet extends HttpServlet {
 			resultD.setFoodQuantity(foodQuantity);
 			resultD.setFoodName(name[i]);
 			resultD.setUnitPrice(unitPrice);
-			resultD.setsName("TEST");
 			resultD.setTotalPrice(totalPrice);
 			resultD.setmID(1);
 			resultD.setOdMemo(memo[i]);

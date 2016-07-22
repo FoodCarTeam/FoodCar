@@ -3,7 +3,6 @@ package model;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.Column;
 
 public class StoresVO implements java.io.Serializable {
 
@@ -18,6 +17,8 @@ public class StoresVO implements java.io.Serializable {
 	private Set<HoursVO> hoursVO = new HashSet<HoursVO>();
 	private Set<MapsVO> mapVO = new HashSet<MapsVO>();
 	private Set<MenusVO> menusVO = new HashSet<MenusVO>();
+	private Set<OrdersVO> ordersVO = new HashSet<OrdersVO>();
+	private Set<OrderDetailsVO> orderDetailsVO = new HashSet<OrderDetailsVO>();
 
 	public Set<HoursVO> getHoursVO() {
 		return hoursVO;
@@ -49,6 +50,22 @@ public class StoresVO implements java.io.Serializable {
 
 	public void setMapVO(Set<MapsVO> mapVO) {
 		this.mapVO = mapVO;
+	}
+    
+	public Set<OrdersVO> getOrdersVO() {
+		return ordersVO;
+	}
+
+	public void setOrdersVO(Set<OrdersVO> ordersVO) {
+		this.ordersVO = ordersVO;
+	}
+
+	public Set<OrderDetailsVO> getOrderDetailsVO() {
+		return orderDetailsVO;
+	}
+
+	public void setOrderDetailsVO(Set<OrderDetailsVO> orderDetailsVO) {
+		this.orderDetailsVO = orderDetailsVO;
 	}
 
 	public Integer getsID() {

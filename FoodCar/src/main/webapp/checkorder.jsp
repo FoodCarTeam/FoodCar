@@ -1,4 +1,9 @@
-﻿<!doctype html>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+ <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <html lang="en-US" prefix="og: http://ogp.me/ns#" class="no-js">
   <head>
     <meta charset="UTF-8">
@@ -7,18 +12,28 @@
     <meta name="apple-itunes-app" content="app-id=634884546"/>
     <meta name="google-play-app" content="app-id=com.blogto.foodtrucks.toronto">    
     <title>餐餔餔</title>   
-      
-<!--CSS-->
-<link rel='stylesheet' id='main-stylesheet-css'  href='bootstrap/stores/css/style.css' type='text/css' media='all' />
-<link rel='stylesheet' id='slicknav-css'  href="bootstrap/stores/css/mobile%20menu%20style.css" type='text/css' media='all' /><!--mobile menu style.css-->
+
+       <!--CSS-->
+<link rel='stylesheet' id='main-stylesheet-css'  href='bootstrap/about/css/style.css' type='text/css' media='all' />
+<link rel='stylesheet' id='slicknav-css'  href="bootstrap/login/css/mobile%20menu%20style.css" type='text/css' media='all' /><!--mobile menu style.css-->
 <!--JS-->
-<script type='text/javascript' src="bootstrap/stores/js/modernizr.custom.js"></script>
+<script type='text/javascript' src="bootstrap/about/js/modernizr.custom.js"></script>
 <!--list浮動-->
-<link href="bootstrap/stores/css/bootstrap.min.css" rel="stylesheet" />
-<link href="bootstrap/stores/css/scrolling-nav.css" rel="stylesheet" />
-<script src="bootstrap/stores/js/jquery.js"></script>
-<script src="bootstrap/stores/js/scrolling-nav.js"></script>
-  
+<link href="bootstrap/about/css/bootstrap.min.css" rel="stylesheet" />
+<!-- 最新編譯和最佳化的 CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+
+<!-- 選擇性佈景主題 -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+
+<!-- 最新編譯和最佳化的 JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+<link href="bootstrap/about/css/scrolling-nav.css" rel="stylesheet" />
+<script src="bootstrap/about/js/jquery.js"></script>
+<script src="bootstrap/about/js/scrolling-nav.js"></script>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+
   </head>
   <body class="page page-id-8736 page-template page-template-template-truck-page page-template-template-truck-page-php born2eat-food-truck-toronto">  
   
@@ -58,7 +73,7 @@
          <li><a href="stores.html">餐車專區</a></li>
          <li><a href="map.html">地圖</a></li>
          <li><a href="about.html">關於我們</a></li>
-         <li><a href="login.jsp">登入</a></li>
+         <li><a href="login.html">登入</a></li>
       </ul>
     </div>
 <!--/列表bootstrap-->
@@ -106,68 +121,31 @@
     </div>
 <!--/列表-->
             </nav>
-
-    
-
-          <!--JS-->
-<script type="text/javascript" src="bootstrap/js/jquery.unveil.js"></script>
-<script type="text/javascript" src="bootstrap/js/page.js"></script>
-
 <div id="MainContent">
   <div class="row">
-    <div class="small-12 large-50 columns">
+    <div class="small-12 large-100 columns"   style="margin-left: 280px"
+    >
       <div class="truck-details">
         <div class="content">
-          <h1>餐車專區
-<!--                 <a class="book-button">不知道幹嘛的按鈕</a> -->
-          </h1>
-         
-        
-
-      <div id="all" class="row">   <!-- 餐車列表 -->
- 
+          <h1> 我的訂單紀錄  </h1>
+            <!--內容以下開始-->
+<div class="list-group">
+  <a href="#" class="list-group-item list-group-item-info">
+    訂單紀錄
+  </a>
+  <c:forEach var="bean" items="${orders}">
+  <a href="checkdetail?o=${bean.oID }" class="list-group-item">${bean.sName}<div class="pull-right">結帳日期:${bean.saleDate}</div></a>
+  </c:forEach>
+</div>
+     
+            <!--內容以上結束-->
       </div>
-    
-
-
-      </div>
-      <!--/truck-details-->
     </div>
-    <!--/small-12 large-8 columns-->
-
-    <!--/sidebar-->
   </div>
-  <!--/row-->
+ </div>
 </div>
-</div>
-<!--/MainContent-->
-	
  
-	<script type="text/javascript">
-	$.ajax({
-			'type' : 'post',
-			'url' : 'StoresServlet',
-			'dataType' : 'json',
-			'data' : {},
-			'success' : function(data) {
-				
-				var tb = $('#all')
-				var flag = $(document.createDocumentFragment());
-				tb.empty();
-
-				$.each(data, function(idx, store) {
-					
-					var cell = $('<div  class="post-container small-6 medium-6 large-4 columns end"></div>')
-					.html('<div class="post"><div class="image"><a href="store?s='+store.sID+'" id="'+store.sID+'"><img  src="'+store.sLogo+'" /></a></div><div class="title"><a class ="linkt" href="store?s='+store.sID+'"><h3>'+store.sName+'</h3></a><p>OPEN:00:00~24:00</p><p>電話:'+store.sUsername+'</p></div></div>');
-				   flag.append([cell])
-				})
-				tb.append(flag)
-				
-			}
-		})
-		
-	</script>
-   <!-- Footer -->
+<!-- Footer -->
     <div id="SecondFooter">
       <div class="row">
         <div class="small-12 medium-6 large-8 columns">
@@ -179,10 +157,10 @@
       </div>
     </div>
 <!-- /Footer -->
-       <script type='text/javascript' src="bootstrap/stores/js/foundation.min.js"></script>
-      <script type='text/javascript' src="bootstrap/stores/js/app.js"></script>
+       <script type='text/javascript' src="bootstrap/about/js/foundation.min.js"></script>
+      <script type='text/javascript' src="bootstrap/about/js/app.js"></script>
       <!--MENU縮小-->
-    <script type='text/javascript' src="bootstrap/stores/js/jquery.slicknav.js"></script>    
+    <script type='text/javascript' src="bootstrap/about/js/jquery.slicknav.js"></script>    
       <script type="text/javascript">
           $(document).ready(function () {
               $('#menu-mobile').slicknav({
@@ -190,6 +168,7 @@
                   prependTo: '#MenuPhone'
               });
           });
+          
     </script>
   </body>
 </html>

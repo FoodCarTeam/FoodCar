@@ -14,7 +14,7 @@ public class OrderService {
 	public static void main(String[]args){
 
 //		OrderService service=new OrderService();
-//		OrdersVO result = new OrdersVO();
+//		service.select(1);
 //		Date today=new Date();
 //		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 //		String temp=sdf.format(today);
@@ -40,8 +40,15 @@ public class OrderService {
 		OrdersVO result = null;
 		if(vo!=null) {
 			result = orderDao.insert(vo);
-			
 		}
 		return result;
 	}
+	public OrdersVO select(Integer oID) {
+		OrdersVO result = null;
+		if(oID!=null) {
+			result = orderDao.select(oID);
+		}
+		return result;
+	}
+	
 }
