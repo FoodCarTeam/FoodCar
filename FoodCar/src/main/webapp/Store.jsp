@@ -421,10 +421,26 @@
 		href="bootstrap/sweetAlert/sweetalert.css">
 	<!-- 		<script src="bootstrap/sweetAlert/sweetalert-dev.js"></script> -->
 	<!-- <script type='text/javascript' src="star/jquery.raty.js"></script> -->
+	
+	
+	<input id='12345' type='hidden' value='${mUsername.mUsername}'>
+	<input id='123456' type='hidden' value='${user.sUsername}'>
+	
+	
 	<script>
 		$(function() {
-			$
-					.ajax({
+		
+			
+			console.log("會員mUsername:測試"+$('#12345').val());
+			console.log("會員mUsername:"+'${mUsername.mUsername}');
+			console.log("會員mID:"+'${mUsername.mID}');
+			
+			console.log("店家mUsername測試:"+$('#123456').val());
+			console.log("店家mUsername:"+'${user.sUsername}');
+			console.log("店家mID:"+'${user.sID}');
+			
+			
+			$.ajax({
 						"type" : "get",
 						"url" : "CommentsServlet",
 						"dataType" : "JSON",

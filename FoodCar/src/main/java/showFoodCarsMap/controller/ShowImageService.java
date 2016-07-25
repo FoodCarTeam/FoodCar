@@ -17,9 +17,9 @@ public class ShowImageService {
 	
 	public  void showImage(HttpServletRequest request,HttpServletResponse response,String fileName){
 		
-//		String path="//Users//lanyao//Documents//FoodCar//FoodCar//src//main//webapp//images//MapIcon//";
+		String path="//Users//lanyao//Documents//FoodCar//FoodCar//src//main//webapp//images//MapIcon//";
 		String a=request.getServletContext().getRealPath("/");
-		String path=a+"//src//main//webapp//images//MapIcon//";
+//		String path=a+"//src//main//webapp//images//MapIcon//";
 	
 		System.out.println(request.getServletContext().getRealPath("/"));
 		

@@ -163,7 +163,7 @@
 								<div id="stores" class="tab-pane fade">
 
 									<form class="form-signin" style="width:700px;"
-									 action="<c:url value="/Login.controller" />" method="get">
+									 action="<c:url value="/Login.controller" />" method="post">
 										<p></p>
 
 										<label for="" class="sr-only">請輸入手機號碼</label> <input

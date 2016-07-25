@@ -40,43 +40,47 @@ public class MembersServlet extends HttpServlet {
 				request.setAttribute("error", errors);
 
 				if(mUsername==null || mUsername.length()==0) {
-					errors.put("mUsername", "請輸入 帳號@qq.com");
+					errors.put("mUsername", "請輸入信箱");
 				}
 				if(mPassword==null || mPassword.length()==0) {
 					errors.put("mPassword", "請輸入密碼");
 				}
-				
-				String page = "";
-				try{
-					
-				}catch(Exception e){
-					page="/login.jsp";
-					throw e;
-				}finally{
-					page="/index.html";
-				}
-				
-				
-				if(errors!=null && !errors.isEmpty()) {
-					request.getRequestDispatcher(
-							page).forward(request, response);
-				}
-				
+			
 		//呼叫Model
 				MembersVO vo = membersService.login(mUsername, mPassword);
 		//根據Model執行結果顯示View
 				if(vo==null) {
 					errors.put("mPassword", "Login failed, please try again.");
-					request.getRequestDispatcher(
-							page).forward(request, response);
+					request.getRequestDispatcher("/login.jsp").forward(request, response);
+					
 				} else {
 					HttpSession session = request.getSession();
 					session.setAttribute("mUsername", vo);
-
+					
+					String servletPath=(String)session.getAttribute("target");
+					String queryPath=(String)session.getAttribute("query");
 					String path = request.getContextPath();
-					response.sendRedirect(path+page);
+					if(servletPath!=null||queryPath!=null){
+						System.out.println("path:"+path+servletPath+"?"+queryPath);
+						
+//						response.sendRedirect("localhost:8080"+path+servletPath+"?"+queryPath);
+						System.out.println("測試localhost:8080"+path+servletPath+"?"+queryPath);
+						request.getRequestDispatcher(servletPath+"?"+queryPath).forward(request, response);
+						return;
+					}else{
+						
+					}
+
+					System.out.println("path"+path);
+					
+					
+					response.sendRedirect(path+"/index.html");
 					return ;
 				}
+				
+				
+				
+				
 	}
 
 }
