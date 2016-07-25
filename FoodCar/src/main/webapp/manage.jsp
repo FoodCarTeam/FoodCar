@@ -52,7 +52,7 @@
 		<div class="row">
 			<div class="small-3 columns">
 				<div class="top-logo">
-					<a class="logo" href="index.html"></a>
+					<a class="logo" href="index.jsp"></a>
 				</div>
 			</div>
 			<div class="small-7 columns">
@@ -81,7 +81,7 @@
 			<ul class="left">
 				<li>
 					<div class="top-logo">
-						<a class="logo" href="index.html"></a> <a class="logo-text"
+						<a class="logo" href="index.jsp"></a> <a class="logo-text"
 							href="index.html"></a>
 					</div>
 				</li>

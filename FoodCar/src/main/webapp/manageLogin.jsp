@@ -52,7 +52,7 @@
 		<div class="row">
 			<div class="small-3 columns">
 				<div class="top-logo">
-					<a class="logo" href="index.html"></a>
+					<a class="logo" href="index.jsp"></a>
 				</div>
 			</div>
 			<div class="small-7 columns">
@@ -71,10 +71,10 @@
 	</div>
 	<div id="MenuPhone">
 		<ul id="menu-mobile">
-			<li><a href="stores.jsp">餐車專區</a></li>
-			<li><a href="map.jsp">地圖</a></li>
-			<li><a href="about.jsp">關於我們</a></li>
-			<li><a href="login.jsp">登入</a></li>
+			 <li><a href="stores.jsp">餐車專區</a></li>
+                  <li><a href="map.html">地圖</a></li>
+                  <li><a href="about.jsp">關於我們</a></li>
+                  <li><a href="login.jsp">登入</a></li>
 		</ul>
 	</div>
 	<!--/列表bootstrap-->
@@ -88,7 +88,7 @@
 			<ul class="left">
 				<li>
 					<div class="top-logo">
-						<a class="logo" href="index.html"></a> <a class="logo-text"
+						<a class="logo" href="index.jsp"></a> <a class="logo-text"
 							href="index.jsp"></a>
 					</div>
 				</li>
@@ -107,10 +107,10 @@
 				<!--列表右邊list工具列-->
 				<li class="side-menu has-dropdown"><a href="#" class="menu"></a>
 					<ul class="dropdown">
-						<li><a href="stores.jsp">餐車專區</a></li>
-						<li><a href="map.jsp">地圖</a></li>
-						<li><a href="about.jsp">關於我們</a></li>
-						<li><a href="login.jsp">登入</a></li>
+						 <li><a href="stores.jsp">餐車專區</a></li>
+                  <li><a href="map.html">地圖</a></li>
+                  <li><a href="about.jsp">關於我們</a></li>
+                  <li><a href="login.jsp">登入</a></li>
 					</ul></li>
 				<!--/列表右邊list工具列-->
 			</ul>
