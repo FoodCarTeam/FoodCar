@@ -134,10 +134,14 @@
     訂單紀錄
   </a>
   <c:forEach var="bean" items="${orders}">
-  <a href="checkdetail?o=${bean.oID }" class="list-group-item">${bean.sName}<div class="pull-right">結帳日期:${bean.saleDate}</div></a>
+  <a href="checkdetail?o=${bean.oID }" class="list-group-item">${bean.sName}<div class="pull-right date">結帳日期:${bean.saleDate}</div></a>
   </c:forEach>
 </div>
-     
+
+<script type='text/javascript'
+	src="DateFormat/jquery-dateFormat.min.js"></script>
+<!-- 	以下為計算日期時間 -->
+ 
             <!--內容以上結束-->
       </div>
     </div>

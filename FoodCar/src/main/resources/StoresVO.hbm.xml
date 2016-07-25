@@ -25,7 +25,7 @@
 			<key column="sID"/>
 			<one-to-many class="model.HoursVO" />
 		</set>
-        <set name="MenusVO" table="menus" lazy="false" cascade="all" inverse="true">
+        <set name="MenusVO" table="menus" lazy="false" cascade="all" inverse="true"  order-by="foodID">
             <key column="sID"/>
             <one-to-many class="model.MenusVO"/>
         </set>

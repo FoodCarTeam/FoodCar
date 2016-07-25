@@ -12,6 +12,8 @@
 	content="app-id=com.blogto.foodtrucks.toronto">
 <title>餐餔餔</title>
 <style>
+
+
 .modal-body .form-horizontal .col-sm-2, .modal-body .form-horizontal .col-sm-10
 	{
 	width: 100%
@@ -30,6 +32,14 @@
 
 
 <!-- 編輯的ＣＳＳ -->
+<!-- 最新編譯和最佳化的 CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+
+<!-- 選擇性佈景主題 -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+
+<!-- 最新編譯和最佳化的 JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 <link rel='stylesheet'href='bootstrap/comments/Markdown/css/bootstrap-markdown.min.css' type='text/css' media='all' />
 <link rel='stylesheet' href='bootstrap/comments/css/bootstrap-markdown.less'type='stylesheet/less' />
 
@@ -100,6 +110,7 @@
 					<div class="search-bar">
 						<div id="sb-search-phone" class="sb-search">
 							<form action="/">
+							    
 								<img src="images/hand/hand5.jpg" />
 							</form>
 						</div>
@@ -167,7 +178,7 @@
 				<div class="truck-details">
 					<div class="content">
 						<h1>
-							${select.sName} <a href='menu?s=${select.sID}' class="book-button">點餐</a>
+							${select.sName} 
 						</h1>
 						<script type='text/javascript'
 							src="bootstrap/js/jquery.redirect.js"></script>
@@ -183,7 +194,6 @@
 							<p>簡介:</p>
 							<p>${select.sIntro }</p>
 						</div>
-
 
 						<!--地圖-->
 						<div class="schedule">
@@ -242,9 +252,10 @@ $('iframe').attr('src',
 
 
 							<!--/地圖-->
-
+                   
 							<!--菜單-->
 							<div class="menu">
+							
 								<div class="row">
 									<div class="small-12 large-50 columns">
 										<h2>菜單</h2>
@@ -260,10 +271,12 @@ $('iframe').attr('src',
 												</div></li>
 										</c:forEach>
 
-
+                                         
 									</ul>
 								</div>
 							</div>
+							 <a href='menu?s=${select.sID}' class="btn btn-warning btn-large btn-block lead glyphicon glyphicon-cutlery" style="font-size:30px">  點餐</a>
+							<br>
 							<!--/菜單-->
 							
 <!-- 							以下為留言板 -->

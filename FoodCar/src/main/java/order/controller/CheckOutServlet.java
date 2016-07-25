@@ -57,6 +57,7 @@ public class CheckOutServlet extends HttpServlet {
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
+		
 		result.setmID(1);
 		result.setsID(storeID);
 		result.setSaleDate(tempDate);
@@ -65,6 +66,8 @@ public class CheckOutServlet extends HttpServlet {
 		result.setsName(sName);
 		service.insert(result);
 		int oID = result.getoID();
+		System.out.println("date:"+tempDate);
+		System.out.println("date:"+temp);
 		System.out.println(oID);
 		int foodID ;
 		int foodQuantity;

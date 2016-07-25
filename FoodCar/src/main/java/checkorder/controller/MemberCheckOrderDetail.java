@@ -1,6 +1,8 @@
 package checkorder.controller;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Set;
 
 import javax.servlet.ServletException;
@@ -27,6 +29,7 @@ public class MemberCheckOrderDetail extends HttpServlet {
 		for(OrderDetailsVO a:orderdetail){
 			a.getFoodName();
 		}
+		
         request.setAttribute("order", result);
 		request.setAttribute("detail", orderdetail);
 		request.getRequestDispatcher("/checkorderdetails.jsp").forward(request, response);
