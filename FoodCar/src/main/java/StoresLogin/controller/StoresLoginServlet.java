@@ -59,7 +59,7 @@ public class StoresLoginServlet extends HttpServlet{
 		
 	    HttpSession session = request.getSession();
 		session.setAttribute("user", vo);
-
+		
 		String path = request.getContextPath();
 		response.sendRedirect(path+"/lndex/StoreIndexLogin.jsp");
 		}		
