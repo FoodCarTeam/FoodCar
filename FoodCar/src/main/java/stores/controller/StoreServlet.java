@@ -30,18 +30,18 @@ public class StoreServlet extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		
 		String id = request.getParameter("s");
-		System.out.println(id);
+//		System.out.println(id);
 		int sID = 0;
 		 if(id!=null&&id.length()!=0){
 	      sID = Integer.parseInt(id);
 		 StoresVO result = storesService.select(sID);
 		 Set<MapsVO> map = result.getMapVO();
 		 Set<MenusVO> menus = result.getMenusVO();
-
+System.out.println("sName:"+result.getsName());
 		 String loc=null;
 		 for(MapsVO a:map){
 			loc=a.getLocation();
-			 System.out.println(loc);
+System.out.println("location:"+loc);
 		 }
 		 request.setAttribute("menus", menus);
 		 request.setAttribute("select", result);

@@ -25,7 +25,11 @@ public class CommentsService {
 //		}
 		
 	}
-	
+	public CommentsVO select_cID(int cID){
+		CommentsVO vo=null;
+		vo=dao.select_cID(cID);
+		return vo;
+	}
 	
 	public CommentsVO select_sID(int sID){
 		CommentsVO vo=null;

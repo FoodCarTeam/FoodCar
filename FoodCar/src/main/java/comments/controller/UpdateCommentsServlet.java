@@ -1,7 +1,6 @@
 package comments.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.net.InetAddress;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -13,40 +12,25 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.json.simple.JSONArray;
-
-import com.google.gson.JsonObject;
-
 import comments.model.CommentsService;
 import model.CommentsVO;
 
-@WebServlet("/InsertCommentsServlet")
-public class InsertCommentsServlet extends HttpServlet {
+
+@WebServlet("/UpdateCommentsServlet")
+public class UpdateCommentsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-//	public InsertCommentsServlet() {
-//		super();
-//	}
-
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		System.out.println(request.getMethod());
 		doPost(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-//		System.out.println(request.getMethod());
-		String mIDTemp=request.getParameter("mID");
-		String sIDTemp=request.getParameter("sID");
+		String cID=request.getParameter("cID");
+		String content=request.getParameter("content");
 		String cDateTemp=request.getParameter("cDate");
-		String cCntentTemp=request.getParameter("cContent");
+		String mID=request.getParameter("mID");
+		String sID=request.getParameter("sID");
 		
-//		System.out.println(mID);
-//		System.out.println(sID);
-//		System.out.println(cDateTemp);
-//		System.out.println(cCntentTemp);
-		
-		CommentsService service=new CommentsService();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		Date date = null;
 		try {
@@ -54,7 +38,7 @@ public class InsertCommentsServlet extends HttpServlet {
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
-
+		
 		String ip = request.getRemoteAddr();
 		if (ip.equalsIgnoreCase("0:0:0:0:0:0:0:1")) {
 			InetAddress inetAddress = InetAddress.getLocalHost();
@@ -66,30 +50,22 @@ public class InsertCommentsServlet extends HttpServlet {
 		for (int i = 0; i < a.length; i++) {
 			b[i] = Byte.valueOf(a[i]);
 		}
+
+		CommentsService service=new CommentsService();
+		CommentsVO resultTemp=service.select_cID(Integer.parseInt(cID));
+		Date cDate2=resultTemp.getcDate();
 		
 		CommentsVO vo=new CommentsVO();
+		vo.setcID(Integer.parseInt(cID));
+		vo.setcDate(cDate2);
+		vo.setcContent(content);
+		vo.setcIP(b);
+		vo.setmID(Integer.parseInt(mID));
+		vo.setsID(Integer.parseInt(sID));
+		vo.setcPoint("123");
+		service.update(vo);
 		
 		
-			int mID=Integer.parseInt(mIDTemp);
-			vo.setmID(mID);
-	
-			int sID=Integer.parseInt(sIDTemp);
-			vo.setsID(sID);
-			vo.setcDate(new java.sql.Date(date.getTime()));
-			vo.setcContent(cCntentTemp);
-			vo.setcIP(b);
-			vo.setcPoint("124");
-			CommentsVO result=service.insert(vo);
-			
-			response.setHeader("content-type", "text/html;charset=UTF-8");
-			response.setCharacterEncoding("UTF-8");
-			JsonObject jo=new JsonObject();
-			PrintWriter pw=response.getWriter();
-			jo.addProperty("cID", vo.getcID());
-//			JSONArray ja=new JSONArray();
-//			ja.add(jo);
-			pw.println(jo);
-			
 		
 	}
 

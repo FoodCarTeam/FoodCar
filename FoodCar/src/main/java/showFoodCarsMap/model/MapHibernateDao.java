@@ -15,9 +15,9 @@ public class MapHibernateDao implements MapDaoInterface {
 	
 	public static void main(String[]args){
 //		測試單獨查詢
-		MapHibernateDao dao=new MapHibernateDao();
-		MapsVO vo=dao.select(1);
-		System.out.println("location:"+vo.getLocation());
+//		MapHibernateDao dao=new MapHibernateDao();
+//		MapsVO vo=dao.select(1);
+//		System.out.println("location:"+vo.getLocation());
 //		測試全體查詢
 //		List<MapsVO> list=dao.select();
 //		for(MapsVO a:list){

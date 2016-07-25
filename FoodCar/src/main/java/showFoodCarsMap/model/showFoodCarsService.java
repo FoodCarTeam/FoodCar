@@ -15,7 +15,7 @@ public class showFoodCarsService {
 	MapHibernateDao dao = new MapHibernateDao();
 
 	public static void main(String[] args) {
-		showFoodCarsService service = new showFoodCarsService();
+//		showFoodCarsService service = new showFoodCarsService();
 		// 測試單查與全查
 //		 MapsVO vo=new MapsVO();
 //		 vo.setsID(1);
@@ -39,7 +39,7 @@ public class showFoodCarsService {
 		// boolean result=service.delete(3);
 		// System.out.println(result);
 
-		StoresService service2 = new StoresService();
+//		StoresService service2 = new StoresService();
 
 	}
 

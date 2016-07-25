@@ -16,6 +16,12 @@
 .modal-body .form-horizontal .col-sm-offset-2 {
 	margin-left: 15px;
 }
+
+.content_box{  
+        display: inline-block;
+        overflow:hidden;
+        width:800px; 
+}
 </style>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
@@ -41,6 +47,11 @@
 <link rel='stylesheet'
 	href='bootstrap/comments/Markdown/css/bootstrap-markdown.min.css'
 	type='text/css' media='all' />
+
+
+
+<script type='text/javascript'
+	src="bootstrap/comments/Masonry/jquery.masonry.min.js"></script>
 
 
 </head>
@@ -229,7 +240,13 @@
 		
 		
 		
-		
+		  $('#test').imagesLoaded(function() {
+	            $('#test').masonry({
+	                itemSelector: '.content_box',
+	                columnWidth: 1000,
+	                animate: true
+	            });
+	        });
 		
 		
 			
@@ -310,8 +327,8 @@
 		<div class="row">
 			<div class="col-sm-10 col-sm-offset-1" id="logout">
 				<div class="tab-content">
-					<div id='test' class="tab-pane active" id="comments-logout">
-						<ul class="media-list">
+					<div id='test' class="tab-pane active" id="comments-logout"  style="height:500px;overflow: auto">
+						<ul class="media-list content_box">
 
 						</ul>
 					</div>
