@@ -12,8 +12,10 @@ public class OrderDetailsService {
 	private OrderDetailsDAO orderDetailsDao = new OrderDetailsDAOHibernate();
 	
 	public static void main(String[]args){
+      
+	
 
-//		OrderDetailsService service=new OrderDetailsService();
+		
 //		OrderDetailsVO result = new OrderDetailsVO();
 //	
 //		result.setsID(1);

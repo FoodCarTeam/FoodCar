@@ -11,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.OrdersVO;
 import order.model.OrderService;
@@ -43,15 +44,17 @@ public class OrderServlet extends HttpServlet {
 //	    	  System.out.println("price = " + foodPrice[i]);
 	    	  
 	      }
-		request.setAttribute("fID", foodId);	
-		request.setAttribute("fQ", foodQuan);
-		request.setAttribute("fName", foodName);
-		request.setAttribute("fImg", foodImg);
-		request.setAttribute("fPrice", foodPrice);
-		request.setAttribute("sID", sID);
-		request.setAttribute("sName", sName);
-		request.getRequestDispatcher("/order.jsp").forward(request, response);
-		
+	    HttpSession session = request.getSession();
+	    
+	    session.setAttribute("fID", foodId);	
+	    session.setAttribute("fQ", foodQuan);
+	    session.setAttribute("fName", foodName);
+	    session.setAttribute("fImg", foodImg);
+	    session.setAttribute("fPrice", foodPrice);
+	    session.setAttribute("sID", sID);
+	    session.setAttribute("sName", sName);
+		//request.getRequestDispatcher("/order.jsp").forward(request, response);
+		response.sendRedirect(request.getContextPath()+"/order.jsp");
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
 		doGet(request, response);

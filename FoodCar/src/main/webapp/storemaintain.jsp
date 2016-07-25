@@ -1,4 +1,4 @@
-﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -10,23 +10,23 @@
 <meta name="apple-itunes-app" content="app-id=634884546" />
 <meta name="google-play-app"
 	content="app-id=com.blogto.foodtrucks.toronto">
-    <title>餐餔餔</title>   
-   
-    <!--CSS-->
-<link rel='stylesheet' id='main-stylesheet-css'  href='bootstrap/login/css/style.css' type='text/css' media='all' />
-<link rel='stylesheet' id='slicknav-css'  href="bootstrap/login/css/mobile%20menu%20style.css" type='text/css' media='all' /><!--mobile menu style.css-->
-<!--JS-->
-<script type='text/javascript' src="bootstrap/login/js/modernizr.custom.js"></script>
-<!--list浮動-->
-<link href="bootstrap/login/css/bootstrap.min.css" rel="stylesheet" />
-<link href="bootstrap/login/css/scrolling-nav.css" rel="stylesheet" />
-<script src="bootstrap/login/js/jquery.js"></script>
-<script src="bootstrap/login/js/scrolling-nav.js"></script>
-  <!--login-->
-   <link rel="stylesheet" href="bootstrap/login/css/login.css">
-  <script src="bootstrap/login/js/jqlogin.js"></script>
-  <script src="bootstrap/login/js/login.js"></script>
-  
+<title>餐餔餔</title>
+
+<!--版型控制-->
+<link rel='stylesheet' id='main-stylesheet-css'
+	href='bootstrap/login/css/style.css' type='text/css' media='all' />
+<!--橘色header色塊控制與Menu控制-->
+<link rel='stylesheet' id='slicknav-css'
+	href="bootstrap/login/css/mobile%20menu%20style.css" type='text/css'
+	media='all' />
+<script type='text/javascript'
+	src="bootstrap/login/js/modernizr.custom.js"></script>
+<script src="bootstrap/signin/js/jquery.js"></script>
+<!--login-->
+<link rel="stylesheet" href="bootstrap/login/css/login.css">
+<script src="bootstrap/login/js/jqlogin.js"></script>
+<script src="bootstrap/login/js/login.js"></script>
+
 </head>
 <body
 	class="page page-id-8736 page-template page-template-template-truck-page page-template-template-truck-page-php born2eat-food-truck-toronto">
@@ -46,7 +46,7 @@
 		<div class="row">
 			<div class="small-3 columns">
 				<div class="top-logo">
-					<a class="logo" href="index.jsp"></a>
+					<a class="logo" href="index.html"></a>
 				</div>
 			</div>
 			<div class="small-7 columns">
@@ -65,10 +65,10 @@
 	</div>
 	<div id="MenuPhone">
 		<ul id="menu-mobile">
-			<li ><a href="stores.jsp">餐車專區</a></li>
-         <li ><a href="map.jsp">地圖</a></li>
-         <li ><a href="about.jsp">關於我們</a></li>
-         <li ><a href="login.jsp">登入</a></li>
+			<li><a href="stores.html">餐車專區</a></li>
+			<li><a href="map.html">地圖</a></li>
+			<li><a href="about.html">關於我們</a></li>
+			<li><a href="login.jsp">登入</a></li>
 		</ul>
 	</div>
 	<!--/列表bootstrap-->
@@ -83,7 +83,7 @@
 				<li>
 					<div class="top-logo">
 						<a class="logo" href="index.html"></a> <a class="logo-text"
-							href="index.jsp"></a>
+							href="index.html"></a>
 					</div>
 				</li>
 			</ul>
@@ -101,9 +101,9 @@
 				<!--列表右邊list工具列-->
 				<li class="side-menu has-dropdown"><a href="#" class="menu"></a>
 					<ul class="dropdown">
-						<li><a href="stores.jsp">餐車專區</a></li>
-						<li><a href="map.jsp">地圖</a></li>
-						<li><a href="about.jsp">關於我們</a></li>
+						<li><a href="stores.html">餐車專區</a></li>
+						<li><a href="map.html">地圖</a></li>
+						<li><a href="about.html">關於我們</a></li>
 						<li><a href="login.jsp">登入</a></li>
 					</ul></li>
 				<!--/列表右邊list工具列-->
@@ -118,75 +118,67 @@
 				<div class="truck-details">
 					<div class="content">
 
-						<h1>
-							登入<a class="book-button" href="signin.jsp">註冊</a>
-						</h1>
+						<h1>${select.sName}</h1>
 
 
 
 						<div class="container">
 							<form style="width: 800px">
 								<ul class="nav nav-pills">
-									<li class="active"><a data-toggle="pill" href="#users">會員登入</a></li>
-									<li><a data-toggle="pill" href="#stores">店家登入</a></li>
-									<li><a data-toggle="pill" href="#boss">登入管理</a></li>
+									<li class="active"><a data-toggle="pill" href="#info">資訊</a></li>
+									<li><a data-toggle="pill" href="#password">更改密碼</a></li>
+									<li><a data-toggle="pill" href="#menu">菜單管理</a></li>
+									<li><a data-toggle="pill" href="#map">地圖位置</a></li>
 								</ul>
 							</form>
 							<div class="tab-content">
 
 
-								<div id="users" class="tab-pane fade in active">
+								<div id="info" class="tab-pane fade in active">
 
 									<form class="form-inline" role="form"
 										action="<c:url value='/Login' />" method="post">
 										<p></p>
 
-										<label for="" class="sr-only">請輸入帳號E-mail</label> <input
-											type="email" class="form-control" placeholder="請輸入E-mail"
-											required autofocus style="font-size: 15px" name="mUsername"
-											value="${param.mUsername}"> <label
-											for="inputPassword" class="sr-only">請輸入密碼</label> <input
-											type="password" class="form-control" placeholder="請輸入密碼"
-											required style="font-size: 15px" name="mPassword"
-											value="${param.mPassword}">
+										<label for="sName" class="sr-only">店名：</label> <input
+											type="text" class="form-control" placeholder="請輸入店名" required
+											autofocus style="font-size: 15px" name="sName"> <label
+											for="sBossName" class="sr-only">姓名：</label> <input
+											type="text" class="form-control" placeholder="請輸入老闆姓名"
+											required style="font-size: 15px" name="sBossName">
 
 										<p></p>
 										<div class="checkbox">
-											<label> <input type="checkbox" value="remember-me">
-												記住密碼
-											</label>
 											<button class="btn btn-lg btn-primary btn-block"
-												type="submit">登入</button>
+												type="submit">更改</button>
 										</div>
 									</form>
 								</div>
-								<div id="stores" class="tab-pane fade">
+								<div id="password" class="tab-pane fade">
 
-									<form class="form-signin" style="width:700px;"
-									 action="<c:url value="/Login.controller" />" method="get">
+									<form class="form-inline" style="width: 700px;"
+										action="<c:url value='/login' />" method="post">
 										<p></p>
 
-										<label for="" class="sr-only">請輸入手機號碼</label> <input
-											type="text" class="form-control" placeholder="請輸入手機號碼"
-											required autofocus style="font-size: 15px" name="sUsername"
-											value="${param.sUsername}"> <label
-											for="inputPassword" class="sr-only">請輸入密碼</label> <input
-											type="text" class="form-control" placeholder="請輸入密碼" required
-											style="font-size: 15px" name="sPassword"
-											value="${param.sPassword}">
+										<label for="sPassword" class="sr-only">請輸入原密碼</label> <input
+											type="text" class="form-control" placeholder="請輸入原密碼"
+											required autofocus style="font-size: 15px" name="sPassword">
+										<label for="newPassword" class="sr-only">請輸入新密碼</label> <input
+											type="text" class="form-control" placeholder="請輸入新密碼"
+											required autofocus style="font-size: 15px" name="newPassword">
+										<label for="newAgain" class="sr-only">再次輸入新密碼</label> <input
+											type="text" class="form-control" placeholder="請再次輸入新密碼"
+											required style="font-size: 15px" name="newAgain">
+										<p></p>
 
-										<div class="checkbox">
-											<label> <input type="checkbox" value="remember-me">
-												記住密碼
-											</label>
-										</div>
-										<button class="btn btn-lg btn-primary btn-block" type="submit">登入</button>
+
+										<button class="btn btn-lg btn-primary btn-block" type="submit">更新</button>
 									</form>
 
 								</div>
-								<div id="boss" class="tab-pane fade">
+								<div id="menu" class="tab-pane fade">
 
-									<form class="form-signin" style="width: 700px;" action="<c:url value='/login'/>" method="post">
+									<form class="form-inline" role="form">
 										<p></p>
 										<label for="" class="sr-only">請輸入帳號</label> <input type="text"
 											class="form-control" placeholder="請輸入帳號" required autofocus
@@ -202,6 +194,13 @@
 											<button class="btn btn-lg btn-primary btn-block"
 												type="submit">登入</button>
 										</div>
+									</form>
+
+								</div>
+								<div id="map" class="tab-pane fade">
+
+									<form class="form-inline" role="form">
+										<h3>地圖!地圖!地圖</h3>
 									</form>
 
 								</div>

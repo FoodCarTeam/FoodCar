@@ -9,7 +9,6 @@ public class OrderDetailsVO implements java.io.Serializable {
 	private Integer foodQuantity ;
 	private String  foodName;
 	private Integer unitPrice;
-	private String  sName;
 	private Integer totalPrice;
 	private Integer mID ;
 	private String odMemo ;
@@ -55,12 +54,6 @@ public class OrderDetailsVO implements java.io.Serializable {
 	}
 	public void setUnitPrice(Integer unitPrice) {
 		this.unitPrice = unitPrice;
-	}
-	public String getsName() {
-		return sName;
-	}
-	public void setsName(String sName) {
-		this.sName = sName;
 	}
 	public Integer getTotalPrice() {
 		return totalPrice;

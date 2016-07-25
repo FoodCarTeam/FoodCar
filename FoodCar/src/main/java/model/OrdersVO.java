@@ -1,6 +1,8 @@
 package model;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 public class OrdersVO implements java.io.Serializable {
 
@@ -10,8 +12,16 @@ public class OrdersVO implements java.io.Serializable {
 	private Integer amount ;
 	private Date saleDate ;
 	private Integer checkOut ;
+	private String  sName;
+	private Set<OrderDetailsVO> orderDetailsVO = new HashSet<OrderDetailsVO>();
 	
 	
+	public Set<OrderDetailsVO> getOrderDetailsVO() {
+		return orderDetailsVO;
+	}
+	public void setOrderDetailsVO(Set<OrderDetailsVO> orderDetailsVO) {
+		this.orderDetailsVO = orderDetailsVO;
+	}
 	public Integer getoID() {
 		return oID;
 	}
@@ -48,6 +58,12 @@ public class OrdersVO implements java.io.Serializable {
 	}
 	public void setCheckOut(Integer checkOut) {
 		this.checkOut = checkOut;
+	}
+	public String getsName() {
+		return sName;
+	}
+	public void setsName(String sName) {
+		this.sName = sName;
 	}
     
 	

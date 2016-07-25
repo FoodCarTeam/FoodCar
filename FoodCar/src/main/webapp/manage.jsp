@@ -60,7 +60,7 @@
 					<div class="search-bar">
 						<div id="sb-search-phone" class="sb-search">
 							<form action="/">
-								<img src="images/hand/hand5.jpg" />
+								<img src="${LoginOK.}" />
 							</form>
 						</div>
 					</div>
@@ -69,14 +69,7 @@
 			<div class="small-2 columns"></div>
 		</div>
 	</div>
-	<div id="MenuPhone">
-		<ul id="menu-mobile">
-			<li><a href="stores.jsp">餐車專區</a></li>
-			<li><a href="map.jsp">地圖</a></li>
-			<li><a href="about.jsp">關於我們</a></li>
-			<li><a href="login.jsp">登入</a></li>
-		</ul>
-	</div>
+
 	<!--/列表bootstrap-->
 	<nav class="navbar navbar-fixed-top"> <!--列表-->
 	<div class="contain-to-grid">
@@ -89,7 +82,7 @@
 				<li>
 					<div class="top-logo">
 						<a class="logo" href="index.html"></a> <a class="logo-text"
-							href="index.jsp"></a>
+							href="index.html"></a>
 					</div>
 				</li>
 			</ul>
@@ -105,13 +98,7 @@
 				</li>
 				<!--/列表右邊頭像-->
 				<!--列表右邊list工具列-->
-				<li class="side-menu has-dropdown"><a href="#" class="menu"></a>
-					<ul class="dropdown">
-						<li><a href="stores.jsp">餐車專區</a></li>
-						<li><a href="map.jsp">地圖</a></li>
-						<li><a href="about.jsp">關於我們</a></li>
-						<li><a href="login.jsp">登入</a></li>
-					</ul></li>
+				
 				<!--/列表右邊list工具列-->
 			</ul>
 		</div>
@@ -125,15 +112,17 @@
 				<div class="truck-details">
 					<div class="content">
 
-						<h1>管理者登入</h1>
+						<h1>
+							${LoginOK.managerName}
+						</h1>
 
 
 
 						<div class="container">
 							<form style="width: 800px">
 								<ul class="nav nav-pills">
-									<!-- 									<li><a data-toggle="pill" href="#storeshow"><h4>店家審核</h4></a></li> -->
-									<!-- 									<li><a data-toggle="pill" href="#commenthow"><h4>留言管理</h4></a></li> -->
+									<li><a data-toggle="pill" href="#storehow"><h4>店家審核</h4></a></li>
+									<li><a data-toggle="pill" href="#commenthow"><h4>留言管理</h4></a></li>
 									<li class="active"><a data-toggle="pill" href="#boss"><h4>登入管理</h4></a></li>
 
 								</ul>
@@ -141,68 +130,67 @@
 							<div class="tab-content">
 
 
-								<!-- 								<div id="storeshow" class="tab-pane fade"> -->
+								<div id="storeshow" class="tab-pane fade">
 
-								<!-- 									<form class="form-signin" style="width: 700px;"> -->
-								<!-- 										<p></p> -->
+									<form class="form-signin" style="width: 700px;">
+										<p></p>
 
-								<!-- 										<label for="inputEmail" class="sr-only">請輸入帳號E-mail</label> <input -->
-								<!-- 											type="email" id="inputEmail" class="form-control" -->
-								<!-- 											placeholder="請輸入E-mail" required autofocus -->
-								<!-- 											style="font-size: 15px"> <label for="inputPassword" -->
-								<!-- 											class="sr-only">請輸入密碼</label> <input type="password" -->
-								<!-- 											id="inputPassword" class="form-control" placeholder="請輸入密碼" -->
-								<!-- 											required style="font-size: 15px"> -->
+										<label for="inputEmail" class="sr-only">請輸入帳號E-mail</label> <input
+											type="email" id="inputEmail" class="form-control"
+											placeholder="請輸入E-mail" required autofocus
+											style="font-size: 15px"> <label for="inputPassword"
+											class="sr-only">請輸入密碼</label> <input type="password"
+											id="inputPassword" class="form-control" placeholder="請輸入密碼"
+											required style="font-size: 15px">
 
-								<!-- 										<div class="checkbox"> -->
-								<!-- 											<label> <input type="checkbox" value="remember-me"> -->
-								<!-- 												記住密碼 -->
-								<!-- 											</label> -->
-								<!-- 										</div> -->
-								<!-- 										<button class="btn btn-lg btn-primary btn-block" type="submit">登入</button> -->
-								<!-- 									</form> -->
+										<div class="checkbox">
+											<label> <input type="checkbox" value="remember-me">
+												記住密碼
+											</label>
+										</div>
+										<button class="btn btn-lg btn-primary btn-block" type="submit">登入</button>
+									</form>
 
-								<!-- 								</div> -->
-								<!-- 								<div id="commenthow" class="tab-pane fade"> -->
+								</div>
+								<div id="commenthow" class="tab-pane fade">
 
-								<!-- 									<form class="form-signin" style="width: 700px;"> -->
-								<!-- 										<p></p> -->
+									<form class="form-signin" style="width: 700px;">
+										<p></p>
 
-								<!-- 										<label for="" class="sr-only">請輸入手機號碼</label> <input -->
-								<!-- 											type="text" class="form-control" placeholder="請輸入手機號碼" -->
-								<!-- 											required autofocus style="font-size: 15px"> <label -->
-								<!-- 											for="inputPassword" class="sr-only">請輸入密碼</label> <input -->
-								<!-- 											type="password" id="Password1" class="form-control" -->
-								<!-- 											placeholder="請輸入密碼" required style="font-size: 15px"> -->
+										<label for="" class="sr-only">請輸入手機號碼</label> <input
+											type="text" class="form-control" placeholder="請輸入手機號碼"
+											required autofocus style="font-size: 15px"> <label
+											for="inputPassword" class="sr-only">請輸入密碼</label> <input
+											type="password" id="Password1" class="form-control"
+											placeholder="請輸入密碼" required style="font-size: 15px">
 
-								<!-- 										<div class="checkbox"> -->
-								<!-- 											<label> <input type="checkbox" value="remember-me"> -->
-								<!-- 												記住密碼 -->
-								<!-- 											</label> -->
-								<!-- 										</div> -->
-								<!-- 										<button class="btn btn-lg btn-primary btn-block" type="submit">登入</button> -->
-								<!-- 									</form> -->
+										<div class="checkbox">
+											<label> <input type="checkbox" value="remember-me">
+												記住密碼
+											</label>
+										</div>
+										<button class="btn btn-lg btn-primary btn-block" type="submit">登入</button>
+									</form>
 
-								<!-- 								</div> -->
+								</div>
 								<div id="boss" class="tab-pane fade in active">
 
-									<form class="form-signin" style="width: 700px;"
+									<form class="form-signin" style="width: 700px;" 
 										action="<c:url value='/manageLogin' />" method="post">
 										<p></p>
-										<label for="managerUser" class="sr-only">請輸入帳號</label> <input
-											type="text" class="form-control" placeholder="請輸入帳號" required
-											autofocus style="font-size: 15px" name="managerUser"
-											value="${param.managerUser}"> <label
-											for="managerPass" class="sr-only">請輸入密碼</label> <input
-											type="text" class="form-control" placeholder="請輸入密碼" required
-											autofocus style="font-size: 15px" name="managerPass"
-											value="${param.managerPass}">
+										<label for="inputAccount" class="sr-only">請輸入帳號</label> <input type="text"
+											class="form-control" placeholder="請輸入帳號" required autofocus
+											style="font-size: 15px" name="managerUser" value="${param.managerUser}">
+										<p>${error.managerUser}</p>
+										<label for="inputPassword" class="sr-only">請輸入密碼</label> <input type="text" 
+											class="form-control" placeholder="請輸入密碼" required autofocus
+											style="font-size: 15px" name="managerPass" value="${param.managerPass}">
+										<p>${error.managerPass}</p>
 										<div class="checkbox">
 											<label> <input type="checkbox" value="remember-me">記住密碼
 											</label>
 										</div>
-										<button class="btn btn-lg btn-primary btn-block" type="submit"
-											id="manageLogin">登入</button>
+										<button class="btn btn-lg btn-primary btn-block" type="submit">登入</button>
 									</form>
 
 								</div>
@@ -256,6 +244,5 @@
 			});
 		});
 	</script>
-
 </body>
 </html>
