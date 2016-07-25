@@ -1,6 +1,7 @@
 package comments.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.InetAddress;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -11,6 +12,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.json.simple.JSONArray;
+
+import com.google.gson.JsonObject;
 
 import comments.model.CommentsService;
 import model.CommentsVO;
@@ -74,13 +79,17 @@ public class InsertCommentsServlet extends HttpServlet {
 			vo.setcContent(cCntentTemp);
 			vo.setcIP(b);
 			vo.setcPoint("124");
-		
-		
-			
 			CommentsVO result=service.insert(vo);
-		System.out.println("result:"+result.getcContent());
-		
-		
+			
+			response.setHeader("content-type", "text/html;charset=UTF-8");
+			response.setCharacterEncoding("UTF-8");
+			JsonObject jo=new JsonObject();
+			PrintWriter pw=response.getWriter();
+			jo.addProperty("cID", vo.getcID());
+//			JSONArray ja=new JSONArray();
+//			ja.add(jo);
+			pw.println(jo);
+			
 		
 	}
 

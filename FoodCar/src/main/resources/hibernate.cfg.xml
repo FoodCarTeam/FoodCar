@@ -16,6 +16,7 @@
 		<property name="hibernate.c3p0.max_size">20</property>
 		<property name="hibernate.c3p0.timeout">1800</property>
 		<property name="hibernate.c3p0.max_statements">50</property>
+		 <property name="hibernate.jdbc.use_get_generated_keys">true</property>
 
         
 		<!--SQL方言,以下使用SQLServer -->
@@ -44,6 +45,7 @@
         <mapping resource="ResponseVO.hbm.xml" />
         <mapping resource="MembersVO.hbm.xml" />
         <mapping resource="manager.hbm.xml" />
+        <mapping resource="RecommendVO.hbm.xml" />
         
 
     </session-factory>

@@ -74,6 +74,8 @@ System.out.println(cContent);
 			b[i] = Byte.valueOf(a[i]);
 		}
 
+		System.out.println("cID~~:"+cID);
+		
 		vo.setcContent(cContent);
 		vo.setcDate(date);
 		vo.setcID(Integer.valueOf(cID));

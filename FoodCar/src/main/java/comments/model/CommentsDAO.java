@@ -1,20 +1,28 @@
 package comments.model;
 
 
-import java.sql.Date;
+import java.sql.Connection;
+
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.jdbc.Work;
 
 import hibernate.util.HibernateUtil;
 import model.CommentsVO;
 
 public class CommentsDAO implements commentsDaoInterface{
 	final static String SELECT_mID="from CommentsVO where mID=:mID";
-	final static String SELECT_sID="from CommentsVO where sID=:sID order by cDate desc";
+	final static String SELECT_sID="from CommentsVO where sID=:sID";
 	final static String Sselect_ALL_mID="from CommentsVO  where mID=:mID order by cDate";
 	final static String Sselect_ALL_sID="from CommentsVO  where sID=:sID order by cDate desc";
 //	final static String INSERT="insert into CommentsVO(mID,sID,cDate,cContent,cPoint,cIP)";
@@ -22,9 +30,9 @@ public class CommentsDAO implements commentsDaoInterface{
 //										+"where cID=:cID";
 	final static String DELETE="delete CommentsVO where cID=:cID";
 	public static void main(String[] args) {
-		CommentsDAO dao=new CommentsDAO();
+//		CommentsDAO dao=new CommentsDAO();
 //		CommentsVO vo=new CommentsVO();
-//		測試新增
+////		測試新增
 //		vo.setmID(1);
 //		vo.setsID(3);
 //		Date date=new Date();
@@ -118,6 +126,21 @@ public class CommentsDAO implements commentsDaoInterface{
 		}
 		return vo;
 	}
+	
+	public CommentsVO select_cID(int cID) {
+		Session session=HibernateUtil.getSessionFactory().getCurrentSession();
+		CommentsVO vo=null;
+		try {
+			session.beginTransaction();
+			vo=(CommentsVO)session.get(CommentsVO.class, cID);
+			session.getTransaction().commit();
+		} catch (Exception e) {
+			session.getTransaction().rollback();
+			e.printStackTrace();
+		}
+		return vo;
+	}
+	
 
 	@Override
 	public List<CommentsVO> select_ALL_sID(int sID) {
@@ -153,12 +176,38 @@ public class CommentsDAO implements commentsDaoInterface{
 		return list;
 	}
 
+	
+
+	
 	@Override
 	public CommentsVO insert(CommentsVO vo) {
 		Session session=HibernateUtil.getSessionFactory().getCurrentSession();
+		
+//		session.doWork(new Work(){
+//			@Override
+//			public void execute(Connection connection) throws SQLException{
+//				Statement stmt=connection.createStatement();
+//						stmt.executeUpdate("insert comments values(?,?,?,?,?,?)",Statement.RETURN_GENERATED_KEYS);
+//						
+//						
+//						
+//						ResultSet rs=stmt.getGeneratedKeys();
+//						if(rs.next()){
+//							String key=rs.getString(1);
+//						}
+//						ResultSetMetaData rsmd=rs.getMetaData();
+//						
+//					}
+//		});
+		
+		
 		try {
 			session.beginTransaction();
+			
+		
+		
 			session.save(vo);
+//		System.out.println("PK:"+vo.getcID());
 			session.getTransaction().commit();
 		} catch (Exception e) {
 			session.getTransaction().rollback();

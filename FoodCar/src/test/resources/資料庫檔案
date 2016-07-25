@@ -99,6 +99,7 @@ CREATE TABLE [orders] (
 oID			int IDENTITY(1000,1) NOT NULL,
 sID			int NOT NULL,
 mID			int NOT NULL,
+sName		    nvarchar(50) NOT NULL,
 amount      int NOT NULL,
 saleDate	date NOT NULL,
 checkOut	int NOT NULL,
@@ -234,6 +235,15 @@ managerPass	varchar(50) NOT NULL,
 managerName nvarchar(10) ,
 managerPhone varchar(15) ,
 constraint manageID_primary_key primary key (manageID),
+);
+
+
+CREATE TABLE [recommend] (
+rID		int IDENTITY(1,1) NOT NULL,
+sID			int NOT NULL,
+mID			int NOT NULL,
+constraint recommend_sID foreign key (sID) references stores (sID),
+constraint rID_primary_key primary key (rID),
 );
 
 -------------------------------------------------------------------------------------------------------------------------------------

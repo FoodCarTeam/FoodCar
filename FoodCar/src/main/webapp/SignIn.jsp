@@ -39,7 +39,7 @@
         <div class="row">
           <div class="small-3 columns">
             <div class="top-logo">
-              <a class="logo" href="index.html"></a>
+              <a class="logo" href="index.jsp"></a>
             </div>
           </div>
           <div class="small-7 columns">
@@ -59,10 +59,10 @@
     </div>
     <div id="MenuPhone">
       <ul id="menu-mobile">
-         <li><a href="stores.html">餐車專區</a></li>
-         <li><a href="map.html">地圖</a></li>
-         <li><a href="about.html">關於我們</a></li>
-         <li><a href="login.html">登入</a></li>
+          <li><a href="stores.jsp">餐車專區</a></li>
+                  <li><a href="map.html">地圖</a></li>
+                  <li><a href="about.jsp">關於我們</a></li>
+                  <li><a href="login.jsp">登入</a></li>
       </ul>
     </div>
 <!--/列表bootstrap-->
@@ -96,10 +96,10 @@
               <li class="side-menu has-dropdown">
                 <a href="#" class="menu"></a>
                 <ul class="dropdown">
-                  <li><a href="stores.html">餐車專區</a></li>
+                 <li><a href="stores.jsp">餐車專區</a></li>
                   <li><a href="map.html">地圖</a></li>
-                  <li><a href="about.html">關於我們</a></li>
-                  <li><a href="login.html">登入</a></li>
+                  <li><a href="about.jsp">關於我們</a></li>
+                  <li><a href="login.jsp">登入</a></li>
                 </ul>
               </li>
 <!--/列表右邊list工具列-->
@@ -133,7 +133,7 @@
 
    <!--會員註冊-->
        <div id="users" class="tab-pane fade in active"> 
-<form   class="form-inline" role="form" action="<c:url value="/signIn.controller" />" method="get">
+<form   class="form-inline" role="form" action="<c:url value="/MembersSignin" />" method="post">
 
     <div class="form-group">
         <p></p>
