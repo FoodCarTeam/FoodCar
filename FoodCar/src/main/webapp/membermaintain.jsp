@@ -46,7 +46,7 @@
 		<div class="row">
 			<div class="small-3 columns">
 				<div class="top-logo">
-					<a class="logo" href="index.html"></a>
+					<a class="logo" href="index.jsp"></a>
 				</div>
 			</div>
 			<div class="small-7 columns">
@@ -65,10 +65,10 @@
 	</div>
 	<div id="MenuPhone">
 		<ul id="menu-mobile">
-			<li><a href="stores.jsp">餐車專區</a></li>
-			<li><a href="map.jsp">地圖</a></li>
-			<li><a href="about.jsp">關於我們</a></li>
-			<li><a href="login.jsp">登入</a></li>
+			 <li><a href="stores.jsp">餐車專區</a></li>
+                  <li><a href="map.html">地圖</a></li>
+                  <li><a href="about.jsp">關於我們</a></li>
+                  <li><a href="login.jsp">登入</a></li>
 		</ul>
 	</div>
 	<!--/列表bootstrap-->
@@ -125,10 +125,10 @@
 						<div class="container">
 							<form style="width: 800px">
 								<ul class="nav nav-pills">
-									<li class="active"><a data-toggle="pill" href="#info">資訊</a></li>
-									<li><a data-toggle="pill" href="#password">更改密碼</a></li>
-									<li><a data-toggle="pill" href="#menu">我的最愛</a></li>
-									<li><a data-toggle="pill" href="#map">地圖位置</a></li>
+									 <li><a href="stores.jsp">餐車專區</a></li>
+                  <li><a href="map.html">地圖</a></li>
+                  <li><a href="about.jsp">關於我們</a></li>
+                  <li><a href="login.jsp">登入</a></li>
 								</ul>
 							</form>
 							<div class="tab-content">

@@ -82,7 +82,7 @@
 			<ul class="left">
 				<li>
 					<div class="top-logo">
-						<a class="logo" href="index.html"></a> <a class="logo-text"
+						<a class="logo" href="index.jsp"></a> <a class="logo-text"
 							href="index.jsp"></a>
 					</div>
 				</li>
@@ -119,7 +119,7 @@
 					<div class="content">
 
 						<h1>
-							登入<a class="book-button" href="signin.jsp">註冊</a>
+							登入<a class="book-button" href="SignIn.jsp">註冊</a>
 						</h1>
 
 

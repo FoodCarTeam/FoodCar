@@ -25,7 +25,7 @@
           <div class="container">
             <div class="navbar-header">
               <!-- Logo Starts -->
-              <a class="navbar-brand" href="#home"><img  class="animated bounceInUp" src="index/images/logo.png" alt="logo"></a>
+              <a class="navbar-brand" href="index.jsp"><img  class="animated bounceInUp" src="index/images/logo.png" alt="logo"></a>
               <!-- #Logo Ends -->
 
 
@@ -42,8 +42,8 @@
             <!-- Nav Starts -->
             <div class="navbar-collapse  collapse">
               <ul class="nav navbar-nav navbar-right scroll">
-                <li ><a  class="animated bounceInUp" href="stores.html" style="color:white;font-size:larger" >餐車專區</a></li>
-                 <li ><a class="animated bounceInUp" href="map.jsp" style="color:white;font-size:larger" >地圖</a></li>
+                <li ><a  class="animated bounceInUp" href="stores.jsp" style="color:white;font-size:larger" >餐車專區</a></li>
+                 <li ><a class="animated bounceInUp" href="map.html" style="color:white;font-size:larger" >地圖</a></li>
                  <li ><a class="animated bounceInUp"  href="about.jsp" style="color:white;font-size:larger">關於我們</a></li>
                  <li ><a class="animated bounceInUp"  href="login.jsp" style="color:white;font-size:larger">登入</a></li>            
               </ul>
@@ -98,7 +98,7 @@
 
 <!-- Footer Starts -->
 <div class="footer text-center spacer">
-Copyright 2014 Cyrus Creative Studio. All rights reserved.
+餐餔餔
 </div>
 <!-- # Footer Ends -->
 
