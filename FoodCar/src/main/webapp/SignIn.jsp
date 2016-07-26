@@ -4,6 +4,12 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en-US" prefix="og: http://ogp.me/ns#" class="no-js">
 <head>
+<style>
+#users label{
+font-size:18px;
+}
+
+</style>
 <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -11,17 +17,27 @@
     <meta name="google-play-app" content="app-id=com.blogto.foodtrucks.toronto">    
     <title>餐餔餔</title>   
       
+<script src="bootstrap/signin/js/jquery.js"></script>
+      
+      
+      
       <!--版型控制-->
 <link rel='stylesheet' id='slicknav-css'  href="bootstrap/signin/css/mobile%20menu%20style.css" type='text/css' media='all' />
 <link rel='stylesheet' id='main-stylesheet-css'  href='bootstrap/signin/css/style.css' type='text/css' media='all' />
       <!--橘色header色塊控制與Menu控制-->
 
 <script type='text/javascript' src="bootstrap/signin/js/modernizr.custom.js"></script> 
-<script src="bootstrap/signin/js/jquery.js"></script>
+
   <!--login-->
    <link rel="stylesheet" href="bootstrap/signin/css/login.css">
   <script src="bootstrap/signin/js/jqlogin.js"></script>
   <script src="bootstrap/signin/js/login.js"></script>
+  
+  
+  <link href="bootstrap/signin/css/bootstrap-datetimepicker.css" rel=stylesheet>
+<!--   <link href="bootstrap/signin/css/bootstrap-datetimepicker.min.css" rel=stylesheet> -->
+<link href="bootstrap/comments/css/bootstrap.min.css" rel=stylesheet>
+<!-- <link href="bootstrap/comments/css/bootstrap-theme.min.css" rel=stylesheet> -->
   
 </head>
 <body class="page page-id-8736 page-template page-template-template-truck-page page-template-template-truck-page-php born2eat-food-truck-toronto">  
@@ -122,7 +138,7 @@
           </h1>
             
 <div class="container">
-  <form  style="width:800px">
+  <form>
   <ul class="nav nav-pills" >
     <li class="active"><a data-toggle="pill" href="#users"><h4>會員註冊</h4></a></li>
     <li><a data-toggle="pill" href="#stores"><h4>店家註冊</h4></a></li>
@@ -131,46 +147,113 @@
   </form>
   <div class="tab-content">
 
+
+
+
+
+
+
+
+
+
+
+
    <!--會員註冊-->
        <div id="users" class="tab-pane fade in active"> 
-<form   class="form-inline" role="form" action="<c:url value="/signIn.controller" />" method="get">
+<form   class="form-inline" role="form" action="<c:url value="/MembersSignin" />" method="POST">
 
     <div class="form-group">
         <p></p>
-      <label for="focusedInput">帳號:</label>
-      <input class="form-control" id="mUsername" type="text"  placeholder="請輸入E-mail" required style="font-size:15px"
+      <label for="focusedInput">信箱:</label>
+      <input class="form-control" id="mUsername" type="text"  placeholder="" required style="font-size:15px"
       name="mUsername" value="${param.mUsername}">
     </div>
    <p></p>
 <div class="form-group">
       <label for="focusedInput">密碼:</label>
-      <input class="form-control" id="mPassword" type="text"  placeholder="請輸入密碼" required style="font-size:15px"
+      <input class="form-control" id="mPassword" type="text"  placeholder="" required style="font-size:15px"
       name="mPassword" value="${param.mPassword}">
+    </div>
+<div class="form-group">
+      <label for="focusedInput">密碼確認:</label>
+      <input class="form-control" id="mPassword2" type="text"  placeholder="" required style="font-size:15px"
+      name="mPassword2" value="${param.mPassword}">
     </div>
       <p></p>
  <div class="form-group">
-      <label for="focusedInput">姓氏:</label>
-      <input class="form-control" id="mName" type="text" placeholder="請輸入姓氏" required style="font-size:15px"
+      <label for="focusedInput">姓名:</label>
+      <input class="form-control" id="mName" type="text" placeholder="" required style="font-size:15px"
       name="mName" value="${param.mName}">
     </div>
   
    <p></p>
       
        <div class="form-group">
-      <label for="focusedInput">電話:</label>
-      <input class="form-control" id="mPhone" type="text"  placeholder="09xx-xxx-xxx" required style="font-size:15px"
+      <label for="focusedInput" for='mPhone'>電話:</label>
+      <input class="form-control" id="mPhone" type="text"  placeholder="" required style="font-size:15px"
       name="mPhone" value="${param.mPhone}">
     </div>
+    
+    
  
        <div class="form-group">
-      <label for="focusedInput">生日:</label>
-      <input class="form-control" id="mBirthday" type="text"  placeholder="1987/01/23" required style="font-size:15px"
-      name="mBirthday" value="${param.mBirthday}">
+      <label for='mBirthday'>生日:</label> <a data-toggle="toolTipName" title="${errorMessage.dateError}" data-placement="top">
+  				<div class="input-group date form_date col-md-15"   data-date-format="yyyy-mm-dd">
+                    <input style="font-size:15px" class="form-control" size="16" type="text" value="${param.birth}" readonly="" id="mBirthday" name="birth">
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+					<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                </div> 
+                </a>
     </div>
+    
+    
+    
+   
+    
+    <script src="bootstrap/signin/js/bootstrap-datetimepicker.js"></script>
+  <script src="bootstrap/signin/js/bootstrap-datetimepicker.zh-TW.js" charset="UTF-8"></script>
+ 
+<script type="text/javascript">
+    $('.form_datetime').datetimepicker({
+        language:  'zh-TW',
+        weekStart: 1,
+        todayBtn:  0,
+		autoclose: 1,
+		todayHighlight: 1,
+		startView:4,
+		forceParse: 0,
+        showMeridian: 1
+    });
+	$('.form_date').datetimepicker({
+        language:  'zh-TW',
+        weekStart: 1,
+        todayBtn:  0,
+		autoclose: 1,
+		todayHighlight: 1,
+		startView: 4,
+		minView: 2,
+		forceParse: 0
+    });
+	$('.form_time').datetimepicker({
+        language:  'zh-TW',
+        weekStart: 1,
+        todayBtn:  0,
+		autoclose: 1,
+		todayHighlight: 1,
+		startView: 4,
+		minView: 0,
+		maxView: 1,
+		forceParse: 0
+    });
+</script>
+    
+    
+    
+    
    <p></p>
        <div class="form-group">
       <label for="focusedInput">地址:</label>            
-      <input class="form-control" id="mAddress" type="text"  placeholder="請輸入地址" style="width:450px"
+      <input class="form-control" id="mAddress" type="text"  placeholder="" style="width:450px"
        name="mAddress" value="${param.mAddress}">
                 
     </div>
@@ -244,7 +327,7 @@
     </div>
   </div>
       
-      <script type='text/javascript' src="bootstrap/js/app.js"></script>
+<!--       <script type='text/javascript' src="bootstrap/js/app.js"></script> -->
 	<!-- Footer -->
 	<div id="SecondFooter">
 		<div class="row">

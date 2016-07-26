@@ -33,11 +33,11 @@
 		<property name="mIMG" >
 			<column name="mIMG" />
 		</property>
-		<set name="ordersVO" table="orders" lazy="false" cascade="all" inverse="true">
+		<set name="ordersVO" table="orders" lazy="false" cascade="all" inverse="true" order-by="saleDate">
 			<key column="mID"/>
 			<one-to-many class="model.OrdersVO" />
 		</set>
-		<set name="orderDetailsVO" table="orderDetails" lazy="false" cascade="all" inverse="true">
+		<set name="orderDetailsVO" table="orderDetails" lazy="false" cascade="all" inverse="true" order-by="odID">
 			<key column="mID"/>
 			<one-to-many class="model.OrderDetailsVO" />
 		</set>

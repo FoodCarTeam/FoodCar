@@ -1,4 +1,4 @@
-﻿﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -10,13 +10,12 @@
     <meta name="apple-itunes-app" content="app-id=634884546"/>
     <meta name="google-play-app" content="app-id=com.blogto.foodtrucks.toronto">    
     <title>餐餔餔</title>   
-   
-   <link rel="stylesheet" href="add-to-cart/css/reset.css">
-   <link rel="stylesheet" href="add-to-cart/css/style.css"> 
-<script src="add-to-cart/js/main.js"></script>
-    <!--CSS-->
-    <link href="bootstrap/store/css/newmenu.css" rel="stylesheet" />
-
+      
+      <!--版型控制-->
+<link rel="stylesheet" href="add-to-cart/css/reset.css">
+<link rel="stylesheet" href="add-to-cart/css/style.css"> 
+       
+   <!--CSS-->
 <link rel='stylesheet' id='main-stylesheet-css'  href='bootstrap/login/css/style.css' type='text/css' media='all' />
 <link rel='stylesheet' id='slicknav-css'  href="bootstrap/login/css/mobile%20menu%20style.css" type='text/css' media='all' /><!--mobile menu style.css-->
 <!--JS-->
@@ -26,13 +25,8 @@
 <link href="bootstrap/login/css/scrolling-nav.css" rel="stylesheet" />
 <script src="bootstrap/login/js/jquery.js"></script>
 <script src="bootstrap/login/js/scrolling-nav.js"></script>
-  
-      <style>
-          #MENU {
-          
-          
-          }
-      </style>
+
+
   </head>
   <body class="page page-id-8736 page-template page-template-template-truck-page page-template-template-truck-page-php born2eat-food-truck-toronto">  
   
@@ -49,7 +43,7 @@
         <div class="row">
           <div class="small-3 columns">
             <div class="top-logo">
-              <a class="logo" href="index.jsp"></a>
+              <a class="logo" href="index.html"></a>
             </div>
           </div>
           <div class="small-7 columns">
@@ -69,12 +63,10 @@
     </div>
     <div id="MenuPhone">
       <ul id="menu-mobile">
-
-          <li><a href="stores.jsp">餐車專區</a></li>
-                  <li><a href="map.html">地圖</a></li>
-                  <li><a href="about.jsp">關於我們</a></li>
-                  <li><a href="login.jsp">登入</a></li>
-
+         <li ><a href="stores.jsp">餐車專區</a></li>
+         <li ><a href="map.jsp">地圖</a></li>
+         <li ><a href="about.jsp">關於我們</a></li>
+         <li ><a href="login.jsp">登入</a></li>
       </ul>
     </div>
 <!--/列表bootstrap-->
@@ -108,12 +100,10 @@
               <li class="side-menu has-dropdown">
                 <a href="#" class="menu"></a>
                 <ul class="dropdown">
-
                    <li><a href="stores.jsp">餐車專區</a></li>
-                  <li><a href="map.html">地圖</a></li>
+                  <li><a href="map.jsp">地圖</a></li>
                   <li><a href="about.jsp">關於我們</a></li>
                   <li><a href="login.jsp">登入</a></li>
-
                 </ul>
               </li>
 <!--/列表右邊list工具列-->
@@ -130,42 +120,24 @@
       <div class="truck-details">
         <div class="content">
           <h1>
-            菜單    
+           ${select.sName }      
           </h1>
-        
-        
-            <div class="MENU">
-		<ul>
-		<c:forEach var="bean" items="${Menus}">
-			
-			<li>
-			    <img src="${bean.foodIMG }" class="img-rounded"/>
-				<h2>${bean.foodName}</h2>
-				<h3>$${bean.unitPrice }</h3>
-				
-				<p>
-					<a href="#0" id ="${bean.statusID}" class="cd-add-to-cart" data-id="${bean.foodID }" data-price="${bean.unitPrice }"
+            <!--內容以下開始-->
+            
+    <main class="row"> 
+	<c:forEach var="bean" items="${Menus}">
+		<div class="  large-3 columns end" >
+			<img src="${bean.foodIMG }" class="img-rounded"/>
+			<span style="font-size:18px">${bean.foodName}</span>
+			<span style="font-size:18px">$${bean.unitPrice }</span>
+			<p>
+			<a href="#0" id ="${bean.statusID}" class="cd-add-to-cart" data-id="${bean.foodID }" data-price="${bean.unitPrice }"
 			data-name="${bean.foodName}" data-image="${bean.foodIMG}" >加入購物車</a>    
-				</p>				
-			</li>
-		
-	     </c:forEach>
-		</ul>
-	</div>
+		</div>
+	</c:forEach> 
+	</main>
 
-
-      </div>
-      <!--/truck-details-->
-    </div>
-    <!--/small-12 large-8 columns-->
-
-    <!--/sidebar-->
-  </div>
-  <!--/row-->
-</div>
-</div>
-<!--/MainContent-->
-<div class="cd-cart-container empty">
+	<div class="cd-cart-container empty">
 		<a href="#0" class="cd-cart-trigger"> Cart
 			<ul class="count">
 				<!-- cart items count -->
@@ -192,8 +164,10 @@
 			</div>
 		</div>
 		<!-- .cd-cart -->
-	</div>	
-<script src="bootstrap/sweetAlert/sweetalert.min.js"></script> 
+	</div>
+	
+	<!-- cd-cart-container -->
+	<script src="bootstrap/sweetAlert/sweetalert.min.js"></script> 
     <link rel="stylesheet" type="text/css" href="bootstrap/sweetAlert/sweetalert.css">
 	<script type='text/javascript' src="bootstrap/js/jquery.redirect.js"></script>  
 
@@ -255,7 +229,19 @@
 					.write('<script src="jquery/jquery-3.0.0.min.js"><\/script>');
 	</script>
 	<script src="add-to-cart/js/main.js"></script>
+	<!-- Resource jQuery -->
+        
+        
+            <!--內容以上結束-->
+      </div>
+    </div>
+  </div>
+ </div>
+</div>
 
+       <script type='text/javascript' src="bootstrap/about/js/foundation.min.js"></script>
+      <script type='text/javascript' src="bootstrap/about/js/app.js"></script>
+    
 <!-- Footer -->
     <div id="SecondFooter">
       <div class="row">
@@ -264,14 +250,15 @@
             <p>© 2016 Freshdaily Inc. All rights reserved.</p>
           </div>
         </div>
-      
       </div>
     </div>
 <!-- /Footer -->
-       <script type='text/javascript' src="bootstrap/about/js/foundation.min.js"></script>
+      <!--menu縮小控制-->
+      <script type='text/javascript' src="bootstrap/js/jquery.slicknav.js"></script>   
+         <script type='text/javascript' src="bootstrap/about/js/foundation.min.js"></script>
       <script type='text/javascript' src="bootstrap/about/js/app.js"></script>
-      <!--MENU縮小-->
-    <script type='text/javascript' src="bootstrap/about/js/jquery.slicknav.js"></script>    
+      
+      <!--MENU縮小--> 
       <script type="text/javascript">
         $(document).ready(function () {
             $('#menu-mobile').slicknav({
@@ -280,5 +267,6 @@
             }); 
         });
     </script>
+   
   </body>
 </html>

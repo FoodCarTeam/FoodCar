@@ -16,7 +16,7 @@
 		<property name="saleDate" column="saleDate" />
 		<property name="checkOut" column="checkOut" />
 		<property name="sName" column="sName" />
-        <set name="OrderDetailsVO" table="orderDetails" lazy="false" cascade="all" inverse="true">
+        <set name="OrderDetailsVO" table="orderDetails" lazy="false" cascade="all" inverse="true" order-by="odID">
             <key column="oID"/>
             <one-to-many class="model.OrderDetailsVO"/>
         </set>

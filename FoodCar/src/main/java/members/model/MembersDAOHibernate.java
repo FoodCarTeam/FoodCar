@@ -75,7 +75,7 @@ public class MembersDAOHibernate implements MembersDAO {
 	
 
 	@Override
-	public MembersVO select(Integer mID ) {
+	public MembersVO select_mID(Integer mID ) {
 		MembersVO membersVO = null;
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
@@ -91,7 +91,7 @@ public class MembersDAOHibernate implements MembersDAO {
 	
 	}
 	@Override
-	public MembersVO select1(String mUsername) {
+	public MembersVO select_mUsername(String mUsername) {
 		MembersVO membersVO = null;
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
@@ -160,22 +160,6 @@ public class MembersDAOHibernate implements MembersDAO {
 		return false;
 	}
 
-	@Override
-	public List<MembersVO> findByKey(Integer mID) {
-		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-		List<MembersVO> vo = null;
-		try {
-			session.beginTransaction();
-			Query query = session.createQuery(SELECT);
-			query.setParameter("mID", mID);
-			vo = query.list();
-			session.getTransaction().commit();
-		} catch (RuntimeException ex) {
-			session.getTransaction().rollback();
-			throw ex;
-		}
-		return null;
-	}
 
 	@Override
 	public List<MembersVO> getAll() {
@@ -194,11 +178,7 @@ public class MembersDAOHibernate implements MembersDAO {
 	}
 
 
-	@Override
-	public MembersVO login(String mUsername, String mPassword) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 
 
 
