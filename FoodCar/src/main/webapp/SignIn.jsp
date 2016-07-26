@@ -199,7 +199,7 @@ font-size:18px;
        <div class="form-group">
       <label for='mBirthday'>生日:</label> <a data-toggle="toolTipName" title="${errorMessage.dateError}" data-placement="top">
   				<div class="input-group date form_date col-md-15"   data-date-format="yyyy-mm-dd">
-                    <input style="font-size:15px" class="form-control" size="16" type="text" value="${param.birth}" readonly="" id="mBirthday" name="birth">
+                    <input style="font-size:15px" class="form-control" size="16" type="text" value="${param.birth}" readonly="" id="mBirthday" name="mBirthday">
                     <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
 					<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
                 </div> 

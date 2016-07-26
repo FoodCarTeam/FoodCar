@@ -7,11 +7,13 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import members.model.MembersService;
 import model.MembersVO;
@@ -44,6 +46,7 @@ public class MembersSigninServlet extends HttpServlet {
 		request.setAttribute("error", errors);
 		
 		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+		System.out.println("mBirthdayTemp:"+mBirthdayTemp);
 		Date mBirthday=null;
 		 try {
 			mBirthday=sdf.parse(mBirthdayTemp);
@@ -51,7 +54,7 @@ public class MembersSigninServlet extends HttpServlet {
 			e.printStackTrace();
 			errors.put("mBirthday", "日期錯誤");
 		}
-		
+		System.out.println("mBirthday:"+mBirthday);
 		
 		if(!mUsername.trim().matches("^[_a-z0-9-]+([.][_a-z0-9-]+)*@[a-z0-9-]+([.][a-z0-9-]+)*$")){
 			System.out.println("email格式錯誤");
@@ -59,10 +62,10 @@ public class MembersSigninServlet extends HttpServlet {
 		}
 		
 
-		 if(!mPhone.matches("[0-9]{4}-[0-9]{6}")) {
-			 System.out.println("手機錯誤"); 
-			 errors.put("mPhone", "手機填寫錯誤");
-		 }      
+//		 if(!mPhone.matches("[0-9]{4}-[0-9]{6}")) {
+//			 System.out.println("手機錯誤"); 
+//			 errors.put("mPhone", "手機填寫錯誤");
+//		 }      
 		 
 		
 		if(mAddress.trim().length()==0){
@@ -70,9 +73,45 @@ public class MembersSigninServlet extends HttpServlet {
 		}
 		
 		
+		
+		if(!mPassword.trim().equals(mPassword2.trim())){
+			errors.put("mPassword", "密碼錯誤");
+		}
 			
+		MembersService service=new MembersService();
+		MembersVO vo=new MembersVO();
+		if(errors.isEmpty()||errors==null){
+			System.out.println("正確");
+			vo.setmUsername(mUsername);
+			vo.setmPassword(mPassword);
+			vo.setmName(mName);
+			vo.setmAddress(mAddress);
+			vo.setmPhone(mPhone);
+			vo.setmBirthday(new java.sql.Date(mBirthday.getTime()));
+			vo.setmIMG("");
+			service.insert(vo);
+			
+			HttpSession session=request.getSession();
+			session.setAttribute("member", vo);
+			
+			request.getRequestDispatcher("index.jsp").forward(request, response);
+//			HttpSession session=request.getSession();
+//			String target=(String)session.getAttribute("target");
+//			String query=(String)session.getAttribute("query");
+//			if(target!=null||query!=null){
+//				
+//				
+//			}
+		
+		}else{
+			System.out.println("有錯");
+			request.getRequestDispatcher("SignIn.jsp").forward(request, response);
+			
+		}
+
 		
 		
 		
-	}
+	}	
+		
 }
