@@ -18,7 +18,6 @@ public class MembersDAOHibernate implements MembersDAO {
 
 	private static final String SELECT = "from MembersVO  where mID=:mID";
 	private static final String SELECT1 = "from MembersVO  where mUsername=?";
-
 	private static final String GET_ALL_STMT = "from MembersVO";
 	private static final String insert = "from MembersVO";
 	final static String DELETE = "delete MembersVO where mID=:mID";

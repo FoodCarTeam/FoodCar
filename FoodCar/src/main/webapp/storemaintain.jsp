@@ -137,7 +137,7 @@
 								<div id="info" class="tab-pane fade in active">
 
 									<form class="form-inline" role="form"
-										action="<c:url value='/Login' />" method="post">
+										action="<c:url value='/storeUpdate.do' />" method="post">
 										<p></p>
 
 										<label for="sName" class="sr-only">店名：</label> <input
@@ -157,7 +157,7 @@
 								<div id="password" class="tab-pane fade">
 
 									<form class="form-inline" style="width: 700px;"
-										action="<c:url value='/login' />" method="post">
+										action="<c:url value='/storechange.do' />" method="post">
 										<p></p>
 
 										<label for="sPassword" class="sr-only">請輸入原密碼</label> <input

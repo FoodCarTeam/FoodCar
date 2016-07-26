@@ -1,4 +1,4 @@
-package members.controller;
+package StoresLogin.controller;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -10,35 +10,33 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.servlet.http.Part;
 
-import members.model.MembersService;
-import model.MembersVO;
+import StoresLogin.model.StoresService;
+import model.StoresVO;
 
 
-@WebServlet("/change.do")
-public class MembersChangePassServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
- 
-	private MembersService mService = new MembersService();
+@WebServlet("/storechange.do")
+public class StoresChangePassServlet extends HttpServlet {
+
+	private StoresService sService = new StoresService();
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+	
+		doPost(request,response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		
-		String mUser = request.getParameter("mUsername");
-		String mPass = request.getParameter("mPassword");
+		String sUser = request.getParameter("sUsername");
+		String sPass = request.getParameter("sPassword");
 		String newPass = request.getParameter("newPassword");
 		String newAgain = request.getParameter("newAgain");
 		
 		Map<String,String> Errors = new HashMap<String, String>();
 		request.setAttribute("error", Errors);
 		
-		if(mPass == null || mPass.trim().length() == 0){
-			Errors.put("mPassword", "請輸入原密碼");
+		if(sPass == null || sPass.trim().length() == 0){
+			Errors.put("sPassword", "請輸入原密碼");
 		}
 		if(newPass == null || newPass.trim().length() == 0){
 			Errors.put("newPassword", "請輸入新密碼");
@@ -48,25 +46,24 @@ public class MembersChangePassServlet extends HttpServlet {
 		}
 		if(Errors!=null && !Errors.isEmpty()){
 			request.getRequestDispatcher(
-					"/membermaintain.jsp").forward(request, response);
+					"/storemaintain.jsp").forward(request, response);
 			return;
 		}
 		
-		MembersVO mvo = mService.changePass(mUser, mPass, newPass);
-		
-		if(mvo == null){
+		StoresVO svo = sService.changePass(sUser, sPass, newPass);
+		if(svo == null){
 			Errors.put("changeFail", "變更失敗，請重新確認");
 			request.getRequestDispatcher(
-					"/membermaintain.jsp").forward(request, response);
+					"/storemaintain.jsp").forward(request, response);
 		}else{
 			HttpSession session = request.getSession();
-			session.setAttribute("change", mvo);
+			session.setAttribute("change", svo);
 			
 			String path = request.getContextPath();
 			response.sendRedirect(path+"/index.jsp");
 			session.invalidate();
 		}
-			
+		
 	}
 
 }

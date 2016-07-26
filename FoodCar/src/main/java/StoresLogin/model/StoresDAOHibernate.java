@@ -1,4 +1,4 @@
-package _19_storemaintain.model;
+package StoresLogin.model;
 
 import java.util.List;
 

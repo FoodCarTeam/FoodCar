@@ -32,6 +32,8 @@ public class MembersUpdatServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
+		
 		String mID = request.getParameter("mID");
 		String mName = request.getParameter("mName");
 		String mAdd = request.getParameter("mAddress");

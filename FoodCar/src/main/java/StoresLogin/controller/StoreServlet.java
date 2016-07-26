@@ -1,4 +1,4 @@
-package _19_storemaintain.controller;
+package StoresLogin.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -17,10 +17,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.json.simple.JSONValue;
 
-import _19_storemaintain.model.StoresService;
+
 import model.MapsVO;
 import model.MenusVO;
 import model.StoresVO;
+import stores.model.StoresService;
 
 
 @WebServlet("/Store")
