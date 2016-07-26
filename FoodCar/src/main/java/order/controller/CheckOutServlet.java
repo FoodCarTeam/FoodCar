@@ -43,10 +43,12 @@ public class CheckOutServlet extends HttpServlet {
 		String sID = request.getParameter("sID");
 		String total = request.getParameter("total");
 		String sName = request.getParameter("sName");
+		String mID = request.getParameter("mID");
 		//轉換資料
 		
 		int storeID = Integer.parseInt(sID);
 		int cktotal = Integer.parseInt(total);
+		int mIDi = Integer.parseInt(mID);
 		//取現在時間
 		Date today=new Date();
 		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -58,7 +60,7 @@ public class CheckOutServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-		result.setmID(1);
+		result.setmID(mIDi);
 		result.setsID(storeID);
 		result.setSaleDate(tempDate);
 		result.setAmount(cktotal);

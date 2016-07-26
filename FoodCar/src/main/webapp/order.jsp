@@ -155,7 +155,7 @@
                     </tr>
                    
                        
-                    
+                
                  </c:forEach>
                    
                     <tr>
@@ -309,7 +309,7 @@
             	  }, 
             function(){
             	  swal({title:"結帳成功", text:"訂單已送出!",type: "success"},function(){
-            		  $.redirect('checkout',{"fID":fID_arr,"fQ":q_arr,"ptotal":ptotal_arr,"price":price_arr,"memo":memo_arr,"name":name_arr,"img":img_arr,"sID":"${sID}","total":total,"sName":"${sName}"})
+            		  $.redirect('checkout',{"fID":fID_arr,"fQ":q_arr,"ptotal":ptotal_arr,"price":price_arr,"memo":memo_arr,"name":name_arr,"img":img_arr,"sID":"${sID}","total":total,"sName":"${sName}","mID":"${mUsername.mID}"})
                 	  console.log("結帳成功");
             		  
             	  }); 
