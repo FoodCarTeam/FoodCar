@@ -61,7 +61,7 @@ public class MembersChangePassServlet extends HttpServlet {
 			session.setAttribute("change", mvo);
 			
 			String path = request.getContextPath();
-			response.sendRedirect(path+"/index.html");
+			response.sendRedirect(path+"/index.jsp");
 			session.invalidate();
 		}
 			

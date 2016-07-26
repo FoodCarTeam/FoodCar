@@ -86,7 +86,7 @@ public class MembersUpdatServlet extends HttpServlet {
 			session.setAttribute("gotChange", mvo);
 			
 			String path = request.getContextPath();
-			response.sendRedirect(path+"/index.html");
+			response.sendRedirect(path+"/index.jsp");
 		}
 	}
 }
