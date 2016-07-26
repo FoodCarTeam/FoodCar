@@ -32,14 +32,14 @@ public class MembersService {
 	public MembersVO select(Integer mID){
 		MembersVO result = null;
 		if(mID!=null){
-			result = membersDao.select(mID);
+			result = membersDao.select_mID(mID);
 		}
 		return result;
 	}
 	public MembersVO select1(String mUsername){
 		MembersVO result = null;
 		if(mUsername!=null){
-			result = membersDao.select1(mUsername);
+			result = membersDao.select_mUsername(mUsername);
 //			int statusID=result.getStatusID();
 		}
 		return result;
@@ -69,7 +69,7 @@ public class MembersService {
 
 
 	public MembersVO login(String mUsername, String mPassword) {
-		MembersVO bean = membersDao.select1(mUsername);
+		MembersVO bean = membersDao.select_mUsername(mUsername);
 		if(bean!=null) {
 			if(mPassword!=null && mPassword.length()!=0) {
 				String pass = bean.getmPassword();	

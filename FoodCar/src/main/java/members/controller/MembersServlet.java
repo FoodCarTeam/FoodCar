@@ -63,9 +63,9 @@ public class MembersServlet extends HttpServlet {
 					if(servletPath!=null||queryPath!=null){
 						System.out.println("path:"+path+servletPath+"?"+queryPath);
 						
-//						response.sendRedirect("localhost:8080"+path+servletPath+"?"+queryPath);
+						response.sendRedirect("localhost:8080"+path+servletPath+"?"+queryPath);
 						System.out.println("測試localhost:8080"+path+servletPath+"?"+queryPath);
-						request.getRequestDispatcher(servletPath+"?"+queryPath).forward(request, response);
+//						request.getRequestDispatcher(servletPath+"?"+queryPath).forward(request, response);
 						return;
 					}else{
 						
