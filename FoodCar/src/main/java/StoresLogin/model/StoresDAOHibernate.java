@@ -100,7 +100,7 @@ public class StoresDAOHibernate implements StoresDAO {
 			session.getTransaction().rollback();
 			throw ex;
 		}
-		return null;
+		return bean;
 	}
 
 	@Override

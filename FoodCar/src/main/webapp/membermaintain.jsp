@@ -168,15 +168,13 @@
 									<form class="form-inline" style="width: 700px;"
 										action="<c:url value='/change.do' />" method="post">
 										<p></p>
-										<label for="mUsername" name="mUsername"
-											style="font-size: 30px">帳號：</label> <input type="text"
-											class="form-control" placeholder="請輸入原密碼" required autofocus
-											style="font-size: 15px" value="${mUsername.mUsername}"
-											name="mUsername"><br /> <br /> <label
-											for="mPassword">請輸入原密碼：</label> <input type="text"
-											class="form-control" placeholder="請輸入原密碼" required autofocus
-											style="font-size: 15px" name="mPassword"><br /> <label
-											for="newPassword">請輸入新密碼：</label> <input type="text"
+										<input type="hidden" class="form-control" placeholder="請輸入原密碼"
+											required autofocus style="font-size: 15px"
+											value="${mUsername.mUsername}" name="mUsername"><br />
+										<br /> <label for="mPassword">請輸入原密碼：</label> <input
+											type="text" class="form-control" placeholder="請輸入原密碼"
+											required autofocus style="font-size: 15px" name="mPassword"><br />
+										<label for="newPassword">請輸入新密碼：</label> <input type="text"
 											class="form-control" placeholder="請輸入新密碼" required autofocus
 											style="font-size: 15px" name="newPassword"><br /> <label
 											for="newAgain">再次輸入新密碼：</label> <input type="text"

@@ -23,7 +23,7 @@ public class MembersChangePassServlet extends HttpServlet {
 	private MembersService mService = new MembersService();
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		doPost(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -53,11 +53,11 @@ public class MembersChangePassServlet extends HttpServlet {
 		}
 		
 		MembersVO mvo = mService.changePass(mUser, mPass, newPass);
-		
 		if(mvo == null){
 			Errors.put("changeFail", "變更失敗，請重新確認");
 			request.getRequestDispatcher(
 					"/membermaintain.jsp").forward(request, response);
+			return;
 		}else{
 			HttpSession session = request.getSession();
 			session.setAttribute("change", mvo);
@@ -66,7 +66,7 @@ public class MembersChangePassServlet extends HttpServlet {
 			response.sendRedirect(path+"/index.jsp");
 			session.invalidate();
 		}
-			
+		
 	}
 
 }

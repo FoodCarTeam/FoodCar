@@ -90,5 +90,6 @@ public class MembersUpdatServlet extends HttpServlet {
 			String path = request.getContextPath();
 			response.sendRedirect(path+"/index.jsp");
 		}
+		
 	}
 }

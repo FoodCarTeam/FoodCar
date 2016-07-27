@@ -15,8 +15,10 @@ import StoresLogin.model.StoresService;
 import model.StoresVO;
 
 
+
 @WebServlet("/storechange.do")
 public class StoresChangePassServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
 
 	private StoresService sService = new StoresService();
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -51,13 +53,17 @@ public class StoresChangePassServlet extends HttpServlet {
 		}
 		
 		StoresVO svo = sService.changePass(sUser, sPass, newPass);
+		System.out.println(svo);
 		if(svo == null){
+			System.out.println("空");
 			Errors.put("changeFail", "變更失敗，請重新確認");
 			request.getRequestDispatcher(
 					"/storemaintain.jsp").forward(request, response);
+			return;
 		}else{
+			System.out.println("有");
 			HttpSession session = request.getSession();
-			session.setAttribute("change", svo);
+			session.setAttribute("GotChange", svo);
 			
 			String path = request.getContextPath();
 			response.sendRedirect(path+"/index.jsp");

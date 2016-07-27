@@ -35,7 +35,7 @@ public class StoresUpdateServlet extends HttpServlet {
 		String sName = request.getParameter("sName");
 		String sBoss = request.getParameter("sBossName");
 		String sIntro = request.getParameter("sIntro");
-		String sLogo = request.getParameter("sLogo");
+		
 		
 		Map<String,String> ErrorMsg = new HashMap<String,String>();
 		request.setAttribute("ErrMsg", ErrorMsg);
@@ -63,6 +63,7 @@ public class StoresUpdateServlet extends HttpServlet {
 		bean.setsID(Integer.valueOf(sID));
 		bean.setsUsername(a);
 		bean.setsPassword(b);
+		bean.setsBossName(sBoss);
 		bean.setsName(sName);
 		bean.setsBossName(d);
 		bean.setsIntro(sIntro);
@@ -83,7 +84,7 @@ public class StoresUpdateServlet extends HttpServlet {
 		}
 		
 		
-		doGet(request, response);
+		
 	}
 
 }

@@ -10,7 +10,7 @@ import model.MembersVO;
 import model.StoresVO;
 
 public class StoresService {
-	private StoresDAO storesDao = new StoresDAOHibernate();
+	private static StoresDAO storesDao = new StoresDAOHibernate();
 
 	public static void main(String[] args) {
 
