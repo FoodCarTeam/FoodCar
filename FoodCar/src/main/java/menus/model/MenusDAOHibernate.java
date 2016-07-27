@@ -9,6 +9,7 @@ import org.hibernate.criterion.Order;
 
 import hibernate.util.HibernateUtil;
 import model.MenusVO;
+import model.StoresVO;
 
 public class MenusDAOHibernate implements MenusDAO {
 
@@ -64,11 +65,10 @@ public class MenusDAOHibernate implements MenusDAO {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
 			session.beginTransaction();
-
-			MenusVO mnvo = new MenusVO();
-			mnvo.setFoodID(foodID);
+			MenusVO mnvo = (MenusVO) session.get(MenusVO.class, foodID);
+			mnvo.getStroeVO().getMenusVO().remove(mnvo);
+			mnvo.setStroeVO(null);
 			session.delete(mnvo);
-
 			session.getTransaction().commit();
 
 		} catch (RuntimeException ex) {

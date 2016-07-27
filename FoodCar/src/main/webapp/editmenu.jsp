@@ -60,16 +60,20 @@
 								<button type="button" class="close" data-dismiss="modal">&times;</button>
 								<h4 class="modal-title">餐點編輯</h4>
 							</div>
-							
-							<label class="col-sm-2 control-label">餐點名稱:</label><input name="fName"type="text" class="form-control" value="${bean.foodName }">
-							<label class="col-sm-2 control-label">價錢:</label><input name="fPirce"type="text" class="form-control" value="${bean.unitPrice }" >
+							<div style="margin:40px">
+							餐點名稱:<input name="fName"type="text" class="form-control" value="${bean.foodName }">
+							價錢:<input name="fPirce"type="text" class="form-control" value="${bean.unitPrice }" >
+							<br>
 							<input type="checkbox" data-toggle="toggle" data-on="有貨" data-off="沒貨">
+							<br>
+						    <br>
+									
 							<input type="file" id="menuIMG" name="menuIMG" >
-							
+							</div>
 							<div class="modal-footer">
 							    <input  class="btn btn-success" type="submit" name="menuSubmit" value="送出">
 								<button type="button" class="btn btn-default"
-									data-dismiss="modal">Close</button>
+									data-dismiss="modal">返回</button>
 							</div>
 							</form>
 						</div>

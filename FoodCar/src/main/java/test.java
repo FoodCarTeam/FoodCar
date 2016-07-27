@@ -16,8 +16,8 @@ public class test extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Part part = request.getPart("photo");
-		System.out.println(part);
-		System.out.println(request.getServletContext().getRealPath("/images"));
+//		System.out.println(part);
+//		System.out.println(request.getServletContext().getRealPath("/images"));
 		String header = part.getHeader("Content-Disposition");
 		System.out.println(header);
 		 String filename = header.substring(
