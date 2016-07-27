@@ -19,6 +19,7 @@ public interface MembersDAO {
 	
 	public List<MembersVO> getAll();
 
+	public List<MembersVO> findByKey(Integer mID);
 	
 	MembersVO select_mUsername(String mUsername);
 

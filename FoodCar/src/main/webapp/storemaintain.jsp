@@ -65,10 +65,10 @@
 	</div>
 	<div id="MenuPhone">
 		<ul id="menu-mobile">
-			 <li><a href="stores.jsp">餐車專區</a></li>
-                  <li><a href="map.html">地圖</a></li>
-                  <li><a href="about.jsp">關於我們</a></li>
-                  <li><a href="login.jsp">登入</a></li>
+			<li><a href="stores.jsp">餐車專區</a></li>
+			<li><a href="map.html">地圖</a></li>
+			<li><a href="about.jsp">關於我們</a></li>
+			<li><a href="login.jsp">登入</a></li>
 		</ul>
 	</div>
 	<!--/列表bootstrap-->
@@ -82,8 +82,8 @@
 			<ul class="left">
 				<li>
 					<div class="top-logo">
-						<a class="logo" href="index.html"></a> <a class="logo-text"
-							href="index.html"></a>
+						<a class="logo" href="index.jsp"></a> <a class="logo-text"
+							href="index.jsp"></a>
 					</div>
 				</li>
 			</ul>
@@ -101,10 +101,10 @@
 				<!--列表右邊list工具列-->
 				<li class="side-menu has-dropdown"><a href="#" class="menu"></a>
 					<ul class="dropdown">
-						 <li><a href="stores.jsp">餐車專區</a></li>
-                  <li><a href="map.html">地圖</a></li>
-                  <li><a href="about.jsp">關於我們</a></li>
-                  <li><a href="login.jsp">登入</a></li>
+						<li><a href="stores.jsp">餐車專區</a></li>
+						<li><a href="map.html">地圖</a></li>
+						<li><a href="about.jsp">關於我們</a></li>
+						<li><a href="login.jsp">登入</a></li>
 					</ul></li>
 				<!--/列表右邊list工具列-->
 			</ul>
@@ -137,15 +137,22 @@
 								<div id="info" class="tab-pane fade in active">
 
 									<form class="form-inline" role="form"
-										action="<c:url value='/Login' />" method="post">
+										action="<c:url value='/storeUpdate.do' />" method="post">
 										<p></p>
 
-										<label for="sName" class="sr-only">店名：</label> <input
-											type="text" class="form-control" placeholder="請輸入店名" required
-											autofocus style="font-size: 15px" name="sName"> <label
-											for="sBossName" class="sr-only">姓名：</label> <input
-											type="text" class="form-control" placeholder="請輸入老闆姓名"
-											required style="font-size: 15px" name="sBossName">
+										<input type="hidden" name="sID" value="${user.sID}"><br />
+										<label for="sName" style="font-size: 15px">店名：${user.sName}</label><br />
+										<input type="text" class="form-control" placeholder="若要更改，請輸入"
+											required autofocus style="font-size: 15px" name="sName"><br />
+										<label for="sBossName" style="font-size: 15px">老闆姓名：${user.sBossName}</label><br />
+										<input type="text" class="form-control" placeholder="若要更改，請輸入"
+											required autofocus style="font-size: 15px" name="sBossName"><br />
+										<label for="sIntro" style="font-size: 15px">介紹：</label><br />
+										<textarea cols="50" rows="3" type="textarea"
+											class="form-control" required autofocus
+											style="font-size: 15px; resize: none" name="sIntro">${user.sIntro}</textarea>
+										<br />
+
 
 										<p></p>
 										<div class="checkbox">
@@ -157,20 +164,21 @@
 								<div id="password" class="tab-pane fade">
 
 									<form class="form-inline" style="width: 700px;"
-										action="<c:url value='/login' />" method="post">
+										action="<c:url value='/storechange.do' />" method="post">
 										<p></p>
-
-										<label for="sPassword" class="sr-only">請輸入原密碼</label> <input
+										<input type="hidden" class="form-control" placeholder="請輸入原密碼"
+											required autofocus style="font-size: 15px"
+											value="${user.sUsername}" name="sUsername"><br />
+										<br /> <label for="sPassword">請輸入原密碼：</label> <input
 											type="text" class="form-control" placeholder="請輸入原密碼"
-											required autofocus style="font-size: 15px" name="sPassword">
-										<label for="newPassword" class="sr-only">請輸入新密碼</label> <input
-											type="text" class="form-control" placeholder="請輸入新密碼"
-											required autofocus style="font-size: 15px" name="newPassword">
-										<label for="newAgain" class="sr-only">再次輸入新密碼</label> <input
-											type="text" class="form-control" placeholder="請再次輸入新密碼"
-											required style="font-size: 15px" name="newAgain">
+											required autofocus style="font-size: 15px" name="sPassword"><br />
+										<label for="newPassword">請輸入新密碼：</label> <input type="text"
+											class="form-control" placeholder="請輸入新密碼" required autofocus
+											style="font-size: 15px" name="newPassword"><br /> <label
+											for="newAgain">再次輸入新密碼：</label> <input type="text"
+											class="form-control" placeholder="請再次輸入新密碼" required
+											style="font-size: 15px" name="newAgain"><br />
 										<p></p>
-
 
 										<button class="btn btn-lg btn-primary btn-block" type="submit">更新</button>
 									</form>
@@ -178,23 +186,7 @@
 								</div>
 								<div id="menu" class="tab-pane fade">
 
-									<form class="form-inline" role="form">
-										<p></p>
-										<label for="" class="sr-only">請輸入帳號</label> <input type="text"
-											class="form-control" placeholder="請輸入帳號" required autofocus
-											style="font-size: 15px"> <label for="inputPassword"
-											class="sr-only">請輸入密碼</label> <input type="password"
-											id="Password2" class="form-control" placeholder="請輸入密碼"
-											required style="font-size: 15px">
-										<p></p>
-										<div class="checkbox">
-											<label> <input type="checkbox" value="remember-me">記住密碼
-											</label>
-
-											<button class="btn btn-lg btn-primary btn-block"
-												type="submit">登入</button>
-										</div>
-									</form>
+									<form class="form-inline" role="form">菜單、菜單、菜單</form>
 
 								</div>
 								<div id="map" class="tab-pane fade">
