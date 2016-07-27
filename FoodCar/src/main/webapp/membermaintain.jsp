@@ -142,13 +142,9 @@
 
 										<!-- 										<label for="mIMG" style="font-size: 30px">個人頭貼：</label> <input type="text" class="form-control" required autofocus -->
 										<%-- 											style="font-size: 15px" value="${mUsername.mIMG}" name="mIMG"></br>  --%>
-										<label for="mUsername" name="mUsername"
-											style="font-size: 30px">帳號：</label><input type="text"
-											class="form-control" required autofocus
-											style="font-size: 15px" value="${mUsername.mUsername}"
-											name="mUsername"><input type="hidden" name="mID" value="${mUsername.mID}"><br /> <label for="mName"
-											style="font-size: 24px">姓名：${mUsername.mName}</label> <input
-											type="text" class="form-control" placeholder="若要更改，請輸入"
+										<input type="hidden" name="mID" value="${mUsername.mID}"><br />
+										<label for="mName" style="font-size: 24px">姓名：${mUsername.mName}</label>
+										<input type="text" class="form-control" placeholder="若要更改，請輸入"
 											required autofocus style="font-size: 15px" name="mName"><br />
 										<label for="mAddress" style="font-size: 30px">地址：${mUsername.mAddress}</label>
 										<input type="text" class="form-control" placeholder="若要更改，請輸入"

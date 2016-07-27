@@ -36,10 +36,10 @@ public class StoresLoginServlet extends HttpServlet{
 		Map<String , String>errors = new HashMap<String, String>();
 		request.setAttribute("error", errors);
 		if(sUsername==null && sUsername.length()==0){
-			errors.put("sUsername","Please Enter ID");
+			errors.put("sUsername","請輸入帳號，帳號為手機格式");
 		}
 		if(sPassword==null && sPassword.length()==0){
-			errors.put("sPassword" , "Please Enter PWD");
+			errors.put("sPassword" , "請輸入密碼");
 		}
 		if(errors !=null && !errors.isEmpty()){
 			request.getRequestDispatcher(
@@ -52,7 +52,7 @@ public class StoresLoginServlet extends HttpServlet{
 		
 		//根據Model執行結果顯示view
 		if(vo == null){
-			errors.put("sPassword","Login failed , Please try again!");
+			errors.put("sPassword","登入失敗，請重新確認");
 			request.getRequestDispatcher(
 					"/login.jsp").forward(request,response);
 		}else{
@@ -61,7 +61,7 @@ public class StoresLoginServlet extends HttpServlet{
 		session.setAttribute("user", vo);
 		
 		String path = request.getContextPath();
-		response.sendRedirect(path+"/lndex/StoreIndexLogin.jsp");
+		response.sendRedirect(path+"/storemaintain.jsp");
 		}		
 	}
 	
