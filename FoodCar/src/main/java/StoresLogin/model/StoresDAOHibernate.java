@@ -26,7 +26,7 @@ public class StoresDAOHibernate implements StoresDAO {
 //	}
 
 	@Override
-	public StoresVO select(Integer sID) {
+	public StoresVO select_sID(Integer sID) {
 
 		StoresVO storesVO = null;
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
@@ -43,7 +43,7 @@ public class StoresDAOHibernate implements StoresDAO {
 	}
 
 	@Override
-	public StoresVO select2(String sUsername) {
+	public StoresVO select_sUser(String sUsername) {
 		StoresVO svo = null;
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {

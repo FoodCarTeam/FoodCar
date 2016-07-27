@@ -11,12 +11,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import StoresLogin.model.StoresService;
 import model.StoresVO;
-import stores.model.StoresService;
 
-/**
- * Servlet implementation class StoresUpdateServlet
- */
+
+
 @WebServlet("/storeUpdate.do")
 public class StoresUpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -53,7 +52,7 @@ public class StoresUpdateServlet extends HttpServlet {
 			return ;
 		}
 		
-		StoresVO svo1 = sService.select(Integer.parseInt(sID));
+		StoresVO svo1 = sService.select_sID(Integer.parseInt(sID));
 		String a = svo1.getsUsername();
 		String b = svo1.getsPassword();
 		String c = svo1.getsLogo();

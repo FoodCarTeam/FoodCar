@@ -9,6 +9,7 @@ import model.MapsVO;
 import model.MembersVO;
 import model.StoresVO;
 
+
 public class StoresService {
 	private static StoresDAO storesDao = new StoresDAOHibernate();
 
@@ -33,18 +34,18 @@ public class StoresService {
 		return result;
 	}
 
-	public StoresVO select(Integer sID) {
+	public StoresVO select_sID(Integer sID) {
 		StoresVO result = null;
 		if (sID != null) {
-			result = storesDao.select(sID);
+			result = storesDao.select_sID(sID);
 		}
 		return result;
 	}
 
-	public StoresVO select2(String sUsername) {
+	public StoresVO select_sUser(String sUsername) {
 		StoresVO result = null;
 		if (sUsername != null) {
-			result = storesDao.select2(sUsername);
+			result = storesDao.select_sUser(sUsername);
 		}
 		return result;
 	}
@@ -74,7 +75,7 @@ public class StoresService {
 	}
 
 	public StoresVO login(String sUsername, String sPassword) {
-		StoresVO svo = storesDao.select2(sUsername);
+		StoresVO svo = storesDao.select_sUser(sUsername);
 		if (svo != null) {
 			if (sPassword != null && sPassword.trim().length() != 0) {
 				String Pass = svo.getsPassword();
