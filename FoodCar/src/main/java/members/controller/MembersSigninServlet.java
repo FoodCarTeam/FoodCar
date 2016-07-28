@@ -37,7 +37,9 @@ public class MembersSigninServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println(request.getMethod());
-
+		response.setHeader("content-type", "text/html;charset=UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		request.setCharacterEncoding("UTF-8"); 
 		String mUsername = request.getParameter("mUsername");
 		String mPassword = request.getParameter("mPassword");
 		String mPassword2 = request.getParameter("mPassword2");

@@ -57,4 +57,12 @@ public class MenusService {
 		}
 		return result;
 	}
+	
+	public MenusVO selectfood(Integer foodID){
+		MenusVO result = null;
+		if(foodID!=null){
+			result = menusDao.selectfood(foodID);
+		}
+		return result;
+	}
 }
