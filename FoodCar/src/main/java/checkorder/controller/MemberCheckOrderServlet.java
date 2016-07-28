@@ -24,10 +24,10 @@ public class MemberCheckOrderServlet extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		MembersService membersService = new MembersService();
 		
-//		String mID = request.getParameter("m");
-//		int id = Integer.parseInt(mID);
+		String mID = request.getParameter("m");
+		int id = Integer.parseInt(mID);
 		
-		MembersVO result = membersService.select(1);
+		MembersVO result = membersService.select(id);
 		Set<OrdersVO> orders = result.getOrdersVO();
 		for(OrdersVO a:orders){
 			System.out.println(a.getSaleDate());

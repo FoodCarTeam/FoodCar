@@ -419,10 +419,9 @@ swal({
 
 
 
-								<!--會員註冊-->
-								<div id="users" class="tab-pane fade in active">
-									<form class="form-inline" role="form"
-										action="<c:url value="/MembersSignin" />" method="POST">
+   <!--會員註冊-->
+       <div id="users" class="tab-pane fade in active"> 
+<form   class="form-inline" role="form" action="<c:url value="/MembersSignin" />" method="POST" enctype="multipart/form-data" >
 
 										<div class="form-group">
 											<p></p>

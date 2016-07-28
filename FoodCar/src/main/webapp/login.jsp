@@ -59,7 +59,7 @@
 
 								<div id="users" class="tab-pane fade in active">
 
-									<form class="form-inline" role="form"
+									<form class="form-inline" role="form" 
 										action="<c:url value='/Login' />" method="post">
 										<p></p>
 

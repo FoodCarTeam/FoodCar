@@ -16,14 +16,13 @@ import hibernate.util.HibernateUtil;
 
 import model.MembersVO;
 
-
 public class MembersDAOHibernate implements MembersDAO {
 
 	private static final String SELECT = "from MembersVO  where mID=:mID";
 	private static final String SELECT1 = "from MembersVO  where mUsername=?";
-
 	private static final String GET_ALL_STMT = "from MembersVO";
 	private static final String insert = "from MembersVO";
+
 	final static String DELETE="delete MembersVO where mID=:mID";
 //	final static String UPDATE="update MembersVO set mUsername=:mUsername,mPassword=:mPassword,mIMG=:mIMG"+"where mID=:mID";
 	
@@ -35,6 +34,7 @@ public class MembersDAOHibernate implements MembersDAO {
 //		vo.setmUsername("JJJJ@qq.com");
 //		dao.update(vo);
 //		System.out.println("Username:"+vo.getmUsername());
+
 
 //		測試新增
 //		MembersVO vo = new MembersVO();
@@ -104,6 +104,8 @@ public class MembersDAOHibernate implements MembersDAO {
 	}
 	
 
+	
+
 	@Override
 	public List<String> select_TaiwanRoad(String County,String Area,String roadName) {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
@@ -124,7 +126,7 @@ public class MembersDAOHibernate implements MembersDAO {
 		return list;
 	}
 	@Override
-	public MembersVO select_mID(Integer mID ) {
+	public MembersVO select_mID(Integer mID) {
 		MembersVO membersVO = null;
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
@@ -137,8 +139,9 @@ public class MembersDAOHibernate implements MembersDAO {
 			throw ex;
 		}
 		return membersVO;
-	
+
 	}
+
 	@Override
 	public MembersVO select_mUsername(String mUsername) {
 		MembersVO membersVO = null;
@@ -154,12 +157,12 @@ public class MembersDAOHibernate implements MembersDAO {
 			throw ex;
 		}
 		return membersVO;
-		
+
 	}
 
 	@Override
 	public MembersVO insert(MembersVO vo) {
-		Session session=hibernate.util.HibernateUtil.getSessionFactory().getCurrentSession();
+		Session session = hibernate.util.HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
 			session.beginTransaction();
 			session.save(vo);
@@ -176,19 +179,19 @@ public class MembersDAOHibernate implements MembersDAO {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
 			session.beginTransaction();
-//			Query query=session.createQuery(UPDATE);			
-//			query.setParameter("mUsername", vo.getmUsername());
-//			query.setParameter("mPassword", vo.getmPassword());
-//			query.setParameter("mIMG",vo.getmIMG());
-//			query.setParameter("mID",vo.getmID());
-//			int Result=query.executeUpdate();
+			// Query query=session.createQuery(UPDATE);
+			// query.setParameter("mUsername", vo.getmUsername());
+			// query.setParameter("mPassword", vo.getmPassword());
+			// query.setParameter("mIMG",vo.getmIMG());
+			// query.setParameter("mID",vo.getmID());
+			// int Result=query.executeUpdate();
 			session.update(vo);
 			session.getTransaction().commit();
 		} catch (RuntimeException ex) {
 			session.getTransaction().rollback();
 			throw ex;
 		}
-		return vo;		
+		return vo;
 	}
 
 	@Override
@@ -209,7 +212,6 @@ public class MembersDAOHibernate implements MembersDAO {
 		return false;
 	}
 
-
 	@Override
 	public List<MembersVO> getAll() {
 		List<MembersVO> list = null;
@@ -226,9 +228,5 @@ public class MembersDAOHibernate implements MembersDAO {
 		return null;
 	}
 
-
-
-
-
-
+	
 }

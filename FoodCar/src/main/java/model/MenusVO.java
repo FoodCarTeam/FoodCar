@@ -1,5 +1,7 @@
 package model;
 
+import java.util.HashSet;
+import java.util.Set;
 
 public class MenusVO implements java.io.Serializable {
 
@@ -11,7 +13,14 @@ public class MenusVO implements java.io.Serializable {
 	private Integer unitPrice ;
 	private String foodIMG ;
 	private StoresVO stroeVO;
+	private Set<StoresVO> stores = new HashSet<StoresVO>();
 	
+	public Set<StoresVO> getStores() {
+		return stores;
+	}
+	public void setStores(Set<StoresVO> stores) {
+		this.stores = stores;
+	}
 	public StoresVO getStroeVO() {
 		return stroeVO;
 	}

@@ -108,4 +108,12 @@ public class MembersService {
 		}
 		return null;
 	}
+	public MembersVO changePass(String mUser, String mPass, String newPass) {
+		MembersVO mvo = this.login(mUser, mPass);
+		if (mvo != null) {
+			mvo.setmPassword(newPass);
+			return membersDao.update(mvo);
+		}
+		return null;
+	}
 }

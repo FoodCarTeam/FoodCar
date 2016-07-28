@@ -19,7 +19,9 @@ public interface MembersDAO {
 	
 	public List<MembersVO> getAll();
 
+
 	List<String> select_TaiwanRoad(String County,String Area,String roadName);
+
 	
 	MembersVO select_mUsername(String mUsername);
 

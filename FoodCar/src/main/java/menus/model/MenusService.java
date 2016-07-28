@@ -23,7 +23,9 @@ public class MenusService {
 //			}
 //		}
 		
+		MenusService service = new MenusService();
 		
+		service.delete(4);
 	}
 	
 	public MenusVO select(Integer sID){
@@ -41,17 +43,17 @@ public class MenusService {
 		}
 		return result;
 	}
-	public MenusVO update(MenusVO vo) {  //注意!!update未完成
+	public MenusVO update(MenusVO vo) { 
 		MenusVO result = null;
 		if(vo!=null) {
-			   
+			result = menusDao.update(vo);   
 		}
 		return result;
 	}
-	public boolean delete(MenusVO vo) {
+	public boolean delete(Integer foodID) {
 		boolean result = false;
-		if(vo!=null) {
-			result = menusDao.delete(vo.getsID());
+		if(foodID!=null) {
+			result = menusDao.delete(foodID);
 		}
 		return result;
 	}

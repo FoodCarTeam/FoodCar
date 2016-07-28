@@ -9,15 +9,20 @@ import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
+
+import org.apache.commons.io.FilenameUtils;
 
 import members.model.MembersService;
 import model.MembersVO;
 
+@MultipartConfig(location="C:/Users/Student/git/FoodCar/FoodCar/src/main/webapp/images/mIMG")
 @WebServlet(urlPatterns = { "/MembersSignin" })
 public class MembersSigninServlet extends HttpServlet {
 	private MembersService membersservice = new MembersService();
@@ -44,6 +49,14 @@ public class MembersSigninServlet extends HttpServlet {
 		String mAddress = request.getParameter("mAddress");
 		String mPhone = request.getParameter("mPhone");
 		String mBirthdayTemp = request.getParameter("mBirthday");
+		Part part = request.getPart("mIMG");
+		
+		String header = part.getHeader("Content-Disposition");
+		System.out.println(header);
+		 String filename = header.substring(
+                 header.indexOf("filename=\"") + 10, header.lastIndexOf("\""));
+		 String saveName = System.currentTimeMillis() + "." + FilenameUtils.getExtension(filename);
+		 
 //		String Members = request.getParameter("Members");
 System.out.println(mAddress);
 		Map<String, String> errors = new HashMap<String, String>();
@@ -81,7 +94,8 @@ System.out.println(mAddress);
 		if(!mPassword.trim().equals(mPassword2.trim())){
 			errors.put("mPassword", "密碼錯誤");
 		}
-			
+		
+	
 		MembersService service=new MembersService();
 		MembersVO vo=new MembersVO();
 		if(errors.isEmpty()||errors==null){
@@ -92,7 +106,8 @@ System.out.println(mAddress);
 			vo.setmAddress(mAddress);
 			vo.setmPhone(mPhone);
 			vo.setmBirthday(new java.sql.Date(mBirthday.getTime()));
-			vo.setmIMG("");
+			vo.setmIMG("images/"+saveName);
+			part.write(saveName);
 			service.insert(vo);
 			
 			HttpSession session=request.getSession();
