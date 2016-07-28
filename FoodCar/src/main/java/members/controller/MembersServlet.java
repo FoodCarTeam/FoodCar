@@ -17,7 +17,6 @@ import model.MembersVO;
 import members.model.MembersDAO;
 import members.model.MembersService;
 
-
 @WebServlet("/Login")
 public class MembersServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -35,6 +34,11 @@ public class MembersServlet extends HttpServlet {
 				String mPassword = request.getParameter("mPassword");
 				
 				String gRecaptchaResponse = request.getParameter("g-recaptcha-response");
+				System.out.println("gRecaptchaResponse:"+gRecaptchaResponse);
+				
+//				System.out.println("gRecaptchaResponse:"+gRecaptchaResponse);
+				boolean verify = members.VerifyRecaptcha.VerifyRecaptcha.verify(gRecaptchaResponse);
+//				System.out.println("verify:"+verify);
 				
 				
 		//驗證資料
@@ -47,10 +51,10 @@ public class MembersServlet extends HttpServlet {
 				if(mPassword==null || mPassword.length()==0) {
 					errors.put("mPassword", "請輸入密碼");
 				}
-			
 				
-				boolean verify = members.VerifyRecaptcha.VerifyRecaptcha.verify(gRecaptchaResponse);
-				
+				if(!verify){
+					errors.put("verify", "錯誤");
+				}
 				
 				
 				
