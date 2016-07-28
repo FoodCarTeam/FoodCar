@@ -32,6 +32,10 @@ public class MembersSigninServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println(request.getMethod());
+		request.setCharacterEncoding("UTF-8");
+		response.setHeader("content-type","text/html;charset=UTF-8");
+		
+		response.setCharacterEncoding("UTF-8");
 
 		String mUsername = request.getParameter("mUsername");
 		String mPassword = request.getParameter("mPassword");
@@ -41,7 +45,7 @@ public class MembersSigninServlet extends HttpServlet {
 		String mPhone = request.getParameter("mPhone");
 		String mBirthdayTemp = request.getParameter("mBirthday");
 //		String Members = request.getParameter("Members");
-
+System.out.println(mAddress);
 		Map<String, String> errors = new HashMap<String, String>();
 		request.setAttribute("error", errors);
 		
@@ -96,14 +100,20 @@ public class MembersSigninServlet extends HttpServlet {
 			
 			request.getRequestDispatcher("index.jsp").forward(request, response);
 //			HttpSession session=request.getSession();
-//			String target=(String)session.getAttribute("target");
-//			String query=(String)session.getAttribute("query");
-//			if(target!=null||query!=null){
+			
+//			String servletPath=(String)session.getAttribute("target");
+//			String queryPath=(String)session.getAttribute("query");
+//			if(servletPath!=null||queryPath!=null){
+//				String path = request.getContextPath();
 //				
+//				System.out.println("path"+path);
+//				System.out.println("有target");
+//				response.sendRedirect("localhost:8080"+path+servletPath+"?"+queryPath);
 //				
 //			}
 		
 		}else{
+			
 			System.out.println("有錯");
 			request.getRequestDispatcher("SignIn.jsp").forward(request, response);
 			

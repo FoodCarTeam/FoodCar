@@ -16,7 +16,7 @@ import javax.servlet.http.HttpSession;
 import model.MembersVO;
 import members.model.MembersDAO;
 import members.model.MembersService;
-
+import com.journaldev.utils.VerifyRecaptcha;
 
 
 @WebServlet("/Login")
@@ -35,6 +35,9 @@ public class MembersServlet extends HttpServlet {
 				String mUsername = request.getParameter("mUsername");
 				String mPassword = request.getParameter("mPassword");
 				
+				String gRecaptchaResponse = request.getParameter("g-recaptcha-response");
+				
+				
 		//驗證資料
 				Map<String, String> errors = new HashMap<String, String>();
 				request.setAttribute("error", errors);
@@ -46,6 +49,13 @@ public class MembersServlet extends HttpServlet {
 					errors.put("mPassword", "請輸入密碼");
 				}
 			
+				
+				boolean verify = members.VerifyRecaptcha.VerifyRecaptcha.verify(gRecaptchaResponse);
+				
+				
+				
+				
+				
 		//呼叫Model
 				MembersVO vo = membersService.login(mUsername, mPassword);
 		//根據Model執行結果顯示View
@@ -55,7 +65,7 @@ public class MembersServlet extends HttpServlet {
 					
 				} else {
 					HttpSession session = request.getSession();
-					session.setAttribute("mUsername", vo);
+					session.setAttribute("member", vo);
 					
 					String servletPath=(String)session.getAttribute("target");
 					String queryPath=(String)session.getAttribute("query");

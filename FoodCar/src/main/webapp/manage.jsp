@@ -37,74 +37,8 @@
 <body
 	class="page page-id-8736 page-template page-template-template-truck-page page-template-template-truck-page-php born2eat-food-truck-toronto">
 
-	<!--Header-->
-	<div id="Header" style="background-color: white;">
-		<div class="row">
-			<div class="small-18 large-12 columns">
-				<p></p>
-				<p></p>
-			</div>
-		</div>
-	</div>
-	<!--/Header-->
-	<!--列表bootstrap-->
-	<div id="MenuBarPhone" class="menu-phone">
-		<div class="row">
-			<div class="small-3 columns">
-				<div class="top-logo">
-					<a class="logo" href="index.jsp"></a>
-				</div>
-			</div>
-			<div class="small-7 columns">
-				<div class="top-search">
-					<div class="search-bar">
-						<div id="sb-search-phone" class="sb-search">
-							<form action="/">
-								<img src="${LoginOK.}" />
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="small-2 columns"></div>
-		</div>
-	</div>
+   <jsp:include page="header.jsp"></jsp:include>
 
-	<!--/列表bootstrap-->
-	<nav class="navbar navbar-fixed-top"> <!--列表-->
-	<div class="contain-to-grid">
-		<nav class="top-bar" id="TopMenu" data-topbar
-			data-options="is_hover: false"> <section
-			class="top-bar-section">
-		<div class="menu-bar">
-			<!--列表左邊-->
-			<ul class="left">
-				<li>
-					<div class="top-logo">
-						<a class="logo" href="index.jsp"></a> <a class="logo-text"
-							href="index.html"></a>
-					</div>
-				</li>
-			</ul>
-			<!--/列表左邊-->
-			<!--列表右邊頭像-->
-			<ul class="right">
-				<li class="top-search">
-					<div class="search-bar">
-						<div id="sb-search" class="sb-search">
-							<img src="images/hand/hand5.jpg" />
-						</div>
-					</div>
-				</li>
-				<!--/列表右邊頭像-->
-				<!--列表右邊list工具列-->
-				
-				<!--/列表右邊list工具列-->
-			</ul>
-		</div>
-		</section> </nav>
-	</div>
-	<!--/列表--> </nav>
 
 	<div id="MainContent" style="width: 800px; margin: auto">
 		<div class="row">

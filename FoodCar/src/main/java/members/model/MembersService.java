@@ -1,5 +1,6 @@
 package members.model;
 
+import java.security.Provider.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -13,7 +14,7 @@ public class MembersService {
 
 	
 	
-//	public static void main(String[]args){
+	public static void main(String[]args){
 ////		測試showFoodCarsMap
 //		MembersService membersService = new MembersService(membersDao);
 //		MembersVO bean = membersService.select(2);
@@ -28,7 +29,33 @@ public class MembersService {
 ////			int statusID=result.getStatusID();
 //		}
 //		return result;
-//	}
+//		System.out.println("123");
+//		
+//		
+		MembersService service=new MembersService();
+		List<String> list=service.select_TaiwanRoad("臺北市","士林區","芝玉");
+		for(String a:list){
+			System.out.println(a);
+		}
+		
+	}
+	public List<String> select_TaiwanRoad(String County,String Area,String roadName){
+		List<String>list=null;
+		list=membersDao.select_TaiwanRoad(County,Area,roadName);
+		
+		return list;
+	}
+	
+	
+	public MembersVO select_mPhone(String mPhone){
+		MembersVO vo=null;
+		vo=membersDao.select_mPhone(mPhone);
+		
+		
+		return vo;
+	}
+	
+	
 	public MembersVO select(Integer mID){
 		MembersVO result = null;
 		if(mID!=null){

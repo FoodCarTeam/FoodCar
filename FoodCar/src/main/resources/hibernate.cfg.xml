@@ -46,6 +46,7 @@
         <mapping resource="MembersVO.hbm.xml" />
         <mapping resource="manager.hbm.xml" />
         <mapping resource="RecommendVO.hbm.xml" />
+        <mapping resource="TaiwanRoadNameEntity.hbm.xml" />
         
 
     </session-factory>

@@ -3,9 +3,11 @@ package members.model;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
 
 import org.hibernate.Criteria;
+import org.hibernate.Hibernate;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.criterion.Order;
@@ -28,10 +30,10 @@ public class MembersDAOHibernate implements MembersDAO {
 	
 	public static void main(String[]args){
 //		測試單獨查詢
-//		MembersDAOHibernate dao=new MembersDAOHibernate();
-//		MembersVO vo=dao.select1("JJJJ@qq.com");
-////		vo.setmUsername("JJJJ@qq.com");
-////		dao.update(vo);
+		MembersDAOHibernate dao=new MembersDAOHibernate();
+//		MembersVO vo=dao.select_mUsername("JJJJ@qq.com");
+//		vo.setmUsername("JJJJ@qq.com");
+//		dao.update(vo);
 //		System.out.println("Username:"+vo.getmUsername());
 
 //		測試新增
@@ -70,10 +72,57 @@ public class MembersDAOHibernate implements MembersDAO {
 //		測試刪除
 //		Boolean result = dao.delete(10);
 //		System.out.println(result);
+		
+//		MembersVO vo=dao.select_mPhone("091927139");
+//		System.out.println(vo);
+		List<String>list=new LinkedList<String>();
+		list=dao.select_TaiwanRoad("臺北市","士林區","芝");
+		System.out.println(list.size());
+		for(String a:list){
+			System.out.println(a);
 		}
-
+		
+		
+}
+	
+	@Override
+	public MembersVO select_mPhone(String mPhone ) {
+		MembersVO membersVO = null;
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		try {
+			session.beginTransaction();
+			Query query=session.createQuery("from MembersVO where mPhone=?");
+			query.setString(0,mPhone);
+			membersVO=(MembersVO)query.uniqueResult();
+			session.getTransaction().commit();
+		} catch (RuntimeException ex) {
+			session.getTransaction().rollback();
+			throw ex;
+		}
+		return membersVO;
+	
+	}
 	
 
+	@Override
+	public List<String> select_TaiwanRoad(String County,String Area,String roadName) {
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		List<String> list=null;
+		try {
+			session.beginTransaction();
+			Query query=session.createSQLQuery("select distinct Road from TaiwanRoad where County=:County and Area =:Area and  Road like :roadNmae").addScalar("Road");
+//			query.setParameter(0,roadName+"%");
+			query.setString("County", County);
+			query.setString("Area", Area);
+			query.setString("roadNmae", roadName+"%");
+			list=query.list();
+			session.getTransaction().commit();
+		} catch (Exception e) {
+			session.getTransaction().rollback();
+			e.printStackTrace();
+		}
+		return list;
+	}
 	@Override
 	public MembersVO select_mID(Integer mID ) {
 		MembersVO membersVO = null;
@@ -81,7 +130,7 @@ public class MembersDAOHibernate implements MembersDAO {
 		try {
 			session.beginTransaction();
 			membersVO = (MembersVO) session.get(MembersVO.class, mID);
-
+			
 			session.getTransaction().commit();
 		} catch (RuntimeException ex) {
 			session.getTransaction().rollback();
