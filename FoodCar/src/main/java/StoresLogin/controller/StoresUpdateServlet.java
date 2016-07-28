@@ -48,7 +48,7 @@ public class StoresUpdateServlet extends HttpServlet {
 		
 		if(ErrorMsg!=null && !ErrorMsg.isEmpty()){
 			request.getRequestDispatcher(
-					"/storemaintain.jsp").forward(request, response);
+					"/user2.jsp").forward(request, response);
 			return ;
 		}
 		
@@ -72,7 +72,7 @@ public class StoresUpdateServlet extends HttpServlet {
 		if(svo == null){
 			ErrorMsg.put("Failed", "更新失敗，請重新確認");
 			request.getRequestDispatcher(
-					"/storemaintain.jsp").forward(request, response);
+					"/user2.jsp").forward(request, response);
 			return;
 		}else{
 			HttpSession session = request.getSession();

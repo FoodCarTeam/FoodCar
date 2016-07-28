@@ -61,7 +61,7 @@ public class StoresLoginServlet extends HttpServlet{
 		session.setAttribute("store", vo);
 		
 		String path = request.getContextPath();
-		response.sendRedirect(path+"/storemaintain.jsp");
+		response.sendRedirect(path+"/user2.jsp");
 		}		
 	}
 	

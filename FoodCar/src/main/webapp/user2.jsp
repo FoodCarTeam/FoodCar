@@ -147,7 +147,7 @@
         <div class="useravatar">
             <img alt="" src="images/hand/hand1.jpg">
         </div>
-        <div class="card-info"> <span class="card-title">${member.mName}</span>
+        <div class="card-info"> <span class="card-title">${store.sName}</span>
 
         </div>
     </div>
@@ -159,7 +159,7 @@
         </div>
         <div class="btn-group" role="group">
             <button type="button" id="favorites" class="btn btn-default" href="#tab2" data-toggle="tab"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
-                <div class="hidden-xs">追蹤店家</div>
+                <div class="hidden-xs">????</div>
             </button>
         </div>
         <div class="btn-group" role="group">
@@ -167,33 +167,37 @@
                 <div class="hidden-xs">變更密碼</div>
             </button>
         </div>
+        <div class="btn-group" role="group">
+            <button type="button" id="following" class="btn btn-default" href="#tab4" data-toggle="tab"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                <div class="hidden-xs">????</div>
+            </button>
+        </div>
+        
     </div>
 
         <div class="well">
       <div class="tab-content">
         <div class="tab-pane fade in active" id="tab1">
-        <form class="form-inline" role="form"
-										action="<c:url value='/update.do' />" method="post">
-							<p></p>
+       	<form class="form-inline" role="form"
+										action="<c:url value='/storeUpdate.do' />" method="post">
+										<p></p>
 
-							<!-- 										<label for="mIMG" style="font-size: 30px">個人頭貼：</label> <input type="text" class="form-control" required autofocus -->
-								<%-- 											style="font-size: 15px" value="${mUsername.mIMG}" name="mIMG"></br>  --%>
-								<input type="hidden" name="mID" value="${member.mID}"><br />
-								<label for="mName" style="font-size: 24px">姓名：${member.mName}</label><br />
-								<input type="text" class="form-control" placeholder="若要更改，請輸入"
-									required autofocus style="font-size: 15px" name="mName"><br />
-									
-								<label for="mAddress" style="font-size: 24px">地址：${member.mAddress}</label><br />
-								<input type="text" class="form-control" placeholder="若要更改，請輸入"
-											required autofocus style="font-size: 15px" name="mAddress"><br />
+										<input type="hidden" name="sID" value="${store.sID}"><br />
+										<label for="sName" style="font-size: 15px">店名：${store.sName}</label><br />
+										
+										<input type="text" class="form-control" placeholder="若要更改，請輸入"
+											required autofocus style="font-size: 15px" name="sName"><br />
+										<label for="sBossName" style="font-size: 15px">老闆姓名：${store.sBossName}</label><br />
+										
+										<input type="text" class="form-control" placeholder="若要更改，請輸入"
+											required autofocus style="font-size: 15px" name="sBossName"><br />
 											
-								<label for="mPhone" style="font-size: 24px">電話：${member.mPhone}</label><br />
-								<input type="text" class="form-control" placeholder="若要更改，請輸入"
-									required autofocus style="font-size: 15px" name="mPhone"><br />
-									
-								<label for="mBirthday" style="font-size: 24px">生日：${member.mBirthday}</label><br />
-								<input type="text" class="form-control" placeholder="若要更改，請輸入"
-									required autofocus style="font-size: 15px" name="mBirthday"><br/>
+										<label for="sIntro" style="font-size: 15px">介紹：</label><br />
+										<textarea cols="50" rows="3" type="textarea"
+											class="form-control" required autofocus
+											style="font-size: 15px; resize: none" name="sIntro">${store.sIntro}</textarea>
+										<br />
+
 
 										<p></p>
 										<div class="checkbox">
@@ -203,32 +207,37 @@
 									</form>
         </div>
         <div class="tab-pane fade in" id="tab2">
-          <h3>追蹤店家:</h3>
+          <h3>????:</h3>
         </div>
         <div class="tab-pane fade in" id="tab3">
-          <h3>變更密碼:</h3>
-          <form class="form-inline" style="width: 700px;"
-										action="<c:url value='/change.do' />" method="post">
+<!--           <h3>變更密碼:</h3> -->
+         <form class="form-inline" style="width: 700px;"
+										action="<c:url value='/storechange.do' />" method="post">
+							
+										<input type="hidden" class="form-control" placeholder="請輸入原密碼"
+											required autofocus style="font-size: 15px"
+											value="${store.sUsername}" name="sUsername"><br />
+										<br /> 
+		<label for="sPassword" style="font-size: 15px">請輸入原密碼：</label><br /> 
+		    <input type="text" class="form-control" placeholder="請輸入原密碼"
+			required autofocus style="font-size: 15px" name="sPassword"><br />
+			
+		<label for="newPassword" style="font-size: 15px">請輸入新密碼：</label><br /> 
+		    <input type="text" class="form-control" placeholder="請輸入新密碼" required autofocus
+		    style="font-size: 15px" name="newPassword"><br />
+		 
+		 <label	for="newAgain" style="font-size: 15px">再次輸入新密碼：</label><br /> 
+			<input type="text"class="form-control" placeholder="請再次輸入新密碼" required
+			style="font-size: 15px" name="newAgain"><br />
+				<p></p>
 
-		<input type="hidden" class="form-control" placeholder="請輸入原密碼"
-						required autofocus style="font-size: 15px"
-						value="${member.mUsername}" name="mUsername"><br /> 
-
-	<label for="mPassword" style="font-size: 15px">請輸入原密碼：</label> 
-				<input	type="text" class="form-control" placeholder="請輸入原密碼"
-				required autofocus style="font-size: 15px" name="mPassword"><br />
-				
-		<label for="newPassword" style="font-size: 15px">請輸入新密碼：</label>
-			<input type="text"	class="form-control" placeholder="請輸入新密碼" required autofocus
-				style="font-size: 15px" name="newPassword"><br />
-				
-	 <label	for="newAgain" style="font-size: 15px">再次輸入新密碼：</label>
-			 <input type="text"class="form-control" placeholder="請再次輸入新密碼" required
-					style="font-size: 15px" name="newAgain"><br />
-						<p></p>
-				<button class="btn btn-lg btn-primary btn-block" type="submit">更新</button>
-		</form>
+			<button class="btn btn-lg btn-primary btn-block" type="submit">更新</button>
+					</form>
         </div>
+            <div class="tab-pane fade in" id="tab4">
+          <h3>????:</h3>
+        </div>
+        
       </div>
     </div>
     

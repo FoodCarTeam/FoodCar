@@ -50,7 +50,7 @@ public class StoreServlet extends HttpServlet {
 		 request.setAttribute("select", result);
 		 request.setAttribute("map", loc);
 		 request.getRequestDispatcher(
-					"/Store.jsp").forward(request, response);
+					"/user2.jsp").forward(request, response);
 		 }
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -140,17 +140,17 @@
 										action="<c:url value='/storeUpdate.do' />" method="post">
 										<p></p>
 
-										<input type="hidden" name="sID" value="${user.sID}"><br />
-										<label for="sName" style="font-size: 15px">店名：${user.sName}</label><br />
+										<input type="hidden" name="sID" value="${store.sID}"><br />
+										<label for="sName" style="font-size: 15px">店名：${store.sName}</label><br />
 										<input type="text" class="form-control" placeholder="若要更改，請輸入"
 											required autofocus style="font-size: 15px" name="sName"><br />
-										<label for="sBossName" style="font-size: 15px">老闆姓名：${user.sBossName}</label><br />
+										<label for="sBossName" style="font-size: 15px">老闆姓名：${store.sBossName}</label><br />
 										<input type="text" class="form-control" placeholder="若要更改，請輸入"
 											required autofocus style="font-size: 15px" name="sBossName"><br />
 										<label for="sIntro" style="font-size: 15px">介紹：</label><br />
 										<textarea cols="50" rows="3" type="textarea"
 											class="form-control" required autofocus
-											style="font-size: 15px; resize: none" name="sIntro">${user.sIntro}</textarea>
+											style="font-size: 15px; resize: none" name="sIntro">${store.sIntro}</textarea>
 										<br />
 
 
@@ -168,7 +168,7 @@
 										<p></p>
 										<input type="hidden" class="form-control" placeholder="請輸入原密碼"
 											required autofocus style="font-size: 15px"
-											value="${user.sUsername}" name="sUsername"><br />
+											value="${store.sUsername}" name="sUsername"><br />
 										<br /> <label for="sPassword">請輸入原密碼：</label> <input
 											type="text" class="form-control" placeholder="請輸入原密碼"
 											required autofocus style="font-size: 15px" name="sPassword"><br />

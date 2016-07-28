@@ -16,7 +16,6 @@ import javax.servlet.http.HttpSession;
 import model.MembersVO;
 import members.model.MembersDAO;
 import members.model.MembersService;
-import com.journaldev.utils.VerifyRecaptcha;
 
 
 @WebServlet("/Login")
@@ -84,7 +83,7 @@ public class MembersServlet extends HttpServlet {
 					System.out.println("path"+path);
 					
 					
-					response.sendRedirect(path+"/membermaintain.jsp");
+					response.sendRedirect(path+"/user.jsp");
 					return ;
 				}
 				

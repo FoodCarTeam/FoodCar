@@ -64,17 +64,17 @@
 
 										<!-- 										<label for="mIMG" style="font-size: 30px">個人頭貼：</label> <input type="text" class="form-control" required autofocus -->
 										<%-- 											style="font-size: 15px" value="${mUsername.mIMG}" name="mIMG"></br>  --%>
-										<input type="hidden" name="mID" value="${mUsername.mID}"><br />
-										<label for="mName" style="font-size: 24px">姓名：${mUsername.mName}</label>
+										<input type="hidden" name="mID" value="${member.mID}"><br />
+										<label for="mName" style="font-size: 24px">姓名：${member.mName}</label>
 										<input type="text" class="form-control" placeholder="若要更改，請輸入"
 											required autofocus style="font-size: 15px" name="mName"><br />
-										<label for="mAddress" style="font-size: 30px">地址：${mUsername.mAddress}</label>
+										<label for="mAddress" style="font-size: 30px">地址：${member.mAddress}</label>
 										<input type="text" class="form-control" placeholder="若要更改，請輸入"
 											required autofocus style="font-size: 15px" name="mAddress"><br />
-										<label for="mPhone" style="font-size: 30px">電話：${mUsername.mPhone}</label>
+										<label for="mPhone" style="font-size: 30px">電話：${member.mPhone}</label>
 										<input type="text" class="form-control" placeholder="若要更改，請輸入"
 											required autofocus style="font-size: 15px" name="mPhone"><br />
-										<label for="mBirthday" style="font-size: 30px">生日：${mUsername.mBirthday}</label>
+										<label for="mBirthday" style="font-size: 30px">生日：${member.mBirthday}</label>
 										<input type="text" class="form-control" placeholder="若要更改，請輸入"
 											required autofocus style="font-size: 15px" name="mBirthday"><br />
 
@@ -92,7 +92,7 @@
 										<p></p>
 										<input type="hidden" class="form-control" placeholder="請輸入原密碼"
 											required autofocus style="font-size: 15px"
-											value="${mUsername.mUsername}" name="mUsername"><br />
+											value="${member.mUsername}" name="mUsername"><br />
 										<br /> <label for="mPassword">請輸入原密碼：</label> <input
 											type="text" class="form-control" placeholder="請輸入原密碼"
 											required autofocus style="font-size: 15px" name="mPassword"><br />
