@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en-US" prefix="og: http://ogp.me/ns#" class="no-js">
@@ -68,7 +68,8 @@
 
 
 
-<link rel="stylesheet" type="text/css" href="bootstrap/sweetAlert/sweetalert.css">
+<link rel="stylesheet" type="text/css"
+	href="bootstrap/sweetAlert/sweetalert.css">
 
 
 <link rel="stylesheet" href="bootstrap/signin/css/jquery-ui.css">
@@ -217,35 +218,26 @@
 			$(".county").on("change", function() {
 				county = $(".county").val();
 
-// 				$("#mAddress").val("");
-// 				$("#mAddress").val($("#mAddress").val()+county);
-				
+				// 				$("#mAddress").val("");
+				// 				$("#mAddress").val($("#mAddress").val()+county);
+
 			})
 			$(".district").on('change', function() {
 				district = $(this).val();
 
-// 				$("#mAddress").val($("#mAddress").val()+district);
+				// 				$("#mAddress").val($("#mAddress").val()+district);
 			});
-			
-			
-			 var availableTutorials = [
-			                            "ActionScript",
-			                            "Boostrap",
-			                            "C",
-			                            "C++",
-			                          ];
-// 			 第二個參數傳g
-			 function Trim(str,is_global)
-		        {
-		            var result;
-		            result = str.replace(/(^\s+)|(\s+$)/g,"");
-		            if(is_global.toLowerCase()=="g")
-		            {
-		                result = result.replace(/\s/g,"");
-		             }
-		            return result;
-		}
-			
+
+			var availableTutorials = [ "ActionScript", "Boostrap", "C", "C++", ];
+			// 			 第二個參數傳g
+			function Trim(str, is_global) {
+				var result;
+				result = str.replace(/(^\s+)|(\s+$)/g, "");
+				if (is_global.toLowerCase() == "g") {
+					result = result.replace(/\s/g, "");
+				}
+				return result;
+			}
 
 			$("#mAddress").on("click", function() {
 				var county;
@@ -264,131 +256,49 @@
 						"roadName" : $("#mAddress").val()
 					},
 					"success" : function(datas) {
-// 						console.log(typeof(datas));
-// 						轉String
-						var a=JSON.stringify(datas);
-// 						console.log(typeof(a));
-						
-						var data=Trim(a,"g");
-						var b=$.parseJSON(data);
-						  $("#mAddress").autocomplete({source:b});
+						// 						console.log(typeof(datas));
+						// 						轉String
+						var a = JSON.stringify(datas);
+						// 						console.log(typeof(a));
+
+						var data = Trim(a, "g");
+						var b = $.parseJSON(data);
+						$("#mAddress").autocomplete({
+							source : b
+						});
 					}
 				});
 
 			});
 
 		});
-		
 	</script>
 	<script src="bootstrap/sweetAlert/sweetalert.min.js"></script>
 
 
-<c:if test="${error!=null}">
-<script>
-swal({
-	  title: '資料有誤',
-	  html:
-	    "<h6 id='m1'>'${error.mUsername}'</h6>" +
-	    '<input id="swal-input2" class="swal2-input">',
-	  preConfirm: function() {
-	    return new Promise(function(resolve) {
-	      if (result) {
-	        resolve([
-	          $('#m1').val(),
-	          $('#swal-input2').val()
-	        ]);
-	      }
-	    });
-	  }
-	}).then(function(result) {
-	  swal(JSON.stringify(result));
-	})
-</script> 
-</c:if>
+	<c:if test="${error!=null}">
+		<script>
+			swal({
+				title : '資料有誤',
+				html : "<h6 id='m1'>'${error.mUsername}'</h6>" + '<input id="swal-input2" class="swal2-input">',
+				preConfirm : function() {
+					return new Promise(function(resolve) {
+						if (result) {
+							resolve([ $('#m1').val(), $('#swal-input2').val() ]);
+						}
+					});
+				}
+			}).then(function(result) {
+				swal(JSON.stringify(result));
+			})
+		</script>
+	</c:if>
+
+
+	<jsp:include page="header.jsp"></jsp:include>
 
 
 
-	<!--Header-->
-	<div id="Header" style="background-color: white;">
-		<div class="row">
-			<div class="small-18 large-12 columns">
-				<p></p>
-				<p></p>
-			</div>
-		</div>
-	</div>
-	<!--/Header-->
-	<!--列表bootstrap-->
-	<div id="MenuBarPhone" class="menu-phone">
-		<div class="row">
-			<div class="small-3 columns">
-				<div class="top-logo">
-					<a class="logo" href="index.jsp"></a>
-				</div>
-			</div>
-			<div class="small-7 columns">
-				<div class="top-search">
-					<div class="search-bar">
-						<div id="sb-search-phone" class="sb-search">
-							<form action="/">
-								<img src="images/hand/hand5.jpg" />
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="small-2 columns"></div>
-		</div>
-	</div>
-	<div id="MenuPhone">
-		<ul id="menu-mobile">
-			<li><a href="stores.jsp">餐車專區</a></li>
-			<li><a href="map.html">地圖</a></li>
-			<li><a href="about.jsp">關於我們</a></li>
-			<li><a href="login.jsp">登入</a></li>
-		</ul>
-	</div>
-	<!--/列表bootstrap-->
-	<nav class="navbar navbar-fixed-top"> <!--列表-->
-	<div class="contain-to-grid">
-		<nav class="top-bar" id="TopMenu" data-topbar
-			data-options="is_hover: false"> <section
-			class="top-bar-section">
-		<div class="menu-bar">
-			<!--列表左邊-->
-			<ul class="left">
-				<li>
-					<div class="top-logo">
-						<a class="logo" href="index.html"></a> <a class="logo-text"
-							href="index.html"></a>
-					</div>
-				</li>
-			</ul>
-			<!--/列表左邊-->
-			<!--列表右邊頭像-->
-			<ul class="right">
-				<li class="top-search">
-					<div class="search-bar">
-						<div id="sb-search" class="sb-search">
-							<img src="images/hand/hand5.jpg" />
-						</div>
-					</div>
-				</li>
-				<!--/列表右邊頭像-->
-				<!--列表右邊list工具列-->
-				<li class="side-menu has-dropdown"><a href="#" class="menu"></a>
-					<ul class="dropdown">
-						<li><a href="stores.jsp">餐車專區</a></li>
-						<li><a href="map.html">地圖</a></li>
-						<li><a href="about.jsp">關於我們</a></li>
-						<li><a href="login.jsp">登入</a></li>
-					</ul></li>
-				<!--/列表右邊list工具列-->
-			</ul>
-		</div>
-		</section> </nav>
-	</div>
-	<!--/列表--> </nav>
 
 	<div id="MainContent" style="width: 800px; margin: auto">
 		<div class="row">
@@ -419,9 +329,11 @@ swal({
 
 
 
-   <!--會員註冊-->
-       <div id="users" class="tab-pane fade in active"> 
-<form   class="form-inline" role="form" action="<c:url value="/MembersSignin" />" method="POST" enctype="multipart/form-data" >
+								<!--會員註冊-->
+								<div id="users" class="tab-pane fade in active">
+									<form class="form-inline" role="form"
+										action="<c:url value="/MembersSignin" />" method="POST"
+										enctype="multipart/form-data">
 
 										<div class="form-group">
 											<p></p>
@@ -497,8 +409,8 @@ swal({
 												<div class="input-group date form_date col-md-15"
 													data-date-format="yyyy-mm-dd">
 													<input style="font-size: 15px" class="form-control"
-														size="16" type="text" value="${param.mBirthday}" readonly=""
-														id="mBirthday" name="mBirthday"> <span
+														size="16" type="text" value="${param.mBirthday}"
+														readonly="" id="mBirthday" name="mBirthday"> <span
 														class="input-group-addon"><span
 														class="glyphicon glyphicon-remove"></span></span> <span
 														class="input-group-addon"><span
@@ -568,20 +480,24 @@ swal({
 										<input class="form-control" id="mAddress" type="text"
 											placeholder="" style="width: 450px" name="mAddress"
 											value="${param.mAddress}">
-											<div class="form-group">
+										<div class="form-group">
 											<p></p>
-									
-								</div>
-								
-								</div>
-								<p></p>
-								<label for="exampleInputFile">大頭貼檔案上傳</label> <input
-										type="file" id="mIMG" name="mIMG" value="${param.mIMG}">
-								<p></p>
 
-								
+										</div>
+								</div>
+								<p></p>
+								<label for="exampleInputFile">大頭貼檔案上傳</label> <input type="file"
+									id="mIMG" name="mIMG" value="${param.mIMG}">
+								<p></p>
+								<script src='https://www.google.com/recaptcha/api.js'></script>
+								<div class="g-recaptcha"
+									data-sitekey="6LdaHCYTAAAAADKKfv9KbG7Rvcv3iqzORL_9Suq8"></div>
+
 								<p></p>
 								<!-- <button type="submit" class="btn btn-success" name="Members">申請</button>    -->
+
+
+								<p></p>
 								<input class="btn btn-success" type="submit" name="Members"
 									value="申請">
 
