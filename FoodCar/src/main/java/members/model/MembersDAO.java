@@ -19,9 +19,12 @@ public interface MembersDAO {
 	
 	public List<MembersVO> getAll();
 
-	public List<MembersVO> findByKey(Integer mID);
+
+	List<String> select_TaiwanRoad(String County,String Area,String roadName);
+
 	
 	MembersVO select_mUsername(String mUsername);
 
+	MembersVO select_mPhone(String mPhone);
 	
 }

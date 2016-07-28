@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -21,37 +22,7 @@
 <div class="navbar-wrapper">
       <div class="container">
 
-        <div class="navbar navbar-inverse navbar-fixed-top" role="navigation" id="top-nav">
-          <div class="container">
-            <div class="navbar-header">
-              <!-- Logo Starts -->
-              <a class="navbar-brand" href="index.jsp"><img  class="animated bounceInUp" src="index/images/logo.png" alt="logo"></a>
-              <!-- #Logo Ends -->
-
-
-              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-
-            </div>
-
-
-            <!-- Nav Starts -->
-            <div class="navbar-collapse  collapse">
-              <ul class="nav navbar-nav navbar-right scroll">
-                <li ><a  class="animated bounceInUp" href="stores.jsp" style="color:white;font-size:larger" >餐車專區</a></li>
-                 <li ><a class="animated bounceInUp" href="map.html" style="color:white;font-size:larger" >地圖</a></li>
-                 <li ><a class="animated bounceInUp"  href="about.jsp" style="color:white;font-size:larger">關於我們</a></li>
-                 <li ><a class="animated bounceInUp"  href="login.jsp" style="color:white;font-size:larger">登入</a></li>            
-              </ul>
-            </div>
-            <!-- #Nav Ends -->
-
-          </div>
-        </div>
+      <jsp:include page='headerIndex.jsp'/>
 
       </div>
     </div>

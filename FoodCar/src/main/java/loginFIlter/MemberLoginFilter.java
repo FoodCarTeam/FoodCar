@@ -81,8 +81,8 @@ public class MemberLoginFilter implements Filter {
 		HttpSession session= request.getSession();
 		MembersVO mVO=null;
 		StoresVO sVO=null;
-		mVO=(MembersVO)session.getAttribute("mUsername");	
-		sVO=(StoresVO)session.getAttribute("user");
+		mVO=(MembersVO)session.getAttribute("member");	
+		sVO=(StoresVO)session.getAttribute("store");
 		
 //		System.out.println("mUsernameSession:"+mVO);
 //		System.out.println("userSession:"+sVO);

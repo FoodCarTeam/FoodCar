@@ -35,6 +35,14 @@ public class MembersServlet extends HttpServlet {
 				String mUsername = request.getParameter("mUsername");
 				String mPassword = request.getParameter("mPassword");
 				
+				String gRecaptchaResponse = request.getParameter("g-recaptcha-response");
+				System.out.println("gRecaptchaResponse:"+gRecaptchaResponse);
+				
+//				System.out.println("gRecaptchaResponse:"+gRecaptchaResponse);
+				boolean verify = members.VerifyRecaptcha.VerifyRecaptcha.verify(gRecaptchaResponse);
+//				System.out.println("verify:"+verify);
+				
+				
 		//驗證資料
 				Map<String, String> errors = new HashMap<String, String>();
 				request.setAttribute("error", errors);
@@ -45,7 +53,14 @@ public class MembersServlet extends HttpServlet {
 				if(mPassword==null || mPassword.length()==0) {
 					errors.put("mPassword", "請輸入密碼");
 				}
-			
+				
+				if(!verify){
+					errors.put("verify", "錯誤");
+				}
+				
+				
+				
+				
 		//呼叫Model
 				MembersVO vo = membersService.login(mUsername, mPassword);
 		//根據Model執行結果顯示View
@@ -55,7 +70,7 @@ public class MembersServlet extends HttpServlet {
 					
 				} else {
 					HttpSession session = request.getSession();
-					session.setAttribute("mUsername", vo);
+					session.setAttribute("member", vo);
 					
 					String servletPath=(String)session.getAttribute("target");
 					String queryPath=(String)session.getAttribute("query");

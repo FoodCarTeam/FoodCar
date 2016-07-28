@@ -20,7 +20,7 @@ public class ShowImageService {
 		String path="//Users//lanyao//Documents//FoodCar//FoodCar//src//main//webapp//images//MapIcon//";
 		String a=request.getServletContext().getRealPath("/");
 //		String path=a+"//src//main//webapp//images//MapIcon//";
-	
+	System.out.println(a);
 		System.out.println(request.getServletContext().getRealPath("/"));
 		
 		
