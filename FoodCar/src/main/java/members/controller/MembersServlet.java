@@ -54,9 +54,9 @@ public class MembersServlet extends HttpServlet {
 					errors.put("mPassword", "請輸入密碼");
 				}
 				
-				if(!verify){
-					errors.put("verify", "錯誤");
-				}
+//				if(!verify){
+//					errors.put("verify", "錯誤");
+//				}
 				
 				
 				
@@ -72,24 +72,24 @@ public class MembersServlet extends HttpServlet {
 					HttpSession session = request.getSession();
 					session.setAttribute("member", vo);
 					
-					String servletPath=(String)session.getAttribute("target");
-					String queryPath=(String)session.getAttribute("query");
+//					String servletPath=(String)session.getAttribute("target");
+//					String queryPath=(String)session.getAttribute("query");
 					String path = request.getContextPath();
-					if(servletPath!=null||queryPath!=null){
-						System.out.println("path:"+path+servletPath+"?"+queryPath);
-						
-						response.sendRedirect("localhost:8080"+path+servletPath+"?"+queryPath);
-						System.out.println("測試localhost:8080"+path+servletPath+"?"+queryPath);
-//						request.getRequestDispatcher(servletPath+"?"+queryPath).forward(request, response);
-						return;
-					}else{
-						
-					}
+//					if(servletPath!=null||queryPath!=null){
+//						System.out.println("path:"+path+servletPath+"?"+queryPath);
+//						
+//						response.sendRedirect("localhost:8080"+path+servletPath+"?"+queryPath);
+//						System.out.println("測試localhost:8080"+path+servletPath+"?"+queryPath);
+////						request.getRequestDispatcher(servletPath+"?"+queryPath).forward(request, response);
+//						return;
+//					}else{
+//						
+//					}
 
 					System.out.println("path"+path);
 					
 					
-					response.sendRedirect(path+"/membermaintain.jsp");
+					response.sendRedirect(path+"/index.jsp");
 					return ;
 				}
 				

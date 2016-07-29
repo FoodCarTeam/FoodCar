@@ -27,6 +27,7 @@ public class memberEmailCheckServlet extends HttpServlet {
 		MembersService service=new MembersService();
 		
 		MembersVO vo=service.select1(email);
+		System.out.println("vo:"+vo);
 		Boolean emailCheck=email.matches("^[_a-z0-9A-Z-]+([.][_a-z0-9-]+)*@[a-z0-9-]+([.][a-z0-9-]+)*$");
 		
 		System.out.println("emailCheck:"+emailCheck);

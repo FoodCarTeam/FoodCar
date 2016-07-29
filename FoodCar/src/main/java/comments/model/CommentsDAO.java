@@ -19,6 +19,7 @@ import org.hibernate.jdbc.Work;
 
 import hibernate.util.HibernateUtil;
 import model.CommentsVO;
+import model.MembersVO;
 
 public class CommentsDAO implements commentsDaoInterface{
 	final static String SELECT_mID="from CommentsVO where mID=:mID";
@@ -30,25 +31,25 @@ public class CommentsDAO implements commentsDaoInterface{
 //										+"where cID=:cID";
 	final static String DELETE="delete CommentsVO where cID=:cID";
 	public static void main(String[] args) {
-//		CommentsDAO dao=new CommentsDAO();
-//		CommentsVO vo=new CommentsVO();
+		CommentsDAO dao=new CommentsDAO();
+		CommentsVO vo=new CommentsVO();
 ////		測試新增
-//		vo.setmID(1);
-//		vo.setsID(3);
-//		Date date=new Date();
-//		vo.setcDate(new java.sql.Date(date.getTime()));
-//		vo.setcContent("tdast測試dasdas");
-//		vo.setcPoint("123");
-//		String a="123";
-//		byte ab[]=a.getBytes();
-//		Byte ba[]=new Byte[ab.length];
-//		 for (int i = 0; i < ab.length; i++)
-//		    {
-//		        ba[i] = Byte.valueOf(ab[i]);
-//		    }
-//		vo.setcIP(ba);
-//		CommentsVO result=dao.insert(vo);
-//		System.out.println(result.getcContent());
+		vo.setmID(1);
+		vo.setsID(3);
+		Date date=new Date();
+		vo.setcDate(new java.sql.Date(date.getTime()));
+		vo.setcContent("tdast測試dasdas");
+		vo.setcPoint("123");
+		String a="123";
+		byte ab[]=a.getBytes();
+		Byte ba[]=new Byte[ab.length];
+		 for (int i = 0; i < ab.length; i++)
+		    {
+		        ba[i] = Byte.valueOf(ab[i]);
+		    }
+		vo.setcIP(ba);
+		CommentsVO result=dao.insert(vo);
+		System.out.println(result.getcContent());
 		
 //		測試修改
 //		vo.setcID(1);
@@ -182,32 +183,13 @@ public class CommentsDAO implements commentsDaoInterface{
 	@Override
 	public CommentsVO insert(CommentsVO vo) {
 		Session session=HibernateUtil.getSessionFactory().getCurrentSession();
-		
-//		session.doWork(new Work(){
-//			@Override
-//			public void execute(Connection connection) throws SQLException{
-//				Statement stmt=connection.createStatement();
-//						stmt.executeUpdate("insert comments values(?,?,?,?,?,?)",Statement.RETURN_GENERATED_KEYS);
-//						
-//						
-//						
-//						ResultSet rs=stmt.getGeneratedKeys();
-//						if(rs.next()){
-//							String key=rs.getString(1);
-//						}
-//						ResultSetMetaData rsmd=rs.getMetaData();
-//						
-//					}
-//		});
-		
-		
 		try {
 			session.beginTransaction();
 			
-		
-		
+			
+			
+			
 			session.save(vo);
-//		System.out.println("PK:"+vo.getcID());
 			session.getTransaction().commit();
 		} catch (Exception e) {
 			session.getTransaction().rollback();

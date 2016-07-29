@@ -73,8 +73,8 @@
 											value="${param.mPassword}">
 
 										<p></p>
-										<script src='https://www.google.com/recaptcha/api.js'></script>
-										<div class="g-recaptcha" data-sitekey="6LdaHCYTAAAAADKKfv9KbG7Rvcv3iqzORL_9Suq8"></div>
+<!-- 										<script src='https://www.google.com/recaptcha/api.js'></script> -->
+<!-- 										<div class="g-recaptcha" data-sitekey="6LdaHCYTAAAAADKKfv9KbG7Rvcv3iqzORL_9Suq8"></div> -->
 										
 										<div class="checkbox">
 											<label> <input type="checkbox" value="remember-me">

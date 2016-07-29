@@ -5,23 +5,29 @@ import java.util.List;
 import java.util.Set;
 
 import model.CommentsVO;
+import model.MembersVO;
 import model.ResponseVO;
 public class CommentsService {
 	CommentsDAO dao=new CommentsDAO();
 	
 	public static void main(String[]args){
 //		CommentsService service=new CommentsService();
-//		測試多對一    Comments與Response
+////		測試多對一    Comments與Response
 //		List<CommentsVO> list=new ArrayList<CommentsVO>();
-//		list=service.select_ALL_sID(1);
+//		list=service.select_ALL_sID(3);
 //		for(CommentsVO a:list){
 //			System.out.println(a.getsID());
 //			System.out.println(a.getcDate());
 //			
 //			Set<ResponseVO> ResponseVO=a.getResponseVO();
+//			 MembersVO memberVO=a.getMemberVO();
+//			System.out.println("ResponseVOsize:"+ResponseVO.size());
+////			System.out.println("MembersVOsize:"+MembersVO.size());
 //			for(ResponseVO s:ResponseVO){
 //				System.out.println(s.getcContent());
 //			}
+//			System.out.println("留言的會員姓名："+memberVO.getmName());
+			
 //		}
 		
 	}

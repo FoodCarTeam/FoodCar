@@ -15,7 +15,17 @@ public class MembersVO implements java.io.Serializable{
 	private String mIMG ;
 	private Set<OrdersVO> ordersVO = new HashSet<OrdersVO>();
 	private Set<OrderDetailsVO> orderDetailsVO = new HashSet<OrderDetailsVO>();
+	private Set<CommentsVO> commentsVO = new HashSet<CommentsVO>();
 	
+	
+	
+	
+	public Set<CommentsVO> getCommentsVO() {
+		return commentsVO;
+	}
+	public void setCommentsVO(Set<CommentsVO> commentsVO) {
+		this.commentsVO = commentsVO;
+	}
 	public Set<OrderDetailsVO> getOrderDetailsVO() {
 		return orderDetailsVO;
 	}

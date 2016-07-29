@@ -17,7 +17,7 @@ import hibernate.util.HibernateUtil;
 import model.MembersVO;
 
 public class MembersDAOHibernate implements MembersDAO {
-
+	final static String SELECT_mName="from MembersVO where mName=:mName";
 	private static final String SELECT = "from MembersVO  where mID=:mID";
 	private static final String SELECT1 = "from MembersVO  where mUsername=?";
 	private static final String GET_ALL_STMT = "from MembersVO";
@@ -37,7 +37,7 @@ public class MembersDAOHibernate implements MembersDAO {
 
 
 //		測試新增
-//		MembersVO vo = new MembersVO();
+		MembersVO vo = new MembersVO();
 //		
 //		Date date = new Date();
 //		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
@@ -75,14 +75,31 @@ public class MembersDAOHibernate implements MembersDAO {
 		
 //		MembersVO vo=dao.select_mPhone("091927139");
 //		System.out.println(vo);
-		List<String>list=new LinkedList<String>();
-		list=dao.select_TaiwanRoad("臺北市","士林區","芝");
-		System.out.println(list.size());
-		for(String a:list){
-			System.out.println(a);
-		}
+//		List<String>list=new LinkedList<String>();
+//		list=dao.select_TaiwanRoad("臺北市","士林區","芝");
+//		System.out.println(list.size());
+//		for(String a:list){
+//			System.out.println(a);
+//		}
 		
+//		vo=dao.select_mName("藍堯");
+//		System.out.println(vo.getmName());
 		
+}
+	public MembersVO select_mName(String mName) {
+	Session session=HibernateUtil.getSessionFactory().getCurrentSession();
+	MembersVO vo=null;
+	try {
+		session.beginTransaction();
+		Query query=session.createQuery(SELECT_mName);
+		query.setParameter("mName",mName);
+		vo=(MembersVO)query.uniqueResult();
+		session.getTransaction().commit();
+	} catch (Exception e) {
+		session.getTransaction().rollback();
+		e.printStackTrace();
+	}
+	return vo;
 }
 	
 	@Override

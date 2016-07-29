@@ -8,9 +8,11 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 
 import hibernate.util.HibernateUtil;
+import model.MembersVO;
 import model.ResponseVO;
 
 public class ResponseDao implements ResponseDaoInterface{
+	final static String SELECT_mName="from MembersVO where mName=:mName";
 	final static String SELECT="from ResponseVO where cID=:cID";
 	final static String Sselect_ALL="from ResponseVO where cID=:cID  order by cDate";
 	final static String DELETE="delete ResponseVO where rID=:rID";
@@ -53,6 +55,23 @@ public class ResponseDao implements ResponseDaoInterface{
 //		System.out.println(result);
 	}
 
+	public MembersVO select_mName(String mName) {
+		Session session=HibernateUtil.getSessionFactory().getCurrentSession();
+		MembersVO vo=null;
+		try {
+			session.beginTransaction();
+			Query query=session.createQuery(SELECT_mName);
+			query.setParameter("mName",mName);
+			vo=(MembersVO)query.uniqueResult();
+			session.getTransaction().commit();
+		} catch (Exception e) {
+			session.getTransaction().rollback();
+			e.printStackTrace();
+		}
+		return vo;
+	}
+	
+	
 	@Override
 	public ResponseVO select(int cID) {
 		Session session=HibernateUtil.getSessionFactory().getCurrentSession();

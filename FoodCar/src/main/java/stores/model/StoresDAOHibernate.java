@@ -6,6 +6,7 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 
 import hibernate.util.HibernateUtil;
+import model.MembersVO;
 import model.StoresVO;
 
 public class StoresDAOHibernate implements StoresDAO{
@@ -16,6 +17,23 @@ public class StoresDAOHibernate implements StoresDAO{
 //		StoresVO vo=new StoresVO();
 //		 vo=dao.select(1);
 //		 System.out.println(vo.getsName());
+	}
+	
+	
+	public StoresVO select_mName(String sName) {
+		Session session=HibernateUtil.getSessionFactory().getCurrentSession();
+		StoresVO vo=null;
+		try {
+			session.beginTransaction();
+			Query query=session.createQuery("from StoresVO where sName=:sName");
+			query.setParameter("sName",sName);
+			vo=(StoresVO)query.uniqueResult();
+			session.getTransaction().commit();
+		} catch (Exception e) {
+			session.getTransaction().rollback();
+			e.printStackTrace();
+		}
+		return vo;
 	}
 	
 	

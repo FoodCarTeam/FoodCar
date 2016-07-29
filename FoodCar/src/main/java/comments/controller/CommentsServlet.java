@@ -24,10 +24,13 @@ import org.json.simple.JSONObject;
 import com.google.gson.Gson;
 
 import comments.model.CommentsService;
+import members.model.MembersDAOHibernate;
 import model.CommentsVO;
 import model.MembersVO;
 import model.ResponseVO;
 import model.StoresVO;
+import response.model.ResponseDao;
+import stores.model.StoresDAOHibernate;
 
 @WebServlet("/CommentsServlet")
 public class CommentsServlet extends HttpServlet {
@@ -51,7 +54,11 @@ public class CommentsServlet extends HttpServlet {
 		String sID=request.getParameter("sID");	
 		List<CommentsVO> list=service.select_ALL_sID(Integer.parseInt(sID));
 		
-		
+		for(CommentsVO f:list){
+			System.out.println("f:"+f);
+			System.out.println("member:"+f.getMemberVO());
+			System.out.println("回覆:"+f.getResponseVO());
+		}
 		
 		
 		
@@ -66,7 +73,8 @@ public class CommentsServlet extends HttpServlet {
 
 		SimpleDateFormat sdf=new SimpleDateFormat("yyyy/MM/dd kk:mm:ss");
 		
-		
+		MembersDAOHibernate dao=new MembersDAOHibernate();
+		StoresDAOHibernate storeDao=new StoresDAOHibernate();
 		
 		for(int i=0;i<list.size();i++){
 			comment = new JSONObject();
@@ -83,17 +91,18 @@ public class CommentsServlet extends HttpServlet {
 			
 //			System.out.println(Date);
 			comment.put("cDate",Date);
-			comment.put("cContent", list.get(i).getcContent());
+//			comment.put("cContent", list.get(i).getcContent());
 			comment.put("cPoint", list.get(i).getcPoint());
 			comment.put("cContent", list.get(i).getcContent());
-			
+			System.out.println("cContent"+list.get(i).getcContent());
 
 			Set<ResponseVO> responseVO=list.get(i).getResponseVO();
-			Set<MembersVO> memberVO=list.get(i).getMemberVO();
+			MembersVO memberVO=list.get(i).getMemberVO();
 			
-			for(MembersVO b:memberVO){
-			comment.put("mName",b.getmName());
-			}
+			comment.put("mName",memberVO.getmName());
+			comment.put("mImg",memberVO.getmIMG());
+			
+			
 			
 			array2=new JSONArray();
 			if(responseVO.size()!=0){
@@ -112,6 +121,24 @@ public class CommentsServlet extends HttpServlet {
 					
 					cResponse.put("sName", temp.getsName());
 					cResponse.put("mName", temp.getmName());
+					
+					System.out.println("temp.getsName():"+temp.getsName());
+					if(temp.getsName()==null){
+						
+						System.out.println("sName是空的");
+						
+						StoresVO vo=new StoresVO();
+						vo=storeDao.select_mName(temp.getsName());
+						cResponse.put("sLogo",vo.getsLogo());
+					}else{
+						System.out.println("sName是有東西");
+						MembersVO asd=dao.select_mName(temp.getmName());
+//						System.out.println("memberVO"+asd);
+//						System.out.println("mImg:"+asd.getmIMG());
+						cResponse.put("mImg",asd.getmIMG());
+					}
+					
+					
 					
 					Date tempDate2=temp.getcDate();
 					String date2=sdf.format(tempDate2);

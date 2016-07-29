@@ -18,7 +18,9 @@ import org.json.simple.JSONArray;
 import com.google.gson.JsonObject;
 
 import comments.model.CommentsService;
+import members.model.MembersService;
 import model.CommentsVO;
+import model.MembersVO;
 
 @WebServlet("/InsertCommentsServlet")
 public class InsertCommentsServlet extends HttpServlet {
@@ -41,10 +43,10 @@ public class InsertCommentsServlet extends HttpServlet {
 		String cDateTemp=request.getParameter("cDate");
 		String cCntentTemp=request.getParameter("cContent");
 		
-//		System.out.println(mID);
-//		System.out.println(sID);
-//		System.out.println(cDateTemp);
-//		System.out.println(cCntentTemp);
+		System.out.println(mIDTemp);
+		System.out.println(sIDTemp);
+		System.out.println(cDateTemp);
+		System.out.println(cCntentTemp);
 		
 		CommentsService service=new CommentsService();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -68,9 +70,20 @@ public class InsertCommentsServlet extends HttpServlet {
 		}
 		
 		CommentsVO vo=new CommentsVO();
-		
+		MembersService service1=new MembersService();
 		
 			int mID=Integer.parseInt(mIDTemp);
+			
+			
+			
+			MembersVO s=service1.select(mID);
+			
+			vo.setMemberVO(s);
+			
+			
+			
+			
+			
 			vo.setmID(mID);
 	
 			int sID=Integer.parseInt(sIDTemp);
@@ -86,6 +99,7 @@ public class InsertCommentsServlet extends HttpServlet {
 			JsonObject jo=new JsonObject();
 			PrintWriter pw=response.getWriter();
 			jo.addProperty("cID", vo.getcID());
+			System.out.println("getcID:"+vo.getcID());
 //			JSONArray ja=new JSONArray();
 //			ja.add(jo);
 			pw.println(jo);

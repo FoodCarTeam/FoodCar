@@ -490,7 +490,7 @@
 									id="mIMG" name="mIMG" value="${param.mIMG}">
 								<p></p>
 								<script src='https://www.google.com/recaptcha/api.js'></script>
-								<div class="g-recaptcha"
+								<div class="g-recaptcha" name='g-recaptcha-response'
 									data-sitekey="6LdaHCYTAAAAADKKfv9KbG7Rvcv3iqzORL_9Suq8"></div>
 
 								<p></p>

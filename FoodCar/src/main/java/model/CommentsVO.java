@@ -14,14 +14,15 @@ public class CommentsVO implements java.io.Serializable {
 	private Byte[] cIP ;
 	
 	private Set<ResponseVO> responseVO=new HashSet<ResponseVO>();
-	private Set<MembersVO> memberVO=new HashSet<MembersVO>();
+	private MembersVO memberVO=new MembersVO();
 	
 	
 	
-	public Set<MembersVO> getMemberVO() {
+	
+	public MembersVO getMemberVO() {
 		return memberVO;
 	}
-	public void setMemberVO(Set<MembersVO> memberVO) {
+	public void setMemberVO(MembersVO memberVO) {
 		this.memberVO = memberVO;
 	}
 	public Set<ResponseVO> getResponseVO() {
