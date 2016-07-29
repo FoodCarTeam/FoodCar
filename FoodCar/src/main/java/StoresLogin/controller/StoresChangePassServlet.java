@@ -48,7 +48,7 @@ public class StoresChangePassServlet extends HttpServlet {
 		}
 		if(Errors!=null && !Errors.isEmpty()){
 			request.getRequestDispatcher(
-					"/storemaintain.jsp").forward(request, response);
+					"/storesinfo.jsp").forward(request, response);
 			return;
 		}
 		
@@ -58,7 +58,7 @@ public class StoresChangePassServlet extends HttpServlet {
 			System.out.println("空");
 			Errors.put("changeFail", "變更失敗，請重新確認");
 			request.getRequestDispatcher(
-					"/user2.jsp").forward(request, response);
+					"/storesinfo.jsp").forward(request, response);
 			return;
 		}else{
 			System.out.println("有");

@@ -56,7 +56,7 @@ public class MembersUpdatServlet extends HttpServlet {
 		}
 		if(ErrorMsg!=null &&!ErrorMsg.isEmpty()){
 			request.getRequestDispatcher(
-					"/user.jsp").forward(request, response);
+					"/memberinfo.jsp").forward(request, response);
 			return;
 		}
 		MembersVO mvo1 = mService.select(Integer.parseInt(mID));
@@ -81,7 +81,7 @@ public class MembersUpdatServlet extends HttpServlet {
 		if( mvo == null){
 			ErrorMsg.put("Failed", "更新失敗，請重新確認");
 			request.getRequestDispatcher(
-					"/user.jsp").forward(request, response);		
+					"/memberinfo.jsp").forward(request, response);		
 			return;
 		}else{
 			HttpSession session = request.getSession();
@@ -89,6 +89,7 @@ public class MembersUpdatServlet extends HttpServlet {
 			
 			String path = request.getContextPath();
 			response.sendRedirect(path+"/index.jsp");
+			session.invalidate();
 		}
 		
 	}
