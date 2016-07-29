@@ -87,7 +87,7 @@ public class MembersServlet extends HttpServlet {
 					System.out.println("path"+path);
 					
 					
-					response.sendRedirect(path+"/user.jsp");
+					response.sendRedirect(path+"/stores.jsp");
 					return ;
 				}
 				

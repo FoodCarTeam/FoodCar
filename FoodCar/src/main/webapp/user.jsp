@@ -158,8 +158,8 @@
             </button>
         </div>
         <div class="btn-group" role="group">
-            <button type="button" id="favorites" class="btn btn-default" href="#tab2" data-toggle="tab"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
-                <div class="hidden-xs">追蹤店家</div>
+            <button type="button" id="orderDetails" class="btn btn-default" href="#tab2" data-toggle="tab"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+                <div class="hidden-xs">訂單明細</div>
             </button>
         </div>
         <div class="btn-group" role="group">
@@ -179,20 +179,20 @@
 							<!-- 										<label for="mIMG" style="font-size: 30px">個人頭貼：</label> <input type="text" class="form-control" required autofocus -->
 								<%-- 											style="font-size: 15px" value="${mUsername.mIMG}" name="mIMG"></br>  --%>
 								<input type="hidden" name="mID" value="${member.mID}"><br />
-								<label for="mName" style="font-size: 24px">姓名：${member.mName}</label><br />
+								<label for="mName" style="font-size: 20px">姓名：${member.mName}</label><br />
 								<input type="text" class="form-control" placeholder="若要更改，請輸入"
 									required autofocus style="font-size: 15px" name="mName"><br />
 									
-								<label for="mAddress" style="font-size: 24px">地址：${member.mAddress}</label><br />
+								<label for="mAddress" style="font-size: 20px">地址：${member.mAddress}</label><br />
 								<input type="text" class="form-control" placeholder="若要更改，請輸入"
 											required autofocus style="font-size: 15px" name="mAddress"><br />
 											
-								<label for="mPhone" style="font-size: 24px">電話：${member.mPhone}</label><br />
+								<label for="mPhone" style="font-size: 20px">電話：${member.mPhone}</label><br />
 								<input type="text" class="form-control" placeholder="若要更改，請輸入"
 									required autofocus style="font-size: 15px" name="mPhone"><br />
 									
-								<label for="mBirthday" style="font-size: 24px">生日：${member.mBirthday}</label><br />
-								<input type="text" class="form-control" placeholder="若要更改，請輸入"
+								<label for="mBirthday" style="font-size: 20px">生日：${member.mBirthday}</label><br />
+								<input type="date" class="form-control" placeholder="若要更改，請輸入"
 									required autofocus style="font-size: 15px" name="mBirthday"><br/>
 
 										<p></p>
@@ -214,16 +214,16 @@
 						required autofocus style="font-size: 15px"
 						value="${member.mUsername}" name="mUsername"><br /> 
 
-	<label for="mPassword" style="font-size: 15px">請輸入原密碼：</label> 
-				<input	type="text" class="form-control" placeholder="請輸入原密碼"
+	<label for="mPassword" style="font-size: 20px">請輸入原密碼：</label> 
+				<input	type="password" class="form-control" placeholder="請輸入原密碼"
 				required autofocus style="font-size: 15px" name="mPassword"><br />
 				
-		<label for="newPassword" style="font-size: 15px">請輸入新密碼：</label>
-			<input type="text"	class="form-control" placeholder="請輸入新密碼" required autofocus
+		<label for="newPassword" style="font-size: 20px">請輸入新密碼：</label>
+			<input type="password"	class="form-control" placeholder="請輸入新密碼" required autofocus
 				style="font-size: 15px" name="newPassword"><br />
 				
-	 <label	for="newAgain" style="font-size: 15px">再次輸入新密碼：</label>
-			 <input type="text"class="form-control" placeholder="請再次輸入新密碼" required
+	 <label	for="newAgain" style="font-size: 20px">再次輸入新密碼：</label>
+			 <input type="password" class="form-control" placeholder="請再次輸入新密碼" required
 					style="font-size: 15px" name="newAgain"><br />
 						<p></p>
 				<button class="btn btn-lg btn-primary btn-block" type="submit">更新</button>
