@@ -31,7 +31,17 @@
 					<div class="search-bar">
 						<div id="sb-search-phone" class="sb-search">
 							<form action="/">
-								<img src="images/hand/hand5.jpg" />
+								<c:choose>
+									<c:when test="${store!=null}">
+										<img src="${store.sLogo}" />
+									</c:when>
+									<c:when test="${member!=null}">
+										<img src="${member.mIMG}" />
+									</c:when>
+									<c:otherwise>
+										<img src="" />
+									</c:otherwise>
+								</c:choose>
 							</form>
 						</div>
 					</div>
@@ -42,14 +52,14 @@
 	</div>
 	<div id="MenuPhone">
 		<ul id="menu-mobile">
-			<!-- 			<li><a href="stores.jsp">餐車專區</a></li> -->
+						<li><a href="stores.jsp">餐車專區</a></li>
 			<c:choose>
 				<c:when test="${store!=null}">
-					<li><a class="animated bounceInUp" href="user2.jsp"
+					<li><a class="animated bounceInUp" href="storeinfo.jsp"
 						style="color: white; font-size: larger">店家維護</a></li>
 				</c:when>
 				<c:when test="${member!=null}">
-					<li><a class="animated bounceInUp" href="user.jsp"
+					<li><a class="animated bounceInUp" href="memberinfo.jsp"
 						style="color: white; font-size: larger">個人專區</a></li>
 				</c:when>
 				<c:otherwise>
@@ -99,7 +109,17 @@
 				<li class="top-search">
 					<div class="search-bar">
 						<div id="sb-search" class="sb-search">
-							<img src="images/hand/hand5.jpg" />
+							<c:choose>
+								<c:when test="${store!=null}">
+									<img src="${store.sLogo}" />
+								</c:when>
+								<c:when test="${member!=null}">
+									<img src="${member.mIMG}" />
+								</c:when>
+								<c:otherwise>
+									<img src="" />
+								</c:otherwise>
+							</c:choose>
 						</div>
 					</div>
 				</li>
@@ -107,15 +127,15 @@
 				<!--列表右邊list工具列-->
 				<li class="side-menu has-dropdown"><a href="#" class="menu"></a>
 					<ul class="dropdown">
-						<!-- 						<li><a href="stores.jsp">餐車專區</a></li> -->
+						<li><a href="stores.jsp">餐車專區</a></li>
 						<c:choose>
 							<c:when test="${store!=null}">
-								<li><a class="animated bounceInUp" href="user2.jsp"
-									style="color: white; ">店家維護</a></li>
+								<li><a class="animated bounceInUp" href="storeinfo.jsp"
+									style="color: white;">店家維護</a></li>
 							</c:when>
 							<c:when test="${member!=null}">
-								<li><a class="animated bounceInUp" href="user.jsp"
-									style="color: white; ">個人專區</a></li>
+								<li><a class="animated bounceInUp" href="memberinfo.jsp"
+									style="color: white;">個人專區</a></li>
 							</c:when>
 							<c:otherwise>
 								<li><a class="animated bounceInUp" href="index.jsp"
@@ -127,15 +147,15 @@
 						<c:choose>
 							<c:when test="${store!=null}">
 								<li><a class="animated bounceInUp" href="LogoutServlet"
-									style="color: white; ">登出</a></li>
+									style="color: white;">登出</a></li>
 							</c:when>
 							<c:when test=" ${member!=null}">
 								<li><a class="animated bounceInUp" href="LogoutServlet"
-									style="color: white; ">登出</a></li>
+									style="color: white;">登出</a></li>
 							</c:when>
 							<c:otherwise>
 								<li><a class="animated bounceInUp" href="login.jsp"
-									style="color: white; ">登入</a></li>
+									style="color: white;">登入</a></li>
 							</c:otherwise>
 						</c:choose>
 

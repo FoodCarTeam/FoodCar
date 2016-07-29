@@ -52,15 +52,15 @@
 					</c:choose>
 
 
-					<!-- 					<li><a class="animated bounceInUp" href="stores.jsp" -->
-					<!-- 						style="color: white; font-size: larger">餐車專區</a></li> -->
+										<li><a class="animated bounceInUp" href="stores.jsp"
+											style="color: white; font-size: larger">餐車專區</a></li>
 					<c:choose>
 						<c:when test="${store!=null}">
-							<li><a class="animated bounceInUp" href="user2.jsp"
+							<li><a class="animated bounceInUp" href="storeinfo.jsp"
 								style="color: white; font-size: larger">店家維護</a></li>
 						</c:when>
 						<c:when test="${member!=null}">
-							<li><a class="animated bounceInUp" href="user.jsp"
+							<li><a class="animated bounceInUp" href="memberinfo.jsp"
 								style="color: white; font-size: larger">個人專區</a></li>
 						</c:when>
 						<c:otherwise>

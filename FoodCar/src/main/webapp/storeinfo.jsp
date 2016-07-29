@@ -164,11 +164,11 @@
 						<div class="col-lg-14 col-sm-14">
 							<div class="card hovercard">
 								<div class="card-background">
-									<img class="card-bkimg" alt="" src="images/hand/hand1.jpg">
+									<img class="card-bkimg" alt="" src="${store.sLogo }">
 
 								</div>
 								<div class="useravatar">
-									<img alt="" src="images/hand/hand1.jpg">
+									<img alt="" src="${store.sLogo }">
 								</div>
 								<div class="card-info">
 									<span class="card-title">${store.sName}</span>
@@ -229,7 +229,7 @@
 												class="form-control" required autofocus
 												style="font-size: 15px; resize: none" name="sIntro">${store.sIntro}</textarea>
 											<br />
-
+                                            <a href='storecheckorder?s=${store.sID}' class="btn btn-warning" >  訂單紀錄</a>
 
 											<p></p>
 											<div class="checkbox">

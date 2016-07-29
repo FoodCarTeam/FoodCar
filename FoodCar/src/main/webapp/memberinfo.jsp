@@ -141,11 +141,11 @@
 	<div class="col-lg-14 col-sm-14">
     <div class="card hovercard">
         <div class="card-background">
-            <img class="card-bkimg" alt="" src="images/hand/hand1.jpg">
+            <img class="card-bkimg" alt="" src="${member.mIMG }">
         
         </div>
         <div class="useravatar">
-            <img alt="" src="images/hand/hand1.jpg">
+            <img alt="" src="${member.mIMG }">
         </div>
         <div class="card-info"> <span class="card-title">${member.mName}</span>
 
@@ -154,12 +154,12 @@
     <div class="btn-pref btn-group btn-group-justified btn-group-lg" role="group" aria-label="...">
         <div class="btn-group" role="group">
             <button type="button" id="stars" class="btn btn-primary" href="#tab1" data-toggle="tab"><span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                <div class="hidden-xs">基本資料</div>
+                <div class="hidden-xs">資訊</div>
             </button>
         </div>
         <div class="btn-group" role="group">
             <button type="button" id="orderDetails" class="btn btn-default" href="#tab2" data-toggle="tab"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
-                <div class="hidden-xs">訂單明細</div>
+                <div class="hidden-xs">我的最愛</div>
             </button>
         </div>
         <div class="btn-group" role="group">
@@ -194,6 +194,8 @@
 								<label for="mBirthday" style="font-size: 20px">生日：${member.mBirthday}</label><br />
 								<input type="date" class="form-control" placeholder="若要更改，請輸入"
 									required autofocus style="font-size: 15px" name="mBirthday"><br/>
+									
+								<a href='memberCheckOrder?m=${member.mID}' class="btn btn-warning" >  訂單紀錄</a>
 
 										<p></p>
 										<div class="checkbox">

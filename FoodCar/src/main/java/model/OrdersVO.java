@@ -12,6 +12,7 @@ public class OrdersVO implements java.io.Serializable {
 	private Integer amount ;
 	private Date saleDate ;
 	private Integer checkOut ;
+	private String mName;
 	private String  sName;
 	private Set<OrderDetailsVO> orderDetailsVO = new HashSet<OrderDetailsVO>();
 	
@@ -19,6 +20,15 @@ public class OrdersVO implements java.io.Serializable {
 	public Set<OrderDetailsVO> getOrderDetailsVO() {
 		return orderDetailsVO;
 	}
+	
+	public String getmName() {
+		return mName;
+	}
+
+	public void setmName(String mName) {
+		this.mName = mName;
+	}
+
 	public void setOrderDetailsVO(Set<OrderDetailsVO> orderDetailsVO) {
 		this.orderDetailsVO = orderDetailsVO;
 	}
