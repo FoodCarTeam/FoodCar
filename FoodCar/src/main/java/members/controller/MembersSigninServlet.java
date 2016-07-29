@@ -70,7 +70,7 @@ public class MembersSigninServlet extends HttpServlet {
 				is=part.getInputStream();
 				String path=request.getServletContext().getRealPath("/");
 				System.out.println("path"+path);
-				os=new FileOutputStream(path+"/images/mIMG/"+filename);
+				os=new FileOutputStream(path+"/images/mIMG/"+saveName);
 
 //			/Users/lanyao/Documents/workspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/FoodCar/images/mIMG/
 				byte[] buffer = new byte[1024];
@@ -153,8 +153,7 @@ public class MembersSigninServlet extends HttpServlet {
 			vo.setmAddress(mAddress);
 			vo.setmPhone(mPhone);
 			vo.setmBirthday(new java.sql.Date(mBirthday.getTime()));
-			vo.setmIMG("images/"+saveName);
-			part.write(saveName);
+			vo.setmIMG("/images/mIMG/"+saveName);
 			service.insert(vo);
 			
 			HttpSession session=request.getSession();

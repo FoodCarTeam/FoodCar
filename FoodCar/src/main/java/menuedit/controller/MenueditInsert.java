@@ -1,6 +1,9 @@
 package menuedit.controller;
 
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -20,7 +23,7 @@ import model.MenusVO;
 import model.StoresVO;
 import stores.model.StoresService;
 
-@MultipartConfig(location="C:/Users/Student/git/FoodCar/FoodCar/src/main/webapp/images/foodIMG")
+@MultipartConfig(location="")
 @WebServlet("/MenueditInsert")
 public class MenueditInsert extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -33,13 +36,7 @@ public class MenueditInsert extends HttpServlet {
 		String price = request.getParameter("inpri");
 		String s = request.getParameter("s");
 		Part fimg = request.getPart("fimg");
-		
-		String header = fimg.getHeader("Content-Disposition");
-		System.out.println(header);
-		 String filename = header.substring(
-                 header.indexOf("filename=\"") + 10, header.lastIndexOf("\""));
-		 String saveName = System.currentTimeMillis() + "." + FilenameUtils.getExtension(filename);
-		 
+	
 		 
 		System.out.println(food);
 		System.out.println(price);
@@ -53,9 +50,43 @@ public class MenueditInsert extends HttpServlet {
 		vo.setsID(sID);
 		vo.setUnitPrice(unitPrice);
 		vo.setStatusID(1);
+		if(fimg.getSize()!=0){
+			String header = fimg.getHeader("Content-Disposition");
+			System.out.println(header);
+			 String filename = header.substring(
+	                 header.indexOf("filename=\"") + 10, header.lastIndexOf("\""));
+			 String saveName = System.currentTimeMillis() + "." + FilenameUtils.getExtension(filename);
+			 
+			 InputStream is=null;
+			 OutputStream os =null;
+			 	 try {
+					is=fimg.getInputStream();
+					String path=request.getServletContext().getRealPath("/");
+					System.out.println("path"+path);
+					os=new FileOutputStream(path+"/images/foodIMG/"+saveName);
+                     System.out.println(saveName);
+//				/Users/lanyao/Documents/workspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/FoodCar/images/mIMG/
+					byte[] buffer = new byte[1024];
+					int length = -1;
+					while ((length = is.read(buffer)) != -1) {
+					    os.write(buffer, 0, length);
+					}
+				} catch (Exception e1) {
+					
+					e1.printStackTrace();
+				}finally{
+					if(os!=null){
+						os.close();
+					}
+					if(is!=null)
+					{
+						is.close();
+					}
+				}
 		vo.setFoodIMG("images/foodIMG/"+saveName);
+		}
 		service.insert(vo);
-		fimg.write(saveName);
+		
 		
 		response.sendRedirect(request.getContextPath()+"/MenueditServlet?s="+s);
 	}

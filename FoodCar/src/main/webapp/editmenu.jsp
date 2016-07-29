@@ -20,9 +20,56 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 <script
 	src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+	<link rel='stylesheet' id='main-stylesheet-css'  href='bootstrap/about/css/style1.css' type='text/css' media='all' />
+<style>
+   th{font-size:18px}
+   td{font-size:15px;font-family:Microsoft JhengHei}
+</style>
 </head>
 <body>
-	<table id="productTable" class="table table-striped">
+   
+  <nav class="navbar navbar-fixed-top" >
+  <div id="Header" style="background-color:white;" >
+      <div class="row">
+        <div class="small-18 large-12 columns"><p></p><p></p>
+        </div>
+      </div>
+    </div>
+   <!--列表-->
+    <div class="contain-to-grid">
+      <nav class="top-bar" id="TopMenu" data-topbar data-options="is_hover: false">
+        <section class="top-bar-section">
+          <div class="menu-bar">
+<!--列表左邊-->
+            <ul class="left">
+              <li>
+                <div class="top-logo">
+                  <a class="logo" href="index.jsp"></a>
+                  <a class="logo-text" href="index.jsp"></a>
+                </div>
+              </li>
+            </ul>
+<!--/列表左邊-->
+<!--列表右邊頭像-->
+            <ul class="right">
+              <li class="top-search">
+                <div class="search-bar">
+                  <div id="sb-search" class="sb-search">                
+                      <img src="images/hand/hand5.jpg" />
+                  </div>
+                </div>
+              </li>
+       </ul>
+          </div>
+        </section>
+      </nav>
+    </div>
+<!--/列表-->
+            </nav>
+    
+    
+<div style="margin-left: 200px;margin-right: 200px;">
+	<table id="productTable" class="table table-striped" style="margin-top: 100px;">
 		<thead>
 			<tr>
 				<th>id</th>
@@ -32,7 +79,7 @@
 				<th>圖片</th>
 
 				<th><div id="123">
-						<button id="btn_insert" class="btn btn-primary"
+						<button id="btn_insert" class="btn  btn-primary btn-lg"
 							data-toggle="modal" data-target="#ins">新增</button>
 					</div></th>
 			</tr>
@@ -47,11 +94,10 @@
 					<td class="status">${bean.statusID }</td>
 					<td><img src="${bean.foodIMG }"
 						style="width: 80px; height: 60px" class="img-thumbnail"></td>
-
 					<td>
-						<button class="glyphicon glyphicon-edit" data-toggle="modal"
+						<button class="btn btn-info glyphicon glyphicon-edit" data-toggle="modal"
 							data-target="#dialog${bean.foodID}" style="font-size: 20px;"></button>
-						<button class="glyphicon glyphicon-remove del"
+						<button class="btn btn-danger glyphicon glyphicon-remove del"
 							style="font-size: 20px" fid="${bean.foodID }" id="del"></button>
 					</td>
 				</tr>
@@ -59,6 +105,7 @@
 
 		</tbody>
 	</table>
+</div>
 	<!-- dialog-->
 	<c:forEach var="bean" items="${menu}">
 		<div id="dialog${bean.foodID }" class="modal fade" role="dialog">
@@ -73,7 +120,7 @@
 						<form class="form-inline" role="form" method="POST" action="MenueditUpdate" enctype="multipart/form-data">
 							<div class="form-group">
 								<label for="food">餐點:</label> 
-								<input name="food" class="form-control" id="food">
+								<input name="food" class="form-control" id="food" value="${bean.foodName }">
 							</div>
 							<input name='s' type='hidden' value='${store.sID}'>
 							<input name='f' type='hidden' value='${bean.foodID}'>
@@ -81,7 +128,7 @@
 							<br>
 							<div class="form-group">
 								<label for="pri">價錢:</label> 
-								<input name="pri" class="form-control" id="pri">
+								<input name="pri" class="form-control" id="pri" value="${bean.unitPrice }">
 							</div>
 							<br>
 							<br>
@@ -89,7 +136,10 @@
 								<label for="fimg">餐點圖片:</label> 
 								<input type="file" id="fimg" name="fimg">
 							</div>
-								<input type="checkbox" data-toggle="toggle" data-on="有貨" data-off="沒貨">
+								<select name="sell" class="form-control" id="sel1">
+                                 <option>有貨</option>
+                                 <option>沒貨</option>
+                                </select>
 							<br>
 							<br>
 							<button type="submit" class="btn btn-default">送出</button>
@@ -105,7 +155,7 @@
 
 
 	<!-- 新增的dialog -->
-	<div id="ins" class="modal fade" role="dialog">
+	<div id="ins" class="modal fade" role="dialog" >
 		<div class="modal-dialog">
 				<!-- Modal content-->
 				<div class="modal-content">

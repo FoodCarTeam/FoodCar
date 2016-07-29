@@ -67,9 +67,9 @@
 								
 								
 								
-								</script>
-								
-								
+								</script>								
+						
+		
 						</c:when>
 						<c:when test="${member!=null}">
 							<li><a class="animated bounceInUp" href="LogoutServlet"
