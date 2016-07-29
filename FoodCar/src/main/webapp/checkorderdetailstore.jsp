@@ -113,14 +113,29 @@
     							
     						</tbody>
     					</table>
-    					
+    					<button id="checkoutbtn" type="button" class="btn btn-warning">結帳</button>
     				</div>
     			</div>
     		</div>
     	</div>
-    
 </div>
-     
+     <script type="text/javascript">
+          var chbt = $('#checkoutbtn')
+          chbt.on('click',function(){
+        	  chbt.removeClass("btn btn-warning").addClass("btn btn-warning disabled")
+        	  chbt.text("已結帳")
+        	  console.log("123")
+//         	  $.ajax({
+// 					'type' : 'post',
+// 					'data' : {"oID":1},
+// 					'url' : 'ordercheck',
+// 					'success' : function() {
+// 						chbt.removeClass("btn btn-warning").addClass("btn btn-warning disabled")
+// 					}
+
+// 				})
+          })
+     </script>
             <!--內容以上結束-->
       </div>
     </div>

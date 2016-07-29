@@ -61,7 +61,7 @@
 							<a href="#" class="list-group-item list-group-item-info">
 								訂單紀錄 </a>
 							<c:forEach var="bean" items="${orders}">
-								<a href="checkdetail?o=${bean.oID }" class="list-group-item">${bean.mName}<div
+								<a href="storecheckdetail?o=${bean.oID }" class="list-group-item">${bean.mName}<div
 										class="pull-right date">結帳日期:${bean.saleDate}</div></a>
 							</c:forEach>
 						

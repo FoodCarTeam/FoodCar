@@ -10,4 +10,5 @@ public interface OrderDAO {
 
 	OrdersVO insert(OrdersVO vo);
 	OrdersVO select(Integer oID);
+	OrdersVO update(OrdersVO vo);
 }

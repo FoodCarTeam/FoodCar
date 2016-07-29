@@ -45,6 +45,12 @@ public class OrderDAOHibernate implements OrderDAO {
 		}
 		return ordersVO;
 	}
+
+	@Override
+	public OrdersVO update(OrdersVO vo) {
+		// TODO Auto-generated method stub
+		return null;
+	}
     
 	
 
