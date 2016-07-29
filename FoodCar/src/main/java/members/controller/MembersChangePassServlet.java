@@ -48,7 +48,7 @@ public class MembersChangePassServlet extends HttpServlet {
 		}
 		if(Errors!=null && !Errors.isEmpty()){
 			request.getRequestDispatcher(
-					"/user.jsp").forward(request, response);
+					"/memberinfo.jsp").forward(request, response);
 			return;
 		}
 		
@@ -56,7 +56,7 @@ public class MembersChangePassServlet extends HttpServlet {
 		if(mvo == null){
 			Errors.put("changeFail", "變更失敗，請重新確認");
 			request.getRequestDispatcher(
-					"/user.jsp").forward(request, response);
+					"/memberinfo.jsp").forward(request, response);
 			return;
 		}else{
 			HttpSession session = request.getSession();
