@@ -38,21 +38,36 @@
 
 					<c:choose>
 						<c:when test="${store!=null}">
-							<li><a class="animated bounceInUp" href="login.jsp"
+							<li><a class="animated bounceInUp" href=""
 								style="color: white; font-size: larger">${store.sName}老闆您好！</a></li>
 						</c:when>
 						<c:when test="${member!=null}">
-							<li><a class="animated bounceInUp" href="LogoutServlet"
+							<li><a class="animated bounceInUp" href=""
 								style="color: white; font-size: larger">${member.mName}您好！</a></li>
 						</c:when>
 						<c:otherwise>
-
+							<li><a class="animated bounceInUp" href="SignIn.jsp"
+								style="color: white; font-size: larger">您好！</a></li>
 						</c:otherwise>
 					</c:choose>
 
 
-					<li><a class="animated bounceInUp" href="stores.jsp"
-						style="color: white; font-size: larger">餐車專區</a></li>
+					<!-- 					<li><a class="animated bounceInUp" href="stores.jsp" -->
+					<!-- 						style="color: white; font-size: larger">餐車專區</a></li> -->
+					<c:choose>
+						<c:when test="${store!=null}">
+							<li><a class="animated bounceInUp" href="user2.jsp"
+								style="color: white; font-size: larger">店家維護</a></li>
+						</c:when>
+						<c:when test="${member!=null}">
+							<li><a class="animated bounceInUp" href="user.jsp"
+								style="color: white; font-size: larger">個人專區</a></li>
+						</c:when>
+						<c:otherwise>
+							<li><a class="animated bounceInUp" href="index.jsp"
+								style="color: white; font-size: larger">首頁</a></li>
+						</c:otherwise>
+					</c:choose>
 					<li><a class="animated bounceInUp" href="map.html"
 						style="color: white; font-size: larger">地圖</a></li>
 					<li><a class="animated bounceInUp" href="about.jsp"
@@ -60,16 +75,9 @@
 
 					<c:choose>
 						<c:when test="${store!=null}">
-							<li><a class="animated bounceInUp" href="login.jsp"
+							<li><a class="animated bounceInUp" href="LogoutServlet"
 								style="color: white; font-size: larger">登出</a></li>
-								<script>
-								
-								
-								
-								
-								</script>								
-						
-		
+
 						</c:when>
 						<c:when test="${member!=null}">
 							<li><a class="animated bounceInUp" href="LogoutServlet"

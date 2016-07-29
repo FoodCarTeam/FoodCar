@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -135,11 +136,7 @@
     <div class="small-12 large-50 columns">
       <div class="truck-details">
         <div class="content">
-        
-          <h1>
-            Hello
-          </h1>
-          
+      
          
 	<div class="col-lg-14 col-sm-14">
     <div class="card hovercard">
@@ -150,7 +147,7 @@
         <div class="useravatar">
             <img alt="" src="images/hand/hand1.jpg">
         </div>
-        <div class="card-info"> <span class="card-title">Pamela Anderson</span>
+        <div class="card-info"> <span class="card-title">${member.mName}</span>
 
         </div>
     </div>
@@ -161,13 +158,13 @@
             </button>
         </div>
         <div class="btn-group" role="group">
-            <button type="button" id="favorites" class="btn btn-default" href="#tab2" data-toggle="tab"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
-                <div class="hidden-xs">追蹤店家</div>
+            <button type="button" id="orderDetails" class="btn btn-default" href="#tab2" data-toggle="tab"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+                <div class="hidden-xs">訂單明細</div>
             </button>
         </div>
         <div class="btn-group" role="group">
             <button type="button" id="following" class="btn btn-default" href="#tab3" data-toggle="tab"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-                <div class="hidden-xs">帳號管理</div>
+                <div class="hidden-xs">變更密碼</div>
             </button>
         </div>
     </div>
@@ -175,26 +172,62 @@
         <div class="well">
       <div class="tab-content">
         <div class="tab-pane fade in active" id="tab1">
-         <h3>姓名:董Jay</h3>
-          <h3>地址:台北市忠孝西路一段100號</h3>    
-          <h3>E-mail:Jjaydonn@qq.com</h3>  
-          <h3>電話:</h3>   
-          
+        <form class="form-inline" role="form"
+										action="<c:url value='/update.do' />" method="post">
+							<p></p>
+
+							<!-- 										<label for="mIMG" style="font-size: 30px">個人頭貼：</label> <input type="text" class="form-control" required autofocus -->
+								<%-- 											style="font-size: 15px" value="${mUsername.mIMG}" name="mIMG"></br>  --%>
+								<input type="hidden" name="mID" value="${member.mID}"><br />
+								<label for="mName" style="font-size: 20px">姓名：${member.mName}</label><br />
+								<input type="text" class="form-control" placeholder="若要更改，請輸入"
+									required autofocus style="font-size: 15px" name="mName"><br />
+									
+								<label for="mAddress" style="font-size: 20px">地址：${member.mAddress}</label><br />
+								<input type="text" class="form-control" placeholder="若要更改，請輸入"
+											required autofocus style="font-size: 15px" name="mAddress"><br />
+											
+								<label for="mPhone" style="font-size: 20px">電話：${member.mPhone}</label><br />
+								<input type="text" class="form-control" placeholder="若要更改，請輸入"
+									required autofocus style="font-size: 15px" name="mPhone"><br />
+									
+								<label for="mBirthday" style="font-size: 20px">生日：${member.mBirthday}</label><br />
+								<input type="date" class="form-control" placeholder="若要更改，請輸入"
+									required autofocus style="font-size: 15px" name="mBirthday"><br/>
+
+										<p></p>
+										<div class="checkbox">
+											<button class="btn btn-lg btn-primary btn-block"
+												type="submit">更改</button>
+										</div>
+									</form>
         </div>
         <div class="tab-pane fade in" id="tab2">
           <h3>追蹤店家:</h3>
         </div>
         <div class="tab-pane fade in" id="tab3">
           <h3>變更密碼:</h3>
-            <h4>帳號: </h4>       
-            <input type="text"  placeholder="請輸入帳號" required autofocus
-			style="font-size: 15px">
-               <h4>新密碼:</h4>
-            <input type="text" placeholder="請輸入新密碼" required autofocus
-			style="font-size: 15px">
-               <h4>確認新密碼:</h4>
-           <input type="text" placeholder="確認新密碼" required autofocus
-			style="font-size: 15px">
+          <form class="form-inline" style="width: 700px;"
+										action="<c:url value='/change.do' />" method="post">
+
+		<input type="hidden" class="form-control" placeholder="請輸入原密碼"
+						required autofocus style="font-size: 15px"
+						value="${member.mUsername}" name="mUsername"><br /> 
+
+	<label for="mPassword" style="font-size: 20px">請輸入原密碼：</label> 
+				<input	type="password" class="form-control" placeholder="請輸入原密碼"
+				required autofocus style="font-size: 15px" name="mPassword"><br />
+				
+		<label for="newPassword" style="font-size: 20px">請輸入新密碼：</label>
+			<input type="password"	class="form-control" placeholder="請輸入新密碼" required autofocus
+				style="font-size: 15px" name="newPassword"><br />
+				
+	 <label	for="newAgain" style="font-size: 20px">再次輸入新密碼：</label>
+			 <input type="password" class="form-control" placeholder="請再次輸入新密碼" required
+					style="font-size: 15px" name="newAgain"><br />
+						<p></p>
+				<button class="btn btn-lg btn-primary btn-block" type="submit">更新</button>
+		</form>
         </div>
       </div>
     </div>
