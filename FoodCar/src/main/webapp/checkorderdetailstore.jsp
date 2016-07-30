@@ -121,19 +121,23 @@
 </div>
      <script type="text/javascript">
           var chbt = $('#checkoutbtn')
-          chbt.on('click',function(){
+          var ck = "${order.checkOut}";
+          if(ck!=1){
         	  chbt.removeClass("btn btn-warning").addClass("btn btn-warning disabled")
         	  chbt.text("已結帳")
-        	  console.log("123")
-//         	  $.ajax({
-// 					'type' : 'post',
-// 					'data' : {"oID":1},
-// 					'url' : 'ordercheck',
-// 					'success' : function() {
-// 						chbt.removeClass("btn btn-warning").addClass("btn btn-warning disabled")
-// 					}
+          }
+          chbt.on('click',function(){
+        	  
+        	  $.ajax({
+					'type' : 'post',
+					'data' : {"o":"${order.oID}","ck":2},
+					'url' : 'ordercheck',
+					'success' : function() {
+						chbt.removeClass("btn btn-warning").addClass("btn btn-warning disabled")
+			        	  chbt.text("已結帳")
+					}
 
-// 				})
+				})
           })
      </script>
             <!--內容以上結束-->

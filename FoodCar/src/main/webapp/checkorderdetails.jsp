@@ -110,10 +110,9 @@
     								<td class="thick-line text-center"><strong>結算</strong></td>
     								<td class="thick-line text-right">$${order.amount }</td>
     							</tr>
-    							
     						</tbody>
     					</table>
-    					
+    					<h3 class="text-right" id="ck">未結帳</h3>
     				</div>
     			</div>
     		</div>
@@ -145,6 +144,11 @@
       <!--MENU縮小-->
     <script type='text/javascript' src="bootstrap/about/js/jquery.slicknav.js"></script>    
       <script type="text/javascript">
+          var ck = $('#ck');
+          var ckid = "${order.checkOut}";
+          if(ckid==2){
+        	  ck.text("已結帳")
+          }
           $(document).ready(function () {
               $('#menu-mobile').slicknav({
                   label: '',

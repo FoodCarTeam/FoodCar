@@ -48,7 +48,15 @@ public class OrderDAOHibernate implements OrderDAO {
 
 	@Override
 	public OrdersVO update(OrdersVO vo) {
-		// TODO Auto-generated method stub
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		try {
+			session.beginTransaction();
+			session.saveOrUpdate(vo);
+			session.getTransaction().commit();
+		} catch (RuntimeException ex) {
+			session.getTransaction().rollback();
+			throw ex;
+		}
 		return null;
 	}
     
