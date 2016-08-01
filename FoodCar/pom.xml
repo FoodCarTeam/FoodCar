@@ -59,9 +59,9 @@
 <!-- 		</dependency> -->
 		
 		<dependency>
-			<groupId>com.microsoft</groupId>
-			<artifactId>sqlserverjdbc</artifactId>
-			<version>42</version>
+			<groupId>com.microsoft.sql</groupId>
+			<artifactId>sqljdbc</artifactId>
+			<version>41</version>
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/com.googlecode.json-simple/json-simple -->
