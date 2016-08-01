@@ -55,7 +55,7 @@
               <li class="top-search">
                 <div class="search-bar">
                   <div id="sb-search" class="sb-search">                
-                      <img src="images/hand/hand5.jpg" />
+                      <img src="${store.sLogo }" />
                   </div>
                 </div>
               </li>
