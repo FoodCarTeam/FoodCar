@@ -94,7 +94,7 @@ public class MenueditUpdate extends HttpServlet {
 			vo.setFoodIMG(foodimg);
 		}
 		service.update(vo);
-		response.sendRedirect(request.getContextPath() + "/MenueditServlet?s=" + s);
+		response.sendRedirect(request.getContextPath() + "/menuedit?s=" + s);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

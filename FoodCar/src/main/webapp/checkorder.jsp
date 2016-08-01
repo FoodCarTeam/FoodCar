@@ -39,11 +39,10 @@
   
 <jsp:include page="header.jsp"></jsp:include>
 <!--/列表-->
-<div id="MainContent">
+<div id="MainContent" style="width: 800px; margin: auto">
   <div class="row">
-    <div class="small-12 large-100 columns"   style="margin-left: 280px"
-    >
-      <div class="truck-details">
+    <div class="small-12 large-50 columns"  >
+      <div class="truck-details">    
         <div class="content">
           <h1> 我的訂單紀錄  </h1>
             <!--內容以下開始-->

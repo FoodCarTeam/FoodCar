@@ -78,7 +78,7 @@
 				$.each(data, function(idx, store) {
 					
 					var cell = $('<div  class="post-container small-6 medium-6 large-4 columns end"></div>')
-					.html('<div class="post"><div class="image"><a href="store?s='+store.sID+'" id="'+store.sID+'"><img  src="'+store.sLogo+'" /></a></div><div class="title"><a class ="linkt" href="store?s='+store.sID+'"><h3>'+store.sName+'</h3></a><p>營業時間：'+store.openTime+'</p><p>電話:'+store.sUsername+'</p></div></div>');
+					.html('<div class="post"><div class="image"><a href="store?s='+store.sID+'" id="'+store.sID+'" ><img  src="'+store.sLogo+'" style="width:315px;height:210px" /></a></div><div class="title"><a class ="linkt" href="store?s='+store.sID+'"><h3>'+store.sName+'</h3></a><p>營業時間：'+store.openTime+'</p><p>電話:'+store.sUsername+'</p></div></div>');
 				   flag.append([cell])
 				})
 				tb.append(flag)
