@@ -98,10 +98,6 @@
 <link rel="stylesheet" type="text/css"
 	href="sweetalert2/sweetalert2.min.css">
 
-
-
-
-
 <!-- 以下為留言板 -->
 <link rel='stylesheet' href='bootstrap/comments/css/bootstrap.min.css'
 	type='text/css' media='all' />

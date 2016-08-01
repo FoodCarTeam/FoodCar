@@ -7,6 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>餐餔餔</title>   
    
+<link rel='stylesheet' id='main-stylesheet-css'  href='bootstrap/memberinfo/bootstrap-table.css' type='text/css' media='all' />
     <!--CSS-->
 <link rel='stylesheet' id='main-stylesheet-css'  href='bootstrap/user/css/style.css' type='text/css' media='all' />
 <link rel='stylesheet' id='slicknav-css'  href="bootstrap/user/css/mobile%20menu%20style.css" type='text/css' media='all' /><!--mobile menu style.css-->
@@ -18,7 +19,13 @@
 <script src="bootstrap/user/js/jquery.js"></script>
 <script src="bootstrap/user/js/scrolling-nav.js"></script>
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<link rel="stylesheet" type="text/css" href="bootstrap/sweetAlert/sweetalert.css">
+<script src="bootstrap/sweetAlert/sweetalert.min.js"></script>
     <style type="text/css">
+/*     我的最愛 */
+    .ml10 {
+    margin-left: 10px;
+	}
     /* USER PROFILE PAGE */
  .card {
     margin-top: 20px;
@@ -106,6 +113,7 @@
     </style>
     <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
     <script type="text/javascript">
         window.alert = function () { };
         var defaultCSS = document.getElementById('bootstrap-css');
@@ -118,8 +126,86 @@
             window.parent.postMessage(iframe_height, 'http://bootsnipp.com');
         });
     </script>
+    <script src="bootstrap/memberinfo/bootstrap-table.js"></script>
+<script>
 
+	function actionFormatter(value, row, index) {
+	    return [
+	        '<a class="remove ml10" href="javascript:void(0)" title="Remove">',
+	        '<i style="font-size:20px;color:red" class="glyphicon glyphicon-remove"></i>',
+	        '</a>', '<a  class="like" href="javascript:void(0)" title="Like">',
+	        '<img style="width:25px;height:25px;vertical-align:top" src="images/MapIcon/open.png">',
+	        '</a>'
+	    ].join('');
+	}
+// 	style="vertical-align:text-top"
+	window.actionEvents = {
+	    'click .remove': function (e, value, row, index) {
+// 	刪除
+// 			console.log($(".remove").parents("tr").html());
+			
+			
+				swal({   title: "確定刪除嗎？",
+						text: "", 
+						type: "warning", 
+						showCancelButton: true,
+						confirmButtonColor: "#DD6B55", 
+						confirmButtonText: "刪除！",
+						cancelButtonText: "取消！",
+						closeOnConfirm: false, 
+						closeOnCancel: false },
+						function(isConfirm){  
+							if (isConfirm) {
+								
 
+								$.ajax({
+									"url":"DeleteCommendServlet",
+									"method":"GET",
+									"contentType":"application/JSON; charset=UTF-8",
+									"data":{
+										"sID":row.sID,
+										"mID":'${member.mID}'
+									},"success":function(){
+					 			$(".remove").parents("tr").remove("tr:eq("+index+")")
+									}
+								});
+							
+								
+								swal("已經刪除!", 
+											"",
+									"success",
+								  	function(){
+									
+									console.log("刪除");
+											});  
+								} else {     
+									swal("取消", "", "error");  
+								} 
+							});
+			
+			
+
+						
+			
+			
+		
+	    	
+	    	
+	    	console.log(value, row, index);
+	    }, 'click .like': function (e, value, row, index) {
+// 	    	連結到該店家
+// 	    	$(".like").attr("href","store?s="+row.sID);
+	    	
+
+// 	        console.log("value:"+value);
+// 	        console.log("row:"+row.sID);
+// 	        console.log("row:"+row.sName);
+// 	        console.log("row:"+row.goodCount);
+// 	        console.log("index:"+ index);
+	    }
+	};
+
+</script>
 
 
 
@@ -206,6 +292,31 @@
         </div>
         <div class="tab-pane fade in" id="tab2">
           <h3>追蹤店家:</h3>
+          
+          <table id='goodForm' data-toggle="table" data-height="500" data-url="MemberInfoServlet?mID=${member.mID}" data-search="true"  data-sort-name="goodCount" data-sort-order="desc">
+    		<thead>
+			    <tr>
+			        <th data-field="sName">店家名稱</th>
+			        <th data-field="goodCount">喜愛數</th>
+			        <th data-field="action" data-formatter="actionFormatter" data-events="actionEvents"></th>
+			    </tr>
+			   </thead>
+			    <tbody id='tbody'>
+			    
+			    </tbody>
+			    
+			    
+		</table>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
         </div>
         <div class="tab-pane fade in" id="tab3">
           <h3>變更密碼:</h3>

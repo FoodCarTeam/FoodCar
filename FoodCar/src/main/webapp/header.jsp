@@ -85,10 +85,10 @@
 					<li><a class="animated bounceInUp" href="LogoutServlet"
 						style="color: white; font-size: larger">登出</a></li>
 				</c:when>
-				<c:otherwise>
+				<c:when test="(${store!=null}&&${member!=null}==null)">
 					<li><a class="animated bounceInUp" href="login.jsp"
 						style="color: white; font-size: larger">登入</a></li>
-				</c:otherwise>
+				</c:when>
 			</c:choose>
 
 		</ul>
@@ -156,11 +156,11 @@
 						<li><a href="map.jsp">地圖</a></li>
 						<li><a href="about.jsp">關於我們</a></li>
 						<c:choose>
-							<c:when test="${store!=null}">
+							<c:when test="${member!=null}">
 								<li><a class="animated bounceInUp" href="LogoutServlet"
 									style="color: white;">登出</a></li>
 							</c:when>
-							<c:when test="${member!=null}">
+							<c:when test="${store!=null}">
 								<li><a class="animated bounceInUp" href="LogoutServlet"
 									style="color: white;">登出</a></li>
 							</c:when>
