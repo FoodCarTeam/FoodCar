@@ -195,7 +195,7 @@
 								<input type="date" class="form-control" placeholder="若要更改，請輸入"
 									required autofocus style="font-size: 15px" name="mBirthday"><br/>
 									
-								<a href='memberCheckOrder?m=${member.mID}' class="btn btn-warning" >  訂單紀錄</a>
+								
 
 										<p></p>
 										<div class="checkbox">

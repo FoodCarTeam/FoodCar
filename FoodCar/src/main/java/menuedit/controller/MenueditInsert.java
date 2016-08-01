@@ -88,7 +88,7 @@ public class MenueditInsert extends HttpServlet {
 		service.insert(vo);
 		
 		
-		response.sendRedirect(request.getContextPath()+"/MenueditServlet?s="+s);
+		response.sendRedirect(request.getContextPath()+"/menuedit?s="+s);
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		this.doGet(request, response);
