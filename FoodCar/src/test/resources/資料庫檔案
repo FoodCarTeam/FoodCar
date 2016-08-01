@@ -12,6 +12,7 @@ DROP TABLE [menus];
 DROP TABLE [kinds];
 DROP TABLE [status];
 DROP TABLE [hours];
+DROP TABLE [recomments];
 DROP TABLE [stores];
 DROP TABLE [members];
 DROP TABLE [orders];
