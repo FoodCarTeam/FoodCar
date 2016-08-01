@@ -63,6 +63,7 @@
 	
  
 	<script type="text/javascript">
+	$(function(){
 	$.ajax({
 			'type' : 'post',
 			'url' : 'StoresServlet',
@@ -77,13 +78,16 @@
 				$.each(data, function(idx, store) {
 					
 					var cell = $('<div  class="post-container small-6 medium-6 large-4 columns end"></div>')
-					.html('<div class="post"><div class="image"><a href="store?s='+store.sID+'" id="'+store.sID+'"><img  src="'+store.sLogo+'" /></a></div><div class="title"><a class ="linkt" href="store?s='+store.sID+'"><h3>'+store.sName+'</h3></a><p>OPEN:00:00~24:00</p><p>電話:'+store.sUsername+'</p></div></div>');
+					.html('<div class="post"><div class="image"><a href="store?s='+store.sID+'" id="'+store.sID+'"><img  src="'+store.sLogo+'" /></a></div><div class="title"><a class ="linkt" href="store?s='+store.sID+'"><h3>'+store.sName+'</h3></a><p>營業時間：'+store.openTime+'</p><p>電話:'+store.sUsername+'</p></div></div>');
 				   flag.append([cell])
 				})
 				tb.append(flag)
 			}
 		})
+
 		
+		
+	});
 	</script>
    <!-- Footer -->
     <div id="SecondFooter">

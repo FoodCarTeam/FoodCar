@@ -40,12 +40,12 @@ public class changeStoreLocation extends HttpServlet{
 		MapsVO result =null;
 		
 			List<MapsVO> list=service.select(vo);
-		if(list==null)
-		{
-			result=service.insert(vo);
-		}else{
+//		if(list==null)
+//		{
+//			result=service.insert(vo);
+//		}else{
 			result = service.update(vo);			
-		}
+//		}
 		
 		
 	}
@@ -61,9 +61,10 @@ public class changeStoreLocation extends HttpServlet{
 			String temp;
 			while ((temp = br.readLine()) != null) {
 				sb.append(temp);
+				System.out.println("temp:"+temp);
 			}
-			
 			params = sb.toString();
+			System.out.println("params2:"+params);
 
 		} catch (UnsupportedEncodingException e) {
 

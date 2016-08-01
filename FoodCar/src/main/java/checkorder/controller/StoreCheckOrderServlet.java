@@ -1,6 +1,8 @@
 package checkorder.controller;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
 
 import javax.servlet.ServletException;
@@ -9,13 +11,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import members.model.MembersService;
+import model.MembersVO;
 import model.MenusVO;
 import model.OrderDetailsVO;
 import model.OrdersVO;
 import model.StoresVO;
 import stores.model.StoresService;
 
-@WebServlet("/CheckOrder")
+@WebServlet("/storecheckorder")
 public class StoreCheckOrderServlet extends HttpServlet {
 
   
@@ -23,18 +27,14 @@ public class StoreCheckOrderServlet extends HttpServlet {
 		response.setHeader("content-type", "text/html;charset=UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		StoresService storeService = new StoresService();
-		
-		String sID = request.getParameter("s");
-		
-		StoresVO result = storeService.select(2);
+		MembersService memberservice = new MembersService();
+		String s = request.getParameter("s");
+		int sID = Integer.parseInt(s);
+		StoresVO result = storeService.select(sID);
 		Set<OrdersVO> orders = result.getOrdersVO();
-		Set<OrderDetailsVO> orderDetails = result.getOrderDetailsVO();
-		for(OrdersVO a :orders){
-			System.out.println(a.getSaleDate());
-		}
-		for(OrderDetailsVO b :orderDetails){
-			System.out.println(b.getFoodName());
-		}
+		
+		request.setAttribute("orders", orders);
+		request.getRequestDispatcher("/checkorderstore.jsp").forward(request, response);
 		
 	}
 

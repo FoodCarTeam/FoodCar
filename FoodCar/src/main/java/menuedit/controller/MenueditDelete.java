@@ -19,7 +19,9 @@ public class MenueditDelete extends HttpServlet {
 		if(f !=null && f.length()!=0){
 			int fID = Integer.parseInt(f);
 			menuService.delete(fID);
+			
 		}
+		
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);

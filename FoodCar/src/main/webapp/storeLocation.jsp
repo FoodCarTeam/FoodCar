@@ -6,11 +6,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
-html, body {
-	height: 100%;
-	margin: 0;
-	padding: 0;
-}
+ html, body { 
+ 	height: 100%; 
+ 	margin: 0; 
+ 	padding: 0; 
+ } 
 
 #GoogleMap {
 	height: 80%;
@@ -22,7 +22,31 @@ html, body {
 <script async defer
 	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAgdzYOT0U2y-fUVpAfkf-XjCvXzY5-e-A&signed_in=true&libraries=places&callback=initMap"></script>
 
+
+<link rel="stylesheet" type="text/css"
+	href="bootstrap/sweetAlert/sweetalert.css">
+
+<!-- <!--CSS--> 
+<!-- <link rel='stylesheet' id='main-stylesheet-css' -->
+<!-- 	href='bootstrap/user/css/style.css' type='text/css' media='all' /> -->
+<!-- <link rel='stylesheet' id='slicknav-css' -->
+<!-- 	href="bootstrap/user/css/mobile%20menu%20style.css" type='text/css' -->
+<!-- 	media='all' /> -->
+
+<!-- <!--JS--> 
+<!-- <script type='text/javascript' -->
+<!-- 	src="bootstrap/user/js/modernizr.custom.js"></script> -->
+<!-- <!--list浮動--> 
+<!-- <link href="bootstrap/user/css/bootstrap.min.css" rel="stylesheet" /> -->
+<!-- <link href="bootstrap/user/css/scrolling-nav.css" rel="stylesheet" /> -->
+<!-- <script src="bootstrap/user/js/jquery.js"></script> -->
+<!-- <script src="bootstrap/user/js/scrolling-nav.js"></script> -->
+<!-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> -->
+
+
+<script src="bootstrap/sweetAlert/sweetalert.min.js"></script>
 <script type="text/javascript">
+
 	function initMap() {
 		var marker;
 		var lat;
@@ -41,7 +65,7 @@ html, body {
 					map : map,
 					draggable : true,
 					title : "你在這",
-					snippet : "123",
+					snippet : "",
 					animation : google.maps.Animation.BOUNCE,
 					position : {
 						lat : position.coords.latitude,
@@ -90,7 +114,7 @@ html, body {
 
 					
 				});
-				
+				console.log("SID!!!!!:"+'${store.sID}');
 
 
 				$('#GoogleMap').on('click', '#location', function() {
@@ -100,14 +124,20 @@ html, body {
 						"url" : "showFoodCarsMap/controller/storeLocation",
 						"contentType" : "application/json;charset=UTF-8",
 						"data" : JSON.stringify({
-							"sID" : 1,
+							"sID" :'${store.sID}',
 							"location" : lat + "," + lng
 						}),
 						"success" : function() {
 
 							console.log("成功");
 							infoWindow.close();
+							swal({
+								  title: '位置更新成功囉!',
+								 
+								  confirmButtonText:"確定"
+								})
 
+							
 						}
 					});
 
@@ -127,14 +157,42 @@ html, body {
 		};
 
 		var map = new google.maps.Map(document.getElementById('GoogleMap'), {
-			zoom : 18,
+			zoom : 16,
 			center : myLatLng
 		});
 
 	}
+	
+// 	$(function(){
+		
+// 		$.ajax({
+// 			"method" : "POST",
+// 			"url" : "ifreamServletURL",
+// // 			"dataType" : "JSON",
+			
+// 			"success" : function(datas) {
+// 				console.log("asdasdads:"+datas);
+// 				var temp=datas.indexOf('ifreamServletURL');
+// 				var path=datas.substr(0,30);
+// 				path+"storeLocation.jsp"
+// 				console.log(path+"storeLocation.jsp");
+				
+				
+// 			}
+// 		});
+			
+		
+// 	});
+// 	console.log("sID:"+'${stroe.sID}');
+	
+// 	function initMap() {
+// 		alert("ok");
+// 		}
 </script>
 </head>
 <body>
+
+<%-- 	<jsp:include page="header.jsp"></jsp:include> --%>
 	<div id="GoogleMap"></div>
 </body>
 </html>

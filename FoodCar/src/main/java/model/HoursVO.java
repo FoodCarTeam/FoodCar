@@ -1,5 +1,8 @@
 package model;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class HoursVO {
 	private Integer hrID;
 	private Integer sID;
@@ -10,7 +13,15 @@ public class HoursVO {
 	private String thu;
 	private String fri;
 	private String sat;
-
+	private StoresVO storeVo;
+	
+	
+	public StoresVO getStoreVo() {
+		return storeVo;
+	}
+	public void setStoreVo(StoresVO storeVo) {
+		this.storeVo = storeVo;
+	}
 	public Integer getHrID() {
 		return hrID;
 	}

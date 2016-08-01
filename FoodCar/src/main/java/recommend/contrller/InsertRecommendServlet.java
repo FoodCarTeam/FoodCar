@@ -26,7 +26,8 @@ public class InsertRecommendServlet extends HttpServlet {
 	
 		String sID=request.getParameter("sID");
 		String mID=request.getParameter("mID");
-//		System.out.println("cID:"+cID);
+		System.out.println("sID:"+sID);
+		System.out.println("mID:"+mID);
 		
 		recommentService service=new recommentService();
 		recommendVO vo=new recommendVO();

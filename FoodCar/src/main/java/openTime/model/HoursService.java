@@ -26,7 +26,7 @@ public class HoursService {
 //			System.out.println(a.getsID());
 //		}
 //	測試店家是否開們
-		boolean result=service.openOrClose(3);
+		boolean result=service.openOrClose(1);
 		System.out.println(result);
 		
 	}
@@ -67,7 +67,7 @@ public class HoursService {
 		
 		Calendar ca=Calendar.getInstance();
 		int nowWeekTemp=ca.get(Calendar.DAY_OF_WEEK);
-		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd/HHmm");
+		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd/HH:mm");
 		SimpleDateFormat sdf2=new SimpleDateFormat("yyyy-MM-dd");
 		String temp=sdf2.format(ca.getTime());
 		
@@ -124,12 +124,12 @@ public class HoursService {
 //		System.out.println("nowWeekTemp:"+nowWeekTemp);
 		
 			if(list.get(nowWeekTemp)!=null){
-				String openTemp=list.get(nowWeekTemp).substring(0,4);
-				String closeTemp=list.get(nowWeekTemp).substring(5,9);
-				SimpleDateFormat open=new SimpleDateFormat("yyyy-MM-dd/HHmm");
-				SimpleDateFormat close=new SimpleDateFormat("yyyy-MM-dd/HHmm");
-//				System.out.println(openTemp);
-//				System.out.println(openTemp);
+				String openTemp=list.get(nowWeekTemp).substring(0,5);
+				String closeTemp=list.get(nowWeekTemp).substring(6,10);
+				SimpleDateFormat open=new SimpleDateFormat("yyyy-MM-dd/HH:mm");
+				SimpleDateFormat close=new SimpleDateFormat("yyyy-MM-dd/HH:mm");
+				System.out.println(openTemp);
+				System.out.println(openTemp);
 //				System.out.println("temp"+temp);
 				Date openDate=null;
 				Date closeDate=null;

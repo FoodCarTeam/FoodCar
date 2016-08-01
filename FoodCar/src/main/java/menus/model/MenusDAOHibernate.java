@@ -111,4 +111,20 @@ public class MenusDAOHibernate implements MenusDAO {
 		return mnvo;
 	}
 
+	@Override
+	public MenusVO selectfood(Integer foodID) {
+		MenusVO menusVO = null;
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		try {
+			session.beginTransaction();
+			menusVO = (MenusVO) session.get(MenusVO.class, foodID);
+
+			session.getTransaction().commit();
+		} catch (RuntimeException ex) {
+			session.getTransaction().rollback();
+			throw ex;
+		}
+		return menusVO;
+	}
+
 }

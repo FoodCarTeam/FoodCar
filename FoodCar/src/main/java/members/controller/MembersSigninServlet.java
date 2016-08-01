@@ -41,10 +41,9 @@ public class MembersSigninServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println(request.getMethod());
-		request.setCharacterEncoding("UTF-8");
-		response.setHeader("content-type","text/html;charset=UTF-8");
-		
+		response.setHeader("content-type", "text/html;charset=UTF-8");
 		response.setCharacterEncoding("UTF-8");
+		request.setCharacterEncoding("UTF-8"); 
 
 		String mUsername = request.getParameter("mUsername");
 		String mPassword = request.getParameter("mPassword");
@@ -70,6 +69,7 @@ public class MembersSigninServlet extends HttpServlet {
 		 	 try {
 				is=part.getInputStream();
 				String path=request.getServletContext().getRealPath("/");
+
 //				System.out.println("path"+path);
 				os=new FileOutputStream(path+"/images/mIMG/"+saveName);
 
@@ -154,8 +154,7 @@ public class MembersSigninServlet extends HttpServlet {
 			vo.setmAddress(mAddress);
 			vo.setmPhone(mPhone);
 			vo.setmBirthday(new java.sql.Date(mBirthday.getTime()));
-			vo.setmIMG("images/mIMG/"+saveName);
-//			part.write(saveName);
+			vo.setmIMG("/images/mIMG/"+saveName);
 			service.insert(vo);
 			
 			HttpSession session=request.getSession();

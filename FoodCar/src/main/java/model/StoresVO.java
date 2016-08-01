@@ -19,6 +19,17 @@ public class StoresVO implements java.io.Serializable {
 	private Set<MenusVO> menusVO = new HashSet<MenusVO>();
 	private Set<OrdersVO> ordersVO = new HashSet<OrdersVO>();
 	private Set<OrderDetailsVO> orderDetailsVO = new HashSet<OrderDetailsVO>();
+	private StoreOpenTime storeTimeVO=new StoreOpenTime();
+	
+	
+
+	public StoreOpenTime getStoreTimeVO() {
+		return storeTimeVO;
+	}
+
+	public void setStoreTimeVO(StoreOpenTime storeTimeVO) {
+		this.storeTimeVO = storeTimeVO;
+	}
 
 	public Set<HoursVO> getHoursVO() {
 		return hoursVO;

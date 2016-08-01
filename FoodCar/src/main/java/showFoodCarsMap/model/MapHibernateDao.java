@@ -2,10 +2,12 @@ package showFoodCarsMap.model;
 
 import java.util.List;
 
+import org.hibernate.Hibernate;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
 import model.MapsVO;
+
 
 public class MapHibernateDao implements MapDaoInterface {
 	final static String SELECT="from MapsVO where sID=:sID";
@@ -14,10 +16,18 @@ public class MapHibernateDao implements MapDaoInterface {
 	final static String UPDATE="update MapsVO set location=:location"+" where sID=:sID";
 	
 	public static void main(String[]args){
-//		測試單獨查詢
-//		MapHibernateDao dao=new MapHibernateDao();
-//		MapsVO vo=dao.select(1);
-//		System.out.println("location:"+vo.getLocation());
+		try {
+			hibernate.util.HibernateUtil.getSessionFactory().getCurrentSession().beginTransaction();
+//			測試單獨查詢
+			MapHibernateDao dao=new MapHibernateDao();
+			MapsVO vo=dao.select(1);
+			System.out.println("location:"+vo.getLocation());
+			
+			hibernate.util.HibernateUtil.getSessionFactory().getCurrentSession().getTransaction().commit();
+		} finally {
+			hibernate.util.HibernateUtil.getSessionFactory().close();
+		}
+
 //		測試全體查詢
 //		List<MapsVO> list=dao.select();
 //		for(MapsVO a:list){

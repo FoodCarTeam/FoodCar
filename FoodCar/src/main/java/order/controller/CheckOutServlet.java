@@ -14,6 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import members.model.MembersService;
+import model.MembersVO;
 import model.OrderDetailsVO;
 import model.OrdersVO;
 import order.model.OrderService;
@@ -31,6 +33,7 @@ public class CheckOutServlet extends HttpServlet {
 		OrdersVO result = new OrdersVO();
 		OrderDetailsVO resultD = null;
 		OrderService service = new OrderService();
+		MembersService mservice = new MembersService();
 		OrderDetailsService serviceD = new OrderDetailsService();
 		//取值
 		String[] fID = request.getParameterValues("fID[]");
@@ -46,9 +49,12 @@ public class CheckOutServlet extends HttpServlet {
 		String mID = request.getParameter("mID");
 		//轉換資料
 		
+		
 		int storeID = Integer.parseInt(sID);
 		int cktotal = Integer.parseInt(total);
 		int mIDi = Integer.parseInt(mID);
+		MembersVO mvo = mservice.select(mIDi);
+		String mName = mvo.getmName();
 		//取現在時間
 		Date today=new Date();
 		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -66,6 +72,7 @@ public class CheckOutServlet extends HttpServlet {
 		result.setAmount(cktotal);
 		result.setCheckOut(1);
 		result.setsName(sName);
+		result.setmName(mName);
 		service.insert(result);
 		int oID = result.getoID();
 		System.out.println("date:"+tempDate);

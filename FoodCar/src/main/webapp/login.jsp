@@ -51,7 +51,7 @@
 								<ul class="nav nav-pills">
 									<li class="active"><a data-toggle="pill" href="#users">會員登入</a></li>
 									<li><a data-toggle="pill" href="#stores">店家登入</a></li>
-									<li><a data-toggle="pill" href="#boss">登入管理</a></li>
+						
 								</ul>
 							</form>
 							<div class="tab-content">
@@ -70,9 +70,11 @@
 											for="inputPassword" class="sr-only">請輸入密碼</label> <input
 											type="password" class="form-control" placeholder="請輸入密碼"
 											required style="font-size: 15px" name="mPassword"
-											value="${param.mPassword}">
+											value="${param.mPassword}"><br/>
+
 
 										<p></p>
+
 <!-- 										<script src='https://www.google.com/recaptcha/api.js'></script> -->
 <!-- 										<div class="g-recaptcha" data-sitekey="6LdaHCYTAAAAADKKfv9KbG7Rvcv3iqzORL_9Suq8"></div> -->
 										
@@ -80,13 +82,7 @@
 											<label> <input type="checkbox" value="remember-me">
 												記住密碼
 											</label>
-											
-											
-											
-											
-											
-											
-											
+																														
 											<button class="btn btn-lg btn-primary btn-block"
 												type="submit">登入</button>
 										</div>
@@ -94,7 +90,7 @@
 								</div>
 								<div id="stores" class="tab-pane fade">
 
-									<form class="form-signin" style="width:700px;"
+									<form class="form-inline" style="width:700px;"
 									 action="<c:url value="/Login.controller" />" method="post">
 										<p></p>
 
@@ -105,38 +101,21 @@
 											for="inputPassword" class="sr-only">請輸入密碼</label> <input
 											type="text" class="form-control" placeholder="請輸入密碼" required
 											style="font-size: 15px" name="sPassword"
-											value="${param.sPassword}">
-
-										<div class="checkbox">
+											value="${param.sPassword}"><br/>
+											<div class="checkbox">
 											<label> <input type="checkbox" value="remember-me">
 												記住密碼
 											</label>
-										</div>
-										<button class="btn btn-lg btn-primary btn-block" type="submit">登入</button>
-									</form>
-
-								</div>
-								<div id="boss" class="tab-pane fade">
-
-									<form class="form-signin" style="width: 700px;" action="<c:url value='/login'/>" method="post">
-										<p></p>
-										<label for="" class="sr-only">請輸入帳號</label> <input type="text"
-											class="form-control" placeholder="請輸入帳號" required autofocus
-											style="font-size: 15px"> <label for="inputPassword"
-											class="sr-only">請輸入密碼</label> <input type="password"
-											id="Password2" class="form-control" placeholder="請輸入密碼"
-											required style="font-size: 15px">
-										<p></p>
-										<div class="checkbox">
-											<label> <input type="checkbox" value="remember-me">記住密碼
-											</label>
-
+																														
 											<button class="btn btn-lg btn-primary btn-block"
 												type="submit">登入</button>
 										</div>
 									</form>
 
 								</div>
+							
+							
+							
 							</div>
 						</div>
 

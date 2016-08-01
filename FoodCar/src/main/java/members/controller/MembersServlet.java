@@ -17,8 +17,6 @@ import model.MembersVO;
 import members.model.MembersDAO;
 import members.model.MembersService;
 
-
-
 @WebServlet("/Login")
 public class MembersServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -87,9 +85,8 @@ public class MembersServlet extends HttpServlet {
 //					}
 
 					System.out.println("path"+path);
-					
-					
-					response.sendRedirect(path+"/index.jsp");
+
+					response.sendRedirect(path+"/stores.jsp");
 					return ;
 				}
 				
