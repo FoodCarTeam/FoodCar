@@ -51,4 +51,11 @@ public class OrderService {
 		return result;
 	}
 	
+	public OrdersVO update(OrdersVO vo) {
+		OrdersVO result = null;
+		if(vo!=null) {
+			result = orderDao.update(vo);
+		}
+		return result;
+	}
 }
