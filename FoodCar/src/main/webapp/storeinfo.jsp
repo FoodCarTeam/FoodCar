@@ -235,10 +235,10 @@ $(function() {
 			"data": JSON.stringify(a.serialize()),
 			"success":function(){
 				
-// 				swal({
-// 					  title: '營業時間變更成功囉!', 
-// 					  confirmButtonText:"確定"
-// 					})
+				swal({
+					  title: '營業時間變更成功囉!', 
+					  confirmButtonText:"確定"
+					})
 				
 				
 				
