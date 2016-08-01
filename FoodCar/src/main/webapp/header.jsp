@@ -149,10 +149,6 @@
 								<li><a class="animated bounceInUp" href="memberCheckOrder?m=${member.mID}"
 									style="color: white;">點餐紀錄</a></li>
 							</c:when>
-							<c:otherwise>
-								<li><a class="animated bounceInUp" href="index.jsp"
-									style="color: white;">首頁</a></li>
-							</c:otherwise>
 						</c:choose>
 						<li><a href="map.jsp">地圖</a></li>
 						<li><a href="about.jsp">關於我們</a></li>
