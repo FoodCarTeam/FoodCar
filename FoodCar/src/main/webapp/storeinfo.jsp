@@ -355,8 +355,7 @@ $(function(){
 											<textarea cols="50" rows="3" type="textarea"
 												class="form-control" required autofocus
 												style="font-size: 15px; resize: none" name="sIntro">${store.sIntro}</textarea>
-											<br /> <a href='storecheckorder?s=${store.sID}'
-												class="btn btn-warning"> 訂單紀錄</a>
+										
 
 											<p></p>
 											<div class="checkbox">

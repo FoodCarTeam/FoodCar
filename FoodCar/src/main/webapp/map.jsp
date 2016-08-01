@@ -248,7 +248,7 @@
 				<div class="truck-details">
 					<div class="content">
 						<h1>
-							地圖 <a class="book-button">不知道幹嘛的按鈕</a>
+							地圖 
 						</h1>
 
 

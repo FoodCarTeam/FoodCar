@@ -8,9 +8,7 @@ jQuery(document).ready(function($){
     var id=null;
     
     
-   $('#2').removeClass('cd-add-to-cart').addClass('cd-add-to-cartx')
-   $('#2').text("售完")
-   $('#2').css("background","gray")
+  
 
 	if( cartWrapper.length > 0 ) {
 		//store jQuery objects

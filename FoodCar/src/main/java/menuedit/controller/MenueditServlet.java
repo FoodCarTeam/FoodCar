@@ -20,7 +20,7 @@ import model.MenusVO;
 import model.StoresVO;
 import stores.model.StoresService;
 
-@WebServlet("/MenueditServlet")
+@WebServlet("/menuedit")
 public class MenueditServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     

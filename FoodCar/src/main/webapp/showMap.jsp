@@ -5,6 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+
 </head>
 
 <script async defer
@@ -132,8 +133,8 @@
 						  infoWindow.close();
 						  });
 					  var content = "<div id='iw-container'>" 
-					  + "<div id='storeName' class='iw-title' style='font-size:16px;line-height:20px'>" 
-					  + value.sName + "</div>" + "<div class='iw-content'>" 
+					  + "<div id='storeName' class='iw-title' style='font-size:16px;line-height:20px'><a href='store?s="+value.sID+"' target='_parent' style='color:white;text-decoration:none;' >" 
+					  + value.sName + "</a></div>" + "<div class='iw-content'>" 
 					  + "<p style='font-size:14px;line-height:20px'>電話號碼：" 
 					  + value.sUsername + "</p>" + "<p style='font-size:14px;line-height:20px'>今日營業時間：" 
 					  + openTime + "</p>" + "<p style='font-size:14px;line-height:20px'>介紹：" 

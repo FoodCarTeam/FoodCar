@@ -45,10 +45,6 @@
 							<li><a class="animated bounceInUp" href=""
 								style="color: white; font-size: larger">${member.mName}您好！</a></li>
 						</c:when>
-						<c:otherwise>
-							<li><a class="animated bounceInUp" href="SignIn.jsp"
-								style="color: white; font-size: larger">您好！</a></li>
-						</c:otherwise>
 					</c:choose>
 
 
@@ -63,10 +59,7 @@
 							<li><a class="animated bounceInUp" href="memberinfo.jsp"
 								style="color: white; font-size: larger">個人專區</a></li>
 						</c:when>
-						<c:otherwise>
-							<li><a class="animated bounceInUp" href="index.jsp"
-								style="color: white; font-size: larger">首頁</a></li>
-						</c:otherwise>
+						
 					</c:choose>
 					<li><a class="animated bounceInUp" href="map.jsp"
 						style="color: white; font-size: larger">地圖</a></li>

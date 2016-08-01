@@ -459,10 +459,10 @@
 									</div>
 								</div>
 								<div class="pics row">
-									<ul class="clearing-thumbs clearing-feature small-block-grid-6">
+									<ul class="clearing-feature small-block-grid-6">
 										<c:forEach var="bean" items="${menus}">
 											<li class="clearing-featured-img"><img
-												src="${bean.foodIMG }" />
+												src="${bean.foodIMG }" style="width:200px;height:150px"/>
 												<div class="text-content">
 													<span>${bean.foodName}</span>
 												</div></li>

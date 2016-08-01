@@ -52,19 +52,25 @@
 	</div>
 	<div id="MenuPhone">
 		<ul id="menu-mobile">
-						<li><a href="stores.jsp">餐車專區</a></li>
+						
 			<c:choose>
 				<c:when test="${store!=null}">
+				    <li><a class="animated bounceInUp" href="menuedit?s=${store.sID}"
+						style="color: white; font-size: larger">編輯菜單</a></li>
 					<li><a class="animated bounceInUp" href="storeinfo.jsp"
 						style="color: white; font-size: larger">店家維護</a></li>
+				    <li><a class="animated bounceInUp" href="storecheckorder?s=${store.sID}"
+						style="color: white; font-size: larger">訂單紀錄</a></li>
 				</c:when>
 				<c:when test="${member!=null}">
 					<li><a class="animated bounceInUp" href="memberinfo.jsp"
 						style="color: white; font-size: larger">個人專區</a></li>
+					<li><a class="animated bounceInUp" href="memberCheckOrder?m=${member.mID}"
+						style="color: white; font-size: larger">點餐紀錄</a></li>
+					<li><a href="stores.jsp">餐車專區</a></li>
 				</c:when>
 				<c:otherwise>
-					<li><a class="animated bounceInUp" href="index.jsp"
-						style="color: white; font-size: larger">首頁</a></li>
+                   <li><a href="stores.jsp">餐車專區</a></li>
 				</c:otherwise>
 			</c:choose>
 			<li><a href="map.html">地圖</a></li>
@@ -127,20 +133,25 @@
 				<!--列表右邊list工具列-->
 				<li class="side-menu has-dropdown"><a href="#" class="menu"></a>
 					<ul class="dropdown">
-						<li><a href="stores.jsp">餐車專區</a></li>
 						<c:choose>
 							<c:when test="${store!=null}">
+							    <li><a class="animated bounceInUp" href="menuedit?s=${store.sID}"
+						            style="color: white;">編輯菜單</a></li>
 								<li><a class="animated bounceInUp" href="storeinfo.jsp"
 									style="color: white;">店家維護</a></li>
+								<li><a class="animated bounceInUp" href="storecheckorder?s=${store.sID}"
+									style="color: white;">訂單紀錄</a></li>
 							</c:when>
 							<c:when test="${member!=null}">
 								<li><a class="animated bounceInUp" href="memberinfo.jsp"
 									style="color: white;">個人專區</a></li>
+								<li><a class="animated bounceInUp" href="memberCheckOrder?m=${member.mID}"
+									style="color: white;">點餐紀錄</a></li>
+								<li><a href="stores.jsp">餐車專區</a></li>
 							</c:when>
 							<c:otherwise>
-								<li><a class="animated bounceInUp" href="index.jsp"
-									style="color: white;">首頁</a></li>
-							</c:otherwise>
+                                <li><a href="stores.jsp">餐車專區</a></li>
+                             </c:otherwise>
 						</c:choose>
 						<li><a href="map.jsp">地圖</a></li>
 						<li><a href="about.jsp">關於我們</a></li>

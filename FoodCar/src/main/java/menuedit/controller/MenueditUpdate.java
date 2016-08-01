@@ -50,7 +50,7 @@ public class MenueditUpdate extends HttpServlet {
 		vo.setFoodName(food);
 		vo.setKindID(10);
 		vo.setsID(sID);
-		if(sell=="有貨"){
+		if(sell.equals("有貨")){
 		    vo.setStatusID(1);
 		}else{
 			vo.setStatusID(2);
@@ -94,7 +94,7 @@ public class MenueditUpdate extends HttpServlet {
 			vo.setFoodIMG(foodimg);
 		}
 		service.update(vo);
-		response.sendRedirect(request.getContextPath() + "/MenueditServlet?s=" + s);
+		response.sendRedirect(request.getContextPath() + "/menuedit?s=" + s);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
