@@ -12,7 +12,7 @@ DROP TABLE [menus];
 DROP TABLE [kinds];
 DROP TABLE [status];
 DROP TABLE [hours];
-DROP TABLE [recomments];
+DROP TABLE [recommend];
 DROP TABLE [stores];
 DROP TABLE [members];
 DROP TABLE [orders];
@@ -223,9 +223,17 @@ location		varchar(MAX) NOT NULL,
 constraint maps_sID_fk foreign key (sID) references stores (sID),
 constraint maps_primary_key primary key (mapID),
 );
-insert into [maps] (sID,location) values ('1','25.033681,121.564726');
-insert into [maps] (sID,location) values ('2','25.047908,121.517315');
-insert into [maps] (sID,location) values ('3','25.031953,121.543007');
+insert into [maps] (sID,location) values ('1','25.044339, 121.560873');
+insert into [maps] (sID,location) values ('2','25.126597, 121.714666');
+insert into [maps] (sID,location) values ('3','23.976318, 121.608293');
+insert into [maps] (sID,location) values ('4','23.234492, 120.096020');
+insert into [maps] (sID,location) values ('5','24.181109, 120.589914');
+insert into [maps] (sID,location) values ('6','25.057485, 121.452374');
+insert into [maps] (sID,location) values ('7','23.860095, 120.589630');
+insert into [maps] (sID,location) values ('8','22.635296, 120.328613');
+insert into [maps] (sID,location) values ('9','25.073431, 121.576099');
+insert into [maps] (sID,location) values ('10','25.044467, 121.581569');
+
 
 CREATE TABLE [favorities] (
 fID				int IDENTITY(1,1) NOT NULL,
@@ -304,9 +312,16 @@ sat			varchar(15),
 constraint hours_sID foreign key (sID) references stores (sID),
 constraint hrID_primary_key primary key (hrID),
 );
-insert into [hours] (sID,sun,mon,tue,wed,thu,fri,sat) values ('1','0900~1200',null,'1200~1800','0900~1200','1000~1800','1200~1800','0900~1800');
-insert into [hours] (sID,sun,mon,tue,wed,thu,fri,sat) values ('2','1800~2200','1200~1800','1400~2000','0900~1600','1800~2200',null,'0900~2200');
-insert into [hours] (sID,sun,mon,tue,wed,thu,fri,sat) values ('3','0900~2300','0900~2300','0900~2300','0900~2300','0900~2300','0900~2300','0900~2300');
+insert into [hours] (sID,sun,mon,tue,wed,thu,fri,sat) values ('1','09:00~12:00',null,'12:00~18:00','09:00~12:00','10:00~18:00','12:00~18:00','09:00~18:00');
+insert into [hours] (sID,sun,mon,tue,wed,thu,fri,sat) values ('2','18:00~22:00','12:00~18:00','14:00~20:00','09:00~16:00','18:00~22:00',null,'09:00~22:00');
+insert into [hours] (sID,sun,mon,tue,wed,thu,fri,sat) values ('3','09:00~23:00','09:00~23:00','09:00~23:00','09:00~23:00','09:00~23:00','09:00~23:00','09:00~23:00');
+insert into [hours] (sID,sun,mon,tue,wed,thu,fri,sat) values ('4','09:00~23:00','09:00~23:00','09:00~23:00','09:00~23:00','09:00~23:00','09:00~23:00','09:00~23:00');
+insert into [hours] (sID,sun,mon,tue,wed,thu,fri,sat) values ('5','09:00~23:00','09:00~23:00','09:00~23:00','09:00~23:00','09:00~23:00','09:00~23:00','09:00~23:00');
+insert into [hours] (sID,sun,mon,tue,wed,thu,fri,sat) values ('6','09:00~23:00','09:00~23:00','09:00~23:00','09:00~23:00','09:00~23:00','09:00~23:00','09:00~23:00');
+insert into [hours] (sID,sun,mon,tue,wed,thu,fri,sat) values ('7','09:00~23:00','09:00~23:00','09:00~23:00','09:00~23:00','09:00~23:00','09:00~23:00','09:00~23:00');
+insert into [hours] (sID,sun,mon,tue,wed,thu,fri,sat) values ('8','09:00~23:00','09:00~23:00','09:00~23:00','09:00~23:00','09:00~23:00','09:00~23:00','09:00~23:00');
+insert into [hours] (sID,sun,mon,tue,wed,thu,fri,sat) values ('9','09:00~23:00','09:00~23:00','09:00~23:00','09:00~23:00','09:00~23:00','09:00~23:00','09:00~23:00');
+insert into [hours] (sID,sun,mon,tue,wed,thu,fri,sat) values ('10','09:00~23:00','09:00~23:00','09:00~23:00','09:00~23:00','09:00~23:00','09:00~23:00','09:00~23:00');
 
 CREATE TABLE [manager] (
 manageID	int IDENTITY(1,1) NOT NULL,

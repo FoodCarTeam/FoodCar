@@ -44,11 +44,11 @@
     <div class="small-12 large-50 columns"  >
       <div class="truck-details">    
         <div class="content">
-          <h1> 我的訂單紀錄  </h1>
+          <h1> 我的點餐紀錄  </h1>
             <!--內容以下開始-->
 <div class="list-group">
   <a href="#" class="list-group-item list-group-item-info">
-    訂單紀錄
+    點餐紀錄
   </a>
   <c:forEach var="bean" items="${orders}">
   <a href="checkdetail?o=${bean.oID }" class="list-group-item">${bean.sName}<div class="pull-right date">結帳日期:${bean.saleDate}</div></a>
