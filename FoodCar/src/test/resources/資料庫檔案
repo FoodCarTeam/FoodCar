@@ -106,7 +106,7 @@ insert into [menus] (foodName,sID,kindID,statusID,unitPrice,foodIMG) values ('�
 
 insert into [menus] (foodName,sID,kindID,statusID,unitPrice,foodIMG) values ('手握生魚片','3','10','1','65','images/foodIMG/3-1.jpg');
 insert into [menus] (foodName,sID,kindID,statusID,unitPrice,foodIMG) values ('手握蝦壽司','3','10','1','75','images/foodIMG/3-2.jpg');
-insert into [menus] (foodName,sID,kindID,statusID,unitPrice,foodIMG) values ('玉子燒','3','10','1','25','images/foodIMG/3-2.jpg');
+insert into [menus] (foodName,sID,kindID,statusID,unitPrice,foodIMG) values ('玉子燒','3','10','1','25','images/foodIMG/3-3.jpg');
 insert into [menus] (foodName,sID,kindID,statusID,unitPrice,foodIMG) values ('味增湯','3','10','1','65','images/foodIMG/3-4.jpg');
 insert into [menus] (foodName,sID,kindID,statusID,unitPrice,foodIMG) values ('海苔壽司','3','10','1','75','images/foodIMG/3-5.jpg');
 insert into [menus] (foodName,sID,kindID,statusID,unitPrice,foodIMG) values ('高麗菜黑輪','3','10','1','25','images/foodIMG/3-6.jpg');
@@ -165,14 +165,14 @@ insert into [menus] (foodName,sID,kindID,statusID,unitPrice,foodIMG) values ('�
 insert into [menus] (foodName,sID,kindID,statusID,unitPrice,foodIMG) values ('雞肉蔬菜堡','9','10','1','75','images/foodIMG/9-5.jpg');
 insert into [menus] (foodName,sID,kindID,statusID,unitPrice,foodIMG) values ('蘑菇堡','9','10','1','25','images/foodIMG/9-6.jpg');
 
-insert into [menus] (foodName,sID,kindID,statusID,unitPrice,foodIMG) values ('卡布奇諾','9','10','1','25','images/foodIMG/10-1.jpg');
-insert into [menus] (foodName,sID,kindID,statusID,unitPrice,foodIMG) values ('巧克力蛋糕','9','10','1','65','images/foodIMG/10-2.jpg');
-insert into [menus] (foodName,sID,kindID,statusID,unitPrice,foodIMG) values ('紅茶','9','10','1','75','images/foodIMG/10-3.jpg');
-insert into [menus] (foodName,sID,kindID,statusID,unitPrice,foodIMG) values ('美式咖啡','9','10','1','25','images/foodIMG/10-4.jpg');
-insert into [menus] (foodName,sID,kindID,statusID,unitPrice,foodIMG) values ('起司蛋糕','9','10','1','25','images/foodIMG/10-5.jpg');
-insert into [menus] (foodName,sID,kindID,statusID,unitPrice,foodIMG) values ('焦糖','9','10','1','65','images/foodIMG/10-6.jpg');
-insert into [menus] (foodName,sID,kindID,statusID,unitPrice,foodIMG) values ('蜂蜜蛋糕','9','10','1','75','images/foodIMG/10-7.jpg');
-insert into [menus] (foodName,sID,kindID,statusID,unitPrice,foodIMG) values ('熱奶茶','9','10','1','25','images/foodIMG/10-8.jpg');
+insert into [menus] (foodName,sID,kindID,statusID,unitPrice,foodIMG) values ('卡布奇諾','10','10','1','25','images/foodIMG/10-1.jpg');
+insert into [menus] (foodName,sID,kindID,statusID,unitPrice,foodIMG) values ('巧克力蛋糕','10','10','1','65','images/foodIMG/10-2.jpg');
+insert into [menus] (foodName,sID,kindID,statusID,unitPrice,foodIMG) values ('紅茶','10','10','1','75','images/foodIMG/10-3.jpg');
+insert into [menus] (foodName,sID,kindID,statusID,unitPrice,foodIMG) values ('美式咖啡','10','10','1','25','images/foodIMG/10-4.jpg');
+insert into [menus] (foodName,sID,kindID,statusID,unitPrice,foodIMG) values ('起司蛋糕','10','10','1','25','images/foodIMG/10-5.jpg');
+insert into [menus] (foodName,sID,kindID,statusID,unitPrice,foodIMG) values ('焦糖','10','10','1','65','images/foodIMG/10-6.jpg');
+insert into [menus] (foodName,sID,kindID,statusID,unitPrice,foodIMG) values ('蜂蜜蛋糕','10','10','1','75','images/foodIMG/10-7.jpg');
+insert into [menus] (foodName,sID,kindID,statusID,unitPrice,foodIMG) values ('熱奶茶','10','10','1','25','images/foodIMG/10-8.jpg');
 
 
 CREATE TABLE [orders] (
