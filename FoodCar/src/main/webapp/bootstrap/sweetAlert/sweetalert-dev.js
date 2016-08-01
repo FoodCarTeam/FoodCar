@@ -332,7 +332,7 @@ var defaultParams = {
   animation: true,
   allowEscapeKey: true,
   inputType: 'text',
-  inputPlaceholder: '',
+  inputPlaceholder: '123',
   inputValue: '',
   showLoaderOnConfirm: false
 };
