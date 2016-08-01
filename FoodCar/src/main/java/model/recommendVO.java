@@ -11,6 +11,17 @@ public class recommendVO implements java.io.Serializable {
 	private Integer rID;
 	private Integer sID;
 	private Integer mID;
+	private MembersVO memberVO=new MembersVO();
+	
+	
+	
+	
+	public MembersVO getMemberVO() {
+		return memberVO;
+	}
+	public void setMemberVO(MembersVO memberVO) {
+		this.memberVO = memberVO;
+	}
 	public Integer getrID() {
 		return rID;
 	}
@@ -29,6 +40,7 @@ public class recommendVO implements java.io.Serializable {
 	public void setmID(Integer mID) {
 		this.mID = mID;
 	}
+	
 	
 
 	

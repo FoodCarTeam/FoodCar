@@ -46,6 +46,11 @@
 			<key column="sID"/>
 			<one-to-many class="model.CommentsVO" />
 		</set>
+		
+		<set name="recommendVO" table="recommend" lazy="false" cascade="all" inverse="true">
+			<key column="mID"/>
+			<one-to-many class="model.recommendVO" />
+		</set>
 
 	</class>
 </hibernate-mapping>

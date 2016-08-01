@@ -16,10 +16,16 @@ public class MembersVO implements java.io.Serializable{
 	private Set<OrdersVO> ordersVO = new HashSet<OrdersVO>();
 	private Set<OrderDetailsVO> orderDetailsVO = new HashSet<OrderDetailsVO>();
 	private Set<CommentsVO> commentsVO = new HashSet<CommentsVO>();
+	private Set<recommendVO> recommendVO=new HashSet<recommendVO>();
 	
 	
 	
-	
+	public Set<recommendVO> getRecommendVO() {
+		return recommendVO;
+	}
+	public void setRecommendVO(Set<recommendVO> recommendVO) {
+		this.recommendVO = recommendVO;
+	}
 	public Set<CommentsVO> getCommentsVO() {
 		return commentsVO;
 	}
