@@ -154,7 +154,7 @@ public class MembersSigninServlet extends HttpServlet {
 			vo.setmAddress(mAddress);
 			vo.setmPhone(mPhone);
 			vo.setmBirthday(new java.sql.Date(mBirthday.getTime()));
-			vo.setmIMG("/images/mIMG/"+saveName);
+			vo.setmIMG("images/mIMG/"+saveName);
 			service.insert(vo);
 			
 			HttpSession session=request.getSession();
