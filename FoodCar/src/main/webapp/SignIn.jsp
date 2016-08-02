@@ -10,22 +10,22 @@
 }
 
 .zipcode {
-	background-color: #c00;
-	color: #fff;
+background-color: #c00;
+/*  	color: #fff;  */
 	width: 200px;
 	font-size: 12px;
 }
 
 .county {
-	background-color: #4169E1;
-	color: #fff;
+background-color: #4169E1;
+/*     color: #fff;  */
 	width: 100px;
 	font-size: 12px;
 }
 
 .district {
 	background-color: #008000;
-	color: #fff;
+/* 	color: #fff; */
 	width: 100px;
 	font-size: 12px;
 }

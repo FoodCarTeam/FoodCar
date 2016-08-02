@@ -7,6 +7,17 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+
+<link rel='stylesheet' id='slicknav-css'  href="bootstrap/login/css/mobile%20menu%20style.css" type='text/css' media='all' /><!--mobile menu style.css-->
+<!--JS-->
+<script type='text/javascript' src="bootstrap/login/js/modernizr.custom.js"></script>
+<!--list浮動-->
+<link href="bootstrap/login/css/bootstrap.min.css" rel="stylesheet" />
+<link href="bootstrap/login/css/scrolling-nav.css" rel="stylesheet" />
+<script src="bootstrap/login/js/jquery.js"></script>
+<script src="bootstrap/login/js/scrolling-nav.js"></script>
+  
+
 <link
 	href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css"
 	rel="stylesheet">
@@ -27,14 +38,27 @@
 </style>
 </head>
 <body>
-   
-  <nav class="navbar navbar-fixed-top" >
-  <div id="Header" style="background-color:white;" >
+  
+    
+<!--Header-->
+      <div id="Header" style="background-color:white;" >
       <div class="row">
         <div class="small-18 large-12 columns"><p></p><p></p>
         </div>
       </div>
     </div>
+<!--/Header-->
+<!--列表bootstrap-->
+    <div id="MenuBarPhone" class="menu-phone">
+        <div class="row">
+          <div class="small-3 columns">
+            <div class="top-logo">
+              <a class="logo" href="index.jsp"></a>
+            </div>
+          </div>
+         
+<!--/列表bootstrap-->
+        <nav class="navbar navbar-fixed-top" >
    <!--列表-->
     <div class="contain-to-grid">
       <nav class="top-bar" id="TopMenu" data-topbar data-options="is_hover: false">
@@ -44,7 +68,7 @@
             <ul class="left">
               <li>
                 <div class="top-logo">
-                  <a class="logo" href="index.jsp"></a>
+                  <a class="logo" href="index.jsp""></a>
                   <a class="logo-text" href="index.jsp"></a>
                 </div>
               </li>
@@ -55,20 +79,36 @@
               <li class="top-search">
                 <div class="search-bar">
                   <div id="sb-search" class="sb-search">                
-                      <img src="${store.sLogo }" />
+                       <img src="${store.sLogo }" />
                   </div>
                 </div>
               </li>
-       </ul>
+<!--/列表右邊頭像-->          
+<!--列表右邊list工具列--> 
+              <li class="side-menu has-dropdown">
+                <a href="#" class="menu"></a>
+                <ul class="dropdown">
+                 
+					<li><a href="menuedit?s=${store.sID}">編輯菜單</a></li>
+					<li><a href="storeinfo.jsp">店家維護</a></li>
+					<li><a href="storecheckorder?s=${store.sID}">訂單紀錄</a></li>	
+                  <li><a href="map.jsp">地圖</a></li>
+                  <li><a href="about.jsp">關於我們</a></li>
+                  <li><a href="LogoutServlet">登出</a></li>
+                </ul>
+              </li>
+<!--/列表右邊list工具列-->
+            </ul>
           </div>
         </section>
       </nav>
     </div>
 <!--/列表-->
             </nav>
+            
+            
     
-    
-<div style="margin-left: 200px;margin-right: 200px;">
+<div >
 	<table id="productTable" class="table table-striped" style="margin-top: 100px;">
 		<thead>
 			<tr>
@@ -242,7 +282,8 @@
 		})
 	</script>
 
-
+       <script type='text/javascript' src="bootstrap/about/js/foundation.min.js"></script>
+      <script type='text/javascript' src="bootstrap/about/js/app.js"></script>
 
 </body>
 </html>
