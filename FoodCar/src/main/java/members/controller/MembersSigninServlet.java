@@ -71,7 +71,7 @@ public class MembersSigninServlet extends HttpServlet {
 				String path=request.getServletContext().getRealPath("/");
 
 //				System.out.println("path"+path);
-				os=new FileOutputStream(path+"/images/mIMG/"+saveName);
+				os=new FileOutputStream(path+"images/mIMG/"+saveName);
 
 //			/Users/lanyao/Documents/workspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/FoodCar/images/mIMG/
 				byte[] buffer = new byte[1024];

@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.JsonObject;
 
+import members.model.MembersService;
 import model.recommendVO;
 import recommend.model.recommentService;
 
@@ -30,9 +31,13 @@ public class InsertRecommendServlet extends HttpServlet {
 		System.out.println("mID:"+mID);
 		
 		recommentService service=new recommentService();
+		MembersService memberService=new MembersService();
 		recommendVO vo=new recommendVO();
 		vo.setmID(Integer.parseInt(mID));
 		vo.setsID(Integer.parseInt(sID));
+		vo.setMemberVO(memberService.select(Integer.parseInt(mID)));
+		
+		
 		
 		service.insert(vo);
 		

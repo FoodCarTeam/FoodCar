@@ -7,6 +7,7 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 
 import hibernate.util.HibernateUtil;
+import members.model.MembersService;
 import model.recommendVO;
 
 public class recommendDao implements recommendDaoInterface {
@@ -18,6 +19,7 @@ public class recommendDao implements recommendDaoInterface {
 	public static void main(String[] args) {
 		recommendDao dao=new recommendDao();
 		recommendVO vo=new recommendVO();
+		MembersService ms=new MembersService();
 		
 //		List<recommendVO> list=dao.select_sID(1);
 //		for(recommendVO a:list){
@@ -29,8 +31,12 @@ public class recommendDao implements recommendDaoInterface {
 //		dao.delete(4);
 //		vo.setsID(2);
 //		vo.setmID(1);
-//		dao.insert(vo);
 		
+		
+		
+//		vo.setMemberVO(ms.select(1));
+//		recommendVO result=dao.insert(vo);
+//		System.out.println(result);
 		
 //		vo=dao.select_mID_cID(1, 4);
 //		System.out.println(vo);
