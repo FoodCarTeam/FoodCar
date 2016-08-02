@@ -32,11 +32,11 @@ mBirthday	date NOT NULL,
 mIMG		varchar(1000) ,
 constraint members_primary_key primary key (mID),
 );
-insert into [members] (mName,mUsername,mPassword,mAddress,mBirthday) values ('翁強森','Johnsonweng@qq.com','Ww852258','台北市復興北路一段390號','1983/08/08');
-insert into [members] (mName,mUsername,mPassword,mAddress,mBirthday) values ('藍教主','Bluesky@qq.com','Bb951159','台北市天母區德行東路一段250號','1990/05/05');
-insert into [members] (mName,mUsername,mPassword,mAddress,mBirthday) values ('董Jay','Jjaydonn@qq.com','Jj753357','台北市忠孝西路一段100號','1987/10/10');
-insert into [members] (mName,mUsername,mPassword,mAddress,mBirthday) values ('江江江','HankChiang@qq.com','Hh123321','台北市忠孝西路一段100號','1990/12/01');
-insert into [members] (mName,mUsername,mPassword,mAddress,mBirthday) values ('莊家家','Roger@qq.com','Pp741147','台北市中和路507號5樓','1997/05/01');
+insert into [members] (mName,mUsername,mPassword,mAddress,mBirthday,mIMG) values ('翁強森','Johnsonweng@qq.com','Ww852258','台北市復興北路一段390號','1983/08/08','images/mIMG/hand6.png');
+insert into [members] (mName,mUsername,mPassword,mAddress,mBirthday,mIMG) values ('藍教主','Bluesky@qq.com','Bb951159','台北市天母區德行東路一段250號','1990/05/05','images/mIMG/hand2.png');
+insert into [members] (mName,mUsername,mPassword,mAddress,mBirthday,mIMG) values ('董Jay','Jjaydonn@qq.com','Jj753357','台北市忠孝西路一段100號','1987/10/10','images/mIMG/hand1.png');
+insert into [members] (mName,mUsername,mPassword,mAddress,mBirthday,mIMG) values ('江江江','HankChiang@qq.com','Hh123321','台北市忠孝西路一段100號','1990/12/01','images/mIMG/pk.png');
+insert into [members] (mName,mUsername,mPassword,mAddress,mBirthday,mIMG) values ('莊家家','Roger@qq.com','Pp741147','台北市中和路507號5樓','1997/05/01','images/mIMG/hand3.png');
 
 CREATE TABLE [stores] (
 sID			int IDENTITY(1,1) NOT NULL,
