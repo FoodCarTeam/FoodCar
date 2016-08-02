@@ -94,9 +94,9 @@
 	type='stylesheet/less' />
 
 <!-- 以下為sweetAlert -->
-<script src="sweetalert2/sweetalert2.min.js"></script>
+<script src="bootstrap/sweetAlert/sweetalert.min.js"></script>
 <link rel="stylesheet" type="text/css"
-	href="sweetalert2/sweetalert2.min.css">
+	href="bootstrap/sweetAlert/sweetalert.css">
 
 <!-- 以下為留言板 -->
 <link rel='stylesheet' href='bootstrap/comments/css/bootstrap.min.css'
@@ -238,8 +238,6 @@
 											$("#openTime").html("今日營業時間："+data[0]);
 											$("#openDay1").html("明天營業時間："+data[1]);
 											$("#openDay2").html("後天營業時間："+data[2]);
-											
-											
 										}
 									});
 									
@@ -266,72 +264,26 @@
 									$('iframe').attr('src', 'https://www.google.com/maps/embed/v1/place?key=AIzaSyAgdzYOT0U2y-fUVpAfkf-XjCvXzY5-e-A&q=' + location);
 
 									
-									// 以下是按讚
+									
+									
+									
+									
+									
 									var recommentCount;
-									$("body").on("click", ".teacher-list-nolove", function(e) {
-										e.preventDefault();
-								        var loves={};
-								        loves.num=parseInt($(this).find("span").html())+1;
-								        if($(this).attr("data-loves")=="yes"){
-// 											以下是刪除
-								        	 loves.num=parseInt($(this).find("span").html())-1;
-											 loves.addstr="<div class='teacher-love-addnum'>-1</div>";
+									 $("body").on("click",".teacher-list-nolove",function(e){
+									        e.preventDefault();
+									        var loves={};
+									        loves.num=parseInt($(this).find("span").html())+1;
+									        if($(this).attr("data-loves")=="yes"){
+									        	swal('已經點過囉！')
+									        }else{
+									            loves.addstr="<div class='teacher-love-addnum'>+1</div>";
 									            $(this).append(loves.addstr);
 									            loves.addone=$(this).find(".teacher-love-addnum");
 									            $(this).attr("data-loves","yes");
 									            $(this).find("span").html(loves.num);
-								        	  	$(this).attr("data-loves","no");
-
-
-// 											$.ajax({
-// 												"menthod" : "GET",
-// 												"url" : "DeleteCommendServlet",
-// 												"contentType" : "application/json;charset=UTF-8",
-// 												"data" : {
-// 													"sID" : '${select.sID}',
-// 													"mID" : '${member.mID}',
-// 												},
-// 												"success" : function() {
-		
-// 													$.ajax({
-// 														"menthod" : "GET",
-// 														"url" : "SelectRecommendServlet",
-// 														"contentType" : "application/json;charset=UTF-8",
-// 														"data" : {
-// 															"sID" : '${select.sID}',
-// 															"mID" : '${member.mID}'
-// 														},
-// 														"dataType" : "JSON",
-// 														"success" : function(data) {
-// 															console.log(data.result);
-// 															if (data.result) {
-// 																console.log("還沒按過");
-// 																$("#goodIcon").removeClass("teacher-list-love").addClass("teacher-list-nolove");
-// 																recommentCount=recommentCount+1;
-// 																$("#goodNumber").html("已經有" +recommentCount+ "人喜歡了！");
-// 															} else {
-// 																console.log("按過");
-// 																recommentCount=recommentCount-1;
-// 																$("#goodIcon").removeClass("teacher-list-nolove").addClass("teacher-list-love");
-// 																$("#goodNumber").html("已經有" +recommentCount+ "人喜歡了！");
-// 															}
-// 														}
-// 													});
-// 												}
-// 											});
-											
-											
-											
-										} else {
-// 											以下是新增
-											 loves.addstr="<div class='teacher-love-addnum'>+1</div>";
-									            $(this).append(loves.addstr);
-									            loves.addone=$(this).find(".teacher-love-addnum");
-									            $(this).attr("data-loves","yes");
-									            $(this).find("span").html(loves.num);
-
-											
-												$.ajax({
+									            
+									            $.ajax({
 													"menthod" : "GET",
 													"url" : "InsertRecommendServlet",
 													"contentType" : "application/json;charset=UTF-8",
@@ -341,43 +293,63 @@
 													},
 													//"dataType":"JSON",
 													"success" : function() {
-														console.log("新增成功");
-														
-														$.ajax({
-															"menthod" : "GET",
-															"url" : "SelectRecommendServlet",
-															"contentType" : "application/json;charset=UTF-8",
-															"data" : {
-																"sID" : '${select.sID}',
-																"mID" : '${member.mID}'
-															},
-															"dataType" : "JSON",
-															"success" : function(data) {
-																console.log(data.result);
-																if (data.result) {
-																	console.log("按過");
-																	recommentCount=recommentCount-1;
-																	$("#goodIcon").removeClass("teacher-list-love").addClass("teacher-list-nolove");
-																	$("#goodNumber").html("已經有" +recommentCount+ "人喜歡了！");
-																} else {
-																	console.log("還沒按過");
-																	$("#goodIcon").removeClass("teacher-list-nolove").addClass("teacher-list-love");
-																	recommentCount=recommentCount+1;
+															console.log("新增成功");
+															$("#goodIcon").removeClass("teacher-list-nolove").addClass("teacher-list-love");
+															recommentCount=recommentCount+1;
+															$("#goodNumber").html("已經有" +recommentCount+ "人喜歡了！");
+// 															checkCount();
+															console.log("recommentCount:"+recommentCount);
+														}
+													});
+									        }
+									    })
+									
+									    
+												
+									     $("body").on("click",".teacher-list-love",function(e){
+									        e.preventDefault();
+									        var loves={};
+									        loves.num=parseInt($(this).find("span").html())+1;
+									        if($(this).attr("data-loves")=="yes"){
+									        	swal('已經點過囉！')
+									        }else{
+									            loves.addstr="<div class='teacher-love-addnum'>-1</div>";
+									            $(this).append(loves.addstr);
+									            loves.addone=$(this).find(".teacher-love-addnum");
+									            $(this).attr("data-loves","yes");
+									            $(this).find("span").html(loves.num);
+									            $.ajax({
+	 												"menthod" : "GET",
+	 												"url" : "DeleteCommendServlet",
+	 												"contentType" : "application/json;charset=UTF-8",
+	 												"data" : {
+	 													"sID" : '${select.sID}',
+	 													"mID" : '${member.mID}',
+	 												},
+	 												"success" : function() {
+	 													
+	 														console.log("按過");
+															recommentCount=recommentCount-1;
+															$("#goodIcon").removeClass("teacher-list-love").addClass("teacher-list-nolove");
+																if(recommentCount==0){
+																	$("#goodNumber").html("趕快成為第一個喜歡的人！");
+																}else{
 																	$("#goodNumber").html("已經有" +recommentCount+ "人喜歡了！");
 																}
-															}
-														});
-													}
-												});
+															
+															
+	 														console.log("recommentCount:"+recommentCount);
+	 													}
+	 												});
+									        }
+									    })
+									 
 
-												
-											
-										}
-									})
 
+									checkCount();
 									checkGood();
-									
 // 									計算有多少人喜歡
+							function checkCount(){
 									$.ajax({
 										"menthod" : "GET",
 										"url" : "RecommendCountServlet",
@@ -394,14 +366,16 @@
 											if (data.recommentCount == 0) {
 												console.log("趕快成為第一個喜歡的人！");
 												$("#goodNumber").html("趕快成為第一個喜歡的人！");
+												console.log("recommentCount:"+recommentCount);
 											} else {
 												console.log("多少人喜歡了");
 												$("#goodNumber").html("已經有" + data.recommentCount + "人喜歡了！");
+												console.log("recommentCount:"+recommentCount);
 												// 				console.log($("#goodCount").val());
 											}
 										}
 									});
-
+								}
 									function checkGood() {
 										console.log("執行檢查");
 										$.ajax({
@@ -418,13 +392,13 @@
 												if (data.result) {
 													console.log("還沒按過");
 													$("#goodIcon").removeClass("teacher-list-love").addClass("teacher-list-nolove");
-													recommentCount=recommentCount+1;
-													$("#goodNumber").html("已經有" +recommentCount+ "人喜歡了！");
+// 													recommentCount=recommentCount+1;
+// 													$("#goodNumber").html("已經有" +recommentCount+ "人喜歡了！");
 												} else {
 													console.log("按過");
-													recommentCount=recommentCount-1;
+// 													recommentCount=recommentCount-1;
 													$("#goodIcon").removeClass("teacher-list-nolove").addClass("teacher-list-love");
-													$("#goodNumber").html("已經有" +recommentCount+ "人喜歡了！");
+// 													$("#goodNumber").html("已經有" +recommentCount+ "人喜歡了！");
 												}
 											}
 										});

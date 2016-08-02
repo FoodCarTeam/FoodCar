@@ -194,7 +194,7 @@
 	    	console.log(value, row, index);
 	    }, 'click .like': function (e, value, row, index) {
 // 	    	連結到該店家
-// 	    	$(".like").attr("href","store?s="+row.sID);
+	    	$(".like").attr("href","store?s="+row.sID);
 	    	
 
 // 	        console.log("value:"+value);
