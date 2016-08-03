@@ -23,8 +23,8 @@
 	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAgdzYOT0U2y-fUVpAfkf-XjCvXzY5-e-A&signed_in=true&libraries=places&callback=initMap"></script>
 
 
-<link rel="stylesheet" type="text/css"
-	href="bootstrap/sweetAlert/sweetalert.css">
+<link rel="stylesheet" type="text/css" href="bootstrap/Impromptu/jquery-impromptu.css">
+
 
 <!-- <!--CSS--> 
 <!-- <link rel='stylesheet' id='main-stylesheet-css' -->
@@ -44,7 +44,7 @@
 <!-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> -->
 
 
-<script src="bootstrap/sweetAlert/sweetalert.min.js"></script>
+<script src="bootstrap/Impromptu/jquery-impromptu.js"></script>
 <script type="text/javascript">
 
 	function initMap() {
@@ -131,11 +131,10 @@
 
 							console.log("成功");
 							infoWindow.close();
-							swal({
-								  title: '位置更新成功囉!',
-								 
-								  confirmButtonText:"確定"
-								})
+							$.prompt("<h3>位置成功更新！</h3>", {
+				        		title: "",
+				        		buttons: { "確定": true}
+				        	});
 
 							
 						}

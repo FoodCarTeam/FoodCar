@@ -93,10 +93,9 @@
 	href='bootstrap/comments/css/bootstrap-markdown.less'
 	type='stylesheet/less' />
 
-<!-- 以下為sweetAlert -->
-<script src="bootstrap/sweetAlert/sweetalert.min.js"></script>
+
 <link rel="stylesheet" type="text/css"
-	href="bootstrap/sweetAlert/sweetalert.css">
+	href="bootstrap/Impromptu/jquery-impromptu.css">
 
 <!-- 以下為留言板 -->
 <link rel='stylesheet' href='bootstrap/comments/css/bootstrap.min.css'
@@ -224,7 +223,7 @@
 								</div>
 
 							</div>
-
+<script src="bootstrap/Impromptu/jquery-impromptu.js"></script>
 							<script>
 								$(function() {
 // 									以下是今日營業時間
@@ -275,7 +274,11 @@
 									        var loves={};
 									        loves.num=parseInt($(this).find("span").html())+1;
 									        if($(this).attr("data-loves")=="yes"){
-									        	swal('已經點過囉！')
+									        	$.prompt("<h5>已經點過囉！</h5>", {
+									        	
+									        		title: "",
+									        		buttons: { "確定": true}
+									        	});
 									        }else{
 									            loves.addstr="<div class='teacher-love-addnum'>+1</div>";
 									            $(this).append(loves.addstr);
@@ -311,7 +314,10 @@
 									        var loves={};
 									        loves.num=parseInt($(this).find("span").html())+1;
 									        if($(this).attr("data-loves")=="yes"){
-									        	swal('已經點過囉！')
+									        	$.prompt("<h5>已經點過囉！<h5>", {
+									        		title: "",
+									        		buttons: { "確定": true}
+									        	});
 									        }else{
 									            loves.addstr="<div class='teacher-love-addnum'>-1</div>";
 									            $(this).append(loves.addstr);

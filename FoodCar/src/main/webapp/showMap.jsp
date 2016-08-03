@@ -11,9 +11,11 @@
 <script async defer
 	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAgdzYOT0U2y-fUVpAfkf-XjCvXzY5-e-A&libraries=places&callback=initMap"></script>
 <script type="text/javascript" src="jquery/jquery-3.0.0.min.js"></script>
+<script type="text/javascript" src="bootstrap/js/jquery.jsonp.js"></script>
 <link rel='stylesheet' href='bootstrap/map/css/showFoodCarsMap.css' type='text/css' media='all' />
 <body>
-	<script>
+	
+	<script type='text/javascript'>
 	function initMap() {
 		// 			使用者緯經度
 		var lat;
@@ -59,6 +61,48 @@
 			// Browser doesn't support Geolocation
 			handleLocationError(false, infoWindow, map.getCenter());
 		}
+
+		
+// 		var temp={
+// 				scope:"resourceAquire",
+// 			rid:"36847f3f-deff-4183-a5bb-800737591de5",
+// 			limit:"limit"
+// 		}
+// 		$.getJSON("http://data.taipei/opendata/datalist/apiAccess?callback=?",temp,function(data){
+// 			console.log(data);
+// 		});
+		
+		
+		
+// 		$.ajax({
+// 			url:"http://data.taipei/opendata/datalist/apiAccess?scope=resourceAquire&rid=36847f3f-deff-4183-a5bb-800737591de5&limit=1",
+// // 			url:"http://data.taipei/opendata/datalist/apiAccess?callback=?",
+// 			dataType:"jsonp",
+// 			method:"GET",
+// // 			jsonpCallback: 'result_jsonp',
+// 			jsonp:"processData",
+// 			data:{callback:"processData"},
+// 			"error":function(x,y,z){
+// 						console.log("x"+x);
+// 						console.log("y"+y);
+// 						console.log("z"+z);
+// 					},
+// 			"success":function(datas){
+// 				console.log("景點資訊"+datas);
+// 			}
+// 		});
+	
+	
+// 		function processData(data){
+// 			alert(data);
+// 		}
+		
+		
+		
+		
+		
+		
+		
 		$.ajax({
 			"type" : "post",
 			"url" : "showFoodCarsMap/controller/MapMaker",

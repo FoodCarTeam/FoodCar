@@ -14,7 +14,7 @@
 <script type="text/javascript" src="jquery/jquery-3.0.0.min.js"></script>
 
 <link rel="stylesheet" type="text/css"
-	href="bootstrap/sweetAlert/sweetalert.css">
+	href="bootstrap/Impromptu/jquery-impromptu.css">
 
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet"><!--選擇器外框-->
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet"><!--太陽.月亮圖片-->
@@ -24,6 +24,8 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/rainbow/1.2.0/js/rainbow.min.js" type="text/javascript"></script>
 <script type="text/javascript" src="bootstrap/user/js/businessHours.js"></script>
 <link rel="stylesheet" type="text/css" href="bootstrap/user/css/businessHours.css"/>
+	
+	
 	
 
 <!--CSS-->
@@ -205,7 +207,7 @@ html, body {
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.2.17/jquery.timepicker.min.js"></script><!--時間list-->
  <script type="text/javascript" src="bootstrap/user/js/businessHours.js"></script>
- <script src="bootstrap/sweetAlert/sweetalert.min.js"></script>
+<script src="bootstrap/Impromptu/jquery-impromptu.js"></script>
 <script>
 $(function() {
 
@@ -235,11 +237,12 @@ $(function() {
 			"data": JSON.stringify(a.serialize()),
 			"success":function(){
 				
-				swal({
-					  title: '營業時間變更成功囉!', 
-					  confirmButtonText:"確定"
-					})
-				
+			
+					$.prompt("<h5>營業時間變更成功囉!</h5>", {
+			        	
+		        		title: "",
+		        		buttons: { "確定": true}
+		        	});
 				
 				
 				

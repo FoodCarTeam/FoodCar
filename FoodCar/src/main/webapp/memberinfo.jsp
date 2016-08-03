@@ -166,7 +166,7 @@
 										"sID":row.sID,
 										"mID":'${member.mID}'
 									},"success":function(){
-					 			$(".remove").parents("tr").remove("tr:eq("+index+")")
+//					 			$(".remove").parents("tr").remove("tr:eq("+index+")")
 									}
 								});
 							
@@ -194,7 +194,7 @@
 	    	console.log(value, row, index);
 	    }, 'click .like': function (e, value, row, index) {
 // 	    	連結到該店家
-	    	$(".like").attr("href","store?s="+row.sID);
+// 	    	$(".like").attr("href","store?s="+row.sID);
 	    	
 
 // 	        console.log("value:"+value);
