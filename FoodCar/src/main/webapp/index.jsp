@@ -6,7 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>餐餔餔</title>
-
+<link rel="shortcut icon" href="images/tools/logo.png"> 
 <link  href="index/assets/animate/set2.css" rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="index/assets/bootstrap/css/bootstrap.min.css" />
 <link rel="stylesheet" href="index/assets/animate/animate.css" />

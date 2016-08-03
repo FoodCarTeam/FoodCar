@@ -6,7 +6,7 @@
     <session-factory>
     
 
-       <!-- 連線池c3p0設定-->
+        <!-- ???瘙3p0閮剖?-->
 		<property name="hibernate.connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
 <!-- 		<property name="hibernate.connection.url">jdbc:sqlserver://10.211.55.10:1433;DatabaseName=programEEIT</property> -->
 		<property name="hibernate.connection.url">jdbc:sqlserver://foodcar.database.windows.net:1433;DatabaseName=programEEIT</property>
@@ -19,10 +19,10 @@
 		<property name="hibernate.c3p0.max_statements">50</property>
 		 <property name="hibernate.jdbc.use_get_generated_keys">true</property>
 
-<!--         <property name="hibernate.connection.datasource">java:comp/env/jdbc/FoodCar</property> -->
-<!--         <property name="hibernate.dialect">org.hibernate.dialect.SQLServerDialect</property> -->
-		<!--SQL方言,以下使用SQLServer -->
+        
+		<!--SQL?寡?,隞乩?雿輻SQLServer -->
 		<property name="hibernate.dialect">org.hibernate.dialect.SQLServerDialect</property>
+
 
 		<!--是否要顯示實際操作資料庫時的SQL -->
 		<property name="hibernate.show_sql">true</property>

@@ -6,6 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<link rel="shortcut icon" href="images/tools/logo.png"> 
 </head>
 <body>
 	<div class="navbar navbar-inverse navbar-fixed-top" role="navigation"

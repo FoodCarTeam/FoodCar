@@ -3,7 +3,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en-US" prefix="og: http://ogp.me/ns#" class="no-js">
+
 <head>
+<link rel="shortcut icon" href="images/tools/logo.png"> 
 <style>
 #users label {
 	font-size: 18px;

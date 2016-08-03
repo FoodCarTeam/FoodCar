@@ -7,7 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>餐鋪鋪</title>
-
+<link rel="shortcut icon" href="images/tools/logo.png"> 
 <link rel='stylesheet' id='slicknav-css'  href="bootstrap/login/css/mobile%20menu%20style.css" type='text/css' media='all' /><!--mobile menu style.css-->
 <!--JS-->
 <script type='text/javascript' src="bootstrap/login/js/modernizr.custom.js"></script>

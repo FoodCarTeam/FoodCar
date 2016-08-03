@@ -10,7 +10,7 @@
     <meta name="apple-itunes-app" content="app-id=634884546"/>
     <meta name="google-play-app" content="app-id=com.blogto.foodtrucks.toronto">    
     <title>餐餔餔</title>   
-      
+      <link rel="shortcut icon" href="images/tools/logo.png"> 
       <!--版型控制-->
 <link rel="stylesheet" href="add-to-cart/css/reset.css">
 <link rel="stylesheet" href="add-to-cart/css/style.css"> 

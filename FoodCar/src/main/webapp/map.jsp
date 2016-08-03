@@ -5,6 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>餐餔餔</title>
+<link rel="shortcut icon" href="images/tools/logo.png"> 
 <script async defer
 	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAgdzYOT0U2y-fUVpAfkf-XjCvXzY5-e-A&libraries=places&callback=initMap"></script>
 <script type="text/javascript" src="jquery/jquery-3.0.0.min.js"></script>
