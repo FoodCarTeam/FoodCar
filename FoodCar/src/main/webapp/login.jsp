@@ -66,7 +66,7 @@
 										<label for="" class="sr-only">請輸入帳號E-mail</label> <input
 											type="email" class="form-control" placeholder="請輸入E-mail"
 											required autofocus style="font-size: 15px" name="mUsername"
-											value="${param.mUsername}"> <label
+											value="${param.mUsername}"><br> <label
 											for="inputPassword" class="sr-only">請輸入密碼</label> <input
 											type="password" class="form-control" placeholder="請輸入密碼"
 											required style="font-size: 15px" name="mPassword"
@@ -97,7 +97,7 @@
 										<label for="" class="sr-only">請輸入手機號碼</label> <input
 											type="text" class="form-control" placeholder="請輸入手機號碼"
 											required autofocus style="font-size: 15px" name="sUsername"
-											value="${param.sUsername}"> <label
+											value="${param.sUsername}"> <br><label
 											for="inputPassword" class="sr-only">請輸入密碼</label> <input
 											type="text" class="form-control" placeholder="請輸入密碼" required
 											style="font-size: 15px" name="sPassword"
