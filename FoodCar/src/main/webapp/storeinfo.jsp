@@ -370,9 +370,9 @@ $(function(){
 									<div class="tab-pane fade in" id="tab2">
 										<h3>變更位置</h3>
 
-										<div id="GoogleMap"></div>
+<!-- 										<div id="GoogleMap"></div> -->
 										<iframe frameBorder="0" style="width: 700px; height: 500px"
-											src="http://localhost:8080/FoodCar/storeLocation.jsp"></iframe>
+											src="http://foodcar.southeastasia.cloudapp.azure.com:8080/FoodCar/storeLocation.jsp"></iframe>
 
 
 

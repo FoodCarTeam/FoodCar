@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 
 import hibernate.util.HibernateUtil;
 import model.MembersVO;
@@ -18,7 +19,7 @@ public class StoresDAOHibernate implements StoresDAO{
 //		 vo=dao.select(1);
 //		 System.out.println(vo.getsName());
 	}
-	
+
 	
 	public StoresVO select_mName(String sName) {
 		Session session=HibernateUtil.getSessionFactory().getCurrentSession();

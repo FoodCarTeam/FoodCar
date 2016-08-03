@@ -8,8 +8,11 @@
 
 </head>
 
+<!-- <script async defer -->
+<!-- 	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAgdzYOT0U2y-fUVpAfkf-XjCvXzY5-e-A&libraries=places&callback=initMap"></script> -->
+<!-- 以下是demo -->
 <script async defer
-	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAgdzYOT0U2y-fUVpAfkf-XjCvXzY5-e-A&libraries=places&callback=initMap"></script>
+	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCYlPLOTbe5ukpdei4lCJslsfIs1_qXO3Q&libraries=places&callback=initMap"></script>
 <script type="text/javascript" src="jquery/jquery-3.0.0.min.js"></script>
 <script type="text/javascript" src="bootstrap/js/jquery.jsonp.js"></script>
 <link rel='stylesheet' href='bootstrap/map/css/showFoodCarsMap.css' type='text/css' media='all' />
@@ -59,6 +62,7 @@
 			});
 		} else {
 			// Browser doesn't support Geolocation
+			console.log("navigator.geolocation有誤");
 			handleLocationError(false, infoWindow, map.getCenter());
 		}
 
@@ -79,17 +83,15 @@
 // // 			url:"http://data.taipei/opendata/datalist/apiAccess?callback=?",
 // 			dataType:"jsonp",
 // 			method:"GET",
-// // 			jsonpCallback: 'result_jsonp',
+// 			jsonpCallback: 'result_jsonp',
 // 			jsonp:"processData",
-// 			data:{callback:"processData"},
+// // 			data:{callback:"processData"},
 // 			"error":function(x,y,z){
 // 						console.log("x"+x);
 // 						console.log("y"+y);
 // 						console.log("z"+z);
 // 					},
-// 			"success":function(datas){
-// 				console.log("景點資訊"+datas);
-// 			}
+// 			"success":processData
 // 		});
 	
 	
@@ -245,29 +247,8 @@
 			}
 		});
 		
-		// 			導航
-		// 			var directionsDisplay = new google.maps.DirectionsRenderer();
-		// 			var directionsService = new google.maps.DirectionsService();
-		// 			var request = {
-		// 				origin : new google.maps.LatLng(25.047908, 121.517315),
-		// 				destination : new google.maps.LatLng(25.033681, 121.564726),
-		// 				travelMode : google.maps.TravelMode.WALKING
-		// 			};
-		// 			directionsService.route(request, function(response, status) {
-		// 				console.debug(response);
-		// 				if (status == google.maps.DirectionsStatus.OK) {
-		// 					directionsDisplay.setDirections(response);
-		// 				}
-		// 			})
-		// 			directionsDisplay.setMap(map);
-		// 			directionsDisplay.setPanel(document.getElementById('right-panel'));
 	}
-	$(function(){
-		
-		
-			
-		})
-		
+	
 	</script>
 							<div id="GoogleMap">
 								<div id="map"></div>
