@@ -29,8 +29,25 @@ public class ShowFoodCarsMap extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-
+		String sIDTemp=request.getParameter("sID");
 		
+		System.out.println("sID:"+sIDTemp);
+		
+		showFoodCarsService service=new showFoodCarsService();
+		MapsVO vo=new MapsVO();
+		int sID=Integer.parseInt(sIDTemp);
+		vo.setsID(sID);
+		List<MapsVO> list=service.select(vo);
+	
+		PrintWriter pw=response.getWriter();
+		String loca=list.get(0).getLocation();
+		String b[]=loca.split(",");
+		
+		
+		pw.println(loca);
+	
+	
+	
 	}
 
 	@Override

@@ -24,10 +24,10 @@
 		var lat;
 		var lng;
 		var map = new google.maps.Map(document.getElementById('map'), {
-			zoom : 15,
+			zoom : 14,
 			center : {
-				lat : 25.033681,
-				lng : 121.564726
+				lat : 25.033768205072125,
+				lng : 121.54339750953136
 			},
 			draggable:true
 		});
@@ -40,31 +40,31 @@
 		
 		
 		var center;
-		if (navigator.geolocation) {
-			navigator.geolocation.getCurrentPosition(function(position) {
-				map.setCenter({
-					lat : position.coords.latitude,
-					lng : position.coords.longitude
-				});
-				var marker = new google.maps.Marker({
-					map : map,
-					draggable : false,
-					animation : google.maps.Animation.BOUNCE,
-					position : {
-						lat : position.coords.latitude,
-						lng : position.coords.longitude
-					},
-				});
-				lat = position.coords.latitude;
-				lng = position.coords.longitude;
-			}, function() {
-				handleLocationError(true, infoWindow, map.getCenter());
-			});
-		} else {
-			// Browser doesn't support Geolocation
-			console.log("navigator.geolocation有誤");
-			handleLocationError(false, infoWindow, map.getCenter());
-		}
+// 		if (navigator.geolocation) {
+// 			navigator.geolocation.getCurrentPosition(function(position) {
+// 				map.setCenter({
+// 					lat : position.coords.latitude,
+// 					lng : position.coords.longitude
+// 				});
+// 				var marker = new google.maps.Marker({
+// 					map : map,
+// 					draggable : false,
+// 					animation : google.maps.Animation.BOUNCE,
+// 					position : {
+// 						lat : position.coords.latitude,
+// 						lng : position.coords.longitude
+// 					},
+// 				});
+// 				lat = position.coords.latitude;
+// 				lng = position.coords.longitude;
+// 			}, function() {
+// 				handleLocationError(true, infoWindow, map.getCenter());
+// 			});
+// 		} else {
+// 			// Browser doesn't support Geolocation
+// 			console.log("navigator.geolocation有誤");
+// 			handleLocationError(false, infoWindow, map.getCenter());
+// 		}
 
 		
 // 		var temp={

@@ -372,8 +372,10 @@ $(function(){
 										<h3>變更位置</h3>
 
 <!-- 										<div id="GoogleMap"></div> -->
+<!-- 										<iframe frameBorder="0" style="width: 700px; height: 500px" -->
+<!-- 											src="http://foodcar.southeastasia.cloudapp.azure.com:8080/FoodCar/storeLocation.jsp"></iframe> -->
 										<iframe frameBorder="0" style="width: 700px; height: 500px"
-											src="http://foodcar.southeastasia.cloudapp.azure.com:8080/FoodCar/storeLocation.jsp"></iframe>
+											src="http://localhost:8080/FoodCar/storeLocation.jsp"></iframe>
 
 
 

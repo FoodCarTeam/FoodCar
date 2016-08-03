@@ -5,7 +5,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<link rel="shortcut icon" href="images/tools/logo.png"> 
 <style type="text/css">
  html, body { 
  	height: 100%; 
@@ -20,10 +19,8 @@
 }
 </style>
 <script type="text/javascript" src="jquery/jquery-3.0.0.min.js"></script>
-<!-- <script async defer -->
-<!-- 	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAgdzYOT0U2y-fUVpAfkf-XjCvXzY5-e-A&signed_in=true&libraries=places&callback=initMap"></script> -->
 <script async defer
-	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCYlPLOTbe5ukpdei4lCJslsfIs1_qXO3Q&signed_in=true&libraries=places&callback=initMap"></script>
+	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAgdzYOT0U2y-fUVpAfkf-XjCvXzY5-e-A&signed_in=true&libraries=places&callback=initMap"></script>
 
 
 <link rel="stylesheet" type="text/css" href="bootstrap/Impromptu/jquery-impromptu.css">
@@ -58,23 +55,51 @@
 		 geocoder = new google.maps.Geocoder();
 		if (navigator.geolocation) {
 			navigator.geolocation.getCurrentPosition(function(position) {
-				map.setCenter({
-					lat : position.coords.latitude,
-					lng : position.coords.longitude
-				});
+// 				map.setCenter({
+// 					lat : position.coords.latitude,
+// 					lng : position.coords.longitude
+// 				});
 
+				
+				$.ajax({
+					"method" : "GET",
+					"url" : "showFoodCarsMap/controller/MapMaker",
+					"" : "application/json;charset=UTF-8",
+					"data":{
+						"sID":'${store.sID}'
+					},
+					"success":function(data){
+							 loc=data.split(",");
+
+								var lat=parseFloat(loc[0]);
+								var lng=parseFloat(loc[1]);
+								console.log(typeof(parseInt(loc[0])));
+								
+								marker.setPosition(
+									{
+										lat:lat,
+										lng:lng
+									}		
+								)
+								
+								map.setCenter({
+									lat : lat,
+									lng : lng
+								});
+					}
+				});
+				
 				marker = new google.maps.Marker({
 					icon : "images/MapIcon/open.png",
 					map : map,
 					draggable : true,
-					title : "你在這",
+					title : "上次的位置",
 					snippet : "",
 					animation : google.maps.Animation.BOUNCE,
 					position : {
-						lat : position.coords.latitude,
-						lng : position.coords.longitude
+						lat : lat,
+						lng : lng
 					},
-
 				});
 				var infoWindow = new google.maps.InfoWindow({
 					maxWidth : 200
@@ -153,6 +178,7 @@
 			handleLocationError(false, infoWindow, map.getCenter());
 		}
 
+		
 		var myLatLng = {
 			lat : 25.033493,
 			lng : 121.564101
@@ -164,32 +190,7 @@
 		});
 
 	}
-	
-// 	$(function(){
-		
-// 		$.ajax({
-// 			"method" : "POST",
-// 			"url" : "ifreamServletURL",
-// // 			"dataType" : "JSON",
-			
-// 			"success" : function(datas) {
-// 				console.log("asdasdads:"+datas);
-// 				var temp=datas.indexOf('ifreamServletURL');
-// 				var path=datas.substr(0,30);
-// 				path+"storeLocation.jsp"
-// 				console.log(path+"storeLocation.jsp");
-				
-				
-// 			}
-// 		});
-			
-		
-// 	});
-// 	console.log("sID:"+'${stroe.sID}');
-	
-// 	function initMap() {
-// 		alert("ok");
-// 		}
+
 </script>
 </head>
 <body>
