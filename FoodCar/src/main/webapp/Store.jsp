@@ -11,6 +11,7 @@
 <meta name="google-play-app"
 	content="app-id=com.blogto.foodtrucks.toronto">
 <title>餐餔餔</title>
+<link rel="shortcut icon" href="images/tools/logo.png"> 
 <style>
 .modal-body .form-horizontal .col-sm-2, .modal-body .form-horizontal .col-sm-10
 	{

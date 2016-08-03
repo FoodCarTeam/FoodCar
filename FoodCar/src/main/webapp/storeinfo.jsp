@@ -7,6 +7,7 @@
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>餐餔餔</title>
+<link rel="shortcut icon" href="images/tools/logo.png"> 
 <!-- <script -->
 <!-- 	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAgdzYOT0U2y-fUVpAfkf-XjCvXzY5-e-A&signed_in=true&libraries=places&callback=initMap" -->
 <!-- 	async defer></script> -->

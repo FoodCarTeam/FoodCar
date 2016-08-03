@@ -7,7 +7,7 @@
     <meta charset='utf-8'>
     <title>Business Hours plugin for jQuery &ndash; Demos and Documentation</title>
     <meta name="description" content="Business hours jQuery plugin."/>
-
+<link rel="shortcut icon" href="images/tools/logo.png"> 
    <!--CSS-->
 <link rel='stylesheet' id='main-stylesheet-css'
 	href='bootstrap/user/css/style.css' type='text/css' media='all' />

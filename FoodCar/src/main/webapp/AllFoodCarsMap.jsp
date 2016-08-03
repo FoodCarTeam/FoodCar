@@ -6,11 +6,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <link rel='stylesheet' href='bootstrap/css/showFoodCarsMap.css' type='text/css' media='all' />
+<link rel="shortcut icon" href="images/tools/logo.png"> 
 </head>
 <script type="text/javascript" src="jquery/jquery-3.0.0.min.js"></script>
 <script async defer
 	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAgdzYOT0U2y-fUVpAfkf-XjCvXzY5-e-A&signed_in=true&libraries=places&callback=initMap"></script>
-/FoodCar/src/main/webapp/images/MapIcon/open.png
+
 <body>
 	<script>
 		function initMap() {
