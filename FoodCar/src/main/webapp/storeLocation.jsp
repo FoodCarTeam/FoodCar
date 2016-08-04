@@ -20,7 +20,7 @@
 </style>
 <script type="text/javascript" src="jquery/jquery-3.0.0.min.js"></script>
 <script async defer
-	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAgdzYOT0U2y-fUVpAfkf-XjCvXzY5-e-A&signed_in=true&libraries=places&callback=initMap"></script>
+	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAgdzYOT0U2y-fUVpAfkf-XjCvXzY5-e-A&libraries=places&callback=initMap"></script>
 
 
 <link rel="stylesheet" type="text/css" href="bootstrap/Impromptu/jquery-impromptu.css">
@@ -185,7 +185,7 @@
 		};
 
 		var map = new google.maps.Map(document.getElementById('GoogleMap'), {
-			zoom : 16,
+			zoom : 15,
 			center : myLatLng
 		});
 

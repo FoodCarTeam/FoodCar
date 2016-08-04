@@ -166,7 +166,7 @@
 										"sID":row.sID,
 										"mID":'${member.mID}'
 									},"success":function(){
-//					 			$(".remove").parents("tr").remove("tr:eq("+index+")")
+					 			$(".remove").parents("tr").remove("tr:eq("+index+")")
 									}
 								});
 							
