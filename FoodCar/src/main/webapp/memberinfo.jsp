@@ -166,7 +166,7 @@
 										"sID":row.sID,
 										"mID":'${member.mID}'
 									},"success":function(){
-//					 			$(".remove").parents("tr").remove("tr:eq("+index+")")
+					 			$(".remove").parents("tr").remove("tr:eq("+index+")")
 									}
 								});
 							
@@ -265,20 +265,20 @@
 							<!-- 										<label for="mIMG" style="font-size: 30px">個人頭貼：</label> <input type="text" class="form-control" required autofocus -->
 								<%-- 											style="font-size: 15px" value="${mUsername.mIMG}" name="mIMG"></br>  --%>
 								<input type="hidden" name="mID" value="${member.mID}"><br />
-								<label for="mName" style="font-size: 20px">姓名：${member.mName}</label><br />
-								<input type="text" class="form-control" placeholder="若要更改，請輸入"
+								<label for="mName" style="font-size: 20px">姓名：</label><br />
+								<input type="text" class="form-control" placeholder="${member.mName}"
 									required autofocus style="font-size: 15px" name="mName"><br />
 									
-								<label for="mAddress" style="font-size: 20px">地址：${member.mAddress}</label><br />
-								<input type="text" class="form-control" placeholder="若要更改，請輸入"
+								<label for="mAddress" style="font-size: 20px">地址：</label><br />
+								<input type="text" class="form-control" placeholder="${member.mAddress}"
 											required autofocus style="font-size: 15px" name="mAddress"><br />
 											
-								<label for="mPhone" style="font-size: 20px">電話：${member.mPhone}</label><br />
-								<input type="text" class="form-control" placeholder="若要更改，請輸入"
+								<label for="mPhone" style="font-size: 20px">電話：</label><br />
+								<input type="text" class="form-control" placeholder="${member.mPhone}"
 									required autofocus style="font-size: 15px" name="mPhone"><br />
 									
-								<label for="mBirthday" style="font-size: 20px">生日：${member.mBirthday}</label><br />
-								<input type="date" class="form-control" placeholder="若要更改，請輸入"
+								<label for="mBirthday" style="font-size: 20px">生日：</label><br />
+								<input type="date" class="form-control" placeholder="${member.mBirthday}"
 									required autofocus style="font-size: 15px" name="mBirthday"><br/>
 									
 								

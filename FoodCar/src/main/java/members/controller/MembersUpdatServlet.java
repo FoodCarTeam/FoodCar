@@ -60,7 +60,7 @@ public class MembersUpdatServlet extends HttpServlet {
 			return;
 		}
 		MembersVO mvo1 = mService.select(Integer.parseInt(mID));
-		String a = mvo1.getmPhone();
+//		String a = mvo1.getmPhone();
 		String b = mvo1.getmIMG();
 		String c = mvo1.getmUsername();
 		String d = mvo1.getmPassword();
@@ -71,7 +71,6 @@ public class MembersUpdatServlet extends HttpServlet {
 		bean.setmAddress(mAdd);
 		bean.setmPhone(mPhone);
 		bean.setmBirthday(java.sql.Date.valueOf(mBirth));
-		bean.setmPhone(a);
 		bean.setmIMG(b);
 		bean.setmUsername(c);
 		bean.setmPassword(d);
@@ -88,8 +87,8 @@ public class MembersUpdatServlet extends HttpServlet {
 			session.setAttribute("gotChange", mvo);
 			
 			String path = request.getContextPath();
-			response.sendRedirect(path+"/index.jsp");
-			session.invalidate();
+			response.sendRedirect(path+"/memberinfo.jsp");
+			
 		}
 		
 	}

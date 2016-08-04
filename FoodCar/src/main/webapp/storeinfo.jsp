@@ -347,18 +347,18 @@ $(function(){
 											<p></p>
 
 											<input type="hidden" name="sID" value="${store.sID}"><br />
-											<label for="sName" style="font-size: 20px">店名：${store.sName}</label><br />
+											<label for="sName" style="font-size: 20px">店名：</label><br />
 											<input type="text" class="form-control"
-												placeholder="若要更改，請輸入" required autofocus
+												placeholder="${store.sName}" required autofocus
 												style="font-size: 15px" name="sName"><br /> <label
-												for="sBossName" style="font-size: 20px">老闆姓名：${store.sBossName}</label><br />
+												for="sBossName" style="font-size: 20px">老闆姓名：</label><br />
 											<input type="text" class="form-control"
-												placeholder="若要更改，請輸入" required autofocus
+												placeholder="${store.sBossName}" required autofocus
 												style="font-size: 15px" name="sBossName"><br /> <label
 												for="sIntro" style="font-size: 20px">介紹：</label><br />
 											<textarea cols="50" rows="3" type="textarea"
 												class="form-control" required autofocus
-												style="font-size: 15px; resize: none" name="sIntro">${store.sIntro}</textarea>
+												style="font-size: 15px; resize: none" name="sIntro" placeholder="${store.sIntro}"></textarea>
 										
 
 											<p></p>

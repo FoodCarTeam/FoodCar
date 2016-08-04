@@ -56,7 +56,7 @@ public class StoresUpdateServlet extends HttpServlet {
 		String a = svo1.getsUsername();
 		String b = svo1.getsPassword();
 		String c = svo1.getsLogo();
-		String d = svo1.getsBossName();
+//		String d = svo1.getsBossName();
 		
 		StoresVO bean = new StoresVO();
 		bean.setsID(Integer.valueOf(sID));
@@ -64,7 +64,6 @@ public class StoresUpdateServlet extends HttpServlet {
 		bean.setsPassword(b);
 		bean.setsBossName(sBoss);
 		bean.setsName(sName);
-		bean.setsBossName(d);
 		bean.setsIntro(sIntro);
 		bean.setsLogo(c);
 		
