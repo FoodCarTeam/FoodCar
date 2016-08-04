@@ -53,12 +53,32 @@
 		var lng;
 		var address;
 		 geocoder = new google.maps.Geocoder();
-		if (navigator.geolocation) {
-			navigator.geolocation.getCurrentPosition(function(position) {
-// 				map.setCenter({
-// 					lat : position.coords.latitude,
-// 					lng : position.coords.longitude
-// 				});
+
+		 
+		 var myLatLng = {
+					lat : 25.033493,
+					lng : 121.564101
+				};
+
+				var map = new google.maps.Map(document.getElementById('GoogleMap'), {
+					zoom : 17,
+					center : myLatLng
+				});
+
+		 
+		 
+			marker = new google.maps.Marker({
+				icon : "images/MapIcon/open.png",
+				map : map,
+				draggable : true,
+				title : "上次的位置",
+				snippet : "",
+				animation : google.maps.Animation.BOUNCE,
+				position : {
+					lat :0,
+					lng :0
+				},
+			});
 
 				
 				$.ajax({
@@ -73,7 +93,7 @@
 
 								var lat=parseFloat(loc[0]);
 								var lng=parseFloat(loc[1]);
-								console.log(typeof(parseInt(loc[0])));
+								
 								
 								marker.setPosition(
 									{
@@ -83,24 +103,15 @@
 								)
 								
 								map.setCenter({
-									lat : lat,
-									lng : lng
+									lat : lat+0.0016623,
+									lng : lng-0.003465414
 								});
+								console.log("抓資料結束"+data);
 					}
+					
 				});
 				
-				marker = new google.maps.Marker({
-					icon : "images/MapIcon/open.png",
-					map : map,
-					draggable : true,
-					title : "上次的位置",
-					snippet : "",
-					animation : google.maps.Animation.BOUNCE,
-					position : {
-						lat : lat,
-						lng : lng
-					},
-				});
+			
 				var infoWindow = new google.maps.InfoWindow({
 					maxWidth : 200
 				});
@@ -170,25 +181,11 @@
 
 				});
 
-			}, function() {
-				handleLocationError(true, infoWindow, map.getCenter());
-			});
-		} else {
-			// Browser doesn't support Geolocation
-			handleLocationError(false, infoWindow, map.getCenter());
-		}
+	
+		
 
 		
-		var myLatLng = {
-			lat : 25.033493,
-			lng : 121.564101
-		};
-
-		var map = new google.maps.Map(document.getElementById('GoogleMap'), {
-			zoom : 15,
-			center : myLatLng
-		});
-
+		
 	}
 
 </script>

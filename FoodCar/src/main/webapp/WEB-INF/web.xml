@@ -14,12 +14,21 @@
 <!-- <error-code>400</error-code>   -->
 <!-- <location>/index.jsp</location>   -->
 <!-- </error-page>   -->
+<<<<<<< HEAD
 <!-- 404 页面不存在错误 -->   
 <!-- <error-page>   -->
 <!-- <error-code>404</error-code>   -->
 <!-- <location>/index.jsp</location>   -->
 <!-- </error-page>   -->
  <!-- 500 服务器内部错误 -->   
+=======
+<!-- 404 页面不存在错误 -->  
+<!-- <error-page>   -->
+<!-- <error-code>404</error-code>   -->
+<!-- <location>/index.jsp</location>   -->
+<!-- </error-page>   -->
+<!-- 500 服务器内部错误 -->  
+>>>>>>> branch 'master' of https://github.com/FoodCarTeam/FoodCar.git
 <!-- <error-page>   -->
 <!-- <error-code>500</error-code>   -->
 <!-- <location>/index.jsp</location>   -->
