@@ -99,7 +99,7 @@
 											required autofocus style="font-size: 15px" name="sUsername"
 											value="${param.sUsername}"> <br><label
 											for="inputPassword" class="sr-only">請輸入密碼</label> <input
-											type="text" class="form-control" placeholder="請輸入密碼" required
+											type="password" class="form-control" placeholder="請輸入密碼" required
 											style="font-size: 15px" name="sPassword"
 											value="${param.sPassword}"><br/>
 											<div class="checkbox">

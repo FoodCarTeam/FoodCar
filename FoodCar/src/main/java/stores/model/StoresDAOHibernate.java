@@ -65,7 +65,7 @@ public class StoresDAOHibernate implements StoresDAO{
 			Query query = session.createQuery("from StoresVO");
 			list = query.list();
 			session.getTransaction().commit();
-		} catch (RuntimeException ex) {
+		} catch (Exception ex) {
 			session.getTransaction().rollback();
 			throw ex;
 		}

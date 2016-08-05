@@ -255,8 +255,8 @@
 
 
 				<!--/地圖-->
-<!-- 							<iframe frameBorder="0" style="width:1000px;height:600px" src="http://foodcar.southeastasia.cloudapp.azure.com:8080/FoodCar/showMap.jsp"></iframe> -->
-							<iframe frameBorder="0" style="width:1000px;height:600px" src="http://localhost:8080/FoodCar/showMap.jsp"></iframe>
+							<iframe frameBorder="0" style="width:1000px;height:600px" src="http://foodcar.southeastasia.cloudapp.azure.com:8080/FoodCar/showMap.jsp"></iframe>
+<!-- 							<iframe frameBorder="0" style="width:1000px;height:600px" src="http://localhost:8080/FoodCar/showMap.jsp"></iframe> -->
 										
 <!-- 							<div id="GoogleMap"> -->
 <!-- 								<div id="map"></div> -->
