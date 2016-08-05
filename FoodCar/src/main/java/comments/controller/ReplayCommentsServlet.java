@@ -16,13 +16,26 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.hibernate.SessionFactory;
+
 import com.google.gson.Gson;
+
+import hibernate.util.HibernateUtil;
 import model.ResponseVO;
 import response.model.ResponseDao;
 import response.model.ResponseService;
 
 @WebServlet("/comments/controller/ReplayCommentsServlet")
 public class ReplayCommentsServlet extends HttpServlet {
+
+	ResponseService service ;
+	
+	
+	
+	@Override
+	public void init() throws ServletException {
+		service=new ResponseService(new ResponseDao(HibernateUtil.getSessionFactory()));
+	}
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -34,7 +47,7 @@ public class ReplayCommentsServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //		System.out.println("doPost():method="+request.getMethod());
 		
-		ResponseService service = new ResponseService();
+		
 
 		
 //		String data = request.getParameter("data");

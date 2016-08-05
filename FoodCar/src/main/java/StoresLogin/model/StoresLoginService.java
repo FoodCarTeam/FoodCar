@@ -4,7 +4,13 @@ import model.StoresVO;
 
 
 public class StoresLoginService {
-	private static  StoresLoginDAO storesLoginDao = new StoresLoginDAOHibernate(null);
+	private   StoresLoginDAO storesLoginDao ;
+	
+	public StoresLoginService(StoresLoginDAOHibernate dao){
+		this.storesLoginDao=dao;
+	}
+	
+	
 // 為甚麼裡面要塞null ?？　　下面是甚麼寫法　？？
 	
 	

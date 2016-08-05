@@ -8,7 +8,13 @@ import model.CommentsVO;
 import model.MembersVO;
 import model.ResponseVO;
 public class CommentsService {
-	CommentsDAO dao=new CommentsDAO();
+	CommentsDAO dao;
+	
+	
+	public CommentsService(CommentsDAO dao){
+		this.dao=dao;
+	}
+	
 	
 	public static void main(String[]args){
 //		CommentsService service=new CommentsService();

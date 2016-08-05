@@ -9,7 +9,13 @@ import model.OrderDetailsVO;
 
 
 public class OrderDetailsService {
-	private OrderDetailsDAO orderDetailsDao = new OrderDetailsDAOHibernate();
+	private OrderDetailsDAO orderDetailsDao;
+
+	
+	public OrderDetailsService(OrderDetailsDAOHibernate dao){
+		this.orderDetailsDao=dao;
+	}
+	
 	
 	public static void main(String[]args){
       

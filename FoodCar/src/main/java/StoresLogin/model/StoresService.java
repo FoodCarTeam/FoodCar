@@ -11,9 +11,14 @@ import model.StoresVO;
 
 
 public class StoresService {
-	private static StoresDAO storesDao = new StoresDAOHibernate();
+	private StoresDAOHibernate dao;
 
-	public static void main(String[] args) {
+	public StoresService(StoresDAOHibernate dao){
+		this.dao=dao;
+	}
+	
+	
+//	public static void main(String[] args) {
 
 		// 測試Hours
 		// StoresService service2=new StoresService();
@@ -26,18 +31,18 @@ public class StoresService {
 		// }
 		// }
 
-	}
+//	}
 
 	public List<StoresVO> select() {
 		List<StoresVO> result = null;
-		result = storesDao.select();
+		result = dao.select();
 		return result;
 	}
 
 	public StoresVO select_sID(Integer sID) {
 		StoresVO result = null;
 		if (sID != null) {
-			result = storesDao.select_sID(sID);
+			result = dao.select_sID(sID);
 		}
 		return result;
 	}
@@ -45,7 +50,7 @@ public class StoresService {
 	public StoresVO select_sUser(String sUsername) {
 		StoresVO result = null;
 		if (sUsername != null) {
-			result = storesDao.select_sUser(sUsername);
+			result = dao.select_sUser(sUsername);
 		}
 		return result;
 	}
@@ -53,7 +58,7 @@ public class StoresService {
 	public StoresVO insert(StoresVO vo) {
 		StoresVO result = null;
 		if (vo != null) {
-			result = storesDao.insert(vo);
+			result = dao.insert(vo);
 		}
 		return result;
 	}
@@ -61,7 +66,7 @@ public class StoresService {
 	public StoresVO update(StoresVO vo) {
 		StoresVO result = null;
 		if (vo != null) {
-			result = storesDao.update(vo);
+			result = dao.update(vo);
 		}
 		return result;
 	}
@@ -69,13 +74,13 @@ public class StoresService {
 	public boolean delete(StoresVO vo) {
 		boolean result = false;
 		if (vo != null) {
-			result = storesDao.delete(vo.getsID());
+			result = dao.delete(vo.getsID());
 		}
 		return result;
 	}
 
 	public StoresVO login(String sUsername, String sPassword) {
-		StoresVO svo = storesDao.select_sUser(sUsername);
+		StoresVO svo = dao.select_sUser(sUsername);
 		if (svo != null) {
 			if (sPassword != null && sPassword.trim().length() != 0) {
 				String Pass = svo.getsPassword();
@@ -93,7 +98,7 @@ public class StoresService {
 		StoresVO svo = this.login(sUser, sPass);
 		if (svo != null) {
 			svo.setsPassword(newPass);
-			return storesDao.update(svo);
+			return dao.update(svo);
 		}
 		return null;
 	}

@@ -21,7 +21,10 @@ import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
 import org.apache.commons.io.FilenameUtils;
+import org.hibernate.SessionFactory;
 
+import hibernate.util.HibernateUtil;
+import members.model.MembersDAOHibernate;
 import members.model.MembersService;
 import model.MembersVO;
 
@@ -29,7 +32,18 @@ import model.MembersVO;
 @MultipartConfig(location="")
 @WebServlet(urlPatterns = { "/MembersSignin" })
 public class MembersSigninServlet extends HttpServlet {
-	private MembersService membersservice = new MembersService();
+	private MembersService membersservice;
+	private MembersService service;
+	
+	
+	
+	
+	@Override
+	public void init() throws ServletException {
+		   SessionFactory sf=HibernateUtil.getSessionFactory();
+		membersservice=new MembersService(new MembersDAOHibernate(sf));
+		service=new MembersService(new MembersDAOHibernate(sf));
+	}
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -144,7 +158,7 @@ public class MembersSigninServlet extends HttpServlet {
 		
 		
 	
-		MembersService service=new MembersService();
+		
 		MembersVO vo=new MembersVO();
 		if(errors.isEmpty()||errors==null){
 			System.out.println("正確");

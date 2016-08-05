@@ -11,10 +11,15 @@ public class StoresLoginDAOHibernate implements StoresLoginDAO {
 	private static final String SELECT = "from StoresVO where sUsername=?" ;
 	private static final String GET_ALL_STMT = "from StoresVO";
 	
-	private SessionFactory sessionFactory = null;
+	private SessionFactory sa;
 	public StoresLoginDAOHibernate(SessionFactory sessionFactory) {
-		this.sessionFactory = sessionFactory;
+		this.sa = sessionFactory;
 	}
+	public Session getSession(){
+		return sa.getCurrentSession();
+	}
+	
+	
 
 	public static void main(String[]args){
 		 //		測試單獨查詢
@@ -73,7 +78,8 @@ public class StoresLoginDAOHibernate implements StoresLoginDAO {
 	
 	public StoresVO select(String sUsername){
 		StoresVO storesvo = null ; 
-		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+//		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		Session session=getSession();
 		try{
 			session.beginTransaction();
 			Query query = session.createQuery(SELECT);
@@ -95,7 +101,8 @@ public class StoresLoginDAOHibernate implements StoresLoginDAO {
 		
 	System.out.println(vo);
 	
-	Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+//	Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+	Session session=getSession();
 		try{
 			session.beginTransaction();		
 			
@@ -117,8 +124,6 @@ public class StoresLoginDAOHibernate implements StoresLoginDAO {
  	return null;
 	}
 
-	public Session getSession() {
-		return sessionFactory.getCurrentSession();
-	}
+	
 	
 }

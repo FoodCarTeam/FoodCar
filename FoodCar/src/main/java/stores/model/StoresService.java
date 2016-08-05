@@ -9,7 +9,15 @@ import model.MapsVO;
 import model.StoresVO;
 
 public class StoresService {
-	private StoresDAO storesDao = new StoresDAOHibernate();
+	
+	
+	
+	
+	private StoresDAOHibernate dao;
+	
+	public  StoresService(StoresDAOHibernate dao){
+		this.dao=dao;
+	}
 	
 	public static void main(String[]args){
 
@@ -23,6 +31,8 @@ public class StoresService {
 //				System.out.println(c.getMon());
 //			}
 //		}
+//		StoresDAO dao=new StoresService(dao)
+		
 		
 	
 		
@@ -31,27 +41,27 @@ public class StoresService {
 	}
 	public List<StoresVO> select() {
 		List<StoresVO> result = null;
-			result = storesDao.select();
+			result = dao.select();
 		return result;
 	}
 	public StoresVO select(Integer sID){
 		StoresVO result = null;
 		if(sID!=null){
-			result = storesDao.select(sID);
+			result = dao.select(sID);
 		}
 		return result;
 	}
 	public StoresVO insert(StoresVO vo) {
 		StoresVO result = null;
 		if(vo!=null) {
-			result = storesDao.insert(vo);
+			result = dao.insert(vo);
 		}
 		return result;
 	}
 	public StoresVO update(StoresVO vo) {
 		StoresVO result = null;
 		if(vo!=null) {
-			result = storesDao.update(vo.getsUsername(), vo.getsPassword(), 
+			result = dao.update(vo.getsUsername(), vo.getsPassword(), 
 					vo.getsName(), vo.getsBossName(), 
 					vo.getsLogo(), vo.getsID());	
 		}
@@ -60,7 +70,7 @@ public class StoresService {
 	public boolean delete(StoresVO vo) {
 		boolean result = false;
 		if(vo!=null) {
-			result = storesDao.delete(vo.getsID());
+			result = dao.delete(vo.getsID());
 		}
 		return result;
 	}

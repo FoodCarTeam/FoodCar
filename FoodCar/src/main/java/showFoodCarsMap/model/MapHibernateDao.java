@@ -5,7 +5,9 @@ import java.util.List;
 import org.hibernate.Hibernate;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 
+import hibernate.util.HibernateUtil;
 import model.MapsVO;
 
 
@@ -15,17 +17,35 @@ public class MapHibernateDao implements MapDaoInterface {
 	final static String DELETE="delete MapsVO where sID=:sID";
 	final static String UPDATE="update MapsVO set location=:location"+" where sID=:sID";
 	
+	public SessionFactory sa;
+	
+	public MapHibernateDao(SessionFactory sa){
+		this.sa=sa;
+	}
+	private Session getSession(){
+		
+		return sa.getCurrentSession() ;
+	}
+	
+	
+	
+	
+	
 	public static void main(String[]args){
 		try {
-			hibernate.util.HibernateUtil.getSessionFactory().getCurrentSession().beginTransaction();
-//			測試單獨查詢
-			MapHibernateDao dao=new MapHibernateDao();
-			MapsVO vo=dao.select(1);
-			System.out.println("location:"+vo.getLocation());
-			
-			hibernate.util.HibernateUtil.getSessionFactory().getCurrentSession().getTransaction().commit();
+//			System.out.println("sessionFactory:"+HibernateUtil.getSessionFactory());
+//			
+//			
+//			
+////			測試單獨查詢
+//			MapHibernateDao dao=new MapHibernateDao(HibernateUtil.getSessionFactory());
+//			MapsVO vo=dao.select(1);
+//			System.out.println("location:"+vo.getLocation());
+//			System.out.println("location:"+vo);
+//			
+//			HibernateUtil.getSessionFactory().getCurrentSession().getTransaction().commit();
 		} finally {
-			hibernate.util.HibernateUtil.getSessionFactory().close();
+//			HibernateUtil.closeSessionFactory();
 		}
 
 //		測試全體查詢
@@ -58,7 +78,8 @@ public class MapHibernateDao implements MapDaoInterface {
 
 	@Override
 	public MapsVO select(int sID) {
-		Session session=hibernate.util.HibernateUtil.getSessionFactory().getCurrentSession();
+//		Session session=hibernate.util.HibernateUtil.getSessionFactory().getCurrentSession();
+		Session session=getSession();
 		MapsVO vo=null;
 		try {
 			session.beginTransaction();
@@ -75,7 +96,8 @@ public class MapHibernateDao implements MapDaoInterface {
 
 	@Override
 	public List<MapsVO> select() {
-		Session session=hibernate.util.HibernateUtil.getSessionFactory().getCurrentSession();
+//		Session session=hibernate.util.HibernateUtil.getSessionFactory().getCurrentSession();
+		Session session=getSession();
 		List<MapsVO> list=null;
 		try {
 			session.beginTransaction();
@@ -91,7 +113,8 @@ public class MapHibernateDao implements MapDaoInterface {
 
 	@Override
 	public MapsVO insert(MapsVO map) {
-		Session session=hibernate.util.HibernateUtil.getSessionFactory().getCurrentSession();
+//		Session session=hibernate.util.HibernateUtil.getSessionFactory().getCurrentSession();
+		Session session=getSession();
 		try {
 			session.beginTransaction();
 			session.save(map);
@@ -105,7 +128,8 @@ public class MapHibernateDao implements MapDaoInterface {
 
 	@Override
 	public MapsVO update(MapsVO map) {
-		Session session=hibernate.util.HibernateUtil.getSessionFactory().getCurrentSession();
+//		Session session=hibernate.util.HibernateUtil.getSessionFactory().getCurrentSession();
+		Session session=getSession();
 		try {
 			session.beginTransaction();
 			Query query=session.createQuery(UPDATE);
@@ -122,7 +146,8 @@ public class MapHibernateDao implements MapDaoInterface {
 
 	@Override
 	public boolean delete(int sID) {
-		Session session=hibernate.util.HibernateUtil.getSessionFactory().getCurrentSession();
+//		Session session=hibernate.util.HibernateUtil.getSessionFactory().getCurrentSession();
+		Session session=getSession();
 		Boolean result=false;
 		try {
 			session.beginTransaction();

@@ -19,10 +19,21 @@ public class StoresDAOHibernate implements StoresDAO{
 //		 vo=dao.select(1);
 //		 System.out.println(vo.getsName());
 	}
-
+	public  StoresDAOHibernate(SessionFactory sa){
+		this.sa=sa;
+	}
 	
+	SessionFactory sa;
+	
+	private Session getSession(){
+		
+		return this.sa.getCurrentSession();
+		
+	}
+
 	public StoresVO select_mName(String sName) {
-		Session session=HibernateUtil.getSessionFactory().getCurrentSession();
+//		Session session=HibernateUtil.getSessionFactory().getCurrentSession();
+		Session session=getSession();
 		StoresVO vo=null;
 		try {
 			session.beginTransaction();
@@ -42,7 +53,10 @@ public class StoresDAOHibernate implements StoresDAO{
 	public StoresVO select(Integer sID) {
 
 		StoresVO storesVO = null;
-		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+//		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+			
+		Session session=getSession();
+		
 		try {
 			session.beginTransaction();
 			storesVO = (StoresVO) session.get(StoresVO.class, sID);
@@ -59,7 +73,9 @@ public class StoresDAOHibernate implements StoresDAO{
 	@Override
 	public List<StoresVO> select() {
 		List<StoresVO> list = null;
-		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		
+//		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		Session session=getSession();
 		try {
 			session.beginTransaction();
 			Query query = session.createQuery("from StoresVO");

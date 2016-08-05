@@ -14,6 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import hibernate.util.HibernateUtil;
+import members.model.MembersDAOHibernate;
 import members.model.MembersService;
 import model.MembersVO;
 
@@ -21,8 +23,16 @@ import model.MembersVO;
 public class MembersUpdatServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	private MembersService mService = new MembersService();
+	private MembersService mService;
 	private MembersVO mvo;
+
+	
+	
+	
+	@Override
+	public void init() throws ServletException {
+		mService=new MembersService(new MembersDAOHibernate(HibernateUtil.getSessionFactory()));
+	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {

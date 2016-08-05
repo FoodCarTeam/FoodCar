@@ -12,16 +12,25 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-
+import hibernate.util.HibernateUtil;
 import model.MembersVO;
 import members.model.MembersDAO;
+import members.model.MembersDAOHibernate;
 import members.model.MembersService;
 
 @WebServlet("/Login")
 public class MembersServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private MembersService membersService = new MembersService();
+	private MembersService membersService ;
 			
+	@Override
+	public void init() throws ServletException {
+		
+		membersService=new MembersService(new MembersDAOHibernate(HibernateUtil.getSessionFactory()));
+		
+		
+	}
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		this.doPost(request, response);
 		

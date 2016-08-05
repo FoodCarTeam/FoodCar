@@ -371,10 +371,10 @@ $(function(){
 									<div class="tab-pane fade in" id="tab2" style="height:500px;">
 										<h3>變更位置</h3>
 										<div class="col-md-12" style="display: table;height:500px;width:700px">
-											<iframe frameBorder="0" style="width: 100%; height: 100%"
-												src="http://foodcar.southeastasia.cloudapp.azure.com:8080/FoodCar/storeLocation.jsp"></iframe>
 <!-- 											<iframe frameBorder="0" style="width: 100%; height: 100%" -->
-<!-- 												src="http://localhost:8080/FoodCar/storeLocation.jsp"></iframe> -->
+<!-- 												src="http://foodcar.southeastasia.cloudapp.azure.com:8080/FoodCar/storeLocation.jsp"></iframe> -->
+											<iframe frameBorder="0" style="width: 100%; height: 100%"
+												src="http://localhost:8080/FoodCar/storeLocation.jsp"></iframe>
 										</div>
 
 

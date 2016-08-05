@@ -13,11 +13,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.hibernate.SessionFactory;
 import org.json.simple.JSONArray;
 
 import com.google.gson.JsonObject;
 
+import comments.model.CommentsDAO;
 import comments.model.CommentsService;
+import hibernate.util.HibernateUtil;
+import members.model.MembersDAOHibernate;
 import members.model.MembersService;
 import model.CommentsVO;
 import model.MembersVO;
@@ -26,9 +30,17 @@ import model.MembersVO;
 public class InsertCommentsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-//	public InsertCommentsServlet() {
-//		super();
-//	}
+	MembersService service1;
+	CommentsService service;
+
+	@Override
+	public void init() throws ServletException {
+		
+		SessionFactory sf=HibernateUtil.getSessionFactory();
+		
+		service1=new MembersService(new MembersDAOHibernate(sf));
+		service=new CommentsService(new CommentsDAO(sf));
+	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //		System.out.println(request.getMethod());
@@ -48,7 +60,7 @@ public class InsertCommentsServlet extends HttpServlet {
 		System.out.println(cDateTemp);
 		System.out.println(cCntentTemp);
 		
-		CommentsService service=new CommentsService();
+		
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		Date date = null;
 		try {
@@ -70,7 +82,7 @@ public class InsertCommentsServlet extends HttpServlet {
 		}
 		
 		CommentsVO vo=new CommentsVO();
-		MembersService service1=new MembersService();
+		
 		
 			int mID=Integer.parseInt(mIDTemp);
 			

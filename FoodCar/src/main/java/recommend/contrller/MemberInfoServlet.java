@@ -10,20 +10,39 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.hibernate.SessionFactory;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
+import hibernate.util.HibernateUtil;
+import members.model.MembersDAOHibernate;
 import members.model.MembersService;
 import model.MembersVO;
 import model.StoresVO;
 import model.recommendVO;
+import recommend.model.recommendDao;
 import recommend.model.recommentService;
+import stores.model.StoresDAOHibernate;
 import stores.model.StoresService;
 
 @WebServlet("/MemberInfoServlet")
 public class MemberInfoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	StoresService storeService;
+	recommentService reService;
+	MembersService service;
+	
      
+	@Override
+	public void init() throws ServletException {
+	
+		SessionFactory sf=HibernateUtil.getSessionFactory();
+		
+		storeService=new StoresService(new StoresDAOHibernate(sf));
+		reService=new recommentService(new recommendDao(sf));
+		service=new MembersService(new MembersDAOHibernate(sf));
+		
+	}
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setCharacterEncoding("UTF-8");
 		response.setHeader("content-type","text/html;charset=UTF-8");
@@ -32,9 +51,9 @@ public class MemberInfoServlet extends HttpServlet {
 		
 		
 		String mID=request.getParameter("mID");
-		MembersService service=new MembersService();
-		StoresService storeService=new StoresService();
-		recommentService reService=new recommentService();
+		
+		
+		
 		MembersVO memberVO=service.select(Integer.parseInt(mID));
 		
 		Set<recommendVO> recommendVOSet=memberVO.getRecommendVO();

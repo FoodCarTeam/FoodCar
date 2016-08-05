@@ -13,9 +13,18 @@ import javax.persistence.criteria.CriteriaBuilder.In;
 import model.HoursVO;
 
 public class HoursService {
+	
+	HoursHibernateDao dao;
+	public HoursService(HoursHibernateDao dao){
+		this.dao=dao;
+	}
+	
+	
+	
+	
 	public static void main(String[]args){
 //		測試單查
-		HoursService service=new HoursService();
+//		HoursService service=new HoursService();
 //		HoursVO vo=new HoursVO();
 //		vo=service.select(1);
 //		System.out.println(vo.getsID());
@@ -26,42 +35,37 @@ public class HoursService {
 //			System.out.println(a.getsID());
 //		}
 //	測試店家是否開們
-		boolean result=service.openOrClose(1);
-		System.out.println(result);
+//		boolean result=service.openOrClose(1);
+//		System.out.println(result);
 		
 	}
 	
 	
 	public HoursVO select(int sID){
 		HoursVO vo=new HoursVO();
-		HoursHibernateDao dao=new HoursHibernateDao();
 		vo=dao.select(sID);
 		return vo;
 	}
 	
 	public List<HoursVO> select(){
 		List<HoursVO> list=new LinkedList<HoursVO>();
-		HoursHibernateDao dao=new HoursHibernateDao();
 		list=dao.select();
 		return list;
 	}
 	
 	public HoursVO update(HoursVO vo){
-		HoursHibernateDao dao=new HoursHibernateDao();
 		HoursVO result=new HoursVO();
 		result=dao.update(vo);
 		return result;
 	}
 	
 	public HoursVO insert(HoursVO vo){
-		HoursHibernateDao dao=new HoursHibernateDao();
 		HoursVO result=new HoursVO();
 		result=dao.insert(vo);
 		return result;
 	}
 	
 	public boolean openOrClose(int sID){
-		HoursHibernateDao dao=new HoursHibernateDao();
 		HoursVO vo=new HoursVO();
 		vo=dao.select(sID);
 		

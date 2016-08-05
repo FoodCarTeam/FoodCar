@@ -14,12 +14,26 @@ import javax.servlet.http.HttpServletResponse;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
+import hibernate.util.HibernateUtil;
 import model.HoursVO;
+import openTime.model.HoursHibernateDao;
 import openTime.model.HoursService;
 
 @WebServlet("/SelectStoreOpenTimeServlet")
 public class SelectStoreOpenTimeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	HoursService service;
+	
+	
+	
+	
+	
+	
+	@Override
+	public void init() throws ServletException {
+		service=new HoursService(new HoursHibernateDao(HibernateUtil.getSessionFactory()));
+	}
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setHeader("content-type", "text/html;charset=UTF-8");
 		response.setCharacterEncoding("UTF-8");
@@ -38,7 +52,7 @@ public class SelectStoreOpenTimeServlet extends HttpServlet {
 	}
 	
 	public JSONArray checkOpenTmie(int sID){
-		HoursService service=new HoursService();
+		
 		HoursVO vo=service.select(sID);
 		Calendar ca=Calendar.getInstance();
 		ca.setFirstDayOfWeek(ca.MONDAY);

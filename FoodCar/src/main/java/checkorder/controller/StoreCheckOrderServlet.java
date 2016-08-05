@@ -11,23 +11,39 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.hibernate.SessionFactory;
+
+import hibernate.util.HibernateUtil;
+import members.model.MembersDAOHibernate;
 import members.model.MembersService;
 import model.MembersVO;
 import model.MenusVO;
 import model.OrderDetailsVO;
 import model.OrdersVO;
 import model.StoresVO;
+import stores.model.StoresDAOHibernate;
 import stores.model.StoresService;
 
 @WebServlet("/storecheckorder")
 public class StoreCheckOrderServlet extends HttpServlet {
-
+	StoresService storeService;
+	MembersService memberservice;
+	
+	
+	
   
+	@Override
+	public void init() throws ServletException {
+		SessionFactory sf=HibernateUtil.getSessionFactory();
+		memberservice=new MembersService(new MembersDAOHibernate(sf));
+		storeService=new StoresService(new StoresDAOHibernate(sf));
+	}
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setHeader("content-type", "text/html;charset=UTF-8");
 		response.setCharacterEncoding("UTF-8");
-		StoresService storeService = new StoresService();
-		MembersService memberservice = new MembersService();
+	
+		
 		String s = request.getParameter("s");
 		int sID = Integer.parseInt(s);
 		StoresVO result = storeService.select(sID);

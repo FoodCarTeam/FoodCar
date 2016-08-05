@@ -6,7 +6,14 @@ import model.ResponseVO;
 
 public class ResponseService {
 
-	ResponseDao dao=new ResponseDao();
+	ResponseDao dao;
+	
+	public ResponseService(ResponseDao dao){
+		this.dao=dao;
+	}
+	
+	
+	
 	public ResponseVO select(int cID){
 		ResponseVO result=dao.select(cID);
 		return result;

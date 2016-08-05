@@ -10,8 +10,11 @@ import model.MembersVO;
 
 
 public class MembersService {
-	private static  MembersDAO membersDao = new MembersDAOHibernate();
-
+	private   MembersDAOHibernate membersDao;
+	
+	public MembersService(MembersDAOHibernate dao){
+		this.membersDao=dao;
+	}
 	
 	
 	public static void main(String[]args){
@@ -32,11 +35,11 @@ public class MembersService {
 //		System.out.println("123");
 //		
 //		
-		MembersService service=new MembersService();
-		List<String> list=service.select_TaiwanRoad("臺北市","士林區","芝玉");
-		for(String a:list){
-			System.out.println(a);
-		}
+//		MembersService service=new MembersService();
+//		List<String> list=service.select_TaiwanRoad("臺北市","士林區","芝玉");
+//		for(String a:list){
+//			System.out.println(a);
+//		}
 		
 	}
 	public List<String> select_TaiwanRoad(String County,String Area,String roadName){

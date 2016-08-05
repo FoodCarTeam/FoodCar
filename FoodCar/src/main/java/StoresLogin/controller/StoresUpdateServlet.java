@@ -11,7 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import StoresLogin.model.StoresDAOHibernate;
 import StoresLogin.model.StoresService;
+import hibernate.util.HibernateUtil;
 import model.StoresVO;
 
 
@@ -20,8 +22,19 @@ import model.StoresVO;
 public class StoresUpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
  
-	private StoresService sService = new StoresService();
+	private StoresService sService;
 	private StoresVO svo ;
+	
+	
+	
+	
+	
+	
+	@Override
+	public void init() throws ServletException {
+		sService=new StoresService(new StoresDAOHibernate(HibernateUtil.getSessionFactory()));
+	}
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 		doPost(request,response);

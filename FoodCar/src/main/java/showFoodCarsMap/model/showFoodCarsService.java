@@ -12,7 +12,14 @@ import model.StoresVO;
 import stores.model.StoresService;
 
 public class showFoodCarsService {
-	MapHibernateDao dao = new MapHibernateDao();
+	MapHibernateDao dao ;
+	
+	public showFoodCarsService(MapHibernateDao dao){
+		this.dao=dao;
+	}
+	
+	
+	
 
 	public static void main(String[] args) {
 //		showFoodCarsService service = new showFoodCarsService();

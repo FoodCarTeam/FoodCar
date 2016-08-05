@@ -7,7 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import hibernate.util.HibernateUtil;
 import model.recommendVO;
+import recommend.model.recommendDao;
 import recommend.model.recommentService;
 
 /**
@@ -16,7 +18,16 @@ import recommend.model.recommentService;
 @WebServlet("/DeleteCommendServlet")
 public class DeleteCommendServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	recommentService service;
+	
+	
+	
+	
       
+	@Override
+	public void init() throws ServletException {
+		service=new recommentService(new recommendDao(HibernateUtil.getSessionFactory()));
+	}
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	doPost(request, response);
 	}
@@ -26,7 +37,7 @@ public class DeleteCommendServlet extends HttpServlet {
 
 //		System.out.println("sID:"+sID);
 //		System.out.println("mID:"+mID);
-		recommentService service=new recommentService();
+		
 		recommendVO vo=new recommendVO();
 		vo.setmID(Integer.parseInt(mID));
 		vo.setsID(Integer.parseInt(sID));

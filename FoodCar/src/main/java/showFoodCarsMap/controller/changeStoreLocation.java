@@ -18,11 +18,23 @@ import org.json.simple.parser.JSONParser;
 
 import com.google.gson.Gson;
 
+import hibernate.util.HibernateUtil;
 import model.MapsVO;
+import showFoodCarsMap.model.MapHibernateDao;
 import showFoodCarsMap.model.showFoodCarsService;
 
 @WebServlet("/showFoodCarsMap/controller/storeLocation")
 public class changeStoreLocation extends HttpServlet{
+	showFoodCarsService service;
+	
+	
+	
+	@Override
+	public void init() throws ServletException {
+		service=new showFoodCarsService(new MapHibernateDao(HibernateUtil.getSessionFactory()));
+		
+		
+	}
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -36,7 +48,7 @@ public class changeStoreLocation extends HttpServlet{
 		
 		Gson gson=new Gson();
 		MapsVO vo=gson.fromJson(data,MapsVO.class);
-		showFoodCarsService service=new showFoodCarsService();
+		
 		MapsVO result =null;
 		
 			List<MapsVO> list=service.select(vo);

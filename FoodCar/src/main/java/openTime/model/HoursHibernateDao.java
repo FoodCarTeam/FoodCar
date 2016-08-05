@@ -4,6 +4,8 @@ package openTime.model;
 import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+
 import model.HoursVO;
 
 
@@ -12,6 +14,17 @@ public class HoursHibernateDao implements HoursDaoInterface {
 	final static String SELECT_ALL="from HoursVO order by sID";
 	final static String DELETE="delete HoursVO where sID=:sID";
 	final static String UPDATE="update HoursVO set sun=:sun,mon=:mon,tue=:tue,wed=:wed,thu=:thu,fri=:fri,sat=:sat"+" where sID=:sID";
+	SessionFactory sa;
+	
+	public HoursHibernateDao(SessionFactory sa){
+		this.sa=sa;
+	}
+	public Session getSession(){
+		return sa.getCurrentSession();
+	}
+	
+	
+	
 	
 	public static void main(String[]args){
 //		測試單獨查詢

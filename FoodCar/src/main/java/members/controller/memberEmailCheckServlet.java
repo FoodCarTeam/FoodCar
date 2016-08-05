@@ -9,13 +9,23 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import hibernate.util.HibernateUtil;
+import members.model.MembersDAOHibernate;
 import members.model.MembersService;
 import model.MembersVO;
 
 @WebServlet("/memberEmailCheckServlet")
 public class memberEmailCheckServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	MembersService service;
+	
+	
     
+	@Override
+	public void init() throws ServletException {
+		service=new MembersService(new MembersDAOHibernate(HibernateUtil.getSessionFactory()));
+	}
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
 	}
@@ -24,7 +34,7 @@ public class memberEmailCheckServlet extends HttpServlet {
 		Boolean result=false;
 		String email=request.getParameter("mUsername");
 		
-		MembersService service=new MembersService();
+		
 		
 		MembersVO vo=service.select1(email);
 		System.out.println("vo:"+vo);

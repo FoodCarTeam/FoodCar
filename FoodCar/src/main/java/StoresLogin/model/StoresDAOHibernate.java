@@ -5,6 +5,7 @@ import java.util.List;
 import org.hibernate.Hibernate;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 
 import hibernate.util.HibernateUtil;
 import model.StoresVO;
@@ -12,7 +13,15 @@ import model.StoresVO;
 public class StoresDAOHibernate implements StoresDAO {
 
 	private static final String SELECT = "from StoresVO where sUsername=?";
-
+	SessionFactory sa;
+	public StoresDAOHibernate(SessionFactory sa){
+		this.sa=sa;
+	}
+	public Session getSession(){
+		return sa.getCurrentSession();
+	}
+	
+	
 //	public static void main(String[] args) {
 //		StoresDAOHibernate dao = new StoresDAOHibernate();
 //		// select
@@ -29,7 +38,8 @@ public class StoresDAOHibernate implements StoresDAO {
 	public StoresVO select_sID(Integer sID) {
 
 		StoresVO storesVO = null;
-		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+//		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		Session session=getSession();
 		try {
 			session.beginTransaction();
 			storesVO = (StoresVO) session.get(StoresVO.class, sID);
@@ -45,7 +55,8 @@ public class StoresDAOHibernate implements StoresDAO {
 	@Override
 	public StoresVO select_sUser(String sUsername) {
 		StoresVO svo = null;
-		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+//		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		Session session=getSession();
 		try {
 			session.beginTransaction();
 			Query query = session.createQuery(SELECT);
@@ -62,7 +73,8 @@ public class StoresDAOHibernate implements StoresDAO {
 	@Override
 	public List<StoresVO> select() {
 		List<StoresVO> list = null;
-		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+//		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		Session session=getSession();
 		try {
 			session.beginTransaction();
 			Query query = session.createQuery("from StoresVO");
@@ -77,7 +89,8 @@ public class StoresDAOHibernate implements StoresDAO {
 
 	@Override
 	public StoresVO insert(StoresVO bean) {
-		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+//		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		Session session=getSession();
 		try {
 			session.beginTransaction();
 			session.saveOrUpdate(bean);
@@ -91,7 +104,8 @@ public class StoresDAOHibernate implements StoresDAO {
 
 	@Override
 	public StoresVO update(StoresVO bean) {
-		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+//		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		Session session=getSession();
 		try {
 			session.beginTransaction();
 			session.update(bean);
@@ -105,7 +119,8 @@ public class StoresDAOHibernate implements StoresDAO {
 
 	@Override
 	public boolean delete(Integer sID) {
-		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+//		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		Session session=getSession();
 		try {
 			session.beginTransaction();
 			StoresVO svo = new StoresVO();

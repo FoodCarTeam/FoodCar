@@ -29,11 +29,11 @@
             <key column="sID"/>
             <one-to-many class="model.MenusVO"/>
         </set>
-        <set name="OrdersVO" table="orders" lazy="true" cascade="all" inverse="true">
+        <set name="OrdersVO" table="orders" lazy="false" cascade="all" inverse="true">
             <key column="sID"/>
             <one-to-many class="model.OrdersVO"/>
         </set>
-        <set name="OrderDetailsVO" table="orderDetails" lazy="true" cascade="all" inverse="true">
+        <set name="OrderDetailsVO" table="orderDetails" lazy="false" cascade="all" inverse="true">
             <key column="sID"/>
             <one-to-many class="model.OrderDetailsVO"/>
         </set>

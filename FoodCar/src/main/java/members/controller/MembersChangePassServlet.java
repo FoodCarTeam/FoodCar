@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
+import hibernate.util.HibernateUtil;
+import members.model.MembersDAOHibernate;
 import members.model.MembersService;
 import model.MembersVO;
 
@@ -20,7 +22,17 @@ import model.MembersVO;
 public class MembersChangePassServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
  
-	private MembersService mService = new MembersService();
+	private MembersService mService;
+	
+	
+	@Override
+	public void init() throws ServletException {
+	
+		
+		mService=new MembersService(new MembersDAOHibernate(HibernateUtil.getSessionFactory()));
+		
+	}
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		doPost(request, response);

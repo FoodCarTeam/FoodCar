@@ -6,15 +6,28 @@
 package hibernate.util;
 
 import org.hibernate.SessionFactory;
+import org.hibernate.boot.registry.StandardServiceRegistry;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.service.ServiceRegistry;
 
 public class HibernateUtil {
 
     private static final SessionFactory sessionFactory;
-
+    private static ServiceRegistry serviceRegistry;
     static {
         try {
-            // Create the SessionFactory from hibernate.cfg.xml
+//        	 Configuration configuration = new Configuration();
+//        	  configuration.configure();
+//        	serviceRegistry = new StandardServiceRegistryBuilder().
+//        	 applySettings(configuration.getProperties()).build();
+//        	  sessionFactory = configuration.configure().buildSessionFactory(serviceRegistry);
+        	
+//        	System.out.println("sessionFactory:"+sessionFactory);
+        	
+        	
+        	
+        	
             sessionFactory = new Configuration().configure().buildSessionFactory();
         } catch (Throwable ex) {
             // Make sure you log the exception, as it might be swallowed

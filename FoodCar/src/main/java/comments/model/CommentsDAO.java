@@ -15,6 +15,7 @@ import java.util.List;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.hibernate.jdbc.Work;
 
 import hibernate.util.HibernateUtil;
@@ -30,26 +31,37 @@ public class CommentsDAO implements commentsDaoInterface{
 //	final static String UPDATE="update CommentsVO set mID=:mID,sID=:sID,cDate=:cDate,cContent=:cContent,cPoint=:cPoint,cIP=:cIP"
 //										+"where cID=:cID";
 	final static String DELETE="delete CommentsVO where cID=:cID";
+	
+	public SessionFactory sf;
+	public CommentsDAO(SessionFactory sf){
+		this.sf=sf;
+	}
+	
+	public Session getSession(){
+		return sf.getCurrentSession();
+	}
+	
+	
 	public static void main(String[] args) {
-		CommentsDAO dao=new CommentsDAO();
-		CommentsVO vo=new CommentsVO();
-////		測試新增
-		vo.setmID(1);
-		vo.setsID(3);
-		Date date=new Date();
-		vo.setcDate(new java.sql.Date(date.getTime()));
-		vo.setcContent("tdast測試dasdas");
-		vo.setcPoint("123");
-		String a="123";
-		byte ab[]=a.getBytes();
-		Byte ba[]=new Byte[ab.length];
-		 for (int i = 0; i < ab.length; i++)
-		    {
-		        ba[i] = Byte.valueOf(ab[i]);
-		    }
-		vo.setcIP(ba);
-		CommentsVO result=dao.insert(vo);
-		System.out.println(result.getcContent());
+//		CommentsDAO dao=new CommentsDAO();
+//		CommentsVO vo=new CommentsVO();
+//////		測試新增
+//		vo.setmID(1);
+//		vo.setsID(3);
+//		Date date=new Date();
+//		vo.setcDate(new java.sql.Date(date.getTime()));
+//		vo.setcContent("tdast測試dasdas");
+//		vo.setcPoint("123");
+//		String a="123";
+//		byte ab[]=a.getBytes();
+//		Byte ba[]=new Byte[ab.length];
+//		 for (int i = 0; i < ab.length; i++)
+//		    {
+//		        ba[i] = Byte.valueOf(ab[i]);
+//		    }
+//		vo.setcIP(ba);
+//		CommentsVO result=dao.insert(vo);
+//		System.out.println(result.getcContent());
 		
 //		測試修改
 //		vo.setcID(1);
@@ -113,7 +125,8 @@ public class CommentsDAO implements commentsDaoInterface{
 
 	@Override
 	public CommentsVO select_mID(int mID) {
-		Session session=HibernateUtil.getSessionFactory().getCurrentSession();
+//		Session session=HibernateUtil.getSessionFactory().getCurrentSession();
+		Session session=getSession();
 		CommentsVO vo=null;
 		try {
 			session.beginTransaction();
@@ -129,7 +142,8 @@ public class CommentsDAO implements commentsDaoInterface{
 	}
 	
 	public CommentsVO select_cID(int cID) {
-		Session session=HibernateUtil.getSessionFactory().getCurrentSession();
+//		Session session=HibernateUtil.getSessionFactory().getCurrentSession();
+		Session session=getSession();
 		CommentsVO vo=null;
 		try {
 			session.beginTransaction();
@@ -145,7 +159,8 @@ public class CommentsDAO implements commentsDaoInterface{
 
 	@Override
 	public List<CommentsVO> select_ALL_sID(int sID) {
-		Session session=HibernateUtil.getSessionFactory().getCurrentSession();
+//		Session session=HibernateUtil.getSessionFactory().getCurrentSession();
+		Session session=getSession();
 		List<CommentsVO> list=null;
 		try {
 			session.beginTransaction();
@@ -162,7 +177,8 @@ public class CommentsDAO implements commentsDaoInterface{
 
 	@Override
 	public List<CommentsVO> select_ALL_mID(int mID) {
-		Session session=HibernateUtil.getSessionFactory().getCurrentSession();
+//		Session session=HibernateUtil.getSessionFactory().getCurrentSession();
+		Session session=getSession();
 		List<CommentsVO> list=null;
 		try {
 			session.beginTransaction();
@@ -182,7 +198,8 @@ public class CommentsDAO implements commentsDaoInterface{
 	
 	@Override
 	public CommentsVO insert(CommentsVO vo) {
-		Session session=HibernateUtil.getSessionFactory().getCurrentSession();
+//		Session session=HibernateUtil.getSessionFactory().getCurrentSession();
+		Session session=getSession();
 		try {
 			session.beginTransaction();
 			
@@ -201,7 +218,8 @@ public class CommentsDAO implements commentsDaoInterface{
 	@Override
 	public CommentsVO update(CommentsVO vo) {
 		
-		Session session =HibernateUtil.getSessionFactory().getCurrentSession();
+//		Session session =HibernateUtil.getSessionFactory().getCurrentSession();
+		Session session=getSession();
 		try {
 			session.beginTransaction();
 			
@@ -225,7 +243,8 @@ public class CommentsDAO implements commentsDaoInterface{
 
 	@Override
 	public boolean delete(int cID) {
-		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+//		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		Session session=getSession();
 		boolean result=false;
 		try {
 			session.beginTransaction();

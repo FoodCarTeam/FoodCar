@@ -11,12 +11,22 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.JsonObject;
 
+import comments.model.CommentsDAO;
 import comments.model.CommentsService;
+import hibernate.util.HibernateUtil;
 
 @WebServlet("/DeleteCommentsServlet")
 public class DeleteCommentsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-  
+	CommentsService service;
+	
+	
+	
+	@Override
+	public void init() throws ServletException {
+		service=new CommentsService(new CommentsDAO(HibernateUtil.getSessionFactory()));
+	}
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	doPost(request, response);
 
@@ -26,7 +36,7 @@ public class DeleteCommentsServlet extends HttpServlet {
 	
 		String cID=request.getParameter("cID");
 //		System.out.println("刪除"+cID);
-		CommentsService service=new CommentsService();
+		
 		Boolean result=service.delete(Integer.parseInt(cID));
 		response.setHeader("content-type", "text/html;charset=UTF-8");
 		response.setCharacterEncoding("UTF-8");

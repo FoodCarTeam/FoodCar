@@ -16,15 +16,34 @@ import org.hibernate.property.MapAccessor.MapSetter;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
+import hibernate.util.HibernateUtil;
 import model.HoursVO;
 import model.MapsVO;
 import model.StoresVO;
+import openTime.model.HoursHibernateDao;
 import openTime.model.HoursService;
+import showFoodCarsMap.model.MapHibernateDao;
 import showFoodCarsMap.model.showFoodCarsService;
+import stores.model.StoresDAOHibernate;
 import stores.model.StoresService;
 
 @WebServlet("/showFoodCarsMap/controller/MapMaker")
 public class ShowFoodCarsMap extends HttpServlet {
+
+	StoresService storeService ;
+	showFoodCarsService service;
+	HoursService HoursService;
+	
+	
+	
+	
+	@Override
+	public void init() throws ServletException {
+		storeService=new StoresService(new StoresDAOHibernate(HibernateUtil.getSessionFactory()));
+		service=new showFoodCarsService(new MapHibernateDao(HibernateUtil.getSessionFactory()));
+		HoursService=new HoursService(new HoursHibernateDao(HibernateUtil.getSessionFactory()));
+		
+	}
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -33,7 +52,7 @@ public class ShowFoodCarsMap extends HttpServlet {
 		
 		System.out.println("sID:"+sIDTemp);
 		
-		showFoodCarsService service=new showFoodCarsService();
+		
 		MapsVO vo=new MapsVO();
 		int sID=Integer.parseInt(sIDTemp);
 		vo.setsID(sID);
@@ -56,8 +75,7 @@ public class ShowFoodCarsMap extends HttpServlet {
 		response.setHeader("content-type", "text/html;charset=UTF-8");
 		response.setCharacterEncoding("UTF-8");
 
-		StoresService storeService = new StoresService();
-		HoursService HoursService = new HoursService();
+		
 		List<StoresVO> list = storeService.select();
 
 		PrintWriter pw = response.getWriter();

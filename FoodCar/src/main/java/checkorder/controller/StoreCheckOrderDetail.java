@@ -11,17 +11,25 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import hibernate.util.HibernateUtil;
 import model.OrderDetailsVO;
 import model.OrdersVO;
+import order.model.OrderDAOHibernate;
 import order.model.OrderService;
 @WebServlet("/storecheckdetail")
 public class StoreCheckOrderDetail extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-  
+	OrderService service;
+	
+	
+	@Override
+	public void init() throws ServletException {
+		service=new OrderService(new OrderDAOHibernate(HibernateUtil.getSessionFactory()));
+	}
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setHeader("content-type", "text/html;charset=UTF-8");
 		response.setCharacterEncoding("UTF-8");
-		OrderService service  = new OrderService();
+		
 		String id = request.getParameter("o");
 		int oID = Integer.parseInt(id);
 		OrdersVO result = service.select(oID);

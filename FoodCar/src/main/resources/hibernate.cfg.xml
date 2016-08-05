@@ -9,12 +9,12 @@
         <!-- ???瘙3p0閮剖?-->
 		<property name="hibernate.connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
 
-<!-- 		<property name="hibernate.connection.url">jdbc:sqlserver://localhost:1433;DatabaseName=programEEIT</property> -->
-		<property name="hibernate.connection.url">jdbc:sqlserver://foodcar.database.windows.net:1433;database=programEEIT</property>
-		<property name="hibernate.connection.username">foodcar</property>
-		<property name="hibernate.connection.password">P@ssw0rd</property>       
-<!-- 		<property name="hibernate.connection.username">sa</property> -->
-<!-- 		<property name="hibernate.connection.password">p@ssw0rd</property>        -->
+<!-- 		<property name="hibernate.connection.url">jdbc:sqlserver://foodcar.database.windows.net:1433;database=programEEIT</property> -->
+<!-- 		<property name="hibernate.connection.username">foodcar</property> -->
+<!-- 		<property name="hibernate.connection.password">P@ssw0rd</property>        -->
+		<property name="hibernate.connection.url">jdbc:sqlserver://10.211.55.10:1433;DatabaseName=programEEIT</property>
+		<property name="hibernate.connection.username">sa</property>
+		<property name="hibernate.connection.password">p@ssw0rd</property>       
 
 		<property name="org.hibernate.c3p0.internal.C3P0ConnectionProvider">org.hibernate.connection.C3P0ConnectionProvider</property>
 		<property name="hibernate.c3p0.min_size">5</property>

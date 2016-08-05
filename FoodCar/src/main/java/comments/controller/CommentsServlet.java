@@ -11,6 +11,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletInputStream;
 import javax.servlet.annotation.WebServlet;
@@ -18,12 +19,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.hibernate.SessionFactory;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 import com.google.gson.Gson;
 
+import comments.model.CommentsDAO;
 import comments.model.CommentsService;
+import hibernate.util.HibernateUtil;
 import members.model.MembersDAOHibernate;
 import model.CommentsVO;
 import model.MembersVO;
@@ -34,11 +38,24 @@ import stores.model.StoresDAOHibernate;
 
 @WebServlet("/CommentsServlet")
 public class CommentsServlet extends HttpServlet {
-	CommentsService service=new CommentsService();
+	CommentsService service;
 	private static final long serialVersionUID = 1L;
+	StoresDAOHibernate storeDao;
+	MembersDAOHibernate dao;
 	
-  
+
 	
+	@Override
+	public void init() throws ServletException {
+		
+		SessionFactory sf=HibernateUtil.getSessionFactory();
+		storeDao=new StoresDAOHibernate(sf);
+		service=new CommentsService(new CommentsDAO(sf));
+				dao=new MembersDAOHibernate(sf);
+				
+				
+				
+	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -73,8 +90,8 @@ public class CommentsServlet extends HttpServlet {
 
 		SimpleDateFormat sdf=new SimpleDateFormat("yyyy/MM/dd kk:mm:ss");
 		
-		MembersDAOHibernate dao=new MembersDAOHibernate();
-		StoresDAOHibernate storeDao=new StoresDAOHibernate();
+		
+		
 		
 		for(int i=0;i<list.size();i++){
 			comment = new JSONObject();

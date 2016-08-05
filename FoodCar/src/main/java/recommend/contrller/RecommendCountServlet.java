@@ -11,12 +11,23 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.JsonObject;
 
+import hibernate.util.HibernateUtil;
+import recommend.model.recommendDao;
 import recommend.model.recommentService;
 
 @WebServlet("/RecommendCountServlet")
 public class RecommendCountServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-  
+	recommentService service;
+	
+	
+	
+	
+	@Override
+	public void init() throws ServletException {
+		service=new recommentService(new recommendDao(HibernateUtil.getSessionFactory()));
+	}
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
 	}
@@ -26,7 +37,7 @@ public class RecommendCountServlet extends HttpServlet {
 		String sID=request.getParameter("sID");
 //		System.out.println("cID:"+cID);
 		
-		recommentService service=new recommentService();
+		
 		int result=service.recommendCount(Integer.parseInt(sID));
 		
 		response.setHeader("content-type", "text/html;charset=UTF-8");

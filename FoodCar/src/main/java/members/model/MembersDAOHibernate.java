@@ -10,6 +10,7 @@ import org.hibernate.Criteria;
 import org.hibernate.Hibernate;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Order;
 
 import hibernate.util.HibernateUtil;
@@ -25,11 +26,19 @@ public class MembersDAOHibernate implements MembersDAO {
 
 	final static String DELETE="delete MembersVO where mID=:mID";
 //	final static String UPDATE="update MembersVO set mUsername=:mUsername,mPassword=:mPassword,mIMG=:mIMG"+"where mID=:mID";
+	SessionFactory sf;
+	public MembersDAOHibernate(SessionFactory sf){
+		this.sf=sf;
+	}
+	public Session getSession(){
+		return sf.getCurrentSession();
+	}
+	
 	
 	
 	public static void main(String[]args){
 //		測試單獨查詢
-		MembersDAOHibernate dao=new MembersDAOHibernate();
+//		MembersDAOHibernate dao=new MembersDAOHibernate();
 //		MembersVO vo=dao.select_mUsername("JJJJ@qq.com");
 //		vo.setmUsername("JJJJ@qq.com");
 //		dao.update(vo);
@@ -37,7 +46,7 @@ public class MembersDAOHibernate implements MembersDAO {
 
 
 //		測試新增
-		MembersVO vo = new MembersVO();
+//		MembersVO vo = new MembersVO();
 //		
 //		Date date = new Date();
 //		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
@@ -87,7 +96,8 @@ public class MembersDAOHibernate implements MembersDAO {
 		
 }
 	public MembersVO select_mName(String mName) {
-	Session session=HibernateUtil.getSessionFactory().getCurrentSession();
+//	Session session=HibernateUtil.getSessionFactory().getCurrentSession();
+		Session session=getSession();
 	MembersVO vo=null;
 	try {
 		session.beginTransaction();
@@ -105,7 +115,8 @@ public class MembersDAOHibernate implements MembersDAO {
 	@Override
 	public MembersVO select_mPhone(String mPhone ) {
 		MembersVO membersVO = null;
-		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+//		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		Session session=getSession();
 		try {
 			session.beginTransaction();
 			Query query=session.createQuery("from MembersVO where mPhone=?");
@@ -125,7 +136,8 @@ public class MembersDAOHibernate implements MembersDAO {
 
 	@Override
 	public List<String> select_TaiwanRoad(String County,String Area,String roadName) {
-		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+//		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		Session session=getSession();
 		List<String> list=null;
 		try {
 			session.beginTransaction();
@@ -145,7 +157,8 @@ public class MembersDAOHibernate implements MembersDAO {
 	@Override
 	public MembersVO select_mID(Integer mID) {
 		MembersVO membersVO = null;
-		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+//		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		Session session=getSession();
 		try {
 			session.beginTransaction();
 			membersVO = (MembersVO) session.get(MembersVO.class, mID);
@@ -162,7 +175,8 @@ public class MembersDAOHibernate implements MembersDAO {
 	@Override
 	public MembersVO select_mUsername(String mUsername) {
 		MembersVO membersVO = null;
-		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+//		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		Session session=getSession();
 		try {
 			session.beginTransaction();
 			Query query = session.createQuery(SELECT1);
@@ -179,7 +193,8 @@ public class MembersDAOHibernate implements MembersDAO {
 
 	@Override
 	public MembersVO insert(MembersVO vo) {
-		Session session = hibernate.util.HibernateUtil.getSessionFactory().getCurrentSession();
+//		Session session = hibernate.util.HibernateUtil.getSessionFactory().getCurrentSession();
+		Session session=getSession();
 		try {
 			session.beginTransaction();
 			session.save(vo);
@@ -193,7 +208,8 @@ public class MembersDAOHibernate implements MembersDAO {
 
 	@Override
 	public MembersVO update(MembersVO vo) {
-		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+//		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		Session session=getSession();
 		try {
 			session.beginTransaction();
 			// Query query=session.createQuery(UPDATE);
@@ -213,7 +229,8 @@ public class MembersDAOHibernate implements MembersDAO {
 
 	@Override
 	public boolean delete(Integer mID) {
-		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+//		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		Session session=getSession();
 		try {
 			session.beginTransaction();
 
@@ -232,7 +249,8 @@ public class MembersDAOHibernate implements MembersDAO {
 	@Override
 	public List<MembersVO> getAll() {
 		List<MembersVO> list = null;
-		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+//		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		Session session=getSession();
 		try {
 			session.beginTransaction();
 			Query query = session.createQuery(GET_ALL_STMT);

@@ -59,7 +59,7 @@
   
 <div id="MainContent">
   <div class="row">
-    <div class="small-12 large-100 columns"   style="margin-left: 280px"
+    <div class="small-12 large-100 columns"   style="width:1100px;margin:auto"
     >
       <div class="truck-details">
         <div class="content">

@@ -7,6 +7,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,27 +15,46 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.hibernate.SessionFactory;
+
+import hibernate.util.HibernateUtil;
+import members.model.MembersDAOHibernate;
 import members.model.MembersService;
 import model.MembersVO;
 import model.OrderDetailsVO;
 import model.OrdersVO;
+import order.model.OrderDAOHibernate;
 import order.model.OrderService;
+import orderDetails.model.OrderDetailsDAOHibernate;
 import orderDetails.model.OrderDetailsService;
 
 
 @WebServlet("/checkout")
 public class CheckOutServlet extends HttpServlet {
+	OrderDetailsService serviceD ;
+	OrderService service ;
+	MembersService mservice ;
+	
 	
   
+	@Override
+	public void init() throws ServletException {
+		SessionFactory sf=HibernateUtil.getSessionFactory();
+		serviceD=new OrderDetailsService(new OrderDetailsDAOHibernate(sf));
+		service=new OrderService(new OrderDAOHibernate(sf));
+		mservice=new MembersService(new MembersDAOHibernate(sf));
+		
+	}
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setHeader("content-type", "text/html;charset=UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		request.setCharacterEncoding("UTF-8");   
 		OrdersVO result = new OrdersVO();
 		OrderDetailsVO resultD = null;
-		OrderService service = new OrderService();
-		MembersService mservice = new MembersService();
-		OrderDetailsService serviceD = new OrderDetailsService();
+		
+		
+		
 		//取值
 		String[] fID = request.getParameterValues("fID[]");
 		String[] fQ = request.getParameterValues("fQ[]");

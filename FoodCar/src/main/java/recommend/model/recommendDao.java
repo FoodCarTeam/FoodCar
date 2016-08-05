@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 
 import hibernate.util.HibernateUtil;
 import members.model.MembersService;
@@ -16,10 +17,21 @@ public class recommendDao implements recommendDaoInterface {
 	final static String SELECT_mID_sID="from recommendVO where mID=:mID and sID=:sID";
 	final static String SELECT_ALL="from recommendVO order by sID";
 	final static String DELETE="delete recommendVO where rID=:rID";
+	
+	SessionFactory sa;
+	public recommendDao(SessionFactory sa){
+		this.sa=sa;
+	}
+	
+	public Session getSession(){
+		return sa.getCurrentSession();
+	}
+	
+	
 	public static void main(String[] args) {
-		recommendDao dao=new recommendDao();
-		recommendVO vo=new recommendVO();
-		MembersService ms=new MembersService();
+//		recommendDao dao=new recommendDao();
+//		recommendVO vo=new recommendVO();
+//		MembersService ms=new MembersService();
 		
 //		List<recommendVO> list=dao.select_sID(1);
 //		for(recommendVO a:list){
@@ -48,7 +60,8 @@ public class recommendDao implements recommendDaoInterface {
 	@Override
 	public recommendVO select_mID_cID(int mID, int sID) {
 	
-		Session session=HibernateUtil.getSessionFactory().getCurrentSession();
+//		Session session=HibernateUtil.getSessionFactory().getCurrentSession();
+		Session session=getSession();
 		recommendVO vo=null;
 		try {
 			session.beginTransaction();
@@ -73,7 +86,8 @@ public class recommendDao implements recommendDaoInterface {
 
 	@Override
 	public List<recommendVO> select_sID(int sID) {
-		Session session=HibernateUtil.getSessionFactory().getCurrentSession();
+//		Session session=HibernateUtil.getSessionFactory().getCurrentSession();
+		Session session=getSession();
 		List<recommendVO> list=null;
 		try {
 			session.beginTransaction();
@@ -91,7 +105,8 @@ public class recommendDao implements recommendDaoInterface {
 
 	@Override
 	public List<recommendVO> select_mID(int mID) {
-		Session session=HibernateUtil.getSessionFactory().getCurrentSession();
+//		Session session=HibernateUtil.getSessionFactory().getCurrentSession();
+		Session session=getSession();
 		List<recommendVO> list=null;
 		try {
 			session.beginTransaction();
@@ -124,7 +139,8 @@ public class recommendDao implements recommendDaoInterface {
 
 	@Override
 	public recommendVO insert(recommendVO vo) {
-		Session session=hibernate.util.HibernateUtil.getSessionFactory().getCurrentSession();
+//		Session session=hibernate.util.HibernateUtil.getSessionFactory().getCurrentSession();
+		Session session=getSession();
 		try {
 			session.beginTransaction();
 			session.save(vo);
@@ -144,7 +160,8 @@ public class recommendDao implements recommendDaoInterface {
 
 	@Override
 	public boolean delete(int rID) {
-		Session session=hibernate.util.HibernateUtil.getSessionFactory().getCurrentSession();
+//		Session session=hibernate.util.HibernateUtil.getSessionFactory().getCurrentSession();
+		Session session=getSession();
 		Boolean result=false;
 		try {
 			session.beginTransaction();
@@ -162,7 +179,8 @@ public class recommendDao implements recommendDaoInterface {
 
 	@Override
 	public int recommendCount(int sID) {
-		Session session=HibernateUtil.getSessionFactory().getCurrentSession();
+//		Session session=HibernateUtil.getSessionFactory().getCurrentSession();
+		Session session=getSession();
 		List list=null;
 		int result=0;
 		try {

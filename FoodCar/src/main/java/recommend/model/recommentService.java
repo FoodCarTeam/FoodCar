@@ -7,7 +7,11 @@ import model.recommendVO;
 
 public class recommentService {
 
-	 recommendDao dao=new recommendDao();
+	 recommendDao dao;
+	 
+	 public recommentService(recommendDao dao){
+		 this.dao=dao;
+	 }
 	
 	 public recommendVO select_mID_cID(int sID,int mID){
 		 recommendVO result=null;

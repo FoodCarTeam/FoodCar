@@ -9,19 +9,34 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import hibernate.util.HibernateUtil;
 import menus.model.MenusService;
 
 import model.MenusVO;
 import model.StoresVO;
+import stores.model.StoresDAOHibernate;
 import stores.model.StoresService;
 
 @WebServlet("/menu")
 public class MenusServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	StoresService storesService;
+	
+	
+	
+	
+	
+	
  
+	@Override
+	public void init() throws ServletException {
+		storesService=new StoresService(new StoresDAOHibernate(HibernateUtil.getSessionFactory()));
+	}
+
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		StoresService storesService = new StoresService();
+		
 		response.setHeader("content-type", "text/html;charset=UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		

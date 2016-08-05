@@ -6,6 +6,7 @@ import java.util.List;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 
 import hibernate.util.HibernateUtil;
 import model.MembersVO;
@@ -16,9 +17,22 @@ public class ResponseDao implements ResponseDaoInterface{
 	final static String SELECT="from ResponseVO where cID=:cID";
 	final static String Sselect_ALL="from ResponseVO where cID=:cID  order by cDate";
 	final static String DELETE="delete ResponseVO where rID=:rID";
+	
+	SessionFactory sa;
+	
+	public ResponseDao(SessionFactory sa){
+		this.sa=sa;
+	}
+	public Session getSession(){
+		return sa.getCurrentSession();
+	}
+	
+	
+	
+	
 	public static void main(String[] args) {
-	ResponseDao dao=new ResponseDao();
-		ResponseVO vo=new ResponseVO();
+//	ResponseDao dao=new ResponseDao();
+//		ResponseVO vo=new ResponseVO();
 //		測試新增
 		
 //		vo.setcID(1);
@@ -56,7 +70,8 @@ public class ResponseDao implements ResponseDaoInterface{
 	}
 
 	public MembersVO select_mName(String mName) {
-		Session session=HibernateUtil.getSessionFactory().getCurrentSession();
+//		Session session=HibernateUtil.getSessionFactory().getCurrentSession();
+		Session session=getSession();
 		MembersVO vo=null;
 		try {
 			session.beginTransaction();
@@ -74,7 +89,8 @@ public class ResponseDao implements ResponseDaoInterface{
 	
 	@Override
 	public ResponseVO select(int cID) {
-		Session session=HibernateUtil.getSessionFactory().getCurrentSession();
+//		Session session=HibernateUtil.getSessionFactory().getCurrentSession();
+		Session session=getSession();
 		ResponseVO vo=null;
 		try {
 			session.beginTransaction();
@@ -91,7 +107,8 @@ public class ResponseDao implements ResponseDaoInterface{
 
 	@Override
 	public List<ResponseVO> select_ALL(int cID) {
-		Session session=HibernateUtil.getSessionFactory().getCurrentSession();
+//		Session session=HibernateUtil.getSessionFactory().getCurrentSession();
+		Session session=getSession();
 		List<ResponseVO> list=null;
 		try {
 			session.beginTransaction();
@@ -109,7 +126,8 @@ public class ResponseDao implements ResponseDaoInterface{
 
 	@Override
 	public ResponseVO insert(ResponseVO vo) {
-		Session session=HibernateUtil.getSessionFactory().getCurrentSession();
+//		Session session=HibernateUtil.getSessionFactory().getCurrentSession();
+		Session session=getSession();
 		try {
 			session.beginTransaction();
 			session.save(vo);
@@ -123,7 +141,8 @@ public class ResponseDao implements ResponseDaoInterface{
 
 	@Override
 	public ResponseVO update(ResponseVO vo) {
-		Session session =HibernateUtil.getSessionFactory().getCurrentSession();
+//		Session session =HibernateUtil.getSessionFactory().getCurrentSession();
+		Session session=getSession();
 		try {
 			session.beginTransaction();
 			ResponseVO a=new ResponseVO();
@@ -145,7 +164,8 @@ public class ResponseDao implements ResponseDaoInterface{
 
 	@Override
 	public boolean delete(int rID) {
-		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+//		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		Session session=getSession();
 		boolean result=false;
 		try {
 			session.beginTransaction();

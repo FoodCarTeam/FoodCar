@@ -17,8 +17,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.json.simple.JSONValue;
 
+import StoresLogin.model.StoresDAOHibernate;
+import hibernate.util.HibernateUtil;
 import model.HoursVO;
 import model.StoresVO;
+import openTime.model.HoursHibernateDao;
 import openTime.model.HoursService;
 import stores.model.StoresService;
 
@@ -26,8 +29,16 @@ import stores.model.StoresService;
 @WebServlet("/StoresServlet")
 public class StoresServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    private StoresService storesService = new StoresService();
+    private StoresService storesService;
+    HoursService service;
+    
  
+	@Override
+	public void init() throws ServletException {
+		storesService =new StoresService(new stores.model.StoresDAOHibernate(HibernateUtil.getSessionFactory()));
+		service=new HoursService(new HoursHibernateDao(HibernateUtil.getSessionFactory()));
+	}
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setHeader("content-type", "text/html;charset=UTF-8");
 		response.setCharacterEncoding("UTF-8");
@@ -40,7 +51,7 @@ public class StoresServlet extends HttpServlet {
 
 //		以下處理營業時間
 		
-		HoursService service=new HoursService();
+		
 		List<HoursVO> list=service.select();
 		
 		

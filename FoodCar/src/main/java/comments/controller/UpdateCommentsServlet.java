@@ -12,13 +12,25 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import comments.model.CommentsDAO;
 import comments.model.CommentsService;
+import hibernate.util.HibernateUtil;
 import model.CommentsVO;
 
 
 @WebServlet("/UpdateCommentsServlet")
 public class UpdateCommentsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	CommentsService service;
+	
+	
+	
+	@Override
+	public void init() throws ServletException {
+		
+		
+		service=new CommentsService(new CommentsDAO(HibernateUtil.getSessionFactory()));
+	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
@@ -51,7 +63,7 @@ public class UpdateCommentsServlet extends HttpServlet {
 			b[i] = Byte.valueOf(a[i]);
 		}
 
-		CommentsService service=new CommentsService();
+		
 		CommentsVO resultTemp=service.select_cID(Integer.parseInt(cID));
 		Date cDate2=resultTemp.getcDate();
 		

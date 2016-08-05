@@ -18,16 +18,28 @@ import javax.swing.plaf.synth.SynthSeparatorUI;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import hibernate.util.HibernateUtil;
 import model.HoursVO;
 import model.MapsVO;
 import model.StoreOpenTime;
 import model.StoresVO;
+import openTime.model.HoursHibernateDao;
 import openTime.model.HoursService;
 import showFoodCarsMap.model.showFoodCarsService;
 
 @WebServlet("/StoreOpenTimeServlet")
 public class StoreOpenTimeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	HoursService service;
+
+	
+	
+	
+	
+	@Override
+	public void init() throws ServletException {
+		service=new HoursService(new HoursHibernateDao(HibernateUtil.getSessionFactory()));
+	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
@@ -39,7 +51,7 @@ public class StoreOpenTimeServlet extends HttpServlet {
 		Gson gson = new Gson();
 		List<StoreOpenTime>list = gson.fromJson(data,new TypeToken<List<StoreOpenTime>>(){}.getType() );
 		
-		HoursService service=new HoursService();
+		
 		HttpSession session=request.getSession();
 		StoresVO storeVo=(StoresVO)session.getAttribute("store");
 		HoursVO hoursVo=new HoursVO();

@@ -13,11 +13,25 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
+import hibernate.util.HibernateUtil;
+import members.model.MembersDAOHibernate;
 import members.model.MembersService;
 
 @WebServlet("/TaiwanRoadServlet")
 public class TaiwanRoadServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	MembersService service;
+	
+	
+	
+	@Override
+	public void init() throws ServletException {
+		service=new MembersService(new MembersDAOHibernate(HibernateUtil.getSessionFactory()));
+		
+		
+		
+		
+	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -34,7 +48,7 @@ public class TaiwanRoadServlet extends HttpServlet {
 		JsonObject jo=new JsonObject();
 		JsonArray ja=new JsonArray();
 		
-		MembersService service=new MembersService();
+		
 		List<String> list=service.select_TaiwanRoad(county,area,roadName);
 //		System.out.println(list.size());
 		for(String a:list){
