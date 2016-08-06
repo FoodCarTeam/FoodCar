@@ -36,10 +36,10 @@ public class InsertCommentsServlet extends HttpServlet {
 	@Override
 	public void init() throws ServletException {
 		
-		SessionFactory sf=HibernateUtil.getSessionFactory();
 		
-		service1=new MembersService(new MembersDAOHibernate(sf));
-		service=new CommentsService(new CommentsDAO(sf));
+		
+		service1=new MembersService(new MembersDAOHibernate(HibernateUtil.getSessionFactory()));
+		service=new CommentsService(new CommentsDAO(HibernateUtil.getSessionFactory()));
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

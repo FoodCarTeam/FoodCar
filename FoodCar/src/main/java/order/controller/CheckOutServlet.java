@@ -39,10 +39,10 @@ public class CheckOutServlet extends HttpServlet {
   
 	@Override
 	public void init() throws ServletException {
-		SessionFactory sf=HibernateUtil.getSessionFactory();
-		serviceD=new OrderDetailsService(new OrderDetailsDAOHibernate(sf));
-		service=new OrderService(new OrderDAOHibernate(sf));
-		mservice=new MembersService(new MembersDAOHibernate(sf));
+		
+		serviceD=new OrderDetailsService(new OrderDetailsDAOHibernate(HibernateUtil.getSessionFactory()));
+		service=new OrderService(new OrderDAOHibernate(HibernateUtil.getSessionFactory()));
+		mservice=new MembersService(new MembersDAOHibernate(HibernateUtil.getSessionFactory()));
 		
 	}
 

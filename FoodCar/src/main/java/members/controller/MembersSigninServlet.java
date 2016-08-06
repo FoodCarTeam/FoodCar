@@ -40,9 +40,9 @@ public class MembersSigninServlet extends HttpServlet {
 	
 	@Override
 	public void init() throws ServletException {
-		   SessionFactory sf=HibernateUtil.getSessionFactory();
-		membersservice=new MembersService(new MembersDAOHibernate(sf));
-		service=new MembersService(new MembersDAOHibernate(sf));
+		   
+		membersservice=new MembersService(new MembersDAOHibernate(HibernateUtil.getSessionFactory()));
+		service=new MembersService(new MembersDAOHibernate(HibernateUtil.getSessionFactory()));
 	}
 
 	@Override

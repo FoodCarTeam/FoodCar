@@ -34,9 +34,9 @@ public class StoreCheckOrderServlet extends HttpServlet {
   
 	@Override
 	public void init() throws ServletException {
-		SessionFactory sf=HibernateUtil.getSessionFactory();
-		memberservice=new MembersService(new MembersDAOHibernate(sf));
-		storeService=new StoresService(new StoresDAOHibernate(sf));
+		
+		memberservice=new MembersService(new MembersDAOHibernate(HibernateUtil.getSessionFactory()));
+		storeService=new StoresService(new StoresDAOHibernate(HibernateUtil.getSessionFactory()));
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

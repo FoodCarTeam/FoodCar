@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.hql.internal.ast.tree.SessionFactoryAwareNode;
 
 import hibernate.util.HibernateUtil;
 import model.ManagerVO;
@@ -29,10 +31,20 @@ public class ManagerDAOHibernate implements ManagerDAO {
 //		// System.out.println(managevo);
 //	}
 
+	SessionFactory sf;
+	public ManagerDAOHibernate(SessionFactory sf){
+		this.sf=sf;
+	}
+	
+	public Session getSession(){
+		return sf.getCurrentSession();
+	}
+	
 	@Override
 	public ManagerVO select(Integer manageID) {
 		ManagerVO managevo = null;
-		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+//		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		Session session=getSession();
 		try {
 			session.beginTransaction();
 			managevo = (ManagerVO) session.get(ManagerVO.class, manageID);
@@ -47,7 +59,8 @@ public class ManagerDAOHibernate implements ManagerDAO {
 	@Override
 	public ManagerVO select2(String managerUser) {
 		ManagerVO managevo = null;
-		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+//		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		Session session=getSession();
 		try {
 			session.beginTransaction();
 			Query query = session.createQuery(SELECT);
@@ -63,7 +76,8 @@ public class ManagerDAOHibernate implements ManagerDAO {
 
 	@Override
 	public ManagerVO insert(ManagerVO bean) {
-		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+//		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		Session session=getSession();
 		try {
 			session.beginTransaction();
 			session.save(bean);
@@ -91,7 +105,8 @@ public class ManagerDAOHibernate implements ManagerDAO {
 
 	@Override
 	public boolean delete(Integer manageID) {
-		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+//		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		Session session=getSession();
 		try {
 			session.beginTransaction();
 			ManagerVO managevo = new ManagerVO();
@@ -110,7 +125,8 @@ public class ManagerDAOHibernate implements ManagerDAO {
 	@Override
 	public List<ManagerVO> select() {
 		List<ManagerVO> list = null;
-		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+//		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		Session session=getSession();
 		try {
 			session.beginTransaction();
 			Query query = session.createQuery("from ManagerVO");

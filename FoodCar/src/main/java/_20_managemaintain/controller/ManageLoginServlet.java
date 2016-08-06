@@ -13,14 +13,22 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import _20_managemaintain.model.ManagerDAOHibernate;
 import _20_managemaintain.model.ManagerService;
+import hibernate.util.HibernateUtil;
 import model.ManagerVO;
 
 @WebServlet("/manageLogin")
 public class ManageLoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	private ManagerService manageService = new ManagerService();
+	private ManagerService manageService ;
+	
+	
+	@Override
+	public void init() throws ServletException {
+		manageService=new ManagerService(new ManagerDAOHibernate(HibernateUtil.getSessionFactory()));
+	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {

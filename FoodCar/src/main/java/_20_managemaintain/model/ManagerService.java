@@ -3,7 +3,7 @@ package _20_managemaintain.model;
 import model.ManagerVO;
 
 public class ManagerService {
-	private ManagerDAO managerdao = new ManagerDAOHibernate();
+	private ManagerDAO managerdao;
 	
 //	public static void main (String[] args){
 //		//login
@@ -11,6 +11,12 @@ public class ManagerService {
 ////		ManagerVO managevo = manageService.login("bluesky", "bluesky");
 ////		System.out.println(managevo);
 //	}
+	public ManagerService( ManagerDAOHibernate dao){
+		this.managerdao=dao;
+	}
+	
+	
+	
 
 	public ManagerVO select(Integer manageID) {
 		ManagerVO result = null;

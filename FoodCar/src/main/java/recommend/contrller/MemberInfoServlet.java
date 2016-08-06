@@ -36,11 +36,11 @@ public class MemberInfoServlet extends HttpServlet {
 	@Override
 	public void init() throws ServletException {
 	
-		SessionFactory sf=HibernateUtil.getSessionFactory();
 		
-		storeService=new StoresService(new StoresDAOHibernate(sf));
-		reService=new recommentService(new recommendDao(sf));
-		service=new MembersService(new MembersDAOHibernate(sf));
+		
+		storeService=new StoresService(new StoresDAOHibernate(HibernateUtil.getSessionFactory()));
+		reService=new recommentService(new recommendDao(HibernateUtil.getSessionFactory()));
+		service=new MembersService(new MembersDAOHibernate(HibernateUtil.getSessionFactory()));
 		
 	}
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

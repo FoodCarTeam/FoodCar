@@ -40,65 +40,140 @@
 		
 		
 		var center;
-// 		if (navigator.geolocation) {
-// 			navigator.geolocation.getCurrentPosition(function(position) {
-// 				map.setCenter({
-// 					lat : position.coords.latitude,
-// 					lng : position.coords.longitude
-// 				});
-// 				var marker = new google.maps.Marker({
-// 					map : map,
-// 					draggable : false,
-// 					animation : google.maps.Animation.BOUNCE,
-// 					position : {
-// 						lat : position.coords.latitude,
-// 						lng : position.coords.longitude
-// 					},
-// 				});
-// 				lat = position.coords.latitude;
-// 				lng = position.coords.longitude;
-// 			}, function() {
-// 				handleLocationError(true, infoWindow, map.getCenter());
-// 			});
-// 		} else {
-// 			// Browser doesn't support Geolocation
-// 			console.log("navigator.geolocation有誤");
-// 			handleLocationError(false, infoWindow, map.getCenter());
-// 		}
-
-		
-// 		var temp={
-// 				scope:"resourceAquire",
-// 			rid:"36847f3f-deff-4183-a5bb-800737591de5",
-// 			limit:"limit"
-// 		}
-// 		$.getJSON("http://data.taipei/opendata/datalist/apiAccess?callback=?",temp,function(data){
-// 			console.log(data);
-// 		});
 		
 		
-		
-// 		$.ajax({
-// 			url:"http://data.taipei/opendata/datalist/apiAccess?scope=resourceAquire&rid=36847f3f-deff-4183-a5bb-800737591de5&limit=1",
-// // 			url:"http://data.taipei/opendata/datalist/apiAccess?callback=?",
-// 			dataType:"jsonp",
-// 			method:"GET",
+		$.ajax({
+			url:"ReadActivityServlet",
+			dataType:"json",
+			method:"GET",
 // 			jsonpCallback: 'result_jsonp',
 // 			jsonp:"processData",
-// // 			data:{callback:"processData"},
-// 			"error":function(x,y,z){
-// 						console.log("x"+x);
-// 						console.log("y"+y);
-// 						console.log("z"+z);
-// 					},
-// 			"success":processData
-// 		});
+// 			data:{callback:"processData"},
+			"error":function(x,y,z){
+						console.log("x"+x);
+						console.log("y"+y);
+						console.log("z"+z);
+					},
+			"success":function(datas){
+					console.log(datas);
+					console.log("景點資訊");
+					$.each(datas,function(index,value){
+						var lat =parseFloat(value.lat);
+						var lng =parseFloat(value.lng);
+						
+						var markerView = new google.maps.Marker({
+							icon : "images/MapIcon/icon_location.png",
+							map : map,
+							place : {
+								location : {
+									lat : lat,
+									lng : lng
+								},
+								query : "321"
+							},
+							attribution : {
+								source : 'Google Maps JavaScript API231132',
+								webUrl : 'https://developers.google.com/maps/'
+							}
+						});
+						
+						
+						
+						markerView.addListener('click', function() {
+							infoWindowView.open(map, markerView);
+						});
+						
+// 						使用者縮放地圖時關掉資訊視窗
+						google.maps.event.addListener(map, 'zoom_changed', function() {
+							infoWindowView.close();
+							infoWindow.close();
+							   });
+//								點擊地圖時關閉資訊視窗
+						  google.maps.event.addListener(map, 'click', function() {
+							  infoWindowView.close();
+							  infoWindow.close();
+							  });
+// 						  var content = "<div id='iw-container'>" 
+// 						  + "<div id='storeName' class='iw-title' style='font-size:16px;line-height:20px'><a href='store?s="+"123"+"' target='_parent' style='color:white;text-decoration:none;' >" 
+// 						  + value.title + "</a></div>" + "<div class='iw-content'>" 
+// 						  + "<p style='font-size:14px;line-height:20px'>開放時間：" 
+// 						  + value.openTime + "</p>" + "<p style='font-size:14px;line-height:20px'>介紹：" 
+// 						  +value.body + "</p>" + "</div></div>";
+
+ 					var content = "<div id='iw-container'>" 
+					  + "<div id='storeName' class='iw-title' style='font-size:16px;line-height:20px'><a href='store?s="+""+"' target='_parent' style='color:white;text-decoration:none;' >" 
+					  + "名字" + "</a></div>" + "<div class='iw-content'>" 
+					  + "<p style='font-size:14px;line-height:20px'>電話號碼：" 
+					  + "電話" + "</p>" + "<p style='font-size:14px;line-height:20px'>今日營業時間：" 
+					  + "時間" + "</p>" + "<p style='font-size:14px;line-height:20px'>介紹：" 
+					  + value.body + "</p>" + "</div></div>";
+
+
+							//
+//		'<img src="http://maps.marnoto.com/en/5wayscustomizeinfowindow/images/vistalegre.jpg" alt="Porcelain Factory of Vista Alegre" height="115" width="83">'
+						var infoWindowView = new google.maps.InfoWindow({
+							content : content
+							
+						});
+						
+						
+						google.maps.event.addListener(infoWindowView, 'domready', function() {
+							var iwOuter = $('.gm-style-iw');
+							var iwBackground = iwOuter.prev();
+							iwBackground.children(':nth-child(2)').css({
+								'display' : 'none'
+							});
+							iwBackground.children(':nth-child(4)').css({
+								'display' : 'none'
+							});
+							iwOuter.parent().parent().css({
+								left : '115px'
+							});
+							iwBackground.children(':nth-child(1)').attr('style', function(i, s) {
+								return s + 'left: 76px !important;'
+							});
+							iwBackground.children(':nth-child(3)').attr('style', function(i, s) {
+								return s + 'left: 76px !important;'
+							});
+							iwBackground.children(':nth-child(3)').find('div').children().css({
+								'box-shadow' : 'rgba(72, 181, 233, 0.6) 0px 1px 6px',
+								'z-index' : '1'
+							});
+							var iwCloseBtn = iwOuter.next();
+							iwCloseBtn.css({
+								opacity : '1',
+								right : '38px',
+								top : '3px',
+								border : '7px solid #ec6b4c',
+								'border-radius' : '13px',
+								'box-shadow' : '0 0 5px #ec6b4c'
+							});
+							if ($('.iw-content').height() < 140) {
+								$('.iw-bottom-gradient').css({
+									display : 'none'
+								});
+							}
+							iwCloseBtn.mouseout(function() {
+								$(this).css({
+									opacity : '1'
+								});
+							});
+						});
+						
+						
+						
+						
+// 						each尾巴
+					})
+				
+				
+				
+				
+				
+			}
+		});
 	
 	
-// 		function processData(data){
-// 			alert(data);
-// 		}
-		
 		
 		
 		
@@ -173,10 +248,12 @@
 //	 				使用者縮放地圖時關掉資訊視窗
 					google.maps.event.addListener(map, 'zoom_changed', function() {
 						    	infoWindow.close();
+						    	infoWindowView.close();
 						   });
 //							點擊地圖時關閉資訊視窗
 					  google.maps.event.addListener(map, 'click', function() {
 						  infoWindow.close();
+						  infoWindowView.close();
 						  });
 					  var content = "<div id='iw-container'>" 
 					  + "<div id='storeName' class='iw-title' style='font-size:16px;line-height:20px'><a href='store?s="+value.sID+"' target='_parent' style='color:white;text-decoration:none;' >" 

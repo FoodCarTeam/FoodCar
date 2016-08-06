@@ -48,10 +48,10 @@ public class CommentsServlet extends HttpServlet {
 	@Override
 	public void init() throws ServletException {
 		
-		SessionFactory sf=HibernateUtil.getSessionFactory();
-		storeDao=new StoresDAOHibernate(sf);
-		service=new CommentsService(new CommentsDAO(sf));
-				dao=new MembersDAOHibernate(sf);
+		
+		storeDao=new StoresDAOHibernate(HibernateUtil.getSessionFactory());
+		service=new CommentsService(new CommentsDAO(HibernateUtil.getSessionFactory()));
+				dao=new MembersDAOHibernate(HibernateUtil.getSessionFactory());
 				
 				
 				
