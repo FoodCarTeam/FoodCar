@@ -70,81 +70,44 @@ public class ResponseDao implements ResponseDaoInterface{
 	}
 
 	public MembersVO select_mName(String mName) {
-//		Session session=HibernateUtil.getSessionFactory().getCurrentSession();
-		Session session=getSession();
-		MembersVO vo=null;
-		try {
-			session.beginTransaction();
-			Query query=session.createQuery(SELECT_mName);
+			Query query=this.getSession().createQuery(SELECT_mName);
 			query.setParameter("mName",mName);
-			vo=(MembersVO)query.uniqueResult();
-			session.getTransaction().commit();
-		} catch (Exception e) {
-			session.getTransaction().rollback();
-			e.printStackTrace();
-		}
+			MembersVO vo=(MembersVO)query.uniqueResult();
+			
 		return vo;
 	}
 	
 	
 	@Override
 	public ResponseVO select(int cID) {
-//		Session session=HibernateUtil.getSessionFactory().getCurrentSession();
-		Session session=getSession();
-		ResponseVO vo=null;
-		try {
-			session.beginTransaction();
-			Query query=session.createQuery(SELECT);
+			Query query=this.getSession().createQuery(SELECT);
 			query.setParameter("cID",cID);
-			vo=(ResponseVO)query.uniqueResult();
-			session.getTransaction().commit();
-		} catch (Exception e) {
-			session.getTransaction().rollback();
-			e.printStackTrace();
-		}
+			ResponseVO vo=(ResponseVO)query.uniqueResult();
+			
 		return vo;
 	}
 
 	@Override
 	public List<ResponseVO> select_ALL(int cID) {
-//		Session session=HibernateUtil.getSessionFactory().getCurrentSession();
-		Session session=getSession();
-		List<ResponseVO> list=null;
-		try {
-			session.beginTransaction();
-			Query query=session.createQuery(Sselect_ALL);
+		
+	
+			Query query=this.getSession().createQuery(Sselect_ALL);
 			query.setParameter("cID", cID);
-			list=query.list();
-			session.getTransaction().commit();
-		} catch (Exception e) {
-			session.getTransaction().rollback();
-			e.printStackTrace();
-		}
+			List<ResponseVO> list=query.list();
+			
 		return list;
 		
 	}
 
 	@Override
 	public ResponseVO insert(ResponseVO vo) {
-//		Session session=HibernateUtil.getSessionFactory().getCurrentSession();
-		Session session=getSession();
-		try {
-			session.beginTransaction();
-			session.save(vo);
-			session.getTransaction().commit();
-		} catch (Exception e) {
-			session.getTransaction().rollback();
-			e.printStackTrace();
-		}
+			this.getSession().save(vo);
+		
 		return vo;
 	}
 
 	@Override
 	public ResponseVO update(ResponseVO vo) {
-//		Session session =HibernateUtil.getSessionFactory().getCurrentSession();
-		Session session=getSession();
-		try {
-			session.beginTransaction();
 			ResponseVO a=new ResponseVO();
 			a.setcID(vo.getcID());
 			a.setmName(vo.getmName());
@@ -153,31 +116,21 @@ public class ResponseDao implements ResponseDaoInterface{
 			a.setcDate(vo.getcDate());
 			a.setcIP(vo.getcIP());
 			a.setrID(vo.getrID());
-			session.update(a);
-			session.getTransaction().commit();
-		} catch (Exception e) {
-			session.getTransaction().rollback();
-			e.printStackTrace();
-		}
+			this.getSession().update(a);
+			
 		return vo;
 	}
 
 	@Override
 	public boolean delete(int rID) {
-//		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-		Session session=getSession();
 		boolean result=false;
-		try {
-			session.beginTransaction();
-			Query query=session.createQuery(DELETE);
+	
+			Query query=this.getSession().createQuery(DELETE);
 			query.setParameter("rID", rID);
 			query.executeUpdate();
-			session.getTransaction().commit();
+		
 			result=true;
-		} catch (HibernateException e) {
-			session.getTransaction().rollback();
-			e.printStackTrace();
-		}
+		
 		return result;
 	}
 	

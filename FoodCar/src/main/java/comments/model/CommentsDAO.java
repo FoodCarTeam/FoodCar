@@ -107,89 +107,50 @@ public class CommentsDAO implements commentsDaoInterface{
 
 	@Override
 	public CommentsVO select_sID(int sID) {
-		Session session=HibernateUtil.getSessionFactory().getCurrentSession();
-		CommentsVO vo=null;
-		try {
-			session.beginTransaction();
-			Query query=session.createQuery(SELECT_sID);
+
+			Query query=this.getSession().createQuery(SELECT_sID);
 			query.setParameter("sID",sID);
-			vo=(CommentsVO)query.uniqueResult();
-			session.getTransaction().commit();
-		} catch (Exception e) {
-			session.getTransaction().rollback();
-			e.printStackTrace();
-		}
+			CommentsVO vo=(CommentsVO)query.uniqueResult();
+		
 		return vo;
 	}
 
 
 	@Override
 	public CommentsVO select_mID(int mID) {
-//		Session session=HibernateUtil.getSessionFactory().getCurrentSession();
-		Session session=getSession();
-		CommentsVO vo=null;
-		try {
-			session.beginTransaction();
-			Query query=session.createQuery(SELECT_mID);
+
+			Query query=this.getSession().createQuery(SELECT_mID);
 			query.setParameter("mID",mID);
-			vo=(CommentsVO)query.uniqueResult();
-			session.getTransaction().commit();
-		} catch (Exception e) {
-			session.getTransaction().rollback();
-			e.printStackTrace();
-		}
+			CommentsVO vo=(CommentsVO)query.uniqueResult();
+			
 		return vo;
 	}
 	
 	public CommentsVO select_cID(int cID) {
-//		Session session=HibernateUtil.getSessionFactory().getCurrentSession();
-		Session session=getSession();
-		CommentsVO vo=null;
-		try {
-			session.beginTransaction();
-			vo=(CommentsVO)session.get(CommentsVO.class, cID);
-			session.getTransaction().commit();
-		} catch (Exception e) {
-			session.getTransaction().rollback();
-			e.printStackTrace();
-		}
-		return vo;
+
+		return (CommentsVO)this.getSession().get(CommentsVO.class, cID);
 	}
 	
 
 	@Override
 	public List<CommentsVO> select_ALL_sID(int sID) {
 //		Session session=HibernateUtil.getSessionFactory().getCurrentSession();
-		Session session=getSession();
-		List<CommentsVO> list=null;
-		try {
-			session.beginTransaction();
-			Query query=session.createQuery(Sselect_ALL_sID);
+		
+			Query query=this.getSession().createQuery(Sselect_ALL_sID);
 			query.setParameter("sID", sID);
-			list=query.list();
-			session.getTransaction().commit();
-		} catch (Exception e) {
-			session.getTransaction().rollback();
-			e.printStackTrace();
-		}
+			List<CommentsVO> list=query.list();
+	
 		return list;
 	}
 
 	@Override
 	public List<CommentsVO> select_ALL_mID(int mID) {
 //		Session session=HibernateUtil.getSessionFactory().getCurrentSession();
-		Session session=getSession();
-		List<CommentsVO> list=null;
-		try {
-			session.beginTransaction();
-			Query query=session.createQuery(Sselect_ALL_mID);
+	
+			Query query=this.getSession().createQuery(Sselect_ALL_mID);
 			query.setParameter("mID", mID);
-			list=query.list();
-			session.getTransaction().commit();
-		} catch (Exception e) {
-			session.getTransaction().rollback();
-			e.printStackTrace();
-		}
+			List<CommentsVO> list=query.list();
+		
 		return list;
 	}
 
@@ -198,30 +159,15 @@ public class CommentsDAO implements commentsDaoInterface{
 	
 	@Override
 	public CommentsVO insert(CommentsVO vo) {
-//		Session session=HibernateUtil.getSessionFactory().getCurrentSession();
-		Session session=getSession();
-		try {
-			session.beginTransaction();
+
+			this.getSession().save(vo);
 			
-			
-			
-			
-			session.save(vo);
-			session.getTransaction().commit();
-		} catch (Exception e) {
-			session.getTransaction().rollback();
-			e.printStackTrace();
-		}
 		return vo;
 	}
 
 	@Override
 	public CommentsVO update(CommentsVO vo) {
-		
-//		Session session =HibernateUtil.getSessionFactory().getCurrentSession();
-		Session session=getSession();
-		try {
-			session.beginTransaction();
+
 			
 			CommentsVO a=new CommentsVO();
 			a.setcID(vo.getcID());
@@ -232,31 +178,21 @@ public class CommentsDAO implements commentsDaoInterface{
 			a.setcDate(b);
 			a.setcPoint(vo.getcPoint());
 			a.setcIP(vo.getcIP());
-			session.update(a);
-			session.getTransaction().commit();
-		} catch (Exception e) {
-			session.getTransaction().rollback();
-			e.printStackTrace();
-		}
+			this.getSession().update(a);
+			
 		return vo;
 	}
 
 	@Override
 	public boolean delete(int cID) {
-//		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-		Session session=getSession();
+
 		boolean result=false;
-		try {
-			session.beginTransaction();
-			Query query=session.createQuery(DELETE);
+	
+			Query query=this.getSession().createQuery(DELETE);
 			query.setParameter("cID", cID);
 			query.executeUpdate();
-			session.getTransaction().commit();
 			result=true;
-		} catch (HibernateException e) {
-			session.getTransaction().rollback();
-			e.printStackTrace();
-		}
+	
 		return result;
 	}
 

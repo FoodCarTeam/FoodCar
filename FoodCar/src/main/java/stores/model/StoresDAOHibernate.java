@@ -32,60 +32,26 @@ public class StoresDAOHibernate implements StoresDAO{
 	}
 
 	public StoresVO select_mName(String sName) {
-//		Session session=HibernateUtil.getSessionFactory().getCurrentSession();
-		Session session=getSession();
-		StoresVO vo=null;
-		try {
-			session.beginTransaction();
-			Query query=session.createQuery("from StoresVO where sName=:sName");
+			Query query=this.getSession().createQuery("from StoresVO where sName=:sName");
 			query.setParameter("sName",sName);
-			vo=(StoresVO)query.uniqueResult();
-			session.getTransaction().commit();
-		} catch (Exception e) {
-			session.getTransaction().rollback();
-			e.printStackTrace();
-		}
+			StoresVO vo=(StoresVO)query.uniqueResult();
+			
 		return vo;
 	}
 	
 	
 	@Override
 	public StoresVO select(Integer sID) {
-
-		StoresVO storesVO = null;
-//		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-			
-		Session session=getSession();
-		
-		try {
-			session.beginTransaction();
-			storesVO = (StoresVO) session.get(StoresVO.class, sID);
-			
-			session.getTransaction().commit();
-		} catch (RuntimeException ex) {
-			session.getTransaction().rollback();
-			throw ex;
-		}
-		return storesVO;
+		return (StoresVO) this.getSession().get(StoresVO.class, sID);
 
 	}
 
 	@Override
 	public List<StoresVO> select() {
-		List<StoresVO> list = null;
-		
-//		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-		Session session=getSession();
-		try {
-			session.beginTransaction();
-			Query query = session.createQuery("from StoresVO");
-			list = query.list();
-			session.getTransaction().commit();
-		} catch (Exception ex) {
-			session.getTransaction().rollback();
-			throw ex;
-		}
-		return list;
+	
+			Query query = this.getSession().createQuery("from StoresVO");
+	
+		return (List<StoresVO>)query.list();
 	}
 
 	@Override

@@ -9,8 +9,10 @@ import model.MenusVO;
 
 
 public class MenusService {
-	private MenusDAO menusDao = new MenusDAOHibernate();
-	
+	private MenusDAOHibernate menusDao;
+	public MenusService(MenusDAOHibernate dao){
+		this.menusDao=dao;
+	}
 	public static void main(String[]args){
 //		測試showFoodCarsMap
 //		StoresService service=new StoresService();
@@ -22,10 +24,7 @@ public class MenusService {
 //				System.out.println(b.getLocation());
 //			}
 //		}
-		
-		MenusService service = new MenusService();
-		
-		service.delete(4);
+	
 	}
 	
 	public MenusVO select(Integer sID){

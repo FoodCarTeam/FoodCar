@@ -25,16 +25,8 @@ public class OrderDetailsDAOHibernate implements OrderDetailsDAO {
 	
 	@Override
 	public OrderDetailsVO insert(OrderDetailsVO vo) {
-//		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-		Session session=getSession();
-		try {
-			session.beginTransaction();
-			session.saveOrUpdate(vo);
-			session.getTransaction().commit();
-		} catch (RuntimeException ex) {
-			session.getTransaction().rollback();
-			throw ex;
-		}
+			this.getSession().saveOrUpdate(vo);
+		
 		return null;
 	}
 

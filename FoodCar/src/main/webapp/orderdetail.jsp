@@ -57,10 +57,9 @@
   
    <jsp:include page="header.jsp"></jsp:include>
   
-<div id="MainContent">
+<div id="MainContent" style="width:1100px;margin:auto">
   <div class="row">
-    <div class="small-12 large-100 columns"   style="width:1100px;margin:auto"
-    >
+    <div class="small-12 large-100 columns" >
       <div class="truck-details">
         <div class="content">
           <h1> 結帳完成!  </h1>

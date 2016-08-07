@@ -7,18 +7,25 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import hibernate.util.HibernateUtil;
+import menus.model.MenusDAOHibernate;
 import menus.model.MenusService;
 import model.MenusVO;
 
 @WebServlet("/MenueditDelete")
 public class MenueditDelete extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	MenusService service ;
+	@Override
+	public void init() throws ServletException {
+		service=new MenusService(new MenusDAOHibernate(HibernateUtil.getSessionFactory()));
+	}
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		MenusService menuService = new MenusService();
+
 		String f = request.getParameter("f");
 		if(f !=null && f.length()!=0){
 			int fID = Integer.parseInt(f);
-			menuService.delete(fID);
+			service.delete(fID);
 			
 		}
 		

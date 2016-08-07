@@ -59,24 +59,14 @@ public class recommendDao implements recommendDaoInterface {
 	
 	@Override
 	public recommendVO select_mID_cID(int mID, int sID) {
-	
-//		Session session=HibernateUtil.getSessionFactory().getCurrentSession();
-		Session session=getSession();
-		recommendVO vo=null;
-		try {
-			session.beginTransaction();
-			Query query=session.createQuery(SELECT_mID_sID);
+			Query query=this.getSession().createQuery(SELECT_mID_sID);
 			query.setParameter("mID", mID);
 			query.setParameter("sID", sID);
 			
-			vo=(recommendVO)query.uniqueResult();
+			recommendVO vo=(recommendVO)query.uniqueResult();
 			
 			
-			session.getTransaction().commit();
-		} catch (Exception e) {
-			session.getTransaction().rollback();
-			e.printStackTrace();
-		}
+			
 		return vo;
 		
 	}
@@ -86,69 +76,34 @@ public class recommendDao implements recommendDaoInterface {
 
 	@Override
 	public List<recommendVO> select_sID(int sID) {
-//		Session session=HibernateUtil.getSessionFactory().getCurrentSession();
-		Session session=getSession();
-		List<recommendVO> list=null;
-		try {
-			session.beginTransaction();
-			Query query=session.createQuery(SELECT_sID);
+			Query query=this.getSession().createQuery(SELECT_sID);
 			query.setParameter("sID", sID);
-			list=query.list();
-			session.getTransaction().commit();
-		} catch (Exception e) {
-			session.getTransaction().rollback();
-			e.printStackTrace();
-		}
+			List<recommendVO> list=query.list();
+			
 		
 		return list;
 	}
 
 	@Override
 	public List<recommendVO> select_mID(int mID) {
-//		Session session=HibernateUtil.getSessionFactory().getCurrentSession();
-		Session session=getSession();
-		List<recommendVO> list=null;
-		try {
-			session.beginTransaction();
-			Query query=session.createQuery(SELECT_sID);
+			Query query=this.getSession().createQuery(SELECT_sID);
 			query.setParameter("mID", mID);
-			list=query.list();
-			session.getTransaction().commit();
-		} catch (Exception e) {
-			session.getTransaction().rollback();
-			e.printStackTrace();
-		}
+			List<recommendVO> list=query.list();
+			
 		return list;
 	}
 
 	@Override
 	public List<recommendVO> select() {
-		Session session=HibernateUtil.getSessionFactory().getCurrentSession();
-		List<recommendVO> list=null;
-		try {
-			session.beginTransaction();
-			Query query=session.createQuery(SELECT_ALL);
-			list=query.list();
-			session.getTransaction().commit();
-		} catch (Exception e) {
-			session.getTransaction().rollback();
-			e.printStackTrace();
-		}
-		return list;
+			Query query=this.getSession().createQuery(SELECT_ALL);
+			
+		return (List<recommendVO>) query.list();
 	}
 
 	@Override
 	public recommendVO insert(recommendVO vo) {
-//		Session session=hibernate.util.HibernateUtil.getSessionFactory().getCurrentSession();
-		Session session=getSession();
-		try {
-			session.beginTransaction();
-			session.save(vo);
-			session.getTransaction().commit();
-		} catch (Exception e) {
-			session.getTransaction().rollback();
-			e.printStackTrace();
-		}
+			this.getSession().save(vo);
+			
 		return vo;
 	}
 
@@ -160,43 +115,22 @@ public class recommendDao implements recommendDaoInterface {
 
 	@Override
 	public boolean delete(int rID) {
-//		Session session=hibernate.util.HibernateUtil.getSessionFactory().getCurrentSession();
-		Session session=getSession();
 		Boolean result=false;
-		try {
-			session.beginTransaction();
-			Query query=session.createQuery(DELETE);
+			Query query=this.getSession().createQuery(DELETE);
 			query.setInteger("rID", rID);
 			query.executeUpdate();
-			session.getTransaction().commit();
+			
 			result=true;
-		} catch (Exception e) {
-			session.getTransaction().rollback();
-			e.printStackTrace();
-		}
+	
 		return result;
 	}
 
 	@Override
 	public int recommendCount(int sID) {
-//		Session session=HibernateUtil.getSessionFactory().getCurrentSession();
-		Session session=getSession();
-		List list=null;
 		int result=0;
-		try {
-			session.beginTransaction();
-			Query query=session.createSQLQuery("SELECT COUNT(sID) FROM recommend where sID=:sID");
+			Query query=this.getSession().createSQLQuery("SELECT COUNT(sID) FROM recommend where sID=:sID");
 			query.setInteger("sID", sID);
-			
 			 result=((Number)query.uniqueResult()).intValue();
-
-			session.getTransaction().commit();
-		} catch (Exception e) {
-			session.getTransaction().rollback();
-			e.printStackTrace();
-		}
-	
-		
 		return result;
 	}
 

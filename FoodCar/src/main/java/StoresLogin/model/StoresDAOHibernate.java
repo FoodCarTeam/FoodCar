@@ -36,102 +36,49 @@ public class StoresDAOHibernate implements StoresDAO {
 
 	@Override
 	public StoresVO select_sID(Integer sID) {
-
-		StoresVO storesVO = null;
-//		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-		Session session=getSession();
-		try {
-			session.beginTransaction();
-			storesVO = (StoresVO) session.get(StoresVO.class, sID);
-
-			session.getTransaction().commit();
-		} catch (RuntimeException ex) {
-			session.getTransaction().rollback();
-			throw ex;
-		}
-		return storesVO;
+		return (StoresVO) this.getSession().get(StoresVO.class, sID);
 	}
 
 	@Override
 	public StoresVO select_sUser(String sUsername) {
-		StoresVO svo = null;
-//		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-		Session session=getSession();
-		try {
-			session.beginTransaction();
-			Query query = session.createQuery(SELECT);
+		
+			Query query = this.getSession().createQuery(SELECT);
 			query.setString(0, sUsername);
-			svo = (StoresVO) query.uniqueResult();
-			session.getTransaction().commit();
-		} catch (RuntimeException ex) {
-			session.getTransaction().rollback();
-			throw ex;
-		}
+			StoresVO svo = (StoresVO) query.uniqueResult();
+			
 		return svo;
 	}
 
 	@Override
 	public List<StoresVO> select() {
-		List<StoresVO> list = null;
-//		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-		Session session=getSession();
-		try {
-			session.beginTransaction();
-			Query query = session.createQuery("from StoresVO");
-			list = query.list();
-			session.getTransaction().commit();
-		} catch (RuntimeException ex) {
-			session.getTransaction().rollback();
-			throw ex;
-		}
-		return list;
+		
+			Query query = this.getSession().createQuery("from StoresVO");
+			
+			
+		return (List<StoresVO>)query.list();
 	}
 
 	@Override
 	public StoresVO insert(StoresVO bean) {
-//		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-		Session session=getSession();
-		try {
-			session.beginTransaction();
-			session.saveOrUpdate(bean);
-			session.getTransaction().commit();
-		} catch (RuntimeException ex) {
-			session.getTransaction().rollback();
-			throw ex;
-		}
+			this.getSession().saveOrUpdate(bean);
+		
 		return null;
 	}
 
 	@Override
 	public StoresVO update(StoresVO bean) {
-//		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-		Session session=getSession();
-		try {
-			session.beginTransaction();
-			session.update(bean);
-			session.getTransaction().commit();
-		} catch (RuntimeException ex) {
-			session.getTransaction().rollback();
-			throw ex;
-		}
+			this.getSession().update(bean);
+			
 		return bean;
 	}
 
 	@Override
 	public boolean delete(Integer sID) {
-//		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-		Session session=getSession();
-		try {
-			session.beginTransaction();
 			StoresVO svo = new StoresVO();
 			svo.setsID(sID);
-			session.delete(svo);
+			this.getSession().delete(svo);
 
-			session.getTransaction().commit();
-		} catch (RuntimeException ex) {
-			session.getTransaction().rollback();
-			throw ex;
-		}
+			
 		return false;
 	}
 

@@ -29,48 +29,20 @@ public class OrderDAOHibernate implements OrderDAO {
 
 	@Override
 	public OrdersVO insert(OrdersVO vo) {
-//		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-		Session session=getSession();
-		try {
-			session.beginTransaction();
-			session.saveOrUpdate(vo);
-			session.getTransaction().commit();
-		} catch (RuntimeException ex) {
-			session.getTransaction().rollback();
-			throw ex;
-		}
+			this.getSession().saveOrUpdate(vo);
+		
 		return null;
 	}
 
 	@Override
 	public OrdersVO select(Integer oID) {
-		OrdersVO ordersVO = null;
-//		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-		Session session=getSession();
-		try {
-			session.beginTransaction();
-			ordersVO = (OrdersVO) session.get(OrdersVO.class, oID);
-			
-			session.getTransaction().commit();
-		} catch (RuntimeException ex) {
-			session.getTransaction().rollback();
-			throw ex;
-		}
-		return ordersVO;
+		return (OrdersVO) this.getSession().get(OrdersVO.class, oID);
 	}
 
 	@Override
 	public OrdersVO update(OrdersVO vo) {
-//		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-		Session session=getSession();
-		try {
-			session.beginTransaction();
-			session.saveOrUpdate(vo);
-			session.getTransaction().commit();
-		} catch (RuntimeException ex) {
-			session.getTransaction().rollback();
-			throw ex;
-		}
+			this.getSession().saveOrUpdate(vo);
+		
 		return null;
 	}
     

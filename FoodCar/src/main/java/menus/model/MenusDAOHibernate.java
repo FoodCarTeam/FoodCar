@@ -5,6 +5,7 @@ import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Order;
 
 import hibernate.util.HibernateUtil;
@@ -15,116 +16,66 @@ public class MenusDAOHibernate implements MenusDAO {
 
 	private static final String SELECT = "from MenusVO where sID=:sID";
 	private static final String GET_ALL_STMT = "from MenusVO";
-
+	public  MenusDAOHibernate(SessionFactory sa){
+		this.sa=sa;
+	}
+	
+	SessionFactory sa;
+	
+	private Session getSession(){
+		
+		return this.sa.getCurrentSession();
+		
+	}
 	@Override
 	public MenusVO select(Integer sID) {
-		MenusVO menusVO = null;
-		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-		try {
-			session.beginTransaction();
-			menusVO = (MenusVO) session.get(MenusVO.class, sID);
-
-			session.getTransaction().commit();
-		} catch (RuntimeException ex) {
-			session.getTransaction().rollback();
-			throw ex;
-		}
-		return menusVO;
+		return (MenusVO) this.getSession().get(MenusVO.class, sID);
 	}
 
 	@Override
 	public MenusVO insert(MenusVO mnvo) {
-		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-		try {
-			session.beginTransaction();
-			session.saveOrUpdate(mnvo);
-			session.getTransaction().commit();
-		} catch (RuntimeException ex) {
-			session.getTransaction().commit();
-			throw ex;
-		}
+			this.getSession().saveOrUpdate(mnvo);
+	
 		return null;
 	}
 
 	@Override
 	public MenusVO update(MenusVO mnvo) {
-		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-		try {
-			session.beginTransaction();
-			session.saveOrUpdate(mnvo);
-			session.getTransaction().commit();
-		} catch (RuntimeException ex) {
-			session.getTransaction().rollback();
-			throw ex;
-		}
+			this.getSession().saveOrUpdate(mnvo);
+		
 		return null;
 	}
 
 	@Override
 	public boolean delete(Integer foodID) {
-		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-		try {
-			session.beginTransaction();
-			MenusVO mnvo = (MenusVO) session.get(MenusVO.class, foodID);
+			MenusVO mnvo = (MenusVO) this.getSession().get(MenusVO.class, foodID);
 			mnvo.getStroeVO().getMenusVO().remove(mnvo);
 			mnvo.setStroeVO(null);
-			session.delete(mnvo);
-			session.getTransaction().commit();
-
-		} catch (RuntimeException ex) {
-			session.getTransaction().rollback();
-			throw ex;
-		}
+			this.getSession().delete(mnvo);
+		
 		return false;
 	}
 
 	@Override
 	public List<MenusVO> getAll() {
-		List<MenusVO> list = null;
-		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-		try {
-			session.beginTransaction();
-			Query query = session.createQuery(GET_ALL_STMT);
-			list = query.list();
-			session.getTransaction().commit();
-		} catch (RuntimeException ex) {
-			session.getTransaction().rollback();
-			throw ex;
-		}
-		return list;
+			Query query = this.getSession().createQuery(GET_ALL_STMT);
+			
+		return (List<MenusVO>) query.list();
 	}
 
 	@Override
 	public List<MenusVO> findByKey(Integer sID) {
-		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-		List<MenusVO> mnvo = null;
-		try {
-			session.beginTransaction();
-			Query query = session.createQuery(SELECT);
+	
+			Query query = this.getSession().createQuery(SELECT);
 			query.setParameter("sID", sID);
-			mnvo = query.list();
-			session.getTransaction().commit();
-		} catch (RuntimeException ex) {
-			session.getTransaction().rollback();
-			throw ex;
-		}
+			List<MenusVO> mnvo = query.list();
+			
 		return mnvo;
 	}
 
 	@Override
 	public MenusVO selectfood(Integer foodID) {
-		MenusVO menusVO = null;
-		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-		try {
-			session.beginTransaction();
-			menusVO = (MenusVO) session.get(MenusVO.class, foodID);
-
-			session.getTransaction().commit();
-		} catch (RuntimeException ex) {
-			session.getTransaction().rollback();
-			throw ex;
-		}
-		return menusVO;
+		return (MenusVO) this.getSession().get(MenusVO.class, foodID);
 	}
 
 }

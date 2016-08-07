@@ -26,10 +26,6 @@ import stores.model.StoresService;
 public class MenueditServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	StoresService storesService ;
-	
-	
-	
-    
 	@Override
 	public void init() throws ServletException {
 		storesService=new StoresService(new StoresDAOHibernate(HibernateUtil.getSessionFactory()));

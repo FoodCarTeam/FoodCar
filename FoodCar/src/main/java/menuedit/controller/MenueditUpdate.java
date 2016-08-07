@@ -15,14 +15,22 @@ import javax.servlet.http.Part;
 
 import org.apache.commons.io.FilenameUtils;
 
+import hibernate.util.HibernateUtil;
+import menus.model.MenusDAOHibernate;
 import menus.model.MenusService;
 import model.MenusVO;
+import stores.model.StoresDAOHibernate;
+import stores.model.StoresService;
 
 @MultipartConfig(location = "")
 @WebServlet("/MenueditUpdate")
 public class MenueditUpdate extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+	MenusService service ;
+	@Override
+	public void init() throws ServletException {
+		service=new MenusService(new MenusDAOHibernate(HibernateUtil.getSessionFactory()));
+	}
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		response.setHeader("content-type", "text/html;charset=UTF-8");
@@ -40,7 +48,6 @@ public class MenueditUpdate extends HttpServlet {
 		int sID = Integer.parseInt(s);
 		int unitPrice = Integer.parseInt(pri);
 		MenusVO vo = new MenusVO();
-		MenusService service = new MenusService();
 		
 		MenusVO select = service.selectfood(foodID);
 		String foodimg = select.getFoodIMG();

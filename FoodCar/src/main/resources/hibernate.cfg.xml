@@ -12,7 +12,7 @@
 <!-- 		<property name="hibernate.connection.url">jdbc:sqlserver://foodcar.database.windows.net:1433;database=programEEIT</property> -->
 <!-- 		<property name="hibernate.connection.username">foodcar</property> -->
 <!-- 		<property name="hibernate.connection.password">P@ssw0rd</property>        -->
-		<property name="hibernate.connection.url">jdbc:sqlserver://10.211.55.10:1433;DatabaseName=programEEIT</property>
+		<property name="hibernate.connection.url">jdbc:sqlserver://localhost:1433;DatabaseName=programEEIT</property>
 		<property name="hibernate.connection.username">sa</property>
 		<property name="hibernate.connection.password">p@ssw0rd</property>       
 

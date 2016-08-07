@@ -63,59 +63,33 @@ public class HoursHibernateDao implements HoursDaoInterface {
 
 	@Override
 	public HoursVO select(int sID) {
-		Session session=hibernate.util.HibernateUtil.getSessionFactory().getCurrentSession();
-		HoursVO vo=new HoursVO();
-		try {
-			session.beginTransaction();
-			Query query=session.createQuery(SELECT);
+
+			Query query=this.getSession().createQuery(SELECT);
 			query.setParameter("sID", sID);
-			vo=(HoursVO)query.uniqueResult();
-			session.getTransaction().commit();
-		} catch (Exception e) {
-			session.getTransaction().rollback();
-			e.printStackTrace();
-		}
+			HoursVO vo=(HoursVO)query.uniqueResult();
+			
 		return vo;
 	}
 
 	
 	@Override
 	public List<HoursVO> select() {
-		Session session=hibernate.util.HibernateUtil.getSessionFactory().getCurrentSession();
-		List<HoursVO> list=null;
-		try {
-			session.beginTransaction();
-			Query query=session.createQuery(SELECT_ALL);
-			list=query.list();
-			session.getTransaction().commit();
-		} catch (Exception e) {
-			session.getTransaction().rollback();
-			e.printStackTrace();
-		}
-		return list;
+		
+			Query query=this.getSession().createQuery(SELECT_ALL);
+			
+		return (List<HoursVO>)query.list();
 	}
 
 	@Override
 	public HoursVO insert(HoursVO vo) {
-		Session session=hibernate.util.HibernateUtil.getSessionFactory().getCurrentSession();
-		try {
-			session.beginTransaction();
-			session.save(vo);
-			session.getTransaction().commit();
-		} catch (Exception e) {
-			session.getTransaction().rollback();
-			e.printStackTrace();
-		}
+			this.getSession().save(vo);
 		return vo;
 	}
 
 //	 sun=:sun,mon=:mon,tue=:tue,wed=:wed,thu=:thu,fri=:fri,sat=:sat
 	@Override
 	public HoursVO update(HoursVO vo) {
-		Session session=hibernate.util.HibernateUtil.getSessionFactory().getCurrentSession();
-		try {
-			session.beginTransaction();
-			Query query=session.createQuery(UPDATE);
+			Query query=this.getSession().createQuery(UPDATE);
 			query.setParameter("sun",vo.getSun());
 			query.setParameter("mon",vo.getMon());
 			query.setParameter("tue",vo.getTue());
@@ -125,30 +99,21 @@ public class HoursHibernateDao implements HoursDaoInterface {
 			query.setParameter("sat",vo.getSat());
 			query.setParameter("sID",vo.getsID());
 			query.executeUpdate();
-			session.getTransaction().commit();
-		} catch (Exception e) {
-			session.getTransaction().rollback();
-			e.printStackTrace();
-		}
 		return vo;
 		
 	}
 
 	@Override
 	public boolean delete(int sID) {
-		Session session=hibernate.util.HibernateUtil.getSessionFactory().getCurrentSession();
+		
 		Boolean result=false;
-		try {
-			session.beginTransaction();
-			Query query=session.createQuery(DELETE);
+        HoursVO bean = (HoursVO)this.getSession().get(HoursVO.class, sID);
+        if(bean!=null){
+			Query query=this.getSession().createQuery(DELETE);
 			query.setInteger("sID", sID);
 			query.executeUpdate();
-			session.getTransaction().commit();
 			result=true;
-		} catch (Exception e) {
-			session.getTransaction().rollback();
-			e.printStackTrace();
-		}
+        }
 		return result;
 		
 	}
