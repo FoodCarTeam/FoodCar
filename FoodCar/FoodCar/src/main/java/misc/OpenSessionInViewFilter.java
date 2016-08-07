@@ -30,7 +30,6 @@ public class OpenSessionInViewFilter implements Filter {
 			HibernateUtil.getSessionFactory().getCurrentSession().beginTransaction();
 			chain.doFilter(req, resp);
 			HibernateUtil.getSessionFactory().getCurrentSession().getTransaction().commit();
-			
 		} catch (Exception e) {
 			HibernateUtil.getSessionFactory().getCurrentSession().getTransaction().rollback();
 			e.printStackTrace();

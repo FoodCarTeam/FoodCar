@@ -7,6 +7,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
+import hibernate.util.HibernateUtil;
 import model.HoursVO;
 
 
@@ -75,16 +76,19 @@ public class HoursHibernateDao implements HoursDaoInterface {
 	
 	@Override
 	public List<HoursVO> select() {
-		Session session=getSession();
 		List<HoursVO> list=null;
-//		Transaction ta=session.beginTransaction();
-		
-		
-			Query query=session.createQuery(SELECT_ALL);
-			list=query.list();
-			
-//			ta.commit();
-//			session.close();
+		Transaction ta=null;	
+		Session session=HibernateUtil.getSessionFactory().getCurrentSession();
+			try {
+				ta=session.beginTransaction();
+				Query query=session.createQuery(SELECT_ALL);
+				list=query.list();
+				ta.commit();
+				
+			} catch (Exception e) {
+				ta.rollback();
+				e.printStackTrace();
+			}
 			
 		return list;
 	}

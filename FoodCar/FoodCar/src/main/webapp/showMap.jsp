@@ -15,11 +15,24 @@
 	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCYlPLOTbe5ukpdei4lCJslsfIs1_qXO3Q&libraries=places&callback=initMap"></script>
 <script type="text/javascript" src="jquery/jquery-3.0.0.min.js"></script>
 <script type="text/javascript" src="bootstrap/js/jquery.jsonp.js"></script>
+<script type="text/javascript" src="bootstrap/map/js/jQueryBlockUI/jQueryBlockUI.js"></script>
 <link rel='stylesheet' href='bootstrap/map/css/showFoodCarsMap.css' type='text/css' media='all' />
 <body>
 	
 	<script type='text/javascript'>
 	function initMap() {
+		
+		 $.blockUI({ 
+	            message:"<img src='images/MapIcon/load/magnify.gif'/>", 
+	            css: { 
+	            	width: '0%', border:'none',cursor:'wait',backgroundColor:'#FFFFFF',left:"45%",			
+	            	overlayCSS:{ backgroundColor: '#FFFFFF',opacity:0.0,cursor:'wait'} 
+	            	} 
+	        });
+		 
+		
+		
+		
 		// 			使用者緯經度
 		var lat;
 		var lng;
@@ -62,7 +75,7 @@
 						var lng =parseFloat(value.lng);
 						
 						var markerView = new google.maps.Marker({
-							icon : "images/MapIcon/icon_location.png",
+							icon : "images/MapIcon/icon_locationGreen.png",
 							map : map,
 							place : {
 								location : {
@@ -86,12 +99,10 @@
 // 						使用者縮放地圖時關掉資訊視窗
 						google.maps.event.addListener(map, 'zoom_changed', function() {
 							infoWindowView.close();
-							infoWindow.close();
 							   });
 //								點擊地圖時關閉資訊視窗
 						  google.maps.event.addListener(map, 'click', function() {
 							  infoWindowView.close();
-							  infoWindow.close();
 							  });
 // 						  var content = "<div id='iw-container'>" 
 // 						  + "<div id='storeName' class='iw-title' style='font-size:16px;line-height:20px'><a href='store?s="+"123"+"' target='_parent' style='color:white;text-decoration:none;' >" 
@@ -101,11 +112,11 @@
 // 						  +value.body + "</p>" + "</div></div>";
 
  					var content = "<div id='iw-container'>" 
-					  + "<div id='storeName' class='iw-title' style='font-size:16px;line-height:20px'><a href='store?s="+""+"' target='_parent' style='color:white;text-decoration:none;' >" 
-					  + "名字" + "</a></div>" + "<div class='iw-content'>" 
-					  + "<p style='font-size:14px;line-height:20px'>電話號碼：" 
-					  + "電話" + "</p>" + "<p style='font-size:14px;line-height:20px'>今日營業時間：" 
-					  + "時間" + "</p>" + "<p style='font-size:14px;line-height:20px'>介紹：" 
+					  + "<div id='storeName' class='iw-title' style='font-size:16px;line-height:20px;background-color: rgb(90,231,71)'><a href='store?s="+""+"' target='_parent' style='color:white;text-decoration:none;' >" 
+					  + value.title + "</a></div>" + "<div class='iw-content'>" 
+					  + "<p style='font-size:14px;line-height:20px'>開放時間：" 
+					  + value.openTime + "</p>" + "<p style='font-size:14px;line-height:20px'>最近捷運站：" 
+					  + value.MRT + "</p>" + "<p style='font-size:14px;line-height:20px'>介紹：" 
 					  + value.body + "</p>" + "</div></div>";
 
 
@@ -113,7 +124,6 @@
 //		'<img src="http://maps.marnoto.com/en/5wayscustomizeinfowindow/images/vistalegre.jpg" alt="Porcelain Factory of Vista Alegre" height="115" width="83">'
 						var infoWindowView = new google.maps.InfoWindow({
 							content : content
-							
 						});
 						
 						
@@ -144,9 +154,9 @@
 								opacity : '1',
 								right : '38px',
 								top : '3px',
-								border : '7px solid #ec6b4c',
+								border : '7px solid #5AE747',
 								'border-radius' : '13px',
-								'box-shadow' : '0 0 5px #ec6b4c'
+								'box-shadow' : '0 0 5px #5AE747'
 							});
 							if ($('.iw-content').height() < 140) {
 								$('.iw-bottom-gradient').css({
@@ -166,7 +176,7 @@
 // 						each尾巴
 					})
 				
-				
+					 setTimeout($.unblockUI, 0); 
 				
 				
 				
@@ -248,12 +258,10 @@
 //	 				使用者縮放地圖時關掉資訊視窗
 					google.maps.event.addListener(map, 'zoom_changed', function() {
 						    	infoWindow.close();
-						    	infoWindowView.close();
 						   });
 //							點擊地圖時關閉資訊視窗
 					  google.maps.event.addListener(map, 'click', function() {
 						  infoWindow.close();
-						  infoWindowView.close();
 						  });
 					  var content = "<div id='iw-container'>" 
 					  + "<div id='storeName' class='iw-title' style='font-size:16px;line-height:20px'><a href='store?s="+value.sID+"' target='_parent' style='color:white;text-decoration:none;' >" 

@@ -52,7 +52,14 @@ public class ReadActivityServlet extends HttpServlet {
         for(TaiwanActivityResult2 a:list){
         	jo=new JSONObject();
         	
-        	jo.put("openTime", a.getMEMOTIME());
+        	
+        	if(a.getMEMOTIME()==null){
+        		jo.put("openTime", "依場地時間");
+        	}else{
+        		jo.put("openTime", a.getMEMOTIME());
+        	}
+        	
+        	
 //        	jo.put("file", a.getFile());
         	jo.put("title", a.getStitle());
         	jo.put("body", a.getXbody());

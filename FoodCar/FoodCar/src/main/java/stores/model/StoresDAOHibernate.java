@@ -49,13 +49,17 @@ public class StoresDAOHibernate implements StoresDAO{
 	public StoresVO select(Integer sID) {
 
 		StoresVO storesVO = null;
-			
-		Session session=getSession();
-//		Transaction ta=session.beginTransaction();
 		
-		
+		Session session=HibernateUtil.getSessionFactory().getCurrentSession();
+		Transaction ta=null;
+		try {
+			 ta=session.beginTransaction();
 			storesVO = (StoresVO) session.get(StoresVO.class, sID);
-			
+			ta.commit();
+		} catch (Exception e) {
+			ta.rollback();
+			e.printStackTrace();
+		}	
 			
 			
 		return storesVO;
@@ -68,12 +72,12 @@ public class StoresDAOHibernate implements StoresDAO{
 		
 //		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		Session session=getSession();
-		Transaction ta=session.beginTransaction();
+//		Transaction ta=session.beginTransaction();
 			Query query = session.createQuery("from StoresVO");
 			list = query.list();
-			ta.commit();
-			
-			session.close();
+//			ta.commit();
+//			
+//			session.close();
 			
 		return list;
 	}

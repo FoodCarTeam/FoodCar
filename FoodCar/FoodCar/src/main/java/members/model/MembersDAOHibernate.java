@@ -11,6 +11,7 @@ import org.hibernate.Hibernate;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.hibernate.criterion.Order;
 
 import hibernate.util.HibernateUtil;
@@ -97,22 +98,42 @@ public class MembersDAOHibernate implements MembersDAO {
 }
 	public MembersVO select_mName(String mName) {
 //	Session session=HibernateUtil.getSessionFactory().getCurrentSession();
-		Session session=getSession();
+		Session session=HibernateUtil.getSessionFactory().getCurrentSession();
+		Transaction ta=null;
 	MembersVO vo=null;
-		Query query=session.createQuery(SELECT_mName);
-		query.setParameter("mName",mName);
-		vo=(MembersVO)query.uniqueResult();
+	
+		try {
+			ta=session.beginTransaction();
+			
+			Query query=session.createQuery(SELECT_mName);
+			query.setParameter("mName",mName);
+			vo=(MembersVO)query.uniqueResult();
+			ta.commit();
+		} catch (Exception e) {
+			ta.rollback();
+			e.printStackTrace();
+		}
+		
+		
 	return vo;
 }
 	
 	@Override
 	public MembersVO select_mPhone(String mPhone ) {
 		MembersVO membersVO = null;
-//		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-		Session session=getSession();
-			Query query=session.createQuery("from MembersVO where mPhone=?");
-			query.setString(0,mPhone);
-			membersVO=(MembersVO)query.uniqueResult();
+		Session session=HibernateUtil.getSessionFactory().getCurrentSession();
+		Transaction ta=null;
+		
+			try {
+				ta=session.beginTransaction();
+				Query query=session.createQuery("from MembersVO where mPhone=?");
+				query.setString(0,mPhone);
+				membersVO=(MembersVO)query.uniqueResult();
+				ta.commit();
+			} catch (Exception e) {
+				ta.rollback();
+				e.printStackTrace();
+			}	
 		return membersVO;
 	
 	}
@@ -122,25 +143,45 @@ public class MembersDAOHibernate implements MembersDAO {
 
 	@Override
 	public List<String> select_TaiwanRoad(String County,String Area,String roadName) {
-//		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-		Session session=getSession();
+
+		Session session=HibernateUtil.getSessionFactory().getCurrentSession();
+		Transaction ta=null;
+		
 		List<String> list=null;
-			Query query=session.createSQLQuery("select distinct Road from TaiwanRoad where County=:County and Area =:Area and  Road like :roadNmae").addScalar("Road");
+		
+			try {
+				ta=session.beginTransaction();
+				Query query=session.createSQLQuery("select distinct Road from TaiwanRoad where County=:County and Area =:Area and  Road like :roadNmae").addScalar("Road");
 //			query.setParameter(0,roadName+"%");
-			query.setString("County", County);
-			query.setString("Area", Area);
-			query.setString("roadNmae", roadName+"%");
-			list=query.list();
+				query.setString("County", County);
+				query.setString("Area", Area);
+				query.setString("roadNmae", roadName+"%");
+				list=query.list();
+				ta.commit();
+			} catch (Exception e) {
+				ta.rollback();
+				e.printStackTrace();
+			}
+			
+			
 		return list;
 	}
 	@Override
 	public MembersVO select_mID(Integer mID) {
+		Session session=HibernateUtil.getSessionFactory().getCurrentSession();
+		Transaction ta=null;
 		MembersVO membersVO = null;
 //		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-		Session session=getSession();
-			membersVO = (MembersVO) session.get(MembersVO.class, mID);
+		
+			try {
+				ta=session.beginTransaction();
+				membersVO = (MembersVO) session.get(MembersVO.class, mID);
+				ta.commit();
+			} catch (Exception e) {
+				ta.rollback();
+				e.printStackTrace();
+			}
 			
-			session.getTransaction().commit();
 		return membersVO;
 
 	}
