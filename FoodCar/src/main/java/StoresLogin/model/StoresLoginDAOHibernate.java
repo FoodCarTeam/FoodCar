@@ -77,21 +77,12 @@ public class StoresLoginDAOHibernate implements StoresLoginDAO {
 		 		}
 	
 	public StoresVO select(String sUsername){
-		StoresVO storesvo = null ; 
-//		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-		Session session=getSession();
-		try{
-			session.beginTransaction();
-			Query query = session.createQuery(SELECT);
+			Query query = this.getSession().createQuery(SELECT);
 			query.setString(0,sUsername);
 			System.out.println(query);
 			
-			storesvo = (StoresVO) query.uniqueResult();
-			session.getTransaction().commit();
-		}catch(RuntimeException ex){
-			session.getTransaction().rollback();
-			throw ex;
-		}
+			StoresVO storesvo = (StoresVO) query.uniqueResult();
+			
 		return storesvo;
 	}
 
@@ -101,11 +92,7 @@ public class StoresLoginDAOHibernate implements StoresLoginDAO {
 		
 	System.out.println(vo);
 	
-//	Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-	Session session=getSession();
-		try{
-			session.beginTransaction();		
-			
+
 //  << 如果sID 是讓使用者輸入,才可以這樣coding存資料到資料庫	>>
 //			StoresVO result = (StoresVO)session.get(StoresVO.class ,vo.getsID());
 //        System.out.println("here");
@@ -115,12 +102,8 @@ public class StoresLoginDAOHibernate implements StoresLoginDAO {
 //		}
 //  << 如果sID 是我們流水號自己生 , 這樣抓就會死在100行那 跑不到if(result==null)這樣使用者資料存不到資料庫內
         
-        session.save(vo);
-			session.getTransaction().commit();
-		}catch(RuntimeException ex){
-			session.getTransaction().rollback();
-			throw ex;
-		}
+        this.getSession().save(vo);
+		
  	return null;
 	}
 
