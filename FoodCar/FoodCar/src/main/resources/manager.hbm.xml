@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="model.ManagerVO" table="manager" >
+        
+        <id name="manageID" column="manageID">
+            <generator class="identity"/>
+        </id>
+        
+        <property name="managerUser" column="managerUser" />
+        <property name="managerPass" column="managerPass" />
+        <property name="managerName" column="managerName" />
+        <property name="managerPhone" column="managerPhone" />
+      
+    </class>
+</hibernate-mapping>
+

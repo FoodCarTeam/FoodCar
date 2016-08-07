@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2012/3/7 ?W?? 09:15:15 by Hibernate Tools 3.3.0.GA -->
+<hibernate-mapping>
+	<class name="model.TaiwanRoadNameEntity" table="TaiwanRoad">
+
+		<id name="PK" column="PK">
+			<generator class="identity" />
+
+		</id>
+
+		<property name="PostalCode" column="PostalCode" />
+		<property name="County" column="County" />
+		<property name="Area" column="Area" />
+		<property name="Road" column="Road" />
+		<property name="Number" column="Number" />
+		
+		
+<!-- 		<many-to-one name="storesVO" class="model.StoresVO" lazy="false" -->
+<!-- 			column="sID" insert="false" update="false" not-found="ignore" /> -->
+		
+
+<!-- 		<set name="mapVO" table="maps" lazy="false" cascade="all" inverse="true"> -->
+<!-- 			<key column="sID"/> -->
+<!-- 			<one-to-many class="model.MapsVO" /> -->
+<!-- 		</set> -->
+
+
+	</class>
+</hibernate-mapping>

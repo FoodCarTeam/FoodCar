@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2012/3/7 ?W?? 09:15:15 by Hibernate Tools 3.3.0.GA -->
+<hibernate-mapping>
+	<class name="model.MenusVO" table="menus">
+
+		<id name="foodID" column="foodID">
+			<generator class="identity" />
+
+		</id>
+
+		<property name="foodName" column="foodName" />
+		<property name="sID" column="sID" />
+		<property name="kindID" column="kindID" />
+		<property name="statusID" column="statusID" />
+		<property name="unitPrice" column="unitPrice" />
+		<property name="foodIMG" column="foodIMG" />
+	
+
+       <many-to-one name="stroeVO" class="model.StoresVO" lazy="false"  
+			column="sID" insert="false" update="false" not-found="ignore" />
+	</class>
+</hibernate-mapping>

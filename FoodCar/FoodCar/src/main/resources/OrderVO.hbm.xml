@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2012/3/7 ?W?? 09:15:15 by Hibernate Tools 3.3.0.GA -->
+<hibernate-mapping>
+	<class name="model.OrdersVO" table="orders">
+
+		<id name="oID" column="oID">
+			<generator class="identity" />
+
+		</id>
+
+		<property name="sID" column="sID" />
+		<property name="mID" column="mID" />
+		<property name="amount" column="amount" />
+		<property name="saleDate" column="saleDate" />
+		<property name="checkOut" column="checkOut" />
+		<property name="sName" column="sName" />
+		<property name="mName" column="mName" />
+        <set name="OrderDetailsVO" table="orderDetails" lazy="false" cascade="all" inverse="true" order-by="odID">
+            <key column="oID"/>
+            <one-to-many class="model.OrderDetailsVO"/>
+        </set>
+
+
+	</class>
+</hibernate-mapping>

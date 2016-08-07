@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2012/3/7 ?W?? 09:15:15 by Hibernate Tools 3.3.0.GA -->
+<hibernate-mapping>
+	<class name="model.OrderDetailsVO" table="orderDetails">
+
+		<id name="odID" column="odID">
+			<generator class="identity" />
+
+		</id>
+        <property name="oID" column="oID" />
+		<property name="sID" column="sID" />
+		<property name="foodID" column="foodID" />
+		<property name="foodQuantity" column="foodQuantity" />
+		<property name="foodName" column="foodName" />
+		<property name="unitPrice" column="unitPrice" />
+		<property name="totalPrice" column="totalPrice" />
+		<property name="mID" column="mID" />
+		<property name="odMemo" column="odMemo" />
+
+
+
+	</class>
+</hibernate-mapping>

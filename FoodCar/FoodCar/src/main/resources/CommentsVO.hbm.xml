@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2012/3/7 ?W?? 09:15:15 by Hibernate Tools 3.3.0.GA -->
+<hibernate-mapping>
+	<class name="model.CommentsVO" table="comments">
+
+		<id name="cID" column="cID">
+			<generator class="identity" />
+
+		</id>
+
+		<property name="mID" column="mID" />
+		<property name="sID" column="sID" />
+		<property name="cDate" column="cDate" />
+		<property name="cContent" column="cContent" />
+		<property name="cPoint" column="cPoint" />
+		<property name="cIP" column="cIP" />
+		
+<!-- 		<set name="memberVO" table="members" lazy="false" cascade="all" inverse="true"> -->
+<!-- 			<key column="mID"/> -->
+<!-- 			<one-to-many class="model.MembersVO"/> -->
+<!-- 		</set> -->
+		
+		<many-to-one name="memberVO" class="model.MembersVO" lazy="false" cascade="all"
+			column="mID" insert="false" update="false" not-found="ignore"  />
+		
+		
+		
+		<set name="responseVO" table="response" lazy="false" cascade="all" inverse="true">
+			<key column="cID"/>
+			<one-to-many class="model.ResponseVO" />
+		</set>
+		
+
+	</class>
+</hibernate-mapping>
